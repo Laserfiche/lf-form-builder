@@ -1,0 +1,8 @@
+{
+  "forms": {
+    "rootDir": "src/Forms",
+    "js": {
+      "SampleForm": "SampleForm/index.ts"
+    }
+  }
+}

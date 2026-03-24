@@ -1,0 +1,681 @@
+@import "./_variables.lfless";
+@import "./_designer-states.lfless";
+
+// Mixins
+.transition-standard() {
+  transition: color @transition-speed ease-in-out,
+    background-color @transition-speed ease-in-out,
+    border-color @transition-speed ease-in-out,
+    box-shadow @transition-speed ease-in-out;
+}
+
+.input-transition() {
+  transition: border-color @transition-speed ease-in-out,
+    box-shadow @transition-speed ease-in-out;
+}
+
+.input-base(@apply-height: true) {
+  border-radius: @border-radius;
+  border: 1px solid var(--primary-border-color);
+  .input-transition();
+  padding: var(--simple-input-padding);
+
+  & when (@apply-height =true) {
+    height: var(--simple-input-height);
+  }
+}
+
+.input-focus() {
+  &:focus {
+    border-color: var(--primary-border-color);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem var(--primary-shadow-color-focus);
+  }
+}
+
+.input-error() {
+
+  &.ng-invalid.ng-touched,
+  &.ng-wrapper-invalid.ng-touched {
+    border-color: var(--error-border-color);
+    padding-right: calc(1.5em + 0.75rem) !important;
+    background-image: var(--error-input-bg-url);
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+
+    &:focus {
+      border-color: var(--error-border-color);
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem var(--error-shadow-color-focus);
+    }
+  }
+}
+
+.button-base() {
+  display: inline-block;
+  font-weight: 400;
+  color: white;
+  font-size: 16px !important;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  line-height: 1.5;
+  border-radius: @border-radius;
+  .transition-standard();
+}
+
+// #endregion
+
+// #region Global Setup
+& when (@dark-mode =false) {
+  color-scheme: only light;
+}
+
+& when (@dark-mode =true) {
+  color-scheme: light dark;
+}
+
+& * {
+  font-family: @font-family !important;
+  font-size: @base-font-size;
+}
+
+// #endregion
+
+// #region Dark Mode
+& when (@dark-mode =true) {
+  @media (prefers-color-scheme: dark) {
+    & {
+      background-color: darken(#212529, 5%) !important;
+    }
+
+    .form-container {
+      --read-only-bg-color: @dark-bg-readonly;
+      --read-only-border: @dark-border-readonly;
+      --primary-border-color: @dark-border-primary;
+      --primary-shadow-color-focus: @dark-shadow-focus;
+      --error-border-color: @dark-border-error;
+      --error-shadow-color-focus: @dark-shadow-error;
+      --field-font-color: @dark-font-field;
+      --icon-color: @dark-color-icon;
+      --form-bg-color: @dark-bg-form;
+      background-color: var(--form-bg-color) !important;
+      border-color: black;
+      color: white !important;
+    }
+
+    a {
+      color: #1e8aff;
+    }
+
+    .fl-component {
+
+      ng-select.ng-select .ng-select-container,
+      ng-select.ng-select.custom .ng-select-container {
+        background-color: transparent;
+        color: var(--field-font-color);
+      }
+
+      .submission-view {
+        color: var(--field-font-color);
+      }
+
+      .cf-field input:not([type="checkbox"]):not([type="radio"]):not(.numInput),
+      .cf-field textarea,
+      .forms-comment textarea {
+        background-color: transparent;
+        color: var(--field-font-color);
+      }
+
+      label.field-label,
+      label.option-label>span {
+        color: var(--field-font-color);
+      }
+
+      .file-upload-help-text .file-upload-text,
+      label.cf-helptext.ab-help,
+      label.cf-helptext.un-help,
+      label {
+        color: color-mix(in srgb, var(--field-font-color) 75%, black 25%);
+      }
+    }
+
+    .note-editable {
+      color: black;
+    }
+
+    .field-body-dropdown .ng-option-label.fl-dropdown-label {
+      color: var(--field-font-color);
+    }
+
+    .lib-datetime-picker a.datetime-icon {
+      background-color: transparent;
+    }
+
+    .fl-section .section-label {
+      color: color-mix(in srgb, var(--field-font-color) 75%, white 25%);
+    }
+
+    #comment-container textarea {
+      background: transparent;
+      color: var(--field-font-color);
+    }
+
+    .form-pagination .form-progress-bar-container .progress {
+      background-color: #444 !important;
+    }
+  }
+}
+
+// #endregion
+
+// #region Layout & Sections
+.Section.hide-padding {
+  border: none;
+
+  & .fl-section.fl-component>div>.pane {
+    padding: 0px;
+  }
+
+  & .line {
+    margin-bottom: 0px;
+  }
+}
+
+fl-page>.line>.Section {
+  .section-title {
+    padding: 10px;
+  }
+}
+
+.max-w-section.fl-section.fl-component>div>.pane {
+  padding: 0px;
+}
+
+// #endregion
+
+// #region Buttons
+.form-pagination-btn,
+.action-btn-container {
+
+  >.pagination-btn,
+  >.action-btn {
+    .button-base();
+  }
+
+  >.pagination-btn[disabled],
+  >.action-btn[disabled] {
+    visibility: hidden;
+  }
+
+  .__SaveDraft {
+    color: @draft-button-font-color;
+    background-color: @draft-button-bg;
+
+    &:hover {
+      text-decoration: underline;
+      background-color: @draft-button-bg-hover;
+    }
+
+    &:active {
+      background-color: @draft-button-active;
+    }
+  }
+
+  >.Reject {
+    color: @reject-button-font-color;
+    background-color: @reject-button-bg;
+
+    &:hover {
+      text-decoration: underline;
+      background-color: @reject-button-bg-hover;
+    }
+
+    &:active {
+      background-color: @reject-button-active;
+    }
+  }
+
+  >.Submit {
+    color: @submit-button-font-color;
+    background-color: @submit-button-bg;
+
+    &:hover {
+      text-decoration: underline;
+      background-color: @submit-button-bg-hover;
+    }
+
+    &:active {
+      background-color: @submit-button-active;
+    }
+  }
+
+  .Approve {
+    color: @approve-button-font-color;
+    background-color: @approve-button-bg;
+
+    &:hover {
+      text-decoration: underline;
+      background-color: @approve-button-bg-hover;
+    }
+
+    &:active {
+      background-color: @approve-button-active;
+    }
+  }
+
+  >.pagination-btn.next-btn,
+  >.pagination-btn.prev-btn {
+    color: @pagination-button-font-color;
+    background-color: @pagination-button-bg;
+    border: none;
+
+    &:hover {
+      text-decoration: underline;
+      background-color: @pagination-button-bg-hover;
+    }
+
+    &:active {
+      background-color: @pagination-button-active;
+    }
+  }
+}
+
+.fl-component .cf-field .auto-fill-btn-container>button, .lf-secondary-button {
+  color: @secondary-button-font-color;
+  background-color: @secondary-button-bg;
+  border: 1px darkgray solid;
+  border-radius: @border-radius;
+  display: flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  height: unset;
+  margin: unset;
+
+  &:hover {
+    text-decoration: underline;
+    background-color: @secondary-button-bg-hover;
+  }
+
+  &:active {
+    background-color: @secondary-button-active;
+  }
+}
+
+// #endregion
+
+// #region Generic Form CSS
+.form-container {
+  --form-bg-color: @light-bg-form;
+  --read-only-bg-color: @light-bg-readonly;
+  --read-only-border: @light-border-readonly;
+  --primary-border-color: @light-border-primary;
+  --primary-shadow-color-focus: @light-shadow-focus;
+  --simple-input-height: @input-height;
+  --simple-input-padding: @input-padding;
+  --error-border-color: @light-border-error;
+  --error-shadow-color-focus: @light-shadow-error;
+  --error-input-bg-url: @error-icon;
+  --form-header-flex-dir: row;
+}
+
+// #endregion
+
+// #region Hidden Fields (Designer)
+.pdc {
+  transition: visibility 0.3s linear, opacity 0.3s linear;
+
+  &.selected {
+    border-radius: @border-radius;
+  }
+
+  &.hidden {
+    display: none;
+  }
+
+  &.invisible {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.designer-only({
+  .form-loading {
+    display: none !important;
+  }
+
+  .pdc {
+
+    &.fade {
+      opacity: 100;
+      border: 1px dashed gray;
+      border-radius: @border-radius;
+
+      &::after {
+        content: "collapsed";
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: lightgray;
+        border-radius: @border-radius;
+        padding: 0.25rem;
+        margin: 2px;
+      }
+
+      &.active::after {
+        content: "active";
+      }
+    }
+
+    &.hidden {
+      display: unset !important;
+      border: 1px dashed gray;
+      border-radius: @border-radius;
+
+      &::after {
+        content: "hidden";
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: lightgray;
+        border-radius: @border-radius;
+        padding: 0.25rem;
+        margin: 2px;
+      }
+    }
+
+    &.invisible {
+      visibility: visible !important;
+      border: 1px dashed gray;
+      border-radius: @border-radius;
+
+      &::after {
+        content: "hidden";
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: lightgray;
+        border-radius: @border-radius;
+        padding: 0.25rem;
+        margin: 2px;
+      }
+    }
+  }
+});
+
+// #endregion
+
+// #region Input Fields
+fl-date-time.fl-component,
+fl-time.fl-component {
+
+  div.cf-field,
+  .fl-datetime-inputs,
+  .lib-datetime-picker {
+    max-width: 100%;
+    display: flex;
+
+    >.fl-date-container {
+      flex: 1;
+      max-width: unset;
+    }
+
+    >.fl-time-container {
+      flex: 0.5;
+      max-width: unset;
+    }
+
+    .lib-datetime-picker input {
+      .input-base();
+      .input-focus();
+      .input-error();
+    }
+  }
+
+  .flatpickr-wrapper {
+    width: 100%;
+  }
+}
+
+fl-address.fl-component div.cf-field input {
+  .input-base();
+  .input-focus();
+  .input-error();
+}
+
+.fl-component {
+
+  input:not([type="checkbox"]):not([type="radio"])[readonly],
+  input:not([type="checkbox"]):not([type="radio"])[disabled],
+  textarea[readonly],
+  textarea[disabled],
+  .submission-view {
+    border: var(--read-only-border) !important;
+    background: var(--read-only-bg-color) !important;
+    resize: none;
+  }
+}
+
+fl-single-line.fl-component div.cf-field input[type="text"],
+fl-email.fl-component div.cf-field input[type="email"],
+fl-number.fl-component div.cf-field .number-inputs>input {
+  .input-base();
+  .input-focus();
+  .input-error();
+}
+
+.submission-view {
+  .input-base(false);
+  .input-focus();
+  .input-error();
+}
+
+fl-multi-line.fl-component div.cf-field textarea {
+  .input-base(false);
+  .input-focus();
+  .input-error();
+}
+
+fl-rich-text.fl-component div.cf-field {
+  div.note-frame.card {
+    border-radius: @border-radius;
+    border: 1px solid var(--primary-border-color);
+    .input-transition();
+    margin: 0.2rem;
+
+    &:focus-within {
+      border-color: var(--primary-border-color);
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem var(--primary-shadow-color-focus);
+    }
+  }
+
+  &.hasError div.note-frame.card {
+    border-color: var(--error-border-color);
+
+    &:focus-within {
+      border-color: var(--error-border-color);
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem var(--error-shadow-color-focus);
+    }
+  }
+}
+
+#comment-container textarea {
+  .input-base(false);
+  .input-focus();
+  .input-error();
+}
+
+// Dropdown/Checkbox/Radio
+fl-dropdown.fl-component,
+fl-checkbox.fl-component,
+fl-radio.fl-component {
+  div.cf-field ng-select {
+    >.ng-select-container {
+      height: calc(var(--simple-input-height)) !important;
+      padding: var(--simple-input-padding);
+      border-radius: @border-radius;
+      border: 1px solid var(--primary-border-color);
+      .input-transition();
+
+      input {
+        height: var(--simple-input-height);
+        padding: var(--simple-input-padding);
+        padding-top: 0px;
+        padding-bottom: 0px;
+      }
+
+      >.ng-input {
+        padding: var(--simple-input-padding);
+      }
+    }
+
+    &.ng-select-focused>.ng-select-container {
+      border-color: var(--primary-border-color);
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem var(--primary-shadow-color-focus);
+    }
+
+    &.ng-invalid.ng-touched {
+      >.ng-select-container {
+        border-color: var(--error-border-color);
+        padding-right: calc(0.75em + 2.3125rem) !important;
+        background-image: var(--error-input-bg-url);
+        background-repeat: no-repeat;
+        background-position: right 2.75rem center, right 1.75rem center;
+        background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+      }
+
+      &.ng-select-focused>.ng-select-container {
+        border-color: var(--error-border-color);
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem var(--error-shadow-color-focus);
+      }
+    }
+  }
+}
+
+// Table/Collection Search
+.fl-table.fl-component,
+.fl-collection.fl-component {
+  .repeatables-pagination-top .repeatables-pagination-functions .repeatables-pagination-search-wrapper .repeatables-pagination-search {
+    .input-base();
+    .input-focus();
+  }
+
+  .repeatables-pagination-functions .repeatables-pagination-filter {
+    width: var(--simple-input-height);
+    height: var(--simple-input-height);
+  }
+
+  .repeatables-pagination-info,
+  .repeatables-pagination-pages {
+    flex-basis: auto;
+  }
+}
+
+// #endregion
+
+// #region Tables
+.undeletable-table table {
+
+  .table-buttons-col,
+  .table-buttons-header,
+  .table-buttons {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .form-pagination {
+    flex: 1;
+    padding-left: 20px;
+
+    >nav>a.form-tab,
+    >nav>a.form-tab.active {
+      font-size: 16px;
+    }
+  }
+
+  .condensed-table {
+    >fl-table>div {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      flex: 1;
+      padding: 0px 20px;
+      display: flex;
+      align-items: center;
+
+      label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0px;
+      }
+    }
+
+    fl-repeatables-pagination {
+      &:first-of-type {
+        width: inherit;
+      }
+
+      >.repeatables-pagination-top {
+        margin: 8px 10px 0px 0px;
+      }
+
+      >.repeatables-pagination-bottom {
+        padding: 8px 10px;
+
+        input.curPage {
+          height: inherit;
+        }
+      }
+    }
+
+    th div.label-container {
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+
+  .fl-table.fl-component {
+    th.table-header-cell .field-label {
+      text-align: inherit;
+      padding-left: 10px;
+    }
+
+    th {
+      text-align: left;
+      padding: 14px;
+      border: none;
+      border-bottom: 2px solid #ddd;
+    }
+
+    td {
+      border: none;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+    }
+
+    tbody tr {
+      transition: background 0.2s ease-in;
+
+      &:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      &:hover {
+        background-color: rgba(184, 218, 255, 0.5);
+      }
+    }
+  }
+}
+
+// #endregion

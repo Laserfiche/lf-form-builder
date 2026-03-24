@@ -1,0 +1,41 @@
+# @lfz/lf-form-types
+
+TypeScript type definitions for the Laserfiche Forms `LFForm` runtime API.
+
+## Installation
+
+```bash
+npm install @lfz/lf-form-types
+```
+
+## Usage
+
+```typescript
+import type { LFForm, LFFormField, LFFormId } from '@lfz/lf-form-types';
+```
+
+## What's included
+
+### Core types
+
+- **`LFForm`** — Full interface for the `LFForm` global (getFieldValues, setFieldValues, findFields, changeFieldSettings, subscribe, etc.)
+- **`LFFormField`** — Union of all field component types (TextField, NumberField, DateField, AddressField, CheckboxField, RadioField, DropdownField, TableField, CollectionField, etc.)
+- **`LFFormId`** / **`LFFormIdParam`** — Field identifiers (by fieldId, variableId, or variableName)
+
+### Field settings
+
+- **`BaseFieldSettings`**, **`StandardFieldSettings`**, **`AddressFieldSettings`**, **`TableFieldSettings`**, **`CollectionFieldSettings`**, etc.
+
+### Event types
+
+- **`LFFormSupportedEvents`** — `fieldChange`, `fieldBlur`, `formSubmission`, `lookupTrigger`, `lookupDone`
+- **`LFFormEventHandler`** — Event handler signature
+- **`LFFormEventOptions`** — Per-event option types
+
+### Helpers
+
+- **`isLfFormId()`** — Runtime type guard for `LFFormId`
+
+## License
+
+[MIT](../../LICENSE)

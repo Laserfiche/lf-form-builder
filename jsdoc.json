@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/jsdoc-1.0.0.json",
+  "source": {
+    "include": [
+      "src/lib",
+      "src/components"
+    ],
+    "includePattern": ".+\\.(j|t)s(doc|x)?$"
+  },
+  "tags": {
+    "allowUnknownTags": [
+      "optional"
+    ]
+  },
+  "plugins": [
+    "node_modules/jsdoc/plugins/markdown"
+  ],
+  "opts": {
+    "recurse": true,
+    "destination": "./docs/"
+  }
+}

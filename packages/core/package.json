@@ -1,0 +1,70 @@
+{
+  "name": "@lfz/lf-form-builder",
+  "version": "0.1.0",
+  "description": "Utilities, components, and Vite plugins for building custom Laserfiche Forms.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicknaddaf/lf-form-builder.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://github.com/nicknaddaf/lf-form-builder#readme",
+  "bugs": {
+    "url": "https://github.com/nicknaddaf/lf-form-builder/issues"
+  },
+  "keywords": [
+    "laserfiche",
+    "forms",
+    "vite-plugin",
+    "lfless",
+    "form-builder"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./plugins": {
+      "import": "./dist/plugins/index.js",
+      "types": "./dist/plugins/index.d.ts"
+    },
+    "./plugins/*": {
+      "import": "./dist/plugins/*.js",
+      "types": "./dist/plugins/*.d.ts"
+    },
+    "./css/*": "./src/css/*"
+  },
+  "files": [
+    "dist",
+    "src/css"
+  ],
+  "scripts": {
+    "build": "vite build --config vite.config.lib.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "vite": "^8.0.0"
+  },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/less": "^3.0.8",
+    "@types/node": "^25.2.3",
+    "less": "^4.5.1",
+    "typescript": "^5.5.3",
+    "vite": "^8.0.2",
+    "vite-plugin-dts": "^4.5.4"
+  },
+  "dependencies": {
+    "@lfz/lf-form-types": "*",
+    "@laserfiche/lf-repository-api-client-v2": "^1.0.9"
+  }
+}

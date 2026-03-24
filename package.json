@@ -1,0 +1,33 @@
+{
+  "name": "@lfz/monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicknaddaf/lf-form-builder.git"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build:lf-form": "npm run build --workspace=packages/lf-form-types",
+    "build:core": "npm run build:lf-form && npm run build --workspace=packages/core",
+    "build:examples": "npm run build --workspace=packages/examples",
+    "build": "npm run build:core && npm run build:examples",
+    "dev": "npm run dev --workspace=examples",
+    "docs": "jsdoc -c jsdoc.json",
+    "doc": "jsdoc2md -c jsdoc.json > ./docs/api.md"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.7.0",
+    "@types/eslint__js": "^8.42.3",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "typescript-eslint": "^7.16.1"
+  }
+}

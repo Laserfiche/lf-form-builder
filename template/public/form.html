@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Management System</title>
+    <style>
+      body {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      header,
+      main,
+      .flex {
+        display: flex;
+        flex: 1;
+      }
+      main {
+        flex-wrap: wrap;
+      }
+      .container {
+        border: 1px solid gray;
+      }
+      ul.horizontal > li {
+        display: inline;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+      main {
+        border: 1px solid blue;
+        background-color: rgba(0, 162, 255, 0.26);
+        padding: 1em;
+      }
+      main::before {
+        content: 'main';
+      }
+      nav {
+        border: 1px solid purple;
+        background-color: rgba(255, 0, 255, 0.26);
+        padding: 1em;
+      }
+      nav::before {
+        content: 'nav';
+      }
+      header {
+        border: 1px solid green;
+        background-color: rgba(0, 255, 0, 0.26);
+        padding: 1em;
+      }
+      header::before {
+        content: 'header';
+      }
+      aside {
+        border: 1px solid red;
+        background-color: rgba(255, 0, 0, 0.26);
+        padding: 1em;
+      }
+      aside::before {
+        content: 'aside';
+      }
+      section {
+        border: 1px solid orange;
+        background-color: rgba(255, 165, 0, 0.26);
+        padding: 1em;
+      }
+      section::before {
+        content: 'section';
+      }
+      main::before,
+      nav::before,
+      header::before,
+      aside::before,
+      section::before {
+        font-weight: bold;
+        background-color: white;
+        height: 1.5em;
+        padding: .25em;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="container">
+      <!-- Header content like logo and user info -->
+      <div class="logo">Laserfiche</div>
+      <div class="user-info">BPMAdmin</div>
+
+      <nav class="flex" aria-label="header nav">
+        <!-- Main navigation links -->
+        <ul class="horizontal">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Documents</a></li>
+          <li><a href="#">Tasks</a></li>
+          <li><a href="#">Reports</a></li>
+          <li><a href="#">Submit Forms</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <h1 class="sr-only">Task Inbox</h1>
+      <!-- Tabs for My Tasks vs Team Tasks -->
+      <nav style="flex-basis: 100%" class="flex" aria-label="Task Inboxes">
+        <ul class="horizontal">
+          <li><a href="#">My Tasks</a></li>
+          <li><a href="#">Team Tasks</a></li>
+        </ul>
+      </nav>
+
+      <!-- Center section with task list -->
+      <section class="container flex" aria-label="task-list">
+        <h2 class="sr-only" id="task-list">Task List</h2>
+        <!-- <aside
+        class="container"
+        style="flex-basis: 20%"
+        aria-labelledby="task-folders"
+      >
+        <h2 class="sr-only" id="task-folders">Task Folders</h2> -->
+        <nav aria-label="Task Folders Menu">
+          <ul>
+            <li><a href="#">Open Tasks</a></li>
+            <li><a href="#">Drafts</a></li>
+            <li><a href="#">Unassigned Tasks</a></li>
+          </ul>
+        </nav>
+        <!-- </aside> -->
+        <!-- List of tasks showing Process, Task and Instance columns -->
+        <table style="flex: 1">
+          <thead>
+            <tr>
+              <th>Process</th>
+              <th>Task</th>
+              <th>Instance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Example rows -->
+            <tr>
+              <td>Process 1</td>
+              <td>Task 1</td>
+              <td>Instance 1</td>
+            </tr>
+            <tr>
+              <td>Process 2</td>
+              <td>Task 2</td>
+              <td>Instance 2</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Right sidebar with task details -->
+        <div 
+          role="region"
+          class="container"
+          style="flex-basis: 20%"
+          aria-label="Task Details"
+        >
+          <!-- Navigation for Task Details -->
+          <nav aria-label="Task Details Menu">
+            <ul class="horizontal">
+              <li><a href="#">Summary</a></li>
+              <li><a href="#">Action History</a></li>
+            </ul>
+          </nav>
+
+          <!-- Task details content -->
+          font-weight: bold;
+          <div>
+            <h2>Task Details</h2>
+            <p>Summary information about the selected task.</p>
+          </div>
+        </div >
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Management System</title>
+  <style>
+    ul {
+      background-color: #fafafa; /* white */
+      display: flex;
+      font-size: 14px;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    ul>li {
+      list-style-type: none;
+
+      display: flex;
+    }
+
+    ul a {
+      display: block;
+      margin: 10px 8px 0;
+      padding: 7px 8px;
+      color: #767676; /* gray */
+      text-decoration: none;
+      font-weight: 700;
+      flex: 1;
+    }
+
+    li.menu-item a:hover,
+    li.menu-item a:focus {
+      color: #0069ba; /* LF Blue */
+      /* background-color: #fff; */
+      text-decoration: underline;
+    }
+    /* inverted default color scheme */
+    li.menu-item a:active {
+      color: #fafafa; /* white */
+      background-color: #767676; /* gray */
+      text-decoration: underline;
+    }
+
+    li.menu-item [aria-current=page] {
+      color: #000; /* black */
+      border-bottom: .25em solid #e35205; /* LF Orange */
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <nav aria-label="Task Inboxes">
+    <ul>
+      <li class="menu-item"><a href="#">Details</a></li>
+      <li class="menu-item"><a href="#">Fields</a></li>
+      <li class="menu-item"><a href="#" aria-current="page">Preview</a></li>
+      <li class="menu-item"><a href="#">Records</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    const menu = document.querySelectorAll('.menu-item > a');
+    console.log(menu);
+    for (let i = 0; i < menu.length; i++) {
+      menu[i].addEventListener('click', function () {
+        const current = document.querySelector('.menu-item [aria-current]');
+        if (current) {
+          current.removeAttribute('aria-current');
+        }
+        this.setAttribute('aria-current', 'page');
+      });
+    }
+    
+  </script>
+</body>
+
+</html>

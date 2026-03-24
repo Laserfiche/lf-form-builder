@@ -1,0 +1,23 @@
+.designer-only(@content) {
+  #pd-canvas & {
+    @content();
+  }
+}
+
+.renderer-preview-only(@content) {
+  lf-form & {
+    @content();
+  }
+}
+
+.renderer-only(@content) {
+  div:not(.lf-form-preview-container) > #lf-form {
+    @content();
+  }
+}
+
+.preview-only(@content) {
+  .lf-form-preview-container & {
+    @content();
+  }
+}

@@ -1,0 +1,30 @@
+@import '@lfz/lf-form-builder/src/css/form-theme.lfless';
+
+
+.renderer-preview-only({
+  // Field with autofill button
+  .stripe-checkout {
+    fl-field-label {
+      display: none;
+    }
+
+    .cf-field > *:not(.auto-fill-btn-container) {
+      display: none;
+    }
+
+    .auto-fill-btn-container>button {
+      font-size: 0;
+
+      &::after {
+        content: 'Checkout';
+        font-size: 16px;
+      }
+    }
+  }
+
+  #stripe-checkout-iframe {
+    border: none;
+    width: 100%;
+    height: 70vh;
+  }
+});

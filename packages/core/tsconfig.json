@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    "composite": true,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "allowJs": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"],
+      "@lib/*": ["lib/*"],
+      "@components/*": ["components/*"],
+      "@css/*": ["css/*"]
+    },
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "strict": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "references": [
+    { "path": "../lf-form-types" }
+  ],
+  "include": ["src", "plugins", "vite.config.lib.ts"]
+}
