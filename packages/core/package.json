@@ -44,7 +44,8 @@
     "src/css"
   ],
   "scripts": {
-    "build": "vite build --config vite.config.lib.ts",
+    "compile": "vite build --config vite.config.lib.ts",
+    "build": "tsc -b tsconfig.json",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {

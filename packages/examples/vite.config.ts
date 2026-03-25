@@ -1,5 +1,6 @@
 import { defineConfig, ServerOptions } from 'vite';
 import basicSsl from '@vitejs/plugin-basic-ssl';
+import mkcert from 'vite-plugin-mkcert'
 import config from './laserfiche.config.json';
 import {
   bundleLfless,
@@ -51,6 +52,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   plugins: [
+    mkcert(),
     basicSsl(),
     disableSharedChunking(input),
     generateDirectoryHtml(),

@@ -15,8 +15,8 @@
     "packages/*"
   ],
   "scripts": {
-    "build:lf-form": "npm run build --workspace=packages/lf-form-types",
-    "build:core": "npm run build:lf-form && npm run build --workspace=packages/core",
+    "build:types": "npm run build --workspace=packages/lf-form-types",
+    "build:core": "npm run build --workspace=packages/core",
     "build:examples": "npm run build --workspace=packages/examples",
     "build": "npm run build:core && npm run build:examples",
     "dev": "npm run dev --workspace=examples",

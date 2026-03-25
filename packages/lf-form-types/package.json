@@ -26,15 +26,15 @@
   "sideEffects": false,
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "import": "./lib/index.js",
+      "types": "./lib/index.d.ts"
     }
   },
   "files": [
-    "dist"
+    "lib"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -b tsconfig.json"
   },
   "devDependencies": {
     "typescript": "^5.5.3"

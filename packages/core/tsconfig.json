@@ -21,6 +21,7 @@
     "isolatedModules": true,
     "moduleDetection": "force",
     "strict": true,
+    "outDir": "lib",
     "noFallthroughCasesInSwitch": true
   },
   "references": [
