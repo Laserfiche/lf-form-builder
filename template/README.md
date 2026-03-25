@@ -32,7 +32,14 @@
    ```bash
    npm run dev
    ```
-   This watches for changes and serves built files from `dist/` on `https://localhost:3000`.
+   This watches for changes and serves built files from `dist/` on `http://localhost:3000`.
+   
+   or for HTTPS development mode:
+   ```bash
+   npm run sdev
+   ```
+   *Note: If you are using HTTPS in development, you may need to run `npm run make-cert` to generate a self-signed certificate.*
+
 
 5. **Build for production:**
    ```bash

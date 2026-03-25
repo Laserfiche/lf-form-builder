@@ -1,12 +1,12 @@
 interface ViteTypeOptions {
-  strictImportMetaEnv: unknown;
+  strictImportMetaEnv: unknown
 }
 
 interface ImportMetaEnv {
-  VITE_STRIPE_PUBLIC_KEY: string;
-  VITE_GOOGLE_API_KEY: string;
+  readonly VITE_STRIPE_PUBLIC_KEY: string;
+  readonly VITE_GOOGLE_API_KEY: string;
 }
 
 interface ImportMeta {
-  readonly env: ImportMetaEnv;
+  readonly env: ImportMetaEnv
 }

@@ -1,6 +1,7 @@
 import { Plugin } from 'vite';
 import path from 'node:path';
 import fs from 'node:fs/promises';
+import { readFileSync, existsSync } from 'node:fs';
 import less from 'less';
 
 interface BundleLflessOptions {
@@ -267,13 +268,20 @@ async function resolveImports(
 
     // Determine candidate base paths:
     // - Relative/absolute imports resolve from the importing file's directory
-    // - Bare specifiers (e.g. 'lf-form-builder/css/...') resolve from node_modules
+    // - Bare specifiers (e.g. '@lfz/lf-form-builder/css/...') resolve from node_modules,
+    //   with support for package.json "exports" maps
     const isRelative = importPath.startsWith('.') || path.isAbsolute(importPath);
     const candidateBases: string[] = [];
     
     if (isRelative) {
       candidateBases.push(path.resolve(dir, importPath));
     } else {
+      // Try resolving via package.json exports first, then fall back to direct path
+      const resolvedViaExports = resolvePackageExports(importPath, dir, rootDir);
+      if (resolvedViaExports) {
+        candidateBases.push(resolvedViaExports);
+      }
+
       // Walk up from the importing file to find node_modules
       let searchDir = dir;
       while (searchDir !== path.dirname(searchDir)) {
@@ -373,4 +381,75 @@ function findOwningEntries(
   }
 
   return owners;
+}
+
+/**
+ * Resolve a bare specifier like '@lfz/lf-form-builder/css/form-theme.lfless'
+ * through the target package's "exports" map in package.json.
+ * Returns an absolute file path, or null if resolution fails.
+ */
+function resolvePackageExports(
+  specifier: string,
+  importerDir: string,
+  rootDir: string,
+): string | null {
+  // Split the specifier into package name and subpath.
+  // Scoped packages: @scope/pkg/sub/path → package = @scope/pkg, subpath = ./sub/path
+  const parts = specifier.startsWith('@')
+    ? specifier.split('/')
+    : specifier.split('/');
+  const packageName = specifier.startsWith('@')
+    ? parts.slice(0, 2).join('/')
+    : parts[0];
+  const subpath = './' + parts.slice(specifier.startsWith('@') ? 2 : 1).join('/');
+
+  // Walk up from importerDir to find the package's node_modules directory.
+  const searchDirs = [importerDir];
+  let dir = importerDir;
+  while (dir !== path.dirname(dir)) {
+    dir = path.dirname(dir);
+    searchDirs.push(dir);
+  }
+  if (!searchDirs.includes(rootDir)) {
+    searchDirs.push(rootDir);
+  }
+
+  for (const searchDir of searchDirs) {
+    const pkgDir = path.join(searchDir, 'node_modules', packageName);
+    const pkgJsonPath = path.join(pkgDir, 'package.json');
+    if (!existsSync(pkgJsonPath)) continue;
+
+    let pkgJson: { exports?: Record<string, string | Record<string, string>> };
+    try {
+      pkgJson = JSON.parse(readFileSync(pkgJsonPath, 'utf-8'));
+    } catch {
+      continue;
+    }
+
+    const exports = pkgJson.exports;
+    if (!exports || typeof exports !== 'object') continue;
+
+    // Try exact match first
+    const exactTarget = typeof exports[subpath] === 'string'
+      ? exports[subpath]
+      : null;
+    if (exactTarget) {
+      return path.resolve(pkgDir, exactTarget);
+    }
+
+    // Try wildcard patterns (e.g. "./css/*": "./src/css/*")
+    for (const [pattern, target] of Object.entries(exports)) {
+      if (typeof target !== 'string' || !pattern.includes('*')) continue;
+      const prefix = pattern.split('*')[0];
+      const suffix = pattern.split('*')[1] || '';
+      if (subpath.startsWith(prefix) && subpath.endsWith(suffix)) {
+        const endIndex = suffix.length > 0 ? subpath.length - suffix.length : undefined;
+        const wildcardMatch = subpath.slice(prefix.length, endIndex);
+        const resolved = target.replace('*', wildcardMatch);
+        return path.resolve(pkgDir, resolved);
+      }
+    }
+  }
+
+  return null;
 }

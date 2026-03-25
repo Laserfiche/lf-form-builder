@@ -1,29 +1,7 @@
 {
+  "extends": "./tsconfig.lib.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
-    "composite": true,
-    "declaration": true,
-    "allowJs": true,
-    "baseUrl": "./src",
-    "paths": {
-      "@/*": ["*"],
-      "@lib/*": ["lib/*"],
-      "@components/*": ["components/*"],
-      "@css/*": ["css/*"]
-    },
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "moduleDetection": "force",
-    "strict": true,
-    "outDir": "dist",
-    "noFallthroughCasesInSwitch": true
+    "rootDir": "."
   },
-  "references": [
-    { "path": "../types" }
-  ],
-  "include": ["src", "plugins"]
+  "include": ["vite.config.lib.ts","src/**/*.ts"]
 }

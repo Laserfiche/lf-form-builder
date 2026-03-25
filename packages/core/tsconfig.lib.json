@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    "composite": true,
+    "declaration": true,
+    "allowJs": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"],
+      "@lib/*": ["lib/*"],
+      "@components/*": ["components/*"],
+      "@css/*": ["css/*"]
+    },
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "strict": true,
+    "rootDir": "./src",
+    "outDir": "dist",
+    "noFallthroughCasesInSwitch": true
+  },
+  "references": [
+    { "path": "../types" }
+  ],
+  "include": ["src"]
+}

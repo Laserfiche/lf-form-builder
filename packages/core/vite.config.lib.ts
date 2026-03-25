@@ -1,23 +1,51 @@
 import { defineConfig, Plugin } from 'vite';
 import dts from 'vite-plugin-dts';
 import path from 'node:path';
+import { copyFile, mkdir } from 'node:fs/promises';
+import { globSync } from 'node:fs';
 
-/** Stub .lfless and .css imports — consumers compile these via bundleLfless plugin */
-function stubStyleImports(): Plugin {
+const srcDir = path.resolve(__dirname, 'src');
+const distDir = path.resolve(__dirname, 'dist');
+
+/**
+ * Mark .lfless and .css imports as external so the import statements are
+ * preserved in the output JS (instead of being stubbed to empty).
+ * Consumers compile these via the bundleLfless plugin.
+ */
+function externalizeStyleImports(): Plugin {
   return {
-    name: 'stub-style-imports',
+    name: 'externalize-style-imports',
     enforce: 'pre',
     resolveId(source) {
       if (source.endsWith('.lfless') || source.endsWith('.css')) {
-        return `\0stub-style`;
+        return { id: source, external: true };
       }
       return null;
     },
-    load(id) {
-      if (id === '\0stub-style') {
-        return '';
-      }
-      return null;
+  };
+}
+
+/**
+ * Copy .lfless and .css files from src/ into dist/ so that the preserved
+ * import statements resolve correctly from the published package.
+ */
+function copyStyleAssets(): Plugin {
+  return {
+    name: 'copy-style-assets',
+    closeBundle: {
+      sequential: true,
+      async handler() {
+        const patterns = ['**/*.lfless', '**/*.css'];
+        for (const pattern of patterns) {
+          const files = globSync(pattern, { cwd: srcDir });
+          for (const file of files) {
+            const src = path.join(srcDir, file);
+            const dest = path.join(distDir, file);
+            await mkdir(path.dirname(dest), { recursive: true });
+            await copyFile(src, dest);
+          }
+        }
+      },
     },
   };
 }
@@ -27,11 +55,11 @@ export default defineConfig({
     minify: false,
     lib: {
       entry: {
-        index: path.resolve(__dirname, 'src/index.ts'),
-        'plugins/index': path.resolve(__dirname, 'plugins/index.ts'),
-        'plugins/bundleLfless': path.resolve(__dirname, 'plugins/bundleLfless.ts'),
-        'plugins/disableSharedChunking': path.resolve(__dirname, 'plugins/disableSharedChunking.ts'),
-        'plugins/generateDirectoryHtml': path.resolve(__dirname, 'plugins/generateDirectoryHtml.ts'),
+        index: path.resolve(srcDir, 'index.ts'),
+        'plugins/index': path.resolve(srcDir, 'plugins/index.ts'),
+        'plugins/bundleLfless': path.resolve(srcDir, 'plugins/bundleLfless.ts'),
+        'plugins/disableSharedChunking': path.resolve(srcDir, 'plugins/disableSharedChunking.ts'),
+        'plugins/generateDirectoryHtml': path.resolve(srcDir, 'plugins/generateDirectoryHtml.ts'),
       },
       formats: ['es'],
     },
@@ -48,35 +76,26 @@ export default defineConfig({
         /^fs$/,
       ],
       output: {
-        preserveModules: false,
+        preserveModules: true,
+        preserveModulesRoot: srcDir,
       },
     },
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
-      '@lib': path.resolve(__dirname, 'src/lib'),
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@css': path.resolve(__dirname, 'src/css'),
+      '@': srcDir,
+      '@lib': path.resolve(srcDir, 'lib'),
+      '@components': path.resolve(srcDir, 'components'),
+      '@css': path.resolve(srcDir, 'css'),
     },
   },
   plugins: [
-    stubStyleImports(),
+    externalizeStyleImports(),
+    copyStyleAssets(),
     dts({
       rollupTypes: false,
-      tsconfigPath: path.resolve(__dirname, 'tsconfig.json'),
-      outDir: path.resolve(__dirname, 'dist'),
-      // Flatten src/ prefix so types end up at dist/index.d.ts
-      beforeWriteFile: (filePath: string, content: string) => {
-        const distSrc = path.join('dist', 'src');
-        if (filePath.includes(distSrc)) {
-          return {
-            filePath: filePath.replace(distSrc, 'dist'),
-            content,
-          };
-        }
-        return { filePath, content };
-      },
+      tsconfigPath: path.resolve(__dirname, 'tsconfig.lib.json'),
+      outDir: distDir,
     }),
   ],
 });

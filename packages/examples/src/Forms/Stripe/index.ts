@@ -1,4 +1,3 @@
-import './stripe.html'
 import { PostMessageHelper } from '../Empower2026/postMessageHelper';
 
 interface EmbeddedCheckout {

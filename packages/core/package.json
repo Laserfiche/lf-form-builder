@@ -46,7 +46,7 @@
   "scripts": {
     "compile": "vite build --config vite.config.lib.ts",
     "build": "vite build --config vite.config.lib.ts --mode development",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc -b tsconfig.lib.json --noEmit"
   },
   "peerDependencies": {
     "vite": "^8.0.0"

@@ -7,11 +7,11 @@
   "scripts": {
     "watch": "tsc && vite build --mode development --watch",
     "build": "tsc && vite build --mode production",
-    "build:dev": "tsc && vite build --mode development",
+    "make-cert": "mkdir -p certs && openssl req -x509 -newkey rsa:4096 -keyout certs/localhost-key.pem -out certs/localhost-cert.pem -days 365 -nodes -subj '/CN=localhost'",
     "dev": "run-p watch serve",
     "sdev": "run-p watch sserve",
     "serve": "serve -l 3000 --cors --no-clipboard",
-    "sserve": "serve -l 3000 --no-clipboard --ssl-cert ./localhost-cert.pem --ssl-key ./localhost-key.pem"
+    "sserve": "serve -l 3000 --no-clipboard --ssl-cert ./certs/localhost-cert.pem --ssl-key ./certs/localhost-key.pem"
   },
   "devDependencies": {
     "@types/node": "^25.2.3",

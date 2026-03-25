@@ -1,6 +1,6 @@
 import { LFFormEventParam, LFFormId } from '@lfz/lf-form-types';
 import { findField } from '../lib/findFieldByLFFormId';
-import './starRating.css';
+import './starRating.lfless';
 
 export interface StarRatingWindow extends Window {
   handleVoteChange: (event: OnClickEvent) => void;
