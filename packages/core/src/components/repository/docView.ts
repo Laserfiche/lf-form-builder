@@ -1,7 +1,7 @@
 import {
   DefaultRepositoryAPIOptions,
   resolveEntryIdField,
-} from '@/lib/api/repositoryApiHelpers';
+} from '@lib/api/repositoryApiHelpers';
 import { IframeOptions, IframeView } from './iframe';
 
 /**

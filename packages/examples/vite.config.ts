@@ -1,6 +1,6 @@
 import { defineConfig, ServerOptions } from 'vite';
 import basicSsl from '@vitejs/plugin-basic-ssl';
-import mkcert from 'vite-plugin-mkcert'
+import mkcert from 'vite-plugin-mkcert';
 import config from './laserfiche.config.json';
 import {
   bundleLfless,
@@ -31,33 +31,36 @@ const serverOptions: ServerOptions = {
   },
 };
 
-export default defineConfig(({ mode }) => ({
-  server: serverOptions,
-  appType: 'custom',
-  build: {
-    minify: mode === 'development' ? false : true,
-    sourcemap: mode === 'development' ? true : false,
-    target: 'esnext',
-    copyPublicDir: true,
-    rolldownOptions: {
-      treeshake: true,
-      external: ['@laserfiche/lf-repository-api-client-v2'],
-      input,
-      output: {
-        dir: 'dist',
-        format: 'es',
-        entryFileNames: '[name].js',
-        assetFileNames: '[name].[ext]',
+export default defineConfig(({ mode }) => {
+  console.log(mode);
+  return {
+    server: serverOptions,
+    appType: 'custom',
+    build: {
+      minify: mode === 'development' ? false : true,
+      sourcemap: mode === 'development' ? true : false,
+      target: 'esnext',
+      copyPublicDir: true,
+      rolldownOptions: {
+        treeshake: true,
+        external: ['@laserfiche/lf-repository-api-client-v2'],
+        input,
+        output: {
+          dir: 'dist',
+          format: 'es',
+          entryFileNames: '[name].js',
+          assetFileNames: '[name].[ext]',
+        },
       },
     },
-  },
-  plugins: [
-    mkcert(),
-    basicSsl(),
-    disableSharedChunking(input),
-    generateDirectoryHtml(),
-    bundleLfless({
-      validateSyntax: false,
-    }),
-  ],
-}));
+    plugins: [
+      mkcert(),
+      basicSsl(),
+      disableSharedChunking(input),
+      generateDirectoryHtml(),
+      bundleLfless({
+        validateSyntax: false,
+      }),
+    ],
+  };
+});

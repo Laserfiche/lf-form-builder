@@ -9,7 +9,7 @@
     "build": "tsc && vite build --mode production",
     "build:dev": "tsc && vite build --mode development",
     "dev": "run-p watch serve",
-    "vite": "vite",
+    "vite": "vite preview",
     "zdev": "run-p watch vite",
     "sdev": "run-p watch sserve",
     "serve": "serve -l 3000 --cors --no-clipboard",

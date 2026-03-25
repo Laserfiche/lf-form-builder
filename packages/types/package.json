@@ -7,7 +7,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/nicknaddaf/lf-form-builder.git",
-    "directory": "packages/lf-form-types"
+    "directory": "packages/types"
   },
   "homepage": "https://github.com/nicknaddaf/lf-form-builder#readme",
   "bugs": {

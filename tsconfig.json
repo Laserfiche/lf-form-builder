@@ -14,7 +14,7 @@
     "noFallthroughCasesInSwitch": true
   },
   "references": [
-    { "path": "packages/lf-form" },
+    { "path": "packages/types" },
     { "path": "packages/core" },
     { "path": "packages/examples" }
   ],

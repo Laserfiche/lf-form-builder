@@ -5,7 +5,6 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
     "composite": true,
-    "emitDeclarationOnly": true,
     "declaration": true,
     "allowJs": true,
     "baseUrl": "./src",
@@ -16,16 +15,15 @@
       "@css/*": ["css/*"]
     },
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "moduleDetection": "force",
     "strict": true,
-    "outDir": "lib",
+    "outDir": "dist",
     "noFallthroughCasesInSwitch": true
   },
   "references": [
-    { "path": "../lf-form-types" }
+    { "path": "../types" }
   ],
-  "include": ["src", "plugins", "vite.config.lib.ts"]
+  "include": ["src", "plugins"]
 }

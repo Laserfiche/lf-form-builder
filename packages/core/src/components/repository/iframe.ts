@@ -1,4 +1,4 @@
-import { findFieldByIdParam } from '@/lib/findFieldByLFFormId';
+import { findFieldByIdParam } from '@lib/findFieldByLFFormId';
 import { LFFormField, LFFormId } from '@lfz/lf-form-types';
 
 /**

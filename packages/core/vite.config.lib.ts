@@ -24,6 +24,7 @@ function stubStyleImports(): Plugin {
 
 export default defineConfig({
   build: {
+    minify: false,
     lib: {
       entry: {
         index: path.resolve(__dirname, 'src/index.ts'),
@@ -38,7 +39,7 @@ export default defineConfig({
     sourcemap: true,
     rollupOptions: {
       external: [
-        /^@lfc\//,
+        /^@lfz\//,
         /^@laserfiche\//,
         /^vite$/,
         /^node:/,

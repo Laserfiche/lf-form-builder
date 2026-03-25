@@ -1,4 +1,4 @@
-import { findField } from '@/lib/findFieldByLFFormId';
+import { findField } from '@lib/findFieldByLFFormId';
 import type { LFFormId, CustomHtmlField, SectionField } from '@lfz/lf-form-types';
 import './modal.lfless';
 

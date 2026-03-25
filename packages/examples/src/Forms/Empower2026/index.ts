@@ -28,7 +28,7 @@ const main = async () => {
   page1Load().catch(console.warn);
   page2Load({
     formFields: formFields.page2,
-    apiKey: '***REMOVED***',
+    apiKey: import.meta.env.VITE_GOOGLE_API_KEY,
   }).catch(console.warn);
   page3Load({
     formFields: formFields.page3,
