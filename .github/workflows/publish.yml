@@ -22,6 +22,15 @@ jobs:
       - run: npm ci
       - run: npm run build
 
+      - name: Verify version matches tag
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          CORE_VERSION=$(node -p "require('./packages/core/package.json').version")
+          if [ "v$CORE_VERSION" != "$TAG" ]; then
+            echo "::error::Tag $TAG does not match core package version v$CORE_VERSION"
+            exit 1
+          fi
+
       - name: Publish @lfz/lf-form-types
         run: npm publish --workspace=packages/lf-form-types --provenance --access public
         env:

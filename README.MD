@@ -2,6 +2,10 @@
 
 A toolkit for building Laserfiche Forms customizations with TypeScript, Vite, and reusable components.
 
+> [!IMPORTANT]
+> This toolkit is not officially supported by Laserfiche and may break with future updates to Laserfiche Forms.
+> Do not open support tickets with Laserfiche for issues related to this toolkit.
+
 ## Repository Structure
 
 This is a monorepo with npm workspaces:

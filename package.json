@@ -21,7 +21,8 @@
     "build": "npm run build:core && npm run build:examples",
     "dev": "npm run dev --workspace=examples",
     "docs": "jsdoc -c jsdoc.json",
-    "doc": "jsdoc2md -c jsdoc.json > ./docs/api.md"
+    "doc": "jsdoc2md -c jsdoc.json > ./docs/api.md",
+    "release": "scripts/release.sh"
   },
   "devDependencies": {
     "@eslint/js": "^9.7.0",
