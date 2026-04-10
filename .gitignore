@@ -20,6 +20,7 @@ git-filter-repo
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+!template/.vscode/*
 .idea
 .DS_Store
 *.suo
