@@ -11,7 +11,7 @@ npm install @lfz/lf-form-types
 ## Usage
 
 ```typescript
-import type { LFForm, LFFormField, LFFormId } from '@lfz/lf-form-types';
+import type { LFForm, LFFormField, LFFormId, LFFormIdParam } from '@lfz/lf-form-types';
 ```
 
 ## What's included

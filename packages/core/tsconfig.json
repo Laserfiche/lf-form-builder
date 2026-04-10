@@ -3,5 +3,10 @@
   "compilerOptions": {
     "rootDir": "."
   },
-  "include": ["vite.config.lib.ts","src/**/*.ts"]
+  "include": [
+    "vite.config.lib.ts",
+    "vitest.config.ts",
+    "src/**/*",
+    "__tests__/**/*"
+  ]
 }

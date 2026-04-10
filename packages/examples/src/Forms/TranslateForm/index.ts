@@ -35,11 +35,11 @@ interface AddressValue {
   [key: string]: string;
 }
 
-type TranslationValue = 
-  | string 
-  | FieldOption[] 
-  | AddressOption[] 
-  | AddressValue 
+type TranslationValue =
+  | string
+  | FieldOption[]
+  | AddressOption[]
+  | AddressValue
   | ActionButtons;
 
 interface TranslationSettings {
@@ -76,100 +76,104 @@ interface LanguageSettings {
  * The third key is the field setting, e.g., label, subtext, tooltip, etc.
  */
 const translations: LanguageSettings = {
-  "en": {
-    "Form": {
-      "title": "New Employee Information",
-      "description": "Please fill in the following form to the best of your ability",
-      "actionButtons": {
-        "Submit": "Submit",
-        "Approve": "Approve",
-        "Reject": "Reject",
-        "SaveAsDraft": "Save as Draft"
-      }
+  en: {
+    Form: {
+      title: 'New Employee Information',
+      description:
+        'Please fill in the following form to the best of your ability',
+      actionButtons: {
+        Submit: 'Submit',
+        Approve: 'Approve',
+        Reject: 'Reject',
+        SaveAsDraft: 'Save as Draft',
+      },
     },
-    "0 - Basic Information (Page)": {
-      "label": "Basic Information",
-      "nextBtn": "Work History"
+    '0 - Basic Information (Page)': {
+      label: 'Basic Information',
+      nextBtn: 'Work History',
     },
-    "3 - Work History (Page)": {
-      "label": "Work History",
-      "prevBtn": "Basic Information",
-      "nextBtn": "Acknowledgement"
+    '3 - Work History (Page)': {
+      label: 'Work History',
+      prevBtn: 'Basic Information',
+      nextBtn: 'Acknowledgement',
     },
-    "4 - Acknowledgement (Page)": {
-      "label": "Acknowledgement",
-      "prevBtn": "Work History",
-      "nextBtn": "Submit"
+    '4 - Acknowledgement (Page)': {
+      label: 'Acknowledgement',
+      prevBtn: 'Work History',
+      nextBtn: 'Submit',
     },
-    "2 - Select_a_Language (Radio)": {
-      "label": "Select a Language",
-      "subtext": "",
-      "options": [
+    '2 - Select_a_Language (Radio)': {
+      label: 'Select a Language',
+      subtext: '',
+      options: [
         {
-          "label": "English",
-          "value": "en",
-          "checked": true,
-          "showVal": true
+          label: 'English',
+          value: 'en',
+          checked: true,
+          showVal: true,
         },
         {
-          "label": "Spanish",
-          "value": "es",
-          "checked": false,
-          "showVal": true
-        }
+          label: 'Spanish',
+          value: 'es',
+          checked: false,
+          showVal: true,
+        },
       ],
-      "tooltip": ""
+      tooltip: '',
     },
-    "16 - (CustomHTML)": {
-      "default": "\u003Cdiv\u003E\n  \u003Cfont style=\"font-weight: 600;     text-decoration: underline;\"\u003E\n    Instructions\n  \u003C/font\u003E\n  \u003Cul\u003E\n    \u003Cli\u003E\n      Fill the form completely\n    \u003C/li\u003E\n    \u003Cli\u003E\n      Press Submit\n    \u003C/li\u003E\n  \u003C/ul\u003E\n\u003C/div\u003E"
+    '16 - (CustomHTML)': {
+      default:
+        '\u003Cdiv\u003E\n  \u003Cfont style="font-weight: 600;     text-decoration: underline;"\u003E\n    Instructions\n  \u003C/font\u003E\n  \u003Cul\u003E\n    \u003Cli\u003E\n      Fill the form completely\n    \u003C/li\u003E\n    \u003Cli\u003E\n      Press Submit\n    \u003C/li\u003E\n  \u003C/ul\u003E\n\u003C/div\u003E',
     },
   },
-  "es": {
-    "Form": {
-      "title": "Información de nuevos empleados",
-      "description": "Por favor complete el siguiente formulario lo mejor que pueda",
-      "actionButtons": {
-        "Submit": "Entregar",
-        "Approve": "Aprobar",
-        "Reject": "Rechazar",
-        "SaveAsDraft": "Guardar como borrador"
-      }
+  es: {
+    Form: {
+      title: 'Información de nuevos empleados',
+      description:
+        'Por favor complete el siguiente formulario lo mejor que pueda',
+      actionButtons: {
+        Submit: 'Entregar',
+        Approve: 'Aprobar',
+        Reject: 'Rechazar',
+        SaveAsDraft: 'Guardar como borrador',
+      },
     },
-    "0 - Basic Information (Page)": {
-      "label": "Información básica",
-      "nextBtn": "Historial de trabajo"
+    '0 - Basic Information (Page)': {
+      label: 'Información básica',
+      nextBtn: 'Historial de trabajo',
     },
-    "3 - Work History (Page)": {
-      "label": "Historial de trabajo",
-      "prevBtn": "Información básica",
-      "nextBtn": "Reconocimiento"
+    '3 - Work History (Page)': {
+      label: 'Historial de trabajo',
+      prevBtn: 'Información básica',
+      nextBtn: 'Reconocimiento',
     },
-    "4 - Acknowledgement (Page)": {
-      "label": "Reconocimiento",
-      "prevBtn": "Historial de trabajo",
-      "nextBtn": "Entregar"
+    '4 - Acknowledgement (Page)': {
+      label: 'Reconocimiento',
+      prevBtn: 'Historial de trabajo',
+      nextBtn: 'Entregar',
     },
-    "2 - Select_a_Language (Radio)": {
-      "label": "Selecciona un idioma",
-      "subtext": "",
-      "options": [
+    '2 - Select_a_Language (Radio)': {
+      label: 'Selecciona un idioma',
+      subtext: '',
+      options: [
         {
-          "label": "Inglés",
-          "value": "en",
-          "checked": true,
-          "showVal": true
+          label: 'Inglés',
+          value: 'en',
+          checked: true,
+          showVal: true,
         },
         {
-          "label": "Español",
-          "value": "es",
-          "checked": false,
-          "showVal": true
-        }
+          label: 'Español',
+          value: 'es',
+          checked: false,
+          showVal: true,
+        },
       ],
-      "tooltip": ""
+      tooltip: '',
     },
-    "16 - (CustomHTML)": {
-      "default": "\u003Cdiv\u003E\u003Cfont style=\"font-weight: 600;     text-decoration: underline;\"\u003EInstrucciones\u003C/font\u003E\u003Cul\u003E\u003Cli\u003E Llene el formulario completamente\u003C/li\u003E\u003Cli\u003E Presione Enviar\u003C/li\u003E\u003C/ul\u003E\u003C/div\u003E"
+    '16 - (CustomHTML)': {
+      default:
+        '\u003Cdiv\u003E\u003Cfont style="font-weight: 600;     text-decoration: underline;"\u003EInstrucciones\u003C/font\u003E\u003Cul\u003E\u003Cli\u003E Llene el formulario completamente\u003C/li\u003E\u003Cli\u003E Presione Enviar\u003C/li\u003E\u003C/ul\u003E\u003C/div\u003E',
     },
   },
 };
@@ -396,8 +400,8 @@ async function setFieldSettings(
       setting === 'prevBtn'
         ? 'prevButton'
         : setting === 'nextBtn'
-        ? 'nextButton'
-        : setting;
+          ? 'nextButton'
+          : setting;
     await LFForm.changeFieldSettings({ fieldId }, { [parsedSetting]: text });
   } else if (setting === 'addLinkText' && typeof text === 'string') {
     await LFForm.changeFieldSettings({ fieldId }, { addRowButtonLabel: text });
@@ -418,11 +422,7 @@ async function setFieldSettings(
     if (Array.isArray(text) === false) {
       throw new Error('Change options text must be an array');
     }
-    await LFForm.changeFieldOptions(
-      { fieldId },
-      text,
-      'replace',
-    ).catch(() => {
+    await LFForm.changeFieldOptions({ fieldId }, text, 'replace').catch(() => {
       throw new Error(`Malformed options for fieldId: ${fieldId}`);
     });
   } else {
@@ -463,20 +463,20 @@ async function setFormSettings(
  */
 const getFormFieldSettings = (): FieldTranslations => {
   const formFieldSettings: FieldTranslations = {};
-  
+
   LFForm.findFields((f) => {
     const { settings } = f;
     const fieldSettings: TranslationSettings = {};
-    
+
     const variableName = f.settings.attributeName;
     const label = f.settings.label;
     const fieldKeyLabel = variableName
       ? `${variableName} (${f.componentType})`
       : label
-      ? `${f.settings.label} (${f.componentType})`
-      : `(${f.componentType})`;
+        ? `${f.settings.label} (${f.componentType})`
+        : `(${f.componentType})`;
     const fieldIdKey = `${f.fieldId} - ${fieldKeyLabel}`;
-    
+
     if (
       f.componentType === 'CustomHTML' &&
       f.fieldId === translateCustomHtmlFieldId
@@ -510,7 +510,8 @@ const getFormFieldSettings = (): FieldTranslations => {
           continue;
         }
         if (translatableSetting !== undefined) {
-          fieldSettings[translatable as keyof TranslationSettings] = translatableSetting as TranslationValue;
+          fieldSettings[translatable as keyof TranslationSettings] =
+            translatableSetting as TranslationValue;
         }
       }
       formFieldSettings[fieldIdKey] = fieldSettings;
@@ -520,47 +521,109 @@ const getFormFieldSettings = (): FieldTranslations => {
   return formFieldSettings;
 };
 window.getFormFieldSettings = getFormFieldSettings;
+
 /**
- *
- * @param {string} text
- * @param {string} targetLang
- * @returns {Promise<string>}
+ * Splits text into chunks for translation while preserving gap information.
+ * @param {string} text - The long string to split.
+ * @param {number} limit - Character limit (5000 is recommended).
+ * @returns {Array} Array with alternating chunks and gaps between them.
+ */
+function splitForTranslate(text: string, limit = 5000) {
+  const words = text.split(/(\s+)/); // Split on whitespace but preserve it
+  const chunks: string[] = [];
+  let currentChunk = '';
+
+  words.forEach((word) => {
+    // Check if adding this word exceeds the limit
+    if (currentChunk.length + word.length > limit && currentChunk.length > 0) {
+      chunks.push(currentChunk);
+      currentChunk = word;
+    } else {
+      currentChunk += word;
+    }
+  });
+
+  if (currentChunk.length > 0) {
+    chunks.push(currentChunk);
+  }
+
+  return chunks;
+}
+
+/**
+ * Asynchronously translates text to the target language using Google Translate API and returns a Promise.
+ * If translation fails, the original text is returned as a fallback.
+ * @param {string} text - The text to translate.
+ * @param {string} targetLang - The target language code (e.g., 'en', 'es').
+ * @param {number} splitTextCharacterLimit - Character limit for splitting text (default is 5000).
+ * @returns {Promise<string>} A Promise that resolves to the translated text, or the original text if translation fails.
  * @description Translate text to target language. This should be removed from your code when a static translation is saved to the translations variable.
- * Replace PUT_YOUT_API_KEY_HERE with your Google Cloud API key.
  */
 async function getTranslation(
   text: string,
   targetLang: string,
-  runCount = 0,
+  splitTextCharacterLimit: number = 5000,
 ): Promise<string> {
   const sourceLang = defaultFormLang;
   const url = `https://translation.googleapis.com/language/translate/v2?key=${GOOGLE_TRANSLATE_API_KEY}`;
-  return fetch(url, {
-    referrer: 'app.laserfiche.com',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      // Authorization: `Bearer ${GOOGLE_TRANSLATE_API_KEY}`,
-      // 'x-goog-user-project': 'laserfiche-cloud',
-    },
-    body: JSON.stringify({
-      q: text,
-      source: sourceLang,
-      target: targetLang,
-    }),
-  })
-    .then((response) => response.json())
-    .catch((error) => {
-      if (runCount >= 3) throw new Error('Failed to translate text');
-      console.error('Error:', error);
-      setTimeout(async () => {
-        await getTranslation(text, targetLang, runCount + 1);
-      }, 1000);
-    })
-    .then((data) => {
-      const translatedText = data.data.translations[0].translatedText;
-      return translatedText;
-    });
+  const charLimit =
+    splitTextCharacterLimit > 5000 || splitTextCharacterLimit <= 0
+      ? 5000
+      : splitTextCharacterLimit;
+  const textToTranslate =
+    text.length > charLimit ? splitForTranslate(text, charLimit) : [text];
+  try {
+    const translatedChunks = await Promise.all(
+      textToTranslate.map((chunk) => {
+        const translateChunk = async (retryCount = 0): Promise<string> => {
+          try {
+            const response = await fetch(url, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                q: chunk,
+                source: sourceLang,
+                target: targetLang,
+              }),
+            });
+            const data = await response.json();
+            if (
+              !data ||
+              !data.data ||
+              !data.data.translations ||
+              !data.data.translations[0]
+            ) {
+              throw new Error('Translation API did not return expected data');
+            }
+            return data.data.translations[0].translatedText;
+          } catch (error) {
+            if (retryCount >= 3) {
+              console.error(`Failed to translate chunk after 3 retries:`, error);
+              throw new Error('Failed to translate chunk');
+            }
+            console.error(`Error translating chunk (retry ${retryCount}):`, error);
+            // Exponential backoff: 1000ms, 2000ms, 4000ms
+            const delay = 1000 * Math.pow(2, retryCount);
+            return new Promise<string>((resolve, reject) => {
+              setTimeout(() => {
+                translateChunk(retryCount + 1)
+                  .then(resolve)
+                  .catch(reject);
+              }, delay);
+            });
+          }
+        };
+        return translateChunk();
+      }),
+    );
+    // Join the translated chunks back together (no delimiter needed - spacing preserved in chunks)
+    return translatedChunks.join('');
+  } catch (error) {
+    console.error('Translation failed:', error);
+    return text; // Return original text if translation fails
+  }
 }
 
 /**
@@ -578,12 +641,13 @@ const getFieldTranslationForLanguage = async (
 ): Promise<FieldTranslations> => {
   const formFieldInfo = getFormFieldSettings();
   const translatedForm: FieldTranslations = {};
-  
+
   for (const field in formFieldInfo) {
     const fieldInfo = formFieldInfo[field];
     // get the translation for each field setting that is already setup
-    const newTranslation: TranslationSettings = translations[targetLang]?.[field] || {};
-    
+    const newTranslation: TranslationSettings =
+      translations[targetLang]?.[field] || {};
+
     for (const settingKey in fieldInfo) {
       const setting = fieldInfo[settingKey];
       if (
@@ -592,10 +656,11 @@ const getFieldTranslationForLanguage = async (
         targetLang === defaultFormLang ||
         generateEmptyTranslations === true
       ) {
-        (newTranslation as Record<string, TranslationValue>)[settingKey] = setting as TranslationValue;
+        (newTranslation as Record<string, TranslationValue>)[settingKey] =
+          setting as TranslationValue;
         continue;
       }
-      
+
       let finalTranslation: TranslationValue | undefined;
       try {
         if (
@@ -606,8 +671,10 @@ const getFieldTranslationForLanguage = async (
         ) {
           finalTranslation = setting as TranslationValue;
         } else if (
-          settingKey === 'addressOptions' || 
-          (settingKey === 'default' && typeof setting === 'object' && !Array.isArray(setting))
+          settingKey === 'addressOptions' ||
+          (settingKey === 'default' &&
+            typeof setting === 'object' &&
+            !Array.isArray(setting))
         ) {
           if (settingKey === 'default' && typeof setting === 'object') {
             const addressDefaults: AddressValue = {};
@@ -638,10 +705,7 @@ const getFieldTranslationForLanguage = async (
             }
             finalTranslation = translatedOptions;
           }
-        } else if (
-          settingKey === 'options' &&
-          Array.isArray(setting)
-        ) {
+        } else if (settingKey === 'options' && Array.isArray(setting)) {
           const translatedOptions: FieldOption[] = [];
           for (const option of setting) {
             const label = option.label;
@@ -649,7 +713,10 @@ const getFieldTranslationForLanguage = async (
             translatedOptions.push({ ...option, label: translatedOption });
           }
           finalTranslation = translatedOptions;
-        } else if (settingKey === 'actionButtons' && typeof setting === 'object') {
+        } else if (
+          settingKey === 'actionButtons' &&
+          typeof setting === 'object'
+        ) {
           const translatedActionButtons: ActionButtons = {};
           for (const action in setting) {
             const label = (setting as ActionButtons)[action];
@@ -663,14 +730,17 @@ const getFieldTranslationForLanguage = async (
           const translatedText = await getTranslation(setting, targetLang);
           finalTranslation = translatedText;
         }
-        
-        
+
         console.log(setting, finalTranslation);
         if (finalTranslation !== undefined) {
-          (newTranslation as Record<string, TranslationValue>)[settingKey] = finalTranslation;
+          (newTranslation as Record<string, TranslationValue>)[settingKey] =
+            finalTranslation;
         }
       } catch (e) {
-        console.error(`Field ${field} failed to translate property ${settingKey}`, e);
+        console.error(
+          `Field ${field} failed to translate property ${settingKey}`,
+          e,
+        );
       }
     }
     translatedForm[field] = newTranslation;
@@ -680,10 +750,12 @@ const getFieldTranslationForLanguage = async (
 /**
  * For each language, get the translation of the field settings.
  */
-const getFieldTranslations = async (generateEmptyTranslations = false): Promise<LanguageSettings> => {
+const getFieldTranslations = async (
+  generateEmptyTranslations = false,
+): Promise<LanguageSettings> => {
   const supportedLanguages =
     LFForm.findFieldsByFieldId<RadioField>(translateLangFieldId)[0].options;
-  
+
   const translatedForm: LanguageSettings = {};
   const originalCustomHTMLContent = isTranslationHelperNeeded
     ? LFForm.findFieldsByFieldId(translateCustomHtmlFieldId)[0].data

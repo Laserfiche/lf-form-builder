@@ -49,10 +49,10 @@
 
 ## Using Library Utilities
 
-Import helpers from the `lf-form-builder` package:
+Import helpers from `@lfz/lf-form-builder`:
 
 ```typescript
-import { findField, LFFormModal, fullFieldHtml } from 'lf-form-builder';
+import { findField, LFFormModal, fullFieldHtml } from '@lfz/lf-form-builder';
 ```
 
 Available modules:
@@ -63,6 +63,30 @@ Available modules:
 - **API helpers** — `getRepositories`, `searchAsync`, `mapEntryToForm`, `patchEntryMetadata`
 - **Components** — `LFFormModal`, `fullFieldHtml`, `fieldFormatter`, `registerStarHandler`, `makeLoadingBar`
 - **Repository** — `DocView`, `IframeView`
+
+## Using LFForm and LFForm Types
+
+`LFForm` is provided at runtime by Laserfiche Forms. In TypeScript, use `@lfz/lf-form-types` for compile-time safety.
+
+```typescript
+import type { LFForm, LFFormIdParam } from '@lfz/lf-form-types';
+import { findFieldOrNull } from '@lfz/lf-form-builder';
+
+const lfForm: LFForm = window.LFForm;
+
+const fields = {
+  employeeName: { fieldId: 1 },
+} as const satisfies Record<string, LFFormIdParam>;
+
+const employeeNameField = findFieldOrNull(fields.employeeName);
+if (!employeeNameField) {
+  console.warn('employeeName field not found');
+}
+
+void lfForm;
+```
+
+Template global typing is declared in `src/global.d.ts` so `window.LFForm` and `LFForm` are typed automatically.
 
 ## Adding npm Dependencies
 
@@ -77,7 +101,7 @@ If a dependency has a CDN URL, add it to the Forms external JS pane and list it 
 Use the `lfjsx` helper to create reactive custom HTML:
 
 ```typescript
-import { lfjsx } from 'lf-form-builder';
+import { lfjsx } from '@lfz/lf-form-builder';
 
 const watchField = { fieldId: 4 };
 const customField = lfjsx({ fieldId: 3 }, 'textAbove')/*html*/`
@@ -93,7 +117,16 @@ const customField = lfjsx({ fieldId: 3 }, 'textAbove')/*html*/`
 Import `.lfless` files from the package for base styles:
 
 ```less
-@import 'lf-form-builder/css/form-theme.lfless';
+@import '@lfz/lf-form-builder/css/form-theme.lfless';
 ```
 
 Create your own `.lfless` files alongside your form code — they will be bundled automatically by the `bundleLfless` Vite plugin.
+
+## Dependency Version Policy
+
+This starter uses semver ranges for stable package releases:
+
+- `@lfz/lf-form-builder`
+- `@lfz/lf-form-types`
+
+When creating new projects from this template, keep these as ranges to receive compatible updates.

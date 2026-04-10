@@ -39,8 +39,8 @@ export type { PatchEntryMetadataOptions } from './lib/api/template/patchEntryMet
 // Components
 export { fieldFormatter } from './components/fieldFormatter';
 export type { SupportedFieldTypes } from './components/fieldFormatter';
-export { generateFullFieldHtml, fullFieldHtml } from './components/fullFieldHtml';
-export { makeLoadingBar } from './components/makeLoadingBar';
+export { generateFullFieldHtml, fullFieldHtml, type FullFieldHtmlOptions } from './components/fullFieldHtml';
+export { makeLoadingBar, type LoadingBarOptions } from './components/makeLoadingBar';
 
 // Components — Star Rating
 export {

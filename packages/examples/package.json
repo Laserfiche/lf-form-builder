@@ -5,9 +5,9 @@
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "watch": "tsc && vite build --mode development --watch",
-    "build": "tsc && vite build --mode production",
-    "build:dev": "tsc && vite build --mode development",
+    "watch": "tsc -p tsconfig.build.json && vite build --mode development --watch",
+    "build": "tsc -p tsconfig.build.json && vite build --mode production",
+    "build:dev": "tsc -p tsconfig.build.json && vite build --mode development",
     "make-cert": "mkdir -p certs && openssl req -x509 -newkey rsa:4096 -keyout certs/localhost-key.pem -out certs/localhost-cert.pem -days 365 -nodes -subj '/CN=localhost' -addext \"subjectAltName = DNS:localhost\"",
     "trust-cert": "openssl pkcs12 -export -out certs/localhost.pfx -inkey certs/localhost-key.pem -in certs/localhost-cert.pem",
     "dev": "run-p watch serve",
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@googlemaps/addressvalidation": "^3.2.1",
-    "@lfz/lf-form-builder": "*",
-    "@lfz/lf-form-types": "*"
+    "@lfz/lf-form-builder": "^0.1.0",
+    "@lfz/lf-form-types": "^0.1.0"
   }
 }

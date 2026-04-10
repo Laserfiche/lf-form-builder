@@ -180,7 +180,7 @@ export function bundleLfless(options: BundleLflessOptions = {}): Plugin {
           if (!loggedDetections.has(detectionKey)) {
             loggedDetections.add(detectionKey);
             console.log(
-              `\n📦 Detected .lfless import: ${formName} imports ${relativeLfless} -> ${outputName}`,
+              `📦 Detected .lfless import: ${formName} imports ${relativeLfless} -> ${outputName}`,
             );
           }
         }

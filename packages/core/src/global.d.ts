@@ -5,6 +5,6 @@ declare global {
     LFForm: LFForm;
     LFC: LFCWindowNamespace;
   }
-  const LFForm: LFForm;
+  var LFForm: LFForm;
 }
 

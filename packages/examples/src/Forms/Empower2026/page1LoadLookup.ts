@@ -55,9 +55,9 @@ export const page1Load = async () => {
   });
 
   // Option 2: Click to download table as soon as lookup is complete
+  // await lookupLoadPromise;
   // await makeCSVDownloadButton(formFields.csvDownloadHtmlField, {
   //   disabled: true,
   // });
-  // await lookupLoadPromise;
   // await convertTableToCSV();
 };

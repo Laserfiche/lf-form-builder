@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "lib": ["ES2020"],
+    "lib": ["ESNext"],
     "skipLibCheck": true,
     "composite": true,
     "declaration": true,
@@ -13,6 +13,7 @@
     "allowImportingTsExtensions": false,
     "isolatedModules": true,
     "moduleDetection": "force",
+    "useDefineForClassFields": true,
     "strict": true,
     "noFallthroughCasesInSwitch": true
   },

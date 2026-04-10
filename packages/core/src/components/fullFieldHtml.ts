@@ -1,6 +1,6 @@
 import { LFFormField, LFFormId } from '@lfz/lf-form-types';
 
-type FullFieldHtmlOptions = {
+export type FullFieldHtmlOptions = {
   styles?: string;
   id?: string;
   zIndex?: number;
@@ -34,7 +34,7 @@ export const generateFullFieldHtml = (
  * @param {LFFormId | LFFormField} formField
  * @param {'textAbove' | 'textBelow' | 'description' | 'subtext'} placement
  * @param {string} content
- * @param {string} styles
+ * @param {FullFieldHtmlOptions} options
  * @returns {Promise<void>}
  * @preserve docs
  */

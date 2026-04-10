@@ -13,7 +13,12 @@
     "emitDeclarationOnly": true,
     "declaration": true,
     "allowJs": true,
-    "baseUrl": "./src",
+    "paths": {
+      "@lfz/lf-form-builder": ["../core/src/index.ts"],
+      "@lfz/lf-form-builder/plugins": ["../core/src/plugins/index.ts"],
+      "@lfz/lf-form-builder/plugins/*": ["../core/src/plugins/*"],
+      "@lfz/lf-form-types": ["../types/src/index.ts"]
+    },
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,

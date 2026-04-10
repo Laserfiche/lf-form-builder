@@ -13,7 +13,7 @@ This is a monorepo with npm workspaces:
 ```
 lf-form-builder/
 ├── packages/
-│   ├── core/             # Published npm package (lf-form-builder)
+│   ├── core/             # Published npm package (@lfz/lf-form-builder)
 │   │   ├── src/          # Library source: components, utilities, API helpers
 │   │   └── plugins/      # Vite plugins for form bundling
 │   └── examples/         # Real-world example forms (not published)
@@ -46,18 +46,18 @@ npm run dev               # Watch + serve examples
 
 ## Packages
 
-### `packages/core` — `lf-form-builder`
+### `packages/core` — `@lfz/lf-form-builder`
 
 The core library published to npm. Import utilities in your form code:
 
 ```typescript
-import { findField, LFFormModal, fullFieldHtml } from 'lf-form-builder';
+import { findField, LFFormModal, fullFieldHtml } from '@lfz/lf-form-builder';
 ```
 
 Import Vite plugins in your build config:
 
 ```typescript
-import { bundleLfless, disableSharedChunking } from 'lf-form-builder/plugins';
+import { bundleLfless, disableSharedChunking } from '@lfz/lf-form-builder/plugins';
 ```
 
 **Included modules:**
@@ -69,7 +69,7 @@ import { bundleLfless, disableSharedChunking } from 'lf-form-builder/plugins';
 - **Components** — `LFFormModal`, `fullFieldHtml`, `fieldFormatter`, `registerStarHandler`, `makeLoadingBar`
 - **Repository** — `DocView`, `IframeView`
 - **Vite plugins** — `bundleLfless`, `disableSharedChunking`, `generateDirectoryHtml`
-- **CSS** — LESS variables, mixins, and theme files via `lf-form-builder/css/*`
+- **CSS** — LESS variables, mixins, and theme files via `@lfz/lf-form-builder/css/*`
 
 ### `template/`
 
@@ -89,3 +89,21 @@ Real-world form implementations demonstrating the library in action:
 - [Node.js](https://nodejs.org/en/download/prebuilt-installer) (v18+)
 - [VS Code](https://code.visualstudio.com/download) (recommended)
 - [Git](https://git-scm.com/downloads)
+
+## Release Checklist
+
+Before preparing a release, validate the workspace builds:
+
+```bash
+npm run build:types
+npm run build:core
+npm run build:examples
+```
+
+Then run:
+
+```bash
+npm run release
+```
+
+This script bumps `packages/types` and `packages/core`, creates a release commit, and tags the version.

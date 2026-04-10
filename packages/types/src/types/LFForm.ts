@@ -77,7 +77,7 @@ export interface GetFieldValuess<FieldType extends LFFormField & LFFormId = LFFo
         : never;
 }
 
-type FormIdParam = LFFormId & {
+export type FormIdParam = LFFormId & {
   componentType?: keyof ComponentTypes;
   disabled?: boolean;
   settings?: {

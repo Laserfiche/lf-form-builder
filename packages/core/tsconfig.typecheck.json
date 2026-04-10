@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "rootDir": ".",
+    "types": ["node", "vitest/globals"]
+  },
+  "include": [
+    "src/**/*",
+    "__tests__/**/*",
+    "vitest.config.ts",
+    "vite.config.lib.ts"
+  ]
+}

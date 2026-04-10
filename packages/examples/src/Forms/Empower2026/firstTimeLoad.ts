@@ -1,4 +1,4 @@
-import { generateFullFieldHtml } from '@lfz/lf-form-builder';
+import { FullFieldHtmlOptions, generateFullFieldHtml, LoadingBarOptions } from '@lfz/lf-form-builder';
 import { makeLoadingBar } from '@lfz/lf-form-builder';
 import { throttle } from '@lfz/lf-form-builder';
 import { LFFormId } from '@lfz/lf-form-types';
@@ -113,16 +113,19 @@ const registerLookupComplete = (lookupRegisterField: LFFormId) => {
  * @param {LFFormId} lookupRegisterField - The ID of the lookup field to listen for lookup rule changes on
  * @param {number} lookupRuleId - The ID of the lookup rule to listen for
  * @param {number | (() => boolean) | (() => Promise<boolean>)} timeout - The maximum time to wait for the lookup trigger before timing out (in milliseconds) or a function that returns a boolean or a promise that resolves to a boolean indicating whether the timeout condition has been met
+ * @param {{ fullFieldHtmlOptions: FullFieldHtmlOptions, loadingBarOptions: LoadingBarOptions }} options - Additional options for the full field HTML
  * @return {Promise<void>} - A promise that resolves when the first time load process is complete
  */
 export const registerFirstTimeLoad = async ({
   lookupRegisterField,
   lookupRuleId,
   timeout = 500,
+  options,
 }: {
   lookupRegisterField: LFFormId;
   lookupRuleId: number;
   timeout?: number | (() => boolean) | (() => Promise<boolean>);
+  options?: { fullFieldHtmlOptions: FullFieldHtmlOptions; loadingBarOptions: LoadingBarOptions };
 }) => {
   // Wrap business logic in an async function to properly handle promises
   const cancelToken = { isCancelled: false };

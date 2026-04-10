@@ -1,7 +1,15 @@
+export type LoadingBarOptions = {
+  height?: number;
+  type?: 'warning' | 'info' | 'danger';
+  text?: string;
+  styles?: string;
+  containerClass?: string;
+};
+
 /**
  *
  * @param {number} curPrecent
- * @param {{height: number}} loadingBarOptions
+ * @param {LoadingBarOptions} loadingBarOptions
  * @returns {string}
  * @example
  *
@@ -14,13 +22,7 @@
  */
 export function makeLoadingBar(
   curPrecent: number,
-  loadingBarOptions?: {
-    height?: number;
-    type?: 'warning' | 'info' | 'danger';
-    text?: string;
-    styles?: string;
-    containerClass?: string;
-  }
+  loadingBarOptions?: LoadingBarOptions,
 ) {
   const { height, type, text, styles='', containerClass='' } = loadingBarOptions || {};
   return `

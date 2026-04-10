@@ -74,14 +74,62 @@ if [[ "$confirm" != [yY] ]]; then
 fi
 
 # Bump versions in both published packages
-cd packages/lf-form-types
+cd packages/types
 npm version "$NEW_VERSION" --no-git-tag-version
 cd ../core
 npm version "$NEW_VERSION" --no-git-tag-version
 cd ../..
 
+# Keep internal dependency ranges aligned with the released version.
+# This updates any dependency/devDependency/peerDependency/optionalDependency
+# entries if they exist.
+set_package_dep_version() {
+  local package_json_path="$1"
+  local dep_name="$2"
+  local dep_version="$3"
+
+  node -e '
+const fs = require("fs");
+const file = process.argv[1];
+const depName = process.argv[2];
+const depVersion = process.argv[3];
+const pkg = JSON.parse(fs.readFileSync(file, "utf8"));
+
+let changed = false;
+for (const section of ["dependencies", "devDependencies", "peerDependencies", "optionalDependencies"]) {
+  if (pkg[section] && Object.prototype.hasOwnProperty.call(pkg[section], depName)) {
+    if (pkg[section][depName] !== depVersion) {
+      pkg[section][depName] = depVersion;
+      changed = true;
+    }
+  }
+}
+
+if (changed) {
+  fs.writeFileSync(file, JSON.stringify(pkg, null, 2) + "\n");
+}
+' "$package_json_path" "$dep_name" "$dep_version"
+}
+
+INTERNAL_RANGE="^${NEW_VERSION}"
+
+# core depends on types
+set_package_dep_version "packages/core/package.json" "@lfz/lf-form-types" "$INTERNAL_RANGE"
+
+# examples consume both published packages
+set_package_dep_version "packages/examples/package.json" "@lfz/lf-form-builder" "$INTERNAL_RANGE"
+set_package_dep_version "packages/examples/package.json" "@lfz/lf-form-types" "$INTERNAL_RANGE"
+
+# template should point at current released ranges
+set_package_dep_version "template/package.json" "@lfz/lf-form-builder" "$INTERNAL_RANGE"
+set_package_dep_version "template/package.json" "@lfz/lf-form-types" "$INTERNAL_RANGE"
+
 # Commit and tag
-git add packages/core/package.json packages/lf-form-types/package.json
+git add \
+  packages/core/package.json \
+  packages/types/package.json \
+  packages/examples/package.json \
+  template/package.json
 git commit -m "release: $TAG"
 git tag "$TAG"
 

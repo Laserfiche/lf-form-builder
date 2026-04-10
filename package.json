@@ -17,9 +17,9 @@
   "scripts": {
     "build:types": "npm run build --workspace=packages/types",
     "build:core": "npm run build --workspace=packages/core",
-    "build:examples": "npm run build --workspace=packages/examples",
+    "build:examples": "npm run build:core -- -- --logLevel silent && npm run build --workspace=packages/examples",
     "build": "tsc -b",
-    "dev": "npm run dev --workspace=examples",
+    "dev": "npm run dev --workspace=packages/examples",
     "docs": "jsdoc -c jsdoc.json",
     "doc": "jsdoc2md -c jsdoc.json > ./docs/api.md",
     "release": "scripts/release.sh"

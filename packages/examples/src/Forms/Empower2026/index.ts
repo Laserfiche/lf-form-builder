@@ -7,7 +7,7 @@ import { page3Load } from './page3Payment';
 const formFields = {
   page1: {},
   page2: {
-    addressSearch: { fieldId: 13 },
+    addressSearch: { fieldId: 13, componentType: 'SingleLine' },
     addressPopulate: { fieldId: 6 },
     addressConfirmationModal: { fieldId: 25 },
   },
