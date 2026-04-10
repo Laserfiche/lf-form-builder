@@ -4,6 +4,10 @@ import { throttle } from '@lfz/lf-form-builder';
 import { LFFormId } from '@lfz/lf-form-types';
 
 type TimeoutType = number | (() => boolean) | (() => Promise<boolean>);
+type LookupLoadingOptions = {
+  fullFieldHtmlOptions: FullFieldHtmlOptions;
+  loadingBarOptions: LoadingBarOptions;
+}
 
 /**
  * Either resolves when the specified lookup rule is triggered or when the specified timeout is reached, whichever happens first
@@ -62,9 +66,10 @@ const raceLookupTriggerAndLoadTimeout = async (
  * You can basically ignore this function and just read/use its contents
  * @preserve
  * @param {LFFormId} lookupRegisterField - The ID of the lookup field to listen for lookup rule changes on
+ * @param {LookupLoadingOptions} options - Additional options for the full field HTML and loading bar
  * @returns {{ showLoader: () => Promise<void>, hideLoader: () => Promise<void> }} - An object with functions to show and hide the loading bar
  */
-const registerLookupComplete = (lookupRegisterField: LFFormId) => {
+const registerLookupComplete = (lookupRegisterField: LFFormId, options?: LookupLoadingOptions) => {
   // Store fields you use at the top of your script to easily update them if anything changes
   // In this case fields are already stored in the formFields variable
 
@@ -82,7 +87,9 @@ const registerLookupComplete = (lookupRegisterField: LFFormId) => {
           makeLoadingBar(100, {
             text: 'Loading your form',
             styles: 'background: white; padding: 2rem;',
+            ...options?.loadingBarOptions,
           }),
+          options?.fullFieldHtmlOptions,
         );
     await LFForm.changeFormSettings({
       description: loader,
@@ -113,7 +120,7 @@ const registerLookupComplete = (lookupRegisterField: LFFormId) => {
  * @param {LFFormId} lookupRegisterField - The ID of the lookup field to listen for lookup rule changes on
  * @param {number} lookupRuleId - The ID of the lookup rule to listen for
  * @param {number | (() => boolean) | (() => Promise<boolean>)} timeout - The maximum time to wait for the lookup trigger before timing out (in milliseconds) or a function that returns a boolean or a promise that resolves to a boolean indicating whether the timeout condition has been met
- * @param {{ fullFieldHtmlOptions: FullFieldHtmlOptions, loadingBarOptions: LoadingBarOptions }} options - Additional options for the full field HTML
+ * @param {LookupLoadingOptions} options - Additional options for the full field HTML and loading bar
  * @return {Promise<void>} - A promise that resolves when the first time load process is complete
  */
 export const registerFirstTimeLoad = async ({
@@ -125,7 +132,7 @@ export const registerFirstTimeLoad = async ({
   lookupRegisterField: LFFormId;
   lookupRuleId: number;
   timeout?: number | (() => boolean) | (() => Promise<boolean>);
-  options?: { fullFieldHtmlOptions: FullFieldHtmlOptions; loadingBarOptions: LoadingBarOptions };
+  options?: LookupLoadingOptions;
 }) => {
   // Wrap business logic in an async function to properly handle promises
   const cancelToken = { isCancelled: false };
@@ -134,7 +141,7 @@ export const registerFirstTimeLoad = async ({
     timeout,
     cancelToken,
   );
-  const lookupCompleteHandler = registerLookupComplete(lookupRegisterField);
+  const lookupCompleteHandler = registerLookupComplete(lookupRegisterField, options);
   void lookupCompleteHandler.showLoader();
   const trigger = await triggerPromise;
   if (trigger === 'timeout') {
