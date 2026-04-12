@@ -48,6 +48,40 @@ import { bundleLfless, disableSharedChunking, generateDirectoryHtml } from '@lfz
 - **`disableSharedChunking`** — Keep each form as a self-contained bundle
 - **`generateDirectoryHtml`** — Auto-generate an index page listing all form entries
 
+#### Using `bundleLfless`
+
+The `bundleLfless` plugin enables LESS stylesheets (`.lfless` files) to use `@import` statements that resolve through the package's export map. This allows shared style organization:
+
+**Example setup**:
+
+```js
+// vite.config.ts
+import { defineConfig } from 'vite';
+import { bundleLfless } from '@lfz/lf-form-builder/plugins';
+
+export default defineConfig({
+  plugins: [bundleLfless()],
+});
+```
+
+**Usage in .lfless files**:
+
+```less
+// src/css/components.lfless
+@import '@lfz/lf-form-builder/css/variables.lfless';
+@import '@lfz/lf-form-builder/css/form-theme.lfless';
+
+.my-field {
+  background: @primary-color;
+  padding: @base-spacing;
+}
+```
+
+The plugin resolves these imports by looking up the package.json `exports` map, allowing you to:
+- Share common styles across multiple forms
+- Version styles independently from form code
+- Keep form-specific overrides in separate files
+
 ## Why This Package Builds With Vite
 
 `@lfz/lf-form-builder` uses Vite for library packaging because the build needs behavior beyond plain `tsc` transpilation:

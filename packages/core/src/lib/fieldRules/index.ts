@@ -132,6 +132,3 @@ class LFFormFieldWhen {
     }
   };
 }
-
-const t = new LFFormFieldRules();
-t.show({ fieldId: 1 }).when().always({ fieldId: 2 });

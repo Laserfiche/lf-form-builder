@@ -22,4 +22,21 @@ jobs:
           cache: npm
 
       - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run test
       - run: npm run build
+
+      - name: Check bundle size
+        run: |
+          CORE_SIZE=$(du -sh packages/core/dist | cut -f1)
+          TYPES_SIZE=$(du -sh packages/types/lib | cut -f1)
+          echo "Bundle sizes:"
+          echo "  @lfz/lf-form-builder: $CORE_SIZE"
+          echo "  @lfz/lf-form-types: $TYPES_SIZE"
+          
+          # Warn if core bundle > 500KB (adjustable threshold)
+          CORE_KB=$(du -sk packages/core/dist | cut -f1)
+          if [ "$CORE_KB" -gt 500 ]; then
+            echo "::warning::Core bundle size is ${CORE_KB}KB (threshold: 500KB)"
+          fi

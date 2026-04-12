@@ -1,4 +1,4 @@
-import { LFFormEventParam, LFFormId } from '@lfz/lf-form-types';
+import { LFFormId } from '@lfz/lf-form-types';
 import { findField } from '../lib/findFieldByLFFormId';
 import './starRating.lfless';
 
@@ -28,7 +28,7 @@ const rowToStarMap: Record<
   StarFieldFor,
   { count: number; maxStarCount: number }
 > = {};
-export type OnClickEvent = LFFormEventParam & {
+export type OnClickEvent = {
   currentTarget: {
     classList: string[];
   };

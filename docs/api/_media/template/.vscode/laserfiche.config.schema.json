@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "forms": {
+      "type": "object",
+      "properties": {
+        "rootDir": {
+          "type": "string"
+        },
+        "formats": {
+          "type": "array",
+          "items": {
+            "enum": ["es", "umd"]
+          }
+        },
+        "js": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["rootDir", "js"]
+    }
+  },
+  "required": ["forms"]
+}

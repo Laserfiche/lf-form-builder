@@ -5,12 +5,14 @@ export type {
   DateTimeFieldValue,
   TimeFieldValue,
   AddressFieldValue,
+  GeolocationFieldValue,
   MultiOptionFieldValue,
   SingleOptionFieldValue,
   AllFieldValueTypes,
   TextField,
   NumberField,
   DateField,
+  GeolocationField,
   TimeField,
   AddressField,
   CheckboxField,
@@ -42,20 +44,40 @@ export type {
   TableFieldSettings,
   PaginationFieldSettings,
 } from './FieldSettings.js';
+export type { LFFormChangeFormSettings } from './FormSettings.js';
 export type {
-  LFFormId,
-  LFFormIdParam,
-  LFFormLookupId,
-  LFFormEventParamOptions,
-  LFFormEventParam,
+  LFFormEventApi,
   LFFormEventHandler,
   LFFormEventOptions,
-  ActionButtonDefault,
+  LFFormEventParam,
+  LFFormEventParamOption,
+  LFFormEventPayloadMap,
+  LFFormEventReturnMap,
+  LFFormEventSubscribeOptions,
+  LFFormTypedEventHandler,
+  LFFormCanonicalEventName,
+  LFFormFieldEventName,
+  LFFormLookupEventName,
+  LFFormLookupId,
+  LFFormSubmissionEventName,
+  LFFormSubmissionEventParam,
   LFFormSupportedEvents,
-  LFFormFieldSupportedEvents,
-  LQuerySupportedEvents,
+} from '../LFForm/events.js';
+export type {
+  LFFormFieldRef,
+  LFFormFindFieldsBy,
+  LFFormGetFieldValues,
+  LFFormGetterApi,
+  LFFormId,
+  LFFormIdParam,
+  LFFormResolvedFieldRef,
+} from '../LFForm/getters.js';
+export type {
+  LFFormActionButtonDefault,
+  LFFormMethodApi,
+  LFFormSetFieldValues,
   LFFormPromiseResponse,
-  GetFieldValues,
-  SetFieldValues,
+} from '../LFForm/methods.js';
+export type {
   LFForm,
-} from './LFForm.js';
+} from '../LFForm/index.js';

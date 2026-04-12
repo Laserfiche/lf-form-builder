@@ -31,12 +31,45 @@ jobs:
             exit 1
           fi
 
+      - name: Verify dist contents
+        run: |
+          echo "Verifying packages/core/dist..."
+          if [ ! -f "packages/core/dist/index.js" ]; then
+            echo "::error::packages/core/dist/index.js not found"
+            exit 1
+          fi
+          if [ ! -f "packages/core/dist/index.d.ts" ]; then
+            echo "::error::packages/core/dist/index.d.ts not found"
+            exit 1
+          fi
+          echo "Verifying packages/types/dist..."
+          if [ ! -f "packages/types/lib/index.js" ]; then
+            echo "::error::packages/types/lib/index.js not found"
+            exit 1
+          fi
+          if [ ! -f "packages/types/lib/index.d.ts" ]; then
+            echo "::error::packages/types/lib/index.d.ts not found"
+            exit 1
+          fi
+
       - name: Publish @lfz/lf-form-types
-        run: npm publish --workspace=packages/lf-form-types --provenance --access public
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          DIST_TAG="latest"
+          if [[ "$TAG" == *"-beta"* ]] || [[ "$TAG" == *"-rc"* ]]; then
+            DIST_TAG="$(echo "$TAG" | grep -oE 'beta|rc' | head -1)"
+          fi
+          npm publish --workspace=packages/types --provenance --access public --tag "$DIST_TAG"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish @lfz/lf-form-builder
-        run: npm publish --workspace=packages/core --provenance --access public
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          DIST_TAG="latest"
+          if [[ "$TAG" == *"-beta"* ]] || [[ "$TAG" == *"-rc"* ]]; then
+            DIST_TAG="$(echo "$TAG" | grep -oE 'beta|rc' | head -1)"
+          fi
+          npm publish --workspace=packages/core --provenance --access public --tag "$DIST_TAG"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

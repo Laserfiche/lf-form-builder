@@ -4,7 +4,7 @@ import {
   LFFormModalSize,
 } from '@lfz/lf-form-builder';
 import type { FormFieldsType } from '.';
-import { TextField } from '@lfz/lf-form-types';
+import { LFFormSubmissionEventParam, TextField } from '@lfz/lf-form-types';
 
 /* Register function just provided to initialize the code in this file
  * You can basically ignore this function and just read/use its contents
@@ -29,7 +29,7 @@ export const registerSubmitModal = (formFields: FormFieldsType) => {
     showBackdrop: true,
   });
 
-  const handleOnSubmit = async (ev: any) => {
+  const handleOnSubmit = async (ev: LFFormSubmissionEventParam) => {
     const { promise, resolve } = Promise.withResolvers<void | {
       error: string;
     }>();

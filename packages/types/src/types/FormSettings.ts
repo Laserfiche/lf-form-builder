@@ -1,5 +1,6 @@
-export type ChangeFormSettingsType = {
+export type LFFormChangeFormSettings = {
   title?: string;
+  browserTitle?: string;
   description?: string;
   pagination?: Array<{
     pageId: number;

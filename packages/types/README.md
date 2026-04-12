@@ -14,6 +14,14 @@ npm install @lfz/lf-form-types
 import type { LFForm, LFFormField, LFFormId, LFFormIdParam } from '@lfz/lf-form-types';
 ```
 
+## Documentation
+
+- Package reference: `packages/types/DOCS.md`
+- Quick start: `docs/quick-start.md`
+- API reference: `docs/api-reference.md`
+- Custom HTML and sandbox integration: `docs/custom-html-sandbox.md`
+- Recipes: `docs/recipes.md`
+
 ## What's included
 
 ### Core types

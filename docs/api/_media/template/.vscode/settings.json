@@ -1,0 +1,14 @@
+{
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "laserfiche*.config.json"
+      ],
+      "url": "./.vscode/laserfiche.config.schema.json"
+    }
+  ],
+  "files.associations": {
+    "*.css": "less",
+    "*.lfless": "less"
+  }
+}

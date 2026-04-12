@@ -1,5 +1,18 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "entryPoints": ["src/lib/**/*.ts", "src/components/**/*.ts"],
-  "out": "docs",
+  "plugin": ["typedoc-plugin-markdown", "typedoc-vitepress-theme"],
+  "entryPointStrategy": "packages",
+  "entryPoints": [
+    "packages/types/",
+    "packages/core/"
+  ],
+  "out": "docs/api",
+  "exclude": [
+    "**/__tests__/**",
+    "**/*.test.ts",
+    "**/vitest.config.ts",
+    "**/vite.config.lib.ts",
+    "**/tsconfig.*.json"
+  ],
+  "excludePrivate": true,
 }

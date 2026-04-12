@@ -44,6 +44,13 @@ npm run build:examples    # Build example forms
 npm run dev               # Watch + serve examples
 ```
 
+### LFForm Documentation
+
+- Quick start: `docs/quick-start.md`
+- API reference: `docs/api-reference.md`
+- Custom HTML and sandbox integration: `docs/custom-html-sandbox.md`
+- Recipes: `docs/recipes.md`
+
 ## Packages
 
 ### `packages/core` — `@lfz/lf-form-builder`

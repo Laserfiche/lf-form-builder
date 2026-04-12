@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 import { readFileSync, existsSync } from 'node:fs';
 import less from 'less';
 
-interface BundleLflessOptions {
+export interface BundleLflessOptions {
   /**
    * Whether to validate LESS syntax during build
    */

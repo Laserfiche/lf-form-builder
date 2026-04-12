@@ -20,15 +20,25 @@
     "build:examples": "npm run build:core -- -- --logLevel silent && npm run build --workspace=packages/examples",
     "build": "tsc -b",
     "dev": "npm run dev --workspace=packages/examples",
-    "docs": "jsdoc -c jsdoc.json",
-    "doc": "jsdoc2md -c jsdoc.json > ./docs/api.md",
-    "release": "scripts/release.sh"
+    "typecheck": "tsc -b",
+    "lint": "eslint .",
+    "test": "npm run typecheck --workspace=packages/core && npm test --workspace=packages/core",
+    "test:coverage": "npm run test:coverage --workspace=packages/core",
+    "release": "scripts/release.sh",
+    "docs:generate": "typedoc",
+    "docs:dev": "npm run docs:generate && vitepress dev",
+    "docs:build": "npm run docs:generate && vitepress build",
+    "docs:preview": "npm run docs:generate && vitepress preview"
   },
   "devDependencies": {
     "@eslint/js": "^9.7.0",
     "@types/eslint__js": "^8.42.3",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
-    "typescript-eslint": "^7.16.1"
+    "typedoc": "^0.28.19",
+    "typedoc-plugin-markdown": "^4.11.0",
+    "typedoc-vitepress-theme": "^1.1.2",
+    "typescript-eslint": "^7.16.1",
+    "vitepress": "^1.6.4"
   }
 }

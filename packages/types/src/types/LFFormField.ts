@@ -17,6 +17,7 @@ export type ComponentTypes = {
   Number: NumberField;
   Currency: NumberField;
   DateTime: DateField;
+  Geolocation: GeolocationField;
   Address: AddressField;
   Checkbox: CheckboxField;
   Radio: RadioField;
@@ -113,6 +114,10 @@ export type AddressFieldValue = {
   zipcode: string;
   province: string;
 };
+export type GeolocationFieldValue = {
+  latitude: number;
+  longitude: number;
+};
 export type MultiOptionFieldValue = {
   value: Array<string | number>;
   otherChoiceValue?: string;
@@ -145,6 +150,11 @@ export type DateField = BaseField & {
   componentType: 'DateTime';
   __getValueType: DateTimeFieldValue;
   __setValueType: Pick<DateTimeFieldValue, 'dateStr' | 'timeStr'>;
+};
+export type GeolocationField = BaseField & {
+  componentType: 'Geolocation';
+  __getValueType: GeolocationFieldValue;
+  __setValueType: GeolocationFieldValue;
 };
 export type TimeField = BaseField & {
   componentType: 'DateTime';
@@ -231,6 +241,11 @@ export type LFFormFormPart = BaseField & {
 };
 
 export type LFFormField = ComponentTypes[keyof ComponentTypes];
+
+// Non-distributive: treats union F as a whole, so LFFormExtractComponentType<LFFormField> → keyof ComponentTypes
+export type LFFormExtractComponentType<F> = [F] extends [{ componentType: infer CT extends keyof ComponentTypes }]
+  ? CT
+  : keyof ComponentTypes;
 
 export type LFFormFieldValueType<FieldType extends LFFormField = LFFormField> = FieldType['__getValueType'];
 export type LFFormSetFieldValueType<FieldType extends LFFormField = LFFormField> = FieldType['__setValueType'];

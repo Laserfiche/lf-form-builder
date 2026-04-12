@@ -44,10 +44,33 @@ export type LFFormMockControls = {
 export type LFFormTestMock = {
   findFieldsByFieldId: Mock;
   findFieldsByVariableName: Mock;
+  findFieldsByVariableId: Mock;
   getFieldValues: Mock;
+  setFieldValues: Mock;
   getLaserficheAPIClient: Mock;
   addRow: Mock;
   deleteRow: Mock;
+  addSet: Mock;
+  deleteSet: Mock;
+  showFields: Mock;
+  hideFields: Mock;
+  enableFields: Mock;
+  disableFields: Mock;
+  addCSSClasses: Mock;
+  removeCSSClasses: Mock;
+  changeFieldSettings: Mock;
+  changeFieldOptions: Mock;
+  changeFormSettings: Mock;
+  changeActionButton: Mock;
+  changeActionButtons: Mock;
+  onFieldChange: Mock;
+  onFieldBlur: Mock;
+  onFormSubmission: Mock;
+  onLookupTrigger: Mock;
+  onLookupDone: Mock;
+  unsubscribe: Mock;
+  findFields: Mock;
+  findFieldsByClassName: Mock;
 };
 
 export type LFFormMock = ReturnType<typeof createLFFormMock>;
