@@ -123,6 +123,15 @@ if (!employeeNameField) {
 void lfForm;
 ```
 
+For larger projects, you can use focused type subpaths:
+
+```typescript
+import type { LFForm, LFFormEventApi, LFFormGetterApi, LFFormMethodApi } from '@lfz/lf-form-types/lfform';
+import type { LFFormSupportedEvents } from '@lfz/lf-form-types/events';
+import type { LFFormGetFieldValues } from '@lfz/lf-form-types/getters';
+import type { LFFormSetFieldValues } from '@lfz/lf-form-types/methods';
+```
+
 Template global typing is declared in `src/global.d.ts` so `window.LFForm` and `LFForm` are typed automatically.
 
 ## Working with Custom HTML Fields

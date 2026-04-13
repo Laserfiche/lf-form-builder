@@ -12,11 +12,11 @@ Checks if a field id is equal to a field. Can also check equivalence of two fiel
 
 ### id
 
-[`LFFormId`](../../lf-form-types/LFForm/type-aliases/LFFormId.md)
+[`LFFormId`](../../lf-form-types/index/type-aliases/LFFormId.md)
 
 ### field
 
-`LFFormField`
+[`LFFormField`](../../lf-form-types/index/type-aliases/LFFormField.md)
 
 ## Returns
 

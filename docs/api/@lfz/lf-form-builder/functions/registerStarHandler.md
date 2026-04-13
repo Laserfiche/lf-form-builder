@@ -10,7 +10,7 @@ Defined in: packages/core/src/components/starRating.ts:73
 
 ### starField
 
-[`LFFormId`](../../lf-form-types/LFForm/type-aliases/LFFormId.md)
+[`LFFormId`](../../lf-form-types/index/type-aliases/LFFormId.md)
 
 ### voteOptions?
 

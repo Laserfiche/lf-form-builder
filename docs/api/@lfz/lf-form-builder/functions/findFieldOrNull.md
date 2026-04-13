@@ -12,13 +12,13 @@ Finds a field by id and returns null if no fields are found.
 
 ### FieldType
 
-`FieldType` *extends* `LFFormField` = `LFFormField`
+`FieldType` *extends* [`LFFormField`](../../lf-form-types/index/type-aliases/LFFormField.md) = [`LFFormField`](../../lf-form-types/index/type-aliases/LFFormField.md)
 
 ## Parameters
 
 ### field
 
-[`LFFormId`](../../lf-form-types/LFForm/type-aliases/LFFormId.md)
+[`LFFormId`](../../lf-form-types/index/type-aliases/LFFormId.md)
 
 ## Returns
 

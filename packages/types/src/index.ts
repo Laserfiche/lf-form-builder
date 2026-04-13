@@ -1,4 +1,8 @@
 export type {
+  LFFormProperties,
+  LFFormGetterApi,
+  LFFormMethodApi,
+  LFFormEventApi,
   ComponentTypes,
   SingleLineFieldValue,
   NumberLineFieldValue,
@@ -42,7 +46,6 @@ export type {
   TableFieldSettings,
   PaginationFieldSettings,
   LFFormChangeFormSettings,
-  LFFormEventApi,
   LFFormEventHandler,
   LFFormEventOptions,
   LFFormEventParam,
@@ -61,8 +64,7 @@ export type {
   LFFormGetFieldValues,
   LFFormSetFieldValues,
   LFFormFindFieldsBy,
-  LFFormGetterApi,
-  LFFormMethodApi,
+  LFFormStepState,
   LFFormActionButtonDefault,
   LFFormLookupId,
   LFFormSubmissionEventParam,
@@ -71,3 +73,5 @@ export type {
   LFFormPromiseResponse,
   LFForm,
 } from './types/index.js';
+
+export { isLfFormId } from './types/index.js';

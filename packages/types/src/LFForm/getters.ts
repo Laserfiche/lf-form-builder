@@ -23,7 +23,7 @@ import type {
  * ```
  * 
  * @group LFForm
- * @category LFForm API
+ * @category LFForm Identifiers
  */
 export type LFFormId = {
   /** Numeric field identifier. Preferred for repeatable fields. */
@@ -41,9 +41,13 @@ export type LFFormId = {
 /**
  * Accepts a single {@link LFFormId} or an array of them.
  * Most LFForm APIs accept this union type as their target parameter.
+ *
+ * @group LFForm
+ * @category LFForm Getters
  */
 export type LFFormIdParam = LFFormId | LFFormId[];
 
+/** @group LFForm @category LFForm Getters */
 export type LFFormFieldRef = LFFormId & {
   componentType?: keyof ComponentTypes;
   disabled?: boolean;
@@ -54,6 +58,7 @@ export type LFFormFieldRef = LFFormId & {
   };
 };
 
+/** @group LFForm @category LFForm Getters */
 export type LFFormResolvedFieldRef<T extends LFFormFieldRef> = {
   fieldId: T['fieldId'];
   index: T['index'];
@@ -95,6 +100,7 @@ export type LFFormResolvedFieldRef<T extends LFFormFieldRef> = {
  * const firstRowAmount = LFForm.getFieldValues({ fieldId: 31, index: 0 });
  * ```
  */
+/** @group LFForm @category LFForm Getters */
 export type LFFormGetFieldValues = <
   F extends LFFormField | LFFormField[] | unknown = unknown,
   T extends LFFormFieldRef = LFFormFieldRef,
@@ -112,6 +118,7 @@ export type LFFormGetFieldValues = <
           ComponentTypes[LFFormResolvedFieldRef<T>['componentType']]
         >;
 
+/** @group LFForm @category LFForm Getters */
 export type LFFormFindFieldsBy<
   Param,
   FieldType extends LFFormField | LFFormField[] | LFFormFieldRef = LFFormField,
@@ -140,7 +147,7 @@ export type LFFormFindFieldsBy<
  * ```
  * 
  * @group LFForm
- * @category LFForm Getters
+ * @category LFForm Main API
  */
 export type LFFormGetterApi<FieldType extends LFFormFieldRef = LFFormFieldRef> = {
   /** Gets field values for one or more matching fields. */

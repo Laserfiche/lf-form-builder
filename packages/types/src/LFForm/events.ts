@@ -1,9 +1,19 @@
 import type { LFFormIdParam } from './getters.js';
 
-/** Identifies a lookup rule by its numeric rule ID (matches the Rules pane numbering). */
+/**
+ * Identifies a lookup rule by its numeric rule ID (matches the Rules pane numbering).
+ *
+ * @group LFForm
+ * @category LFForm Events
+ */
 export type LFFormLookupId = { lookupRuleId: number };
 
-/** Options for event subscription handlers including targeting and naming. */
+/**
+ * Options for event subscription handlers including targeting and naming.
+ *
+ * @group LFForm
+ * @category LFForm Events
+ */
 export type LFFormEventParamOption = {
   /** Unique name for this handler, used for later unsubscription. */
   handlerName?: string;
@@ -45,13 +55,18 @@ export const LFFormAllSupportedEventMap = {
   ...LFFormFieldEventMap,
 } as const;
 
+/** @group LFForm @category LFForm Events */
 export type LFFormSubmissionEventName = keyof typeof LFFormSubmissionEventMap;
+/** @group LFForm @category LFForm Events */
 export type LFFormLookupEventName = keyof typeof LFFormLookupEventMap;
+/** @group LFForm @category LFForm Events */
 export type LFFormFieldEventName = keyof typeof LFFormFieldEventMap;
+/** @group LFForm @category LFForm Events */
 export type LFFormCanonicalEventName =
   | LFFormSubmissionEventName
   | LFFormLookupEventName
   | LFFormFieldEventName;
+/** @group LFForm @category LFForm Events */
 export type LFFormSupportedEvents = keyof typeof LFFormAllSupportedEventMap;
 
 export const isLFFormSupportedEvent = (
@@ -95,6 +110,7 @@ export type LFFormSubmissionEventParam = {
 };
 
 /** Maps event names to their payload types. */
+/** @group LFForm @category LFForm Events */
 export type LFFormEventPayloadMap = {
   formSubmission: LFFormSubmissionEventParam;
   fieldChange: LFFormEventParam<'fieldChange'>;
@@ -104,6 +120,7 @@ export type LFFormEventPayloadMap = {
 };
 
 /** Maps event names to their expected handler return types. */
+/** @group LFForm @category LFForm Events */
 export type LFFormEventReturnMap = {
   formSubmission: { error: string } | void;
   fieldChange: void;
@@ -114,23 +131,27 @@ export type LFFormEventReturnMap = {
   blur: void;
 };
 
+/** @group LFForm @category LFForm Events */
 export type LFFormEventOptions<
   EventName extends LFFormSupportedEvents,
 > = EventName extends LFFormLookupEventName
   ? LFFormLookupSubscribeOption
   : LFFormHandlerNameOption;
 
+/** @group LFForm @category LFForm Events */
 export type LFFormEventSubscribeOptions<
   EventName extends LFFormSupportedEvents,
 > = EventName extends LFFormSubmissionEventName
   ? LFFormEventOptions<EventName>
   : LFFormIdParam & LFFormEventOptions<EventName>;
 
+/** @group LFForm @category LFForm Events */
 export type LFFormEventHandler<
   EventParam,
   ReturnType = void,
 > = (event: EventParam) => ReturnType | Promise<ReturnType>;
 
+/** @group LFForm @category LFForm Events */
 export type LFFormTypedEventHandler<
   EventName extends LFFormSupportedEvents,
 > = LFFormEventHandler<
@@ -177,7 +198,7 @@ export type LFFormTypedEventHandler<
  * }, { lookupRuleId: 2 });
  * ```
  * @group LFForm
- * @category LFForm Events
+ * @category LFForm Main API
  */
 export type LFFormEventApi = {
   /**

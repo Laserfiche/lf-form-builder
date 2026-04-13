@@ -2,7 +2,7 @@
 
 # Function: makeCSVDownloadButton()
 
-> **makeCSVDownloadButton**(`csvDownloadHtmlField`, `buttonOptions?`): `Promise`\<`LFFormPromiseResponse`\>
+> **makeCSVDownloadButton**(`csvDownloadHtmlField`, `buttonOptions?`): `Promise`\<[`LFFormPromiseResponse`](../../lf-form-types/index/type-aliases/LFFormPromiseResponse.md)\>
 
 Defined in: packages/core/src/lib/utils/tables/tableToCSV.ts:56
 
@@ -10,7 +10,7 @@ Defined in: packages/core/src/lib/utils/tables/tableToCSV.ts:56
 
 ### csvDownloadHtmlField
 
-[`LFFormId`](../../lf-form-types/LFForm/type-aliases/LFFormId.md)
+[`LFFormId`](../../lf-form-types/index/type-aliases/LFFormId.md)
 
 ### buttonOptions?
 
@@ -18,4 +18,4 @@ Defined in: packages/core/src/lib/utils/tables/tableToCSV.ts:56
 
 ## Returns
 
-`Promise`\<`LFFormPromiseResponse`\>
+`Promise`\<[`LFFormPromiseResponse`](../../lf-form-types/index/type-aliases/LFFormPromiseResponse.md)\>

@@ -13,7 +13,7 @@ Passes the content embedded in a div with absolute positioning.
 
 ### formField
 
-`LFFormField` \| [`LFFormId`](../../lf-form-types/LFForm/type-aliases/LFFormId.md)
+[`LFFormField`](../../lf-form-types/index/type-aliases/LFFormField.md) \| [`LFFormId`](../../lf-form-types/index/type-aliases/LFFormId.md)
 
 ### placement
 

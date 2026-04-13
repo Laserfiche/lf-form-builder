@@ -6,6 +6,9 @@
  * - `description` ↔ `textAbove`
  * - `subtext` ↔ `textBelow`
  * - `CSSClasses` ↔ `cssClasses` ↔ `classNames`
+ *
+ * @group Types
+ * @category Field Settings
  */
 export type BaseFieldSettings = {
   /** Field label text. */
@@ -32,6 +35,9 @@ export type BaseFieldSettings = {
 /**
  * Settings for standard input fields (SingleLine, MultiLine, etc.).
  * Extends {@link BaseFieldSettings} with placeholder and autocomplete support.
+ *
+ * @group Types
+ * @category Field Settings
  */
 export type StandardFieldSettings = BaseFieldSettings & {
   /** Placeholder text shown when the field is empty. */
@@ -43,6 +49,9 @@ export type StandardFieldSettings = BaseFieldSettings & {
 /**
  * Settings for Address fields. Extends {@link BaseFieldSettings} with
  * per-sub-field visibility and label overrides.
+ *
+ * @group Types
+ * @category Field Settings
  */
 export type AddressFieldSettings = BaseFieldSettings & {
   /** Per-sub-field label and visibility overrides. */
@@ -79,6 +88,9 @@ export type FileUploadFieldSettings = ButtonFieldSettings & {
  *
  * @remarks
  * `content`, `default`, and `HTMLContent` are aliases that all set the HTML body.
+ *
+ * @group Types
+ * @category Field Settings
  */
 export type CustomHtmlFieldSettings = BaseFieldSettings & {
   /** HTML content body. Alias: `default`, `HTMLContent`. */
@@ -94,6 +106,9 @@ export type CustomHtmlFieldSettings = BaseFieldSettings & {
  *
  * @remarks
  * `addButtonLabel`, `addRowButtonLabel`, and `addSetButtonLabel` are aliases.
+ *
+ * @group Types
+ * @category Field Settings
  */
 export type CollectionFieldSettings = BaseFieldSettings & {
   /** Label for the add button. Alias: `addRowButtonLabel`, `addSetButtonLabel`. */
@@ -104,13 +119,23 @@ export type CollectionFieldSettings = BaseFieldSettings & {
   addSetButtonLabel?: string;
 };
 
-/** Settings for Table fields. Extends {@link CollectionFieldSettings} with row label support. */
+/**
+ * Settings for Table fields. Extends {@link CollectionFieldSettings} with row label support.
+ *
+ * @group Types
+ * @category Field Settings
+ */
 export type TableFieldSettings = CollectionFieldSettings & {
   /** Custom row label template string. */
   rowLabels?: string;
 };
 
-/** Settings for pagination controls (prev/next buttons). */
+/**
+ * Settings for pagination controls (prev/next buttons).
+ *
+ * @group Types
+ * @category Field Settings
+ */
 export type PaginationFieldSettings = BaseFieldSettings & {
   /** Label for the "Previous" button. */
   prevButton?: string;

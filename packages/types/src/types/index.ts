@@ -45,6 +45,29 @@ export type {
   PaginationFieldSettings,
 } from './FieldSettings.js';
 export type { LFFormChangeFormSettings } from './FormSettings.js';
+
+export type {
+  LFFormProperties,
+  LFFormStepState,
+} from '../LFForm/properties.js';
+
+export type {
+  LFFormFieldRef,
+  LFFormFindFieldsBy,
+  LFFormGetFieldValues,
+  LFFormGetterApi,
+  LFFormId,
+  LFFormIdParam,
+  LFFormResolvedFieldRef,
+} from '../LFForm/getters.js';
+
+export type {
+  LFFormActionButtonDefault,
+  LFFormMethodApi,
+  LFFormSetFieldValues,
+  LFFormPromiseResponse,
+} from '../LFForm/methods.js';
+
 export type {
   LFFormEventApi,
   LFFormEventHandler,
@@ -63,21 +86,9 @@ export type {
   LFFormSubmissionEventParam,
   LFFormSupportedEvents,
 } from '../LFForm/events.js';
-export type {
-  LFFormFieldRef,
-  LFFormFindFieldsBy,
-  LFFormGetFieldValues,
-  LFFormGetterApi,
-  LFFormId,
-  LFFormIdParam,
-  LFFormResolvedFieldRef,
-} from '../LFForm/getters.js';
-export type {
-  LFFormActionButtonDefault,
-  LFFormMethodApi,
-  LFFormSetFieldValues,
-  LFFormPromiseResponse,
-} from '../LFForm/methods.js';
+
 export type {
   LFForm,
 } from '../LFForm/index.js';
+
+export { isLfFormId } from './isLfFormId.js';

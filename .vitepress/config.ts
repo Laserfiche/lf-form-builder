@@ -1,11 +1,77 @@
 import { defineConfig } from 'vitepress';
 import typedocSidebar from '../docs/api/typedoc-sidebar.json';
 
+type SidebarItem = {
+  text: string;
+  link?: string;
+  collapsed?: boolean;
+  items?: SidebarItem[];
+};
+
+const LF_FORM_TYPES_CATEGORY_ORDER = [
+  'LFForm Main API',
+  'LFForm API',
+  'LFForm Identifiers',
+  'LFForm Events',
+  'LFForm Getters',
+  'LFForm Methods',
+  'LFForm Properties',
+  'Field Types',
+  'Field Settings',
+  'Form Settings',
+  'Utilities',
+  'Other',
+];
+
+const categoryRank = new Map(
+  LF_FORM_TYPES_CATEGORY_ORDER.map((name, idx) => [name, idx]),
+);
+
+function buildApiSidebar(items: SidebarItem[]): SidebarItem[] {
+  const sidebar = JSON.parse(JSON.stringify(items)) as SidebarItem[];
+  const lfFormTypesPkg = sidebar.find((item) => item.text === '@lfz/lf-form-types');
+  const lfFormTypesIndex = lfFormTypesPkg?.items?.find(
+    (item) => item.text === 'index',
+  );
+
+  if (!lfFormTypesIndex?.items) {
+    return sidebar;
+  }
+
+  lfFormTypesIndex.items.sort((a, b) => {
+    const aRank = categoryRank.get(a.text) ?? Number.MAX_SAFE_INTEGER;
+    const bRank = categoryRank.get(b.text) ?? Number.MAX_SAFE_INTEGER;
+
+    if (aRank !== bRank) {
+      return aRank - bRank;
+    }
+
+    return a.text.localeCompare(b.text);
+  });
+
+  const mainApiCategory = lfFormTypesIndex.items.find(
+    (item) => item.text === 'LFForm Main API',
+  );
+  if (mainApiCategory) {
+    mainApiCategory.collapsed = false;
+  }
+
+  return sidebar;
+}
+
+const apiSidebarItems = buildApiSidebar(typedocSidebar as SidebarItem[]);
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'LFZ Forms',
   description: 'Laserfiche Forms builder toolkit — guides, recipes, and API reference',
   srcDir: 'docs',
+  ignoreDeadLinks: [
+    /\.\.\/README$/,
+    /\.\/README$/,
+    /_media\/template$/,
+    /_media\/LICENSE$/,
+  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -19,6 +85,7 @@ export default defineConfig({
           text: 'Getting Started',
           items: [
             { text: 'LFForm Quick Start', link: '/guide/quick-start' },
+            { text: 'LFForm API Navigation', link: '/guide/lfform-api-navigation' },
             { text: 'Template & Toolchain', link: '/guide/template-setup' },
             { text: 'Custom HTML & Sandbox', link: '/guide/custom-html' },
           ],
@@ -86,7 +153,7 @@ export default defineConfig({
       '/api/': [
         {
           text: 'API Reference',
-          items: typedocSidebar,
+          items: apiSidebarItems,
         },
       ],
     },

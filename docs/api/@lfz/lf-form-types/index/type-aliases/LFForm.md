@@ -1,10 +1,10 @@
-[Documentation](../../../../index.md) / [@lfz/lf-form-types](../../index.md) / [LFForm](../index.md) / LFForm
+[Documentation](../../../../index.md) / [@lfz/lf-form-types](../../index.md) / [index](../index.md) / LFForm
 
 # Type Alias: LFForm\<FieldType\>
 
-> **LFForm**\<`FieldType`\> = `LFFormProperties` & `LFFormGetterApi`\<`FieldType`\> & `LFFormMethodApi`\<`FieldType`\> & `LFFormEventApi`
+> **LFForm**\<`FieldType`\> = [`LFFormProperties`](LFFormProperties.md) & [`LFFormGetterApi`](LFFormGetterApi.md)\<`FieldType`\> & [`LFFormMethodApi`](LFFormMethodApi.md)\<`FieldType`\> & [`LFFormEventApi`](LFFormEventApi.md)
 
-Defined in: index.ts:53
+Defined in: LFForm/index.ts:54
 
 The full LFForm runtime API — the global interface for interacting with
 Laserfiche form fields, settings, and events in JavaScript.
@@ -23,7 +23,7 @@ Core capabilities:
 
 ### FieldType
 
-`FieldType` *extends* `LFFormFieldRef` = `LFFormFieldRef`
+`FieldType` *extends* [`LFFormFieldRef`](LFFormFieldRef.md) = [`LFFormFieldRef`](LFFormFieldRef.md)
 
 The typed field reference used by getter/setter/method APIs.
 
@@ -48,3 +48,7 @@ await LFForm.setFieldValues(formFields.lastName, 'Doe');
 await LFForm.showFields(formFields.firstName);
 await LFForm.addRow(formFields.expenseTable, 2);
 ```
+
+## Sort Strategy
+
+source-order

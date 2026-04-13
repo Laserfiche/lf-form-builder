@@ -10,13 +10,13 @@ Defined in: packages/core/src/lib/utils/tables/setFieldValues.ts:21
 
 ### tableFieldId
 
-[`LFFormId`](../../lf-form-types/LFForm/type-aliases/LFFormId.md)
+[`LFFormId`](../../lf-form-types/index/type-aliases/LFFormId.md)
 
 table field to set values on
 
 ### values
 
-(`string` \| `number` \| `DateTimeFieldValue` \| `GeolocationFieldValue` \| `AddressFieldValue` \| `MultiOptionFieldValue` \| `SingleOptionFieldValue`)[][]
+(`string` \| `number` \| [`DateTimeFieldValue`](../../lf-form-types/index/type-aliases/DateTimeFieldValue.md) \| [`GeolocationFieldValue`](../../lf-form-types/index/type-aliases/GeolocationFieldValue.md) \| [`AddressFieldValue`](../../lf-form-types/index/type-aliases/AddressFieldValue.md) \| [`MultiOptionFieldValue`](../../lf-form-types/index/type-aliases/MultiOptionFieldValue.md) \| [`SingleOptionFieldValue`](../../lf-form-types/index/type-aliases/SingleOptionFieldValue.md))[][]
 
 values to set on the table, order of values dictated by options.valueOrder
 

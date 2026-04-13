@@ -12,13 +12,13 @@ Finds a field by id or array of ids and returns an array of fields. Array is emp
 
 ### FieldType
 
-`FieldType` *extends* `LFFormField` = `LFFormField`
+`FieldType` *extends* [`LFFormField`](../../lf-form-types/index/type-aliases/LFFormField.md) = [`LFFormField`](../../lf-form-types/index/type-aliases/LFFormField.md)
 
 ## Parameters
 
 ### fieldId
 
-[`LFFormIdParam`](../../lf-form-types/LFForm/type-aliases/LFFormIdParam.md)
+[`LFFormIdParam`](../../lf-form-types/index/type-aliases/LFFormIdParam.md)
 
 ## Returns
 

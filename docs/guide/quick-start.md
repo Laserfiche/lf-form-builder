@@ -125,6 +125,7 @@ LFForm.onFormSubmission(async function (event) {
 
 ## Where to Go Next
 
+- [LFForm API Navigation](./lfform-api-navigation.md) - Fast route to Events, Getters, Methods, and helper type references
 - [Template & Toolchain Setup](./template-setup.md) — Build form scripts with Vite and the npm packages
 - [Custom HTML & Sandbox](./custom-html.md) — Using custom HTML, third-party libraries, and iframes
 - [Recipes](/recipes/) — Copy-paste patterns for common form tasks

@@ -16,6 +16,9 @@ import type {
 /**
  * Standard response returned by mutating LFForm methods.
  * On success: `{ success: true }`. On failure: `{ success: false, error: string }`.
+ *
+ * @group LFForm
+ * @category LFForm Methods
  */
 export type LFFormPromiseResponse =
   | { success: true; error?: never }
@@ -24,6 +27,9 @@ export type LFFormPromiseResponse =
 /**
  * Default action button identifiers recognized by `changeActionButton` and `changeActionButtons`.
  * Custom action class strings are also accepted.
+ *
+ * @group LFForm
+ * @category LFForm Methods
  */
 export type LFFormActionButtonDefault =
   | 'Submit'
@@ -60,6 +66,9 @@ export type LFFormActionButtonDefault =
  * await LFForm.setFieldValues(formFields.expenseAmountColumn, [120, 80, 55]);
  * await LFForm.setFieldValues({ fieldId: 31, index: 0 }, 120);
  * ```
+ *
+ * @group LFForm
+ * @category LFForm Methods
  */
 export type LFFormSetFieldValues = <
   FieldValType extends LFFormField | LFFormField[] = LFFormField,
@@ -96,7 +105,7 @@ export type LFFormSetFieldValues = <
  * Await these calls to ensure changes are applied before continuing.
  * 
  * @group LFForm
- * @category LFForm Methods
+ * @category LFForm Main API
  */
 export type LFFormMethodApi<FieldType extends LFFormFieldRef = LFFormFieldRef> =
   {

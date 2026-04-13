@@ -12,7 +12,7 @@ Updates the number of rows in a table field dynamically by row count
 
 ### tableFieldId
 
-[`LFFormId`](../../lf-form-types/LFForm/type-aliases/LFFormId.md)
+[`LFFormId`](../../lf-form-types/index/type-aliases/LFFormId.md)
 
 table field to update
 

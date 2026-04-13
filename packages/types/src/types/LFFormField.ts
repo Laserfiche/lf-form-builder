@@ -15,6 +15,9 @@ import {
  *
  * @remarks
  * Key names match the `componentType` string on each field (e.g. `'SingleLine'`, `'Number'`, `'DateTime'`).
+ *
+ * @group Types
+ * @category Field Types
  */
 export type ComponentTypes = {
   SingleLine: TextField;
@@ -167,7 +170,12 @@ export type SingleOptionFieldValue = {
   /** Value entered in the "Other" choice input, if applicable. */
   otherChoiceValue?: string;
 };
-/** Union of all supported get/set field value types. */
+/**
+ * Union of all supported get/set field value types.
+ *
+ * @group Types
+ * @category Field Types
+ */
 export type AllFieldValueTypes =
   | SingleLineFieldValue
   | NumberLineFieldValue
@@ -341,7 +349,12 @@ export type LFFormFormPart = BaseField & {
   };
 };
 
-/** Union of all concrete LFForm field types. */
+/**
+ * Union of all concrete LFForm field types.
+ *
+ * @group Types
+ * @category Field Types
+ */
 export type LFFormField = ComponentTypes[keyof ComponentTypes];
 
 // Non-distributive: treats union F as a whole, so LFFormExtractComponentType<LFFormField> → keyof ComponentTypes
@@ -349,8 +362,26 @@ export type LFFormExtractComponentType<F> = [F] extends [{ componentType: infer 
   ? CT
   : keyof ComponentTypes;
 
+/**
+ * Value type returned by `LFForm.getFieldValues` for a field type.
+ *
+ * @group Types
+ * @category Field Types
+ */
 export type LFFormFieldValueType<FieldType extends LFFormField = LFFormField> = FieldType['__getValueType'];
+/**
+ * Value type accepted by `LFForm.setFieldValues` for a field type.
+ *
+ * @group Types
+ * @category Field Types
+ */
 export type LFFormSetFieldValueType<FieldType extends LFFormField = LFFormField> = FieldType['__setValueType'];
+/**
+ * Settings shape accepted by `LFForm.changeFieldSettings` for a field type.
+ *
+ * @group Types
+ * @category Field Types
+ */
 export type LFFormChangeFieldSettingsType<FieldType extends LFFormField = LFFormField> = FieldType['__changeSettings'];
 // export type LFFormActionButtonPart = BaseField & { componentType: '' };
 

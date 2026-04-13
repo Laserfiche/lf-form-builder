@@ -11,7 +11,7 @@ export type LFFormStepState = { id: string; name: string } | null;
  * Branch behavior by step, stage, or language as needed.
  * 
  * @group LFForm
- * @category LFForm Properties
+ * @category LFForm Main API
  */
 export type LFFormProperties = {
   /** Current workflow step, or `null` if no step is active. */

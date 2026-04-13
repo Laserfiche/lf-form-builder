@@ -16,6 +16,19 @@ npm install @lfz/lf-form-types
 import type { LFForm, LFFormField, LFFormId, LFFormIdParam } from '@lfz/lf-form-types';
 ```
 
+### LFForm-first imports
+
+Use focused subpaths when you want the API surface to match LFForm behavior domains.
+
+```typescript
+import type { LFForm, LFFormGetterApi, LFFormMethodApi, LFFormEventApi } from '@lfz/lf-form-types/lfform';
+import type { LFFormSupportedEvents, LFFormEventPayloadMap } from '@lfz/lf-form-types/events';
+import type { LFFormGetFieldValues, LFFormIdParam } from '@lfz/lf-form-types/getters';
+import type { LFFormSetFieldValues, LFFormPromiseResponse } from '@lfz/lf-form-types/methods';
+import type { LFFormField, BaseFieldSettings } from '@lfz/lf-form-types/fields';
+import { isLfFormId } from '@lfz/lf-form-types/utils';
+```
+
 ## Documentation
 
 - Quick start: `docs/quick-start.md`
@@ -51,4 +64,4 @@ import type { LFForm, LFFormField, LFFormId, LFFormIdParam } from '@lfz/lf-form-
 
 ## Modules
 
-- [LFForm](LFForm/index.md)
+- [index](index/index.md)

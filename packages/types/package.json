@@ -28,6 +28,30 @@
     ".": {
       "import": "./lib/index.js",
       "types": "./lib/index.d.ts"
+    },
+    "./lfform": {
+      "import": "./lib/lfform.js",
+      "types": "./lib/lfform.d.ts"
+    },
+    "./events": {
+      "import": "./lib/events.js",
+      "types": "./lib/events.d.ts"
+    },
+    "./getters": {
+      "import": "./lib/getters.js",
+      "types": "./lib/getters.d.ts"
+    },
+    "./methods": {
+      "import": "./lib/methods.js",
+      "types": "./lib/methods.d.ts"
+    },
+    "./fields": {
+      "import": "./lib/fields.js",
+      "types": "./lib/fields.d.ts"
+    },
+    "./utils": {
+      "import": "./lib/utils.js",
+      "types": "./lib/utils.d.ts"
     }
   },
   "files": [

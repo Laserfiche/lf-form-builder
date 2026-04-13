@@ -2,7 +2,7 @@
 
 # Type Alias: PatchEntryMetadataOptions
 
-> **PatchEntryMetadataOptions** = [`DefaultRepositoryAPIOptions`](DefaultRepositoryAPIOptions.md)\<\{ `newMetadata`: `LFFormField`[]; \}\>
+> **PatchEntryMetadataOptions** = [`DefaultRepositoryAPIOptions`](DefaultRepositoryAPIOptions.md)\<\{ `newMetadata`: [`LFFormField`](../../lf-form-types/index/type-aliases/LFFormField.md)[]; \}\>
 
 Defined in: packages/core/src/lib/api/template/patchEntryMetadata.ts:73
 

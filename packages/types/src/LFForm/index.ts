@@ -1,5 +1,5 @@
 /** @module LFForm */
-import { LFFormEventApi } from './events.js';
+import { LFFormProperties } from './properties.js';
 import {
   LFFormFieldRef,
   LFFormGetterApi,
@@ -7,7 +7,7 @@ import {
   LFFormIdParam,
 } from './getters.js';
 import { LFFormMethodApi } from './methods.js';
-import { LFFormProperties } from './properties.js';
+import { LFFormEventApi } from './events.js';
 
 export type { LFFormId, LFFormIdParam };
 
@@ -48,7 +48,8 @@ export type { LFFormId, LFFormIdParam };
  * @template FieldType - The typed field reference used by getter/setter/method APIs.
  * @group LFForm
  * @groupDescription The LFForm API for interacting with form fields, settings, and events.
- * @category LFForm API
+ * @category LFForm Main API
+ * @sortStrategy source-order
  */
 export type LFForm<FieldType extends LFFormFieldRef = LFFormFieldRef> =
   LFFormProperties &

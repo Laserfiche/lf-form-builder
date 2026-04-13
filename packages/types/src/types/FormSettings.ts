@@ -14,6 +14,9 @@
  *   ],
  * });
  * ```
+ *
+ * @group Types
+ * @category Form Settings
  */
 export type LFFormChangeFormSettings = {
   /** Form title displayed at the top of the form. */

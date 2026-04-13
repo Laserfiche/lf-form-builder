@@ -340,7 +340,7 @@ Returns the number of frames (either <frame> or <iframe> elements) in the window
 
 ### LFForm
 
-> **LFForm**: [`LFForm`](../../lf-form-types/LFForm/type-aliases/LFForm.md)
+> **LFForm**: [`LFForm`](../../lf-form-types/index/type-aliases/LFForm.md)
 
 Defined in: packages/core/src/global.d.ts:5
 
