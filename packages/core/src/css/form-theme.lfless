@@ -85,6 +85,80 @@
 
 // #endregion
 
+// #region Print Styles
+// override disabled checkbox/radio colors for better visibility in printouts
+& when (@use-darker-radios =true) {
+  @media print {
+    input[type="radio"] {
+      /* Remove native browser styling */
+      -webkit-appearance: none;
+      appearance: none;
+
+      /* Re-create the box/circle */
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border: 1px solid @print-radio-color;
+      border-radius: 6px;
+      /* Force a dark border */
+      // background: #fff;
+      vertical-align: middle;
+      position: relative;
+      print-color-adjust: exact;
+      /* Standard */
+      -webkit-print-color-adjust: exact;
+      /* Chrome/Safari */
+    }
+
+    /* Style for Checked Radio Buttons */
+    input[type="radio"]:checked::before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 6px;
+      height: 6px;
+      background: @print-radio-color;
+      border-radius: 50%;
+    }
+  }
+}
+
+& when (@use-darker-checkboxes =true) {
+  @media print {
+    input[type="checkbox"] {
+      /* Remove native browser styling */
+      -webkit-appearance: none;
+      appearance: none;
+
+      /* Re-create the box/circle */
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border: 1px solid @print-checkbox-color;
+      /* Force a dark border */
+      // background: #fff;
+      vertical-align: middle;
+      position: relative;
+      print-color-adjust: exact;
+      /* Standard */
+      -webkit-print-color-adjust: exact;
+      /* Chrome/Safari */
+    }
+
+    /* Style for Checked Checkboxes */
+    input[type="checkbox"]:checked::before {
+      content: "\2713";
+      /* Unicode checkmark */
+      position: absolute;
+      top: -2px;
+      left: 1px;
+      font-size: 10px;
+      color: @print-checkbox-color;
+    }
+  }
+}
+
 // #region Dark Mode
 & when (@dark-mode =true) {
   @media (prefers-color-scheme: dark) {
@@ -284,7 +358,8 @@ fl-page>.line>.Section {
   }
 }
 
-.fl-component .cf-field .auto-fill-btn-container>button, .lf-secondary-button {
+.fl-component .cf-field .auto-fill-btn-container>button,
+.lf-secondary-button {
   color: @secondary-button-font-color;
   background-color: @secondary-button-bg;
   border: 1px darkgray solid;
