@@ -30,7 +30,7 @@ API Client to pass along to caller api functions. Will default to the 'Default' 
 
 ### entryIdField?
 
-> `optional` **entryIdField?**: [`LFFormField`](../../lf-form-types/type-aliases/LFFormField.md) \| [`LFFormId`](../../lf-form-types/type-aliases/LFFormId.md) \| `string` \| `number`
+> `optional` **entryIdField?**: `LFFormField` \| [`LFFormId`](../../lf-form-types/LFForm/type-aliases/LFFormId.md) \| `string` \| `number`
 
 Defined in: packages/core/src/lib/api/repositoryApiHelpers.ts:45
 

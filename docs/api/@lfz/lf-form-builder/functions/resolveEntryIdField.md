@@ -12,7 +12,7 @@ Required helper function for all api operations. Do not modify.
 
 ### entryIdField?
 
-`string` \| `number` \| [`LFFormField`](../../lf-form-types/type-aliases/LFFormField.md) \| [`LFFormId`](../../lf-form-types/type-aliases/LFFormId.md)
+`string` \| `number` \| `LFFormField` \| [`LFFormId`](../../lf-form-types/LFForm/type-aliases/LFFormId.md)
 
 ## Returns
 

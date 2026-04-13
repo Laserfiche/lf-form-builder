@@ -10,7 +10,7 @@ Defined in: packages/core/src/lib/utils/lfjsx.ts:101
 
 ### forField
 
-[`LFFormId`](../../lf-form-types/type-aliases/LFFormId.md)
+[`LFFormId`](../../lf-form-types/LFForm/type-aliases/LFFormId.md)
 
 ### prop
 

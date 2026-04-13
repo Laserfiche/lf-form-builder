@@ -18,7 +18,7 @@ Defined in: packages/core/src/components/modal/index.ts:140
 
 ##### formField
 
-[`LFFormId`](../../lf-form-types/type-aliases/LFFormId.md)
+[`LFFormId`](../../lf-form-types/LFForm/type-aliases/LFFormId.md)
 
 Field to attach the modal to. Can be a Section or CustomHtml field
 
@@ -120,7 +120,7 @@ Defined in: packages/core/src/components/modal/index.ts:298
 
 ### hide()
 
-> **hide**(): `Promise`\<[`LFFormPromiseResponse`](../../lf-form-types/type-aliases/LFFormPromiseResponse.md)\>
+> **hide**(): `Promise`\<`LFFormPromiseResponse`\>
 
 Defined in: packages/core/src/components/modal/index.ts:197
 
@@ -128,7 +128,7 @@ Hide the modal
 
 #### Returns
 
-`Promise`\<[`LFFormPromiseResponse`](../../lf-form-types/type-aliases/LFFormPromiseResponse.md)\>
+`Promise`\<`LFFormPromiseResponse`\>
 
 Promise indicating the modal is hidden
 
@@ -164,7 +164,7 @@ The callback function to execute on close
 
 ### render()
 
-> **render**(): `Promise`\<[`LFFormPromiseResponse`](../../lf-form-types/type-aliases/LFFormPromiseResponse.md)\> \| `Promise`\<`void`\>
+> **render**(): `Promise`\<`LFFormPromiseResponse`\> \| `Promise`\<`void`\>
 
 Defined in: packages/core/src/components/modal/index.ts:215
 
@@ -172,7 +172,7 @@ Render or re-render the modal without hiding/showing
 
 #### Returns
 
-`Promise`\<[`LFFormPromiseResponse`](../../lf-form-types/type-aliases/LFFormPromiseResponse.md)\> \| `Promise`\<`void`\>
+`Promise`\<`LFFormPromiseResponse`\> \| `Promise`\<`void`\>
 
 Promise indicating the modal is rendered
 
@@ -286,7 +286,7 @@ modal.setOptions({
 
 ### show()
 
-> **show**(): `Promise`\<[`LFFormPromiseResponse`](../../lf-form-types/type-aliases/LFFormPromiseResponse.md)\>
+> **show**(): `Promise`\<`LFFormPromiseResponse`\>
 
 Defined in: packages/core/src/components/modal/index.ts:178
 
@@ -294,7 +294,7 @@ Show the modal
 
 #### Returns
 
-`Promise`\<[`LFFormPromiseResponse`](../../lf-form-types/type-aliases/LFFormPromiseResponse.md)\>
+`Promise`\<`LFFormPromiseResponse`\>
 
 Promise indicating the modal is shown
 

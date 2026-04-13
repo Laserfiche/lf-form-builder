@@ -1,0 +1,50 @@
+[Documentation](../../../../index.md) / [@lfz/lf-form-types](../../index.md) / [LFForm](../index.md) / LFForm
+
+# Type Alias: LFForm\<FieldType\>
+
+> **LFForm**\<`FieldType`\> = `LFFormProperties` & `LFFormGetterApi`\<`FieldType`\> & `LFFormMethodApi`\<`FieldType`\> & `LFFormEventApi`
+
+Defined in: index.ts:53
+
+The full LFForm runtime API — the global interface for interacting with
+Laserfiche form fields, settings, and events in JavaScript.
+
+Core capabilities:
+- Read and write field values
+- Show, hide, enable, and disable fields
+- Change field and form settings at runtime
+- Add and remove rows/sets in tables and collections
+- Add and remove CSS classes on fields
+- Query fields by predicate or identifier
+- Validate fields
+- Subscribe to field, form, and lookup events
+
+## Type Parameters
+
+### FieldType
+
+`FieldType` *extends* `LFFormFieldRef` = `LFFormFieldRef`
+
+The typed field reference used by getter/setter/method APIs.
+
+## Remarks
+
+- Use a shared `formFields` object and prefer `fieldId` for reliability.
+- Await mutating methods before continuing to ensure changes are applied.
+- Gate mutations when `isReadonly`, `isDisabled`, or `isPrint` is `true`.
+- LFForm is not available in classic designer.
+
+## Example
+
+```javascript
+const formFields = {
+  firstName: { fieldId: 10 },
+  lastName: { fieldId: 11 },
+  expenseTable: { fieldId: 30 },
+};
+
+const name = LFForm.getFieldValues(formFields.firstName);
+await LFForm.setFieldValues(formFields.lastName, 'Doe');
+await LFForm.showFields(formFields.firstName);
+await LFForm.addRow(formFields.expenseTable, 2);
+```

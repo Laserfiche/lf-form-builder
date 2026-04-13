@@ -10,7 +10,7 @@ Defined in: packages/core/src/components/repository/iframe.ts:13
 
 ### customHtmlField?
 
-> `optional` **customHtmlField?**: [`LFFormField`](../../lf-form-types/type-aliases/LFFormField.md) \| [`LFFormId`](../../lf-form-types/type-aliases/LFFormId.md)
+> `optional` **customHtmlField?**: `LFFormField` \| [`LFFormId`](../../lf-form-types/LFForm/type-aliases/LFFormId.md)
 
 Defined in: packages/core/src/components/repository/iframe.ts:16
 

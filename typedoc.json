@@ -1,11 +1,15 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "plugin": ["typedoc-plugin-markdown", "typedoc-vitepress-theme"],
+  "plugin": [
+    "typedoc-plugin-markdown",
+    "typedoc-vitepress-theme"
+  ],
   "entryPointStrategy": "packages",
   "entryPoints": [
-    "packages/*"
+    "packages/*",
   ],
-  "out": "docs/api",
+  "out": "./docs/api",
+  "docsRoot": "./docs",
   "exclude": [
     "**/node_modules/**",
     "**/__tests__/**",

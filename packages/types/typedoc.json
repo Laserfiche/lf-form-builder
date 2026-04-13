@@ -1,0 +1,23 @@
+{
+  "entryPoints": [
+    "src/LFForm/index.ts"
+  ],
+  "alwaysCreateEntryPointModule": true,
+  "categorizeByGroup": true,
+  "navigation": {
+    "includeGroups": true,
+    "includeCategories": true
+  },
+  "groupOrder": [
+    "LFForm",
+    "*"
+  ],
+  "categoryOrder": [
+    "API",
+    "Events",
+    "Getters",
+    "Methods",
+    "Properties",
+    "*"
+  ]
+}

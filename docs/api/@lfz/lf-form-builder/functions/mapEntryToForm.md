@@ -2,7 +2,7 @@
 
 # Function: mapEntryToForm()
 
-> **mapEntryToForm**(`param`): `Promise`\<\{ `entryInfo`: `IEntry`; `setFields`: `PromiseSettledResult`\<[`LFFormField`](../../lf-form-types/type-aliases/LFFormField.md) \| `null`\>[]; \}\>
+> **mapEntryToForm**(`param`): `Promise`\<\{ `entryInfo`: `IEntry`; `setFields`: `PromiseSettledResult`\<`LFFormField` \| `null`\>[]; \}\>
 
 Defined in: packages/core/src/lib/api/template/mapEntryToForm.ts:104
 
@@ -17,7 +17,7 @@ Optionally disables fields after mapping.
 
 ## Returns
 
-`Promise`\<\{ `entryInfo`: `IEntry`; `setFields`: `PromiseSettledResult`\<[`LFFormField`](../../lf-form-types/type-aliases/LFFormField.md) \| `null`\>[]; \}\>
+`Promise`\<\{ `entryInfo`: `IEntry`; `setFields`: `PromiseSettledResult`\<`LFFormField` \| `null`\>[]; \}\>
 
 ## Preserve
 

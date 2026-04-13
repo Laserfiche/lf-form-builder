@@ -10,7 +10,7 @@ Defined in: packages/core/src/components/fieldFormatter.ts:8
 
 ### field
 
-[`LFFormField`](../../lf-form-types/type-aliases/LFFormField.md)
+`LFFormField`
 
 ### type
 
@@ -18,7 +18,7 @@ Defined in: packages/core/src/components/fieldFormatter.ts:8
 
 ### value
 
-`string` \| `number` \| [`DateTimeFieldValue`](../../lf-form-types/type-aliases/DateTimeFieldValue.md) \| [`GeolocationFieldValue`](../../lf-form-types/type-aliases/GeolocationFieldValue.md) \| [`AddressFieldValue`](../../lf-form-types/type-aliases/AddressFieldValue.md) \| [`MultiOptionFieldValue`](../../lf-form-types/type-aliases/MultiOptionFieldValue.md) \| [`SingleOptionFieldValue`](../../lf-form-types/type-aliases/SingleOptionFieldValue.md)
+`string` \| `number` \| `DateTimeFieldValue` \| `GeolocationFieldValue` \| `AddressFieldValue` \| `MultiOptionFieldValue` \| `SingleOptionFieldValue`
 
 ## Returns
 

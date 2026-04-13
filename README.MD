@@ -46,10 +46,10 @@ npm run dev               # Watch + serve examples
 
 ### LFForm Documentation
 
-- Quick start: `docs/quick-start.md`
-- API reference: `docs/api-reference.md`
-- Custom HTML and sandbox integration: `docs/custom-html-sandbox.md`
-- Recipes: `docs/recipes.md`
+- [Quick Start](docs/guide/quick-start.md) — Writing form scripts with the LFForm API
+- [Template & Toolchain Setup](docs/guide/template-setup.md) — Build with Vite and the npm packages
+- [Custom HTML & Sandbox](docs/guide/custom-html.md) — Custom HTML, third-party libraries, and iframes
+- [Recipes](docs/recipes/) — Copy-paste patterns for common form tasks
 
 ## Packages
 

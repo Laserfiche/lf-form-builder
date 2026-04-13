@@ -10,7 +10,7 @@ Defined in: packages/core/src/lib/utils/tables/tableToCSV.ts:66
 
 ### tableFields
 
-[`LFFormId`](../../lf-form-types/type-aliases/LFFormId.md)[]
+[`LFFormId`](../../lf-form-types/LFForm/type-aliases/LFFormId.md)[]
 
 ## Returns
 
