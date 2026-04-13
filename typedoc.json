@@ -3,16 +3,14 @@
   "plugin": ["typedoc-plugin-markdown", "typedoc-vitepress-theme"],
   "entryPointStrategy": "packages",
   "entryPoints": [
-    "packages/types/",
-    "packages/core/"
+    "packages/*"
   ],
   "out": "docs/api",
   "exclude": [
+    "**/node_modules/**",
     "**/__tests__/**",
-    "**/*.test.ts",
     "**/vitest.config.ts",
-    "**/vite.config.lib.ts",
-    "**/tsconfig.*.json"
+    "**/vite.config.lib.ts"
   ],
   "excludePrivate": true,
 }

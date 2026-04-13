@@ -109,3 +109,12 @@ See the [template/](../../_media/template) directory for a ready-to-use starter 
 ## License
 
 [MIT](../../_media/LICENSE)
+
+## Modules
+
+- [](README.md)
+- [plugins](plugins/index.md)
+- [plugins/bundleLfless](plugins/bundleLfless/index.md)
+- [plugins/disableSharedChunking](plugins/disableSharedChunking/index.md)
+- [plugins/generateDirectoryHtml](plugins/generateDirectoryHtml/index.md)
+- [plugins/index](plugins/index/index.md)
