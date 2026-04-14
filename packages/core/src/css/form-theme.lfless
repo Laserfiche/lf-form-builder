@@ -99,7 +99,7 @@
       width: 12px;
       height: 12px;
       border: 1px solid @print-radio-color;
-      border-radius: 6px;
+      border-radius: 50%;
       /* Force a dark border */
       // background: #fff;
       vertical-align: middle;
@@ -650,6 +650,14 @@ fl-radio.fl-component {
   .repeatables-pagination-info,
   .repeatables-pagination-pages {
     flex-basis: auto;
+  }
+  .repeatables-pagination-bottom {
+    & > .center {
+      margin: auto;
+    }
+    & > .spacer {
+      width: 100px;
+    }
   }
 }
 
