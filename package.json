@@ -1,12 +1,12 @@
 {
-  "name": "@lfz/monorepo",
+  "name": "@lfz/form-builder",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nicknaddaf/lf-form-builder.git"
+    "url": "https://github.com/Laserfiche/lfz-form-builder.git"
   },
   "engines": {
     "node": ">=20"
@@ -27,7 +27,7 @@
     "release": "scripts/release.sh",
     "docs:generate": "typedoc",
     "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build",
+    "docs:build": "docs:generate && vitepress build",
     "docs:preview": "vitepress preview"
   },
   "devDependencies": {

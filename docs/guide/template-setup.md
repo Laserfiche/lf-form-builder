@@ -18,7 +18,7 @@ This guide walks you through creating a new Laserfiche Forms project using the s
 Copy the starter template and install dependencies:
 
 ```bash
-npx degit laserfiche/lf-form-builder/template my-forms-project
+npx degit laserfiche/lfz-form-builder/template my-forms-project
 cd my-forms-project
 npm install
 ```

@@ -66,6 +66,7 @@ export default defineConfig({
   title: 'LFZ Forms',
   description: 'Laserfiche Forms builder toolkit — guides, recipes, and API reference',
   srcDir: 'docs',
+  base: process.env.NODE_ENV === 'production' ? '/lfz-form-builder/' : '/',
   ignoreDeadLinks: [
     /\.\.\/README$/,
     /\.\/README$/,
