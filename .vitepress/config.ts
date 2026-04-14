@@ -12,10 +12,10 @@ const LF_FORM_TYPES_CATEGORY_ORDER = [
   'LFForm Main API',
   'LFForm API',
   'LFForm Identifiers',
-  'LFForm Events',
+  'LFForm Properties',
   'LFForm Getters',
   'LFForm Methods',
-  'LFForm Properties',
+  'LFForm Events',
   'Field Types',
   'Field Settings',
   'Form Settings',
@@ -71,6 +71,9 @@ export default defineConfig({
     /\.\/README$/,
     /_media\/template$/,
     /_media\/LICENSE$/,
+  ],
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }]
   ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
