@@ -4,7 +4,7 @@
 
 > **LoadingBarOptions** = `object`
 
-Defined in: packages/core/src/components/makeLoadingBar.ts:1
+Defined in: [packages/core/src/components/makeLoadingBar.ts:1](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/makeLoadingBar.ts#L1)
 
 ## Properties
 
@@ -12,7 +12,7 @@ Defined in: packages/core/src/components/makeLoadingBar.ts:1
 
 > `optional` **containerClass?**: `string`
 
-Defined in: packages/core/src/components/makeLoadingBar.ts:6
+Defined in: [packages/core/src/components/makeLoadingBar.ts:6](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/makeLoadingBar.ts#L6)
 
 ***
 
@@ -20,7 +20,7 @@ Defined in: packages/core/src/components/makeLoadingBar.ts:6
 
 > `optional` **height?**: `number`
 
-Defined in: packages/core/src/components/makeLoadingBar.ts:2
+Defined in: [packages/core/src/components/makeLoadingBar.ts:2](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/makeLoadingBar.ts#L2)
 
 ***
 
@@ -28,7 +28,7 @@ Defined in: packages/core/src/components/makeLoadingBar.ts:2
 
 > `optional` **styles?**: `string`
 
-Defined in: packages/core/src/components/makeLoadingBar.ts:5
+Defined in: [packages/core/src/components/makeLoadingBar.ts:5](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/makeLoadingBar.ts#L5)
 
 ***
 
@@ -36,7 +36,7 @@ Defined in: packages/core/src/components/makeLoadingBar.ts:5
 
 > `optional` **text?**: `string`
 
-Defined in: packages/core/src/components/makeLoadingBar.ts:4
+Defined in: [packages/core/src/components/makeLoadingBar.ts:4](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/makeLoadingBar.ts#L4)
 
 ***
 
@@ -44,4 +44,4 @@ Defined in: packages/core/src/components/makeLoadingBar.ts:4
 
 > `optional` **type?**: `"warning"` \| `"info"` \| `"danger"`
 
-Defined in: packages/core/src/components/makeLoadingBar.ts:3
+Defined in: [packages/core/src/components/makeLoadingBar.ts:3](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/makeLoadingBar.ts#L3)

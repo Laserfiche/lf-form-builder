@@ -4,7 +4,7 @@
 
 > **makeLoadingBar**(`curPrecent`, `loadingBarOptions?`): `string`
 
-Defined in: packages/core/src/components/makeLoadingBar.ts:23
+Defined in: [packages/core/src/components/makeLoadingBar.ts:23](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/makeLoadingBar.ts#L23)
 
 ## Parameters
 

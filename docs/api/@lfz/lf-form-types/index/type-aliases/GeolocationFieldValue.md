@@ -4,7 +4,7 @@
 
 > **GeolocationFieldValue** = `object`
 
-Defined in: types/LFFormField.ts:149
+Defined in: [types/LFFormField.ts:149](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L149)
 
 Value type for Geolocation fields.
 
@@ -14,7 +14,7 @@ Value type for Geolocation fields.
 
 > **latitude**: `number`
 
-Defined in: types/LFFormField.ts:150
+Defined in: [types/LFFormField.ts:150](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L150)
 
 ***
 
@@ -22,4 +22,4 @@ Defined in: types/LFFormField.ts:150
 
 > **longitude**: `number`
 
-Defined in: types/LFFormField.ts:151
+Defined in: [types/LFFormField.ts:151](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L151)

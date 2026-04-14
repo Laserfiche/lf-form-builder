@@ -4,7 +4,7 @@
 
 > **updateTableRows**(`tableFieldId`, `rowCount`): `Promise`\<`void`\>
 
-Defined in: packages/core/src/lib/utils/tables/updateTableRows.ts:10
+Defined in: [packages/core/src/lib/utils/tables/updateTableRows.ts:10](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/lib/utils/tables/updateTableRows.ts#L10)
 
 Updates the number of rows in a table field dynamically by row count
 

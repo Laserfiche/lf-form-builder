@@ -2,7 +2,7 @@
 
 # Class: LFFormModal
 
-Defined in: packages/core/src/components/modal/index.ts:34
+Defined in: [packages/core/src/components/modal/index.ts:34](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/index.ts#L34)
 
 LFFormModal Class
 
@@ -12,7 +12,7 @@ LFFormModal Class
 
 > **new LFFormModal**(`formField`, `name?`, `modalOptions?`): `LFFormModal`
 
-Defined in: packages/core/src/components/modal/index.ts:140
+Defined in: [packages/core/src/components/modal/index.ts:140](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/index.ts#L140)
 
 #### Parameters
 
@@ -82,7 +82,7 @@ docs
 
 > `static` **DEFAULT\_BUTTONS**: [`LFFormButton`](../type-aliases/LFFormButton.md)[]
 
-Defined in: packages/core/src/components/modal/index.ts:44
+Defined in: [packages/core/src/components/modal/index.ts:44](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/index.ts#L44)
 
 ***
 
@@ -90,7 +90,7 @@ Defined in: packages/core/src/components/modal/index.ts:44
 
 > `static` **DEFAULT\_MODAL\_OPTIONS**: `Required`\<[`LFFormModalOptions`](../type-aliases/LFFormModalOptions.md)\>
 
-Defined in: packages/core/src/components/modal/index.ts:36
+Defined in: [packages/core/src/components/modal/index.ts:36](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/index.ts#L36)
 
 ## Methods
 
@@ -98,7 +98,7 @@ Defined in: packages/core/src/components/modal/index.ts:36
 
 > **getDetails**(): `Required`\<[`LFFormModalDetails`](../type-aliases/LFFormModalDetails.md)\>
 
-Defined in: packages/core/src/components/modal/index.ts:260
+Defined in: [packages/core/src/components/modal/index.ts:260](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/index.ts#L260)
 
 #### Returns
 
@@ -110,7 +110,7 @@ Defined in: packages/core/src/components/modal/index.ts:260
 
 > **getOptions**(): `Required`\<[`LFFormModalOptions`](../type-aliases/LFFormModalOptions.md)\>
 
-Defined in: packages/core/src/components/modal/index.ts:298
+Defined in: [packages/core/src/components/modal/index.ts:298](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/index.ts#L298)
 
 #### Returns
 
@@ -122,7 +122,7 @@ Defined in: packages/core/src/components/modal/index.ts:298
 
 > **hide**(): `Promise`\<[`LFFormPromiseResponse`](../../lf-form-types/index/type-aliases/LFFormPromiseResponse.md)\>
 
-Defined in: packages/core/src/components/modal/index.ts:197
+Defined in: [packages/core/src/components/modal/index.ts:197](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/index.ts#L197)
 
 Hide the modal
 
@@ -138,7 +138,7 @@ Promise indicating the modal is hidden
 
 > **onClose**(`button`, `callback`): `void`
 
-Defined in: packages/core/src/components/modal/index.ts:307
+Defined in: [packages/core/src/components/modal/index.ts:307](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/index.ts#L307)
 
 Set close handlers by button key
 
@@ -166,7 +166,7 @@ The callback function to execute on close
 
 > **render**(): `Promise`\<[`LFFormPromiseResponse`](../../lf-form-types/index/type-aliases/LFFormPromiseResponse.md)\> \| `Promise`\<`void`\>
 
-Defined in: packages/core/src/components/modal/index.ts:215
+Defined in: [packages/core/src/components/modal/index.ts:215](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/index.ts#L215)
 
 Render or re-render the modal without hiding/showing
 
@@ -182,7 +182,7 @@ Promise indicating the modal is rendered
 
 > **resetCloseHandlers**(`button?`): `void`
 
-Defined in: packages/core/src/components/modal/index.ts:317
+Defined in: [packages/core/src/components/modal/index.ts:317](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/index.ts#L317)
 
 Reset close handlers by button key
 
@@ -204,7 +204,7 @@ The button key (optional)
 
 > **setDetails**(`modalDetails`): `void`
 
-Defined in: packages/core/src/components/modal/index.ts:247
+Defined in: [packages/core/src/components/modal/index.ts:247](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/index.ts#L247)
 
 *
 This method allows setting the modal's title, content, buttons, and options in one call.
@@ -246,7 +246,7 @@ modal.setDetails({
 
 > **setOptions**(`modalOptions`): `void`
 
-Defined in: packages/core/src/components/modal/index.ts:291
+Defined in: [packages/core/src/components/modal/index.ts:291](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/index.ts#L291)
 
 Set the modal options
 
@@ -288,7 +288,7 @@ modal.setOptions({
 
 > **show**(): `Promise`\<[`LFFormPromiseResponse`](../../lf-form-types/index/type-aliases/LFFormPromiseResponse.md)\>
 
-Defined in: packages/core/src/components/modal/index.ts:178
+Defined in: [packages/core/src/components/modal/index.ts:178](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/index.ts#L178)
 
 Show the modal
 
@@ -304,7 +304,7 @@ Promise indicating the modal is shown
 
 > `static` **getModalInstance**(`name`): `LFFormModal`
 
-Defined in: packages/core/src/components/modal/index.ts:46
+Defined in: [packages/core/src/components/modal/index.ts:46](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/index.ts#L46)
 
 #### Parameters
 

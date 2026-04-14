@@ -4,6 +4,6 @@
 
 > **LFFormStepState** = \{ `id`: `string`; `name`: `string`; \} \| `null`
 
-Defined in: LFForm/properties.ts:2
+Defined in: [LFForm/properties.ts:2](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L2)
 
 Current workflow step or stage identifier, or `null` when not in a workflow.

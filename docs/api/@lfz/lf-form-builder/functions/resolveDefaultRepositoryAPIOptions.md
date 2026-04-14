@@ -4,7 +4,7 @@
 
 > **resolveDefaultRepositoryAPIOptions**(`options`): `Promise`\<`Required`\<`Omit`\<[`DefaultRepositoryAPIOptions`](../type-aliases/DefaultRepositoryAPIOptions.md)\<`never`\>, `"entryIdField"` \| `"options"`\>\> & `object`\>
 
-Defined in: packages/core/src/lib/api/repositoryApiHelpers.ts:65
+Defined in: [packages/core/src/lib/api/repositoryApiHelpers.ts:65](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/lib/api/repositoryApiHelpers.ts#L65)
 
 Required helper function for all api operations. Do not modify.
 

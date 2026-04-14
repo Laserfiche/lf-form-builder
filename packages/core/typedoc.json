@@ -1,3 +1,4 @@
 {
-  "tsconfig": "tsconfig.lib.json"
+  "tsconfig": "tsconfig.lib.json",
+  "excludeExternals": true,
 }

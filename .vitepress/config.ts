@@ -66,12 +66,14 @@ export default defineConfig({
   title: 'LFZ Forms',
   description: 'Laserfiche Forms builder toolkit — guides, recipes, and API reference',
   srcDir: 'docs',
-  base: process.env.NODE_ENV === 'production' ? '/lfz-form-builder/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/lf-form-toolkit/' : '/',
   ignoreDeadLinks: [
     /\.\.\/README$/,
     /\.\/README$/,
     /_media\/template$/,
     /_media\/LICENSE$/,
+    /\.\/(show-hide-fields|block-submission-validation|add-table-rows|table-entry-document-links|dynamic-labels|localize-labels|cancel-lookup|reset-fields|typescript-types)$/,
+    /\.\/@lfz\/(form-builder-examples|lf-form-builder|lf-form-types)\/index$/,
   ],
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }]

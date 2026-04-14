@@ -29,5 +29,6 @@
     "Form Settings",
     "Utilities",
     "*"
-  ]
+  ],
+  "excludeExternals": true
 }

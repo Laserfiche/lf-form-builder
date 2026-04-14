@@ -2,7 +2,7 @@
 
 # Class: AdobeSignApi
 
-Defined in: packages/core/src/lib/api/adobeSign/index.ts:1
+Defined in: [packages/core/src/lib/api/adobeSign/index.ts:1](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/lib/api/adobeSign/index.ts#L1)
 
 ## Constructors
 
@@ -10,7 +10,7 @@ Defined in: packages/core/src/lib/api/adobeSign/index.ts:1
 
 > **new AdobeSignApi**(`apiUrl?`, `authCode?`): `AdobeSignApi`
 
-Defined in: packages/core/src/lib/api/adobeSign/index.ts:2
+Defined in: [packages/core/src/lib/api/adobeSign/index.ts:2](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/lib/api/adobeSign/index.ts#L2)
 
 #### Parameters
 
@@ -32,7 +32,7 @@ Defined in: packages/core/src/lib/api/adobeSign/index.ts:2
 
 > `optional` **apiUrl?**: `string`
 
-Defined in: packages/core/src/lib/api/adobeSign/index.ts:2
+Defined in: [packages/core/src/lib/api/adobeSign/index.ts:2](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/lib/api/adobeSign/index.ts#L2)
 
 ## Methods
 
@@ -40,7 +40,7 @@ Defined in: packages/core/src/lib/api/adobeSign/index.ts:2
 
 > **init**(`apiUrl?`, `authCode?`): `void`
 
-Defined in: packages/core/src/lib/api/adobeSign/index.ts:6
+Defined in: [packages/core/src/lib/api/adobeSign/index.ts:6](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/lib/api/adobeSign/index.ts#L6)
 
 #### Parameters
 

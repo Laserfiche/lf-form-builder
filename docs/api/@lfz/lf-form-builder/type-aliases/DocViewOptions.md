@@ -4,7 +4,7 @@
 
 > **DocViewOptions** = `Required`\<`Omit`\<[`DefaultRepositoryAPIOptions`](DefaultRepositoryAPIOptions.md)\<[`IframeOptions`](IframeOptions.md) & `object`\>, `"apiClient"`\>\>
 
-Defined in: packages/core/src/components/repository/docView.ts:14
+Defined in: [packages/core/src/components/repository/docView.ts:14](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/repository/docView.ts#L14)
 
 DocViewOptions is the options object that is passed to the DocView constructor.
 

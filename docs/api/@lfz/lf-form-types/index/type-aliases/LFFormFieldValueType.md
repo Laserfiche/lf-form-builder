@@ -4,7 +4,7 @@
 
 > **LFFormFieldValueType**\<`FieldType`\> = `FieldType`\[`"__getValueType"`\]
 
-Defined in: types/LFFormField.ts:371
+Defined in: [types/LFFormField.ts:371](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L371)
 
 Value type returned by `LFForm.getFieldValues` for a field type.
 

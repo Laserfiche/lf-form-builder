@@ -4,7 +4,7 @@
 
 > **LFFormChangeFormSettings** = `object`
 
-Defined in: types/FormSettings.ts:21
+Defined in: [types/FormSettings.ts:21](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/FormSettings.ts#L21)
 
 Settings object accepted by `LFForm.changeFormSettings()` to update
 form-level title, description, browser title, and pagination labels.
@@ -29,7 +29,7 @@ await LFForm.changeFormSettings({
 
 > `optional` **title?**: `string`
 
-Defined in: types/FormSettings.ts:23
+Defined in: [types/FormSettings.ts:23](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/FormSettings.ts#L23)
 
 Form title displayed at the top of the form.
 
@@ -39,7 +39,7 @@ Form title displayed at the top of the form.
 
 > `optional` **browserTitle?**: `string`
 
-Defined in: types/FormSettings.ts:25
+Defined in: [types/FormSettings.ts:25](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/FormSettings.ts#L25)
 
 Updates the browser tab / window title.
 
@@ -49,7 +49,7 @@ Updates the browser tab / window title.
 
 > `optional` **description?**: `string`
 
-Defined in: types/FormSettings.ts:27
+Defined in: [types/FormSettings.ts:27](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/FormSettings.ts#L27)
 
 Form description text displayed below the title.
 
@@ -59,7 +59,7 @@ Form description text displayed below the title.
 
 > `optional` **pagination?**: `object`[]
 
-Defined in: types/FormSettings.ts:29
+Defined in: [types/FormSettings.ts:29](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/FormSettings.ts#L29)
 
 Per-page pagination label and button overrides.
 

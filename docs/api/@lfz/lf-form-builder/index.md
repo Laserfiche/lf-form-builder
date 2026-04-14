@@ -10,6 +10,9 @@ Utilities, components, and Vite plugins for building custom Laserfiche Forms.
 npm install @lfz/lf-form-builder
 ```
 
+For a working starter setup, see [../../template/README.md](../../_media/README.md).
+For end-user guides and recipes, see [../../docs/guide/template-setup.md](../../_media/template-setup.md) and [../../docs/recipes/index.md](../../_media/index.md).
+
 ## What's included
 
 ### Utilities
@@ -34,10 +37,10 @@ npm install @lfz/lf-form-builder
 ### Components
 
 - **`fieldFormatter`** — Format field display values
-- **`fullFieldHtml`** — Render full field markup
+- **`generateFullFieldHtml`** / **`fullFieldHtml`** — Render full field markup
 - **`makeLoadingBar`** — Loading indicator
-- **`starRating`** — Star rating input
-- **Modal** — Modal dialog component
+- **`registerStarHandler`** / **`registerAllStarComponents`** — Star rating behavior
+- **`LFFormModal`** — Modal dialog component
 - **DocView / IframeView** — Repository document viewers
 
 ### Vite plugins
@@ -105,6 +108,8 @@ Import base styles in your `.lfless` files:
 ## Quick start
 
 See the [template/](../../_media/template) directory for a ready-to-use starter project.
+
+If you are learning the runtime API itself, start with [../../docs/guide/quick-start.md](../../_media/quick-start.md) and [../../docs/guide/lfform-api-navigation.md](../../_media/lfform-api-navigation.md).
 
 ## License
 

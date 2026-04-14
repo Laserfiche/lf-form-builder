@@ -4,7 +4,7 @@
 
 > **CheckboxField** = `BaseField` & `object`
 
-Defined in: types/LFFormField.ts:241
+Defined in: [types/LFFormField.ts:241](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L241)
 
 Checkbox field (multi-select). Value type is `{ value: string[]; otherChoiceValue?: string }`.
 

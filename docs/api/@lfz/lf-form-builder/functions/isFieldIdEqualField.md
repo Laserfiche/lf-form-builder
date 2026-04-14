@@ -4,7 +4,7 @@
 
 > **isFieldIdEqualField**(`id`, `field`): `boolean`
 
-Defined in: packages/core/src/lib/api/template/mapEntryToForm.ts:84
+Defined in: [packages/core/src/lib/api/template/mapEntryToForm.ts:84](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/lib/api/template/mapEntryToForm.ts#L84)
 
 Checks if a field id is equal to a field. Can also check equivalence of two fields.
 
