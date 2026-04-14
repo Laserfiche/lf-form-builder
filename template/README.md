@@ -1,10 +1,15 @@
 # Laserfiche Forms Builder — Starter Template
 
+## Prerequisites
+
+- Node.js 20+
+- Git
+
 ## Getting Started
 
 1. **Clone or copy this template:**
    ```bash
-   npx degit laserfiche/lf-form-builder/template my-forms-project
+  npx degit laserfiche/lfz-form-builder/template my-forms-project
    cd my-forms-project
    ```
 
@@ -87,6 +92,17 @@ void lfForm;
 ```
 
 Template global typing is declared in `src/global.d.ts` so `window.LFForm` and `LFForm` are typed automatically.
+
+For larger codebases, you can mirror the docs structure with focused subpath imports:
+
+```typescript
+import type { LFForm, LFFormEventApi, LFFormGetterApi, LFFormMethodApi } from '@lfz/lf-form-types/lfform';
+import type { LFFormSupportedEvents } from '@lfz/lf-form-types/events';
+import type { LFFormGetFieldValues } from '@lfz/lf-form-types/getters';
+import type { LFFormSetFieldValues } from '@lfz/lf-form-types/methods';
+```
+
+See `../docs/guide/lfform-api-navigation.md` for the matching docs layout.
 
 ## Adding npm Dependencies
 

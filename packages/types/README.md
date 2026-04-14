@@ -27,18 +27,30 @@ import type { LFFormField, BaseFieldSettings } from '@lfz/lf-form-types/fields';
 import { isLfFormId } from '@lfz/lf-form-types/utils';
 ```
 
+### Main API vs auxiliary types
+
+The docs are organized in two tiers:
+
+- **Main LFForm API** — `LFForm`, `LFFormEventApi`, `LFFormGetterApi`, `LFFormMethodApi`
+- **Auxiliary types** — identifiers, event payloads, field/settings unions, and runtime helpers grouped by use
+
+Use the main API pages when you want a guided overview of the LFForm runtime surface, then move into the supporting type groups for exact payload and settings details.
+
 ## Documentation
 
-- Quick start: `docs/quick-start.md`
-- API reference: `docs/api-reference.md`
-- Custom HTML and sandbox integration: `docs/custom-html-sandbox.md`
-- Recipes: `docs/recipes.md`
+- [LFForm Quick Start](../../docs/guide/quick-start.md)
+- [LFForm API Navigation](../../docs/guide/lfform-api-navigation.md)
+- [Template & Toolchain Setup](../../docs/guide/template-setup.md)
+- [Custom HTML & Sandbox](../../docs/guide/custom-html.md)
+- [Recipes](../../docs/recipes/index.md)
+- [Generated API Reference](../../docs/api/index.md)
 
 ## What's included
 
 ### Core types
 
 - **`LFForm`** — Full interface for the `LFForm` global (getFieldValues, setFieldValues, findFields, changeFieldSettings, subscribe, etc.)
+- **`LFFormEventApi`** / **`LFFormGetterApi`** / **`LFFormMethodApi`** — The core LFForm behavior domains surfaced as separate main API pages
 - **`LFFormField`** — Union of all field component types (TextField, NumberField, DateField, AddressField, CheckboxField, RadioField, DropdownField, TableField, CollectionField, etc.)
 - **`LFFormId`** / **`LFFormIdParam`** — Field identifiers (by fieldId, variableId, or variableName)
 
