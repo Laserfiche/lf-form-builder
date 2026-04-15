@@ -3,8 +3,8 @@ import {
   findField,
   findFieldByIdParam,
   findFieldOrNull,
-} from '../../src/lib/findFieldByLFFormId';
-import { getLFFormMock, type LFFormTestMock } from '../mocks/lfForm.mock';
+} from '../src/lib/findFieldByLFFormId';
+import { getLFFormMock, type LFFormTestMock } from './mocks/lfForm.mock';
 
 type FindFieldLFFormMock = Pick<
   LFFormTestMock,

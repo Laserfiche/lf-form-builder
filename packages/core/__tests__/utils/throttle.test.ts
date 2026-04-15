@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { throttle } from '../../../src/lib/utils/throttle';
+import { throttle } from '../../src/lib/utils/throttle';
 
 describe('throttle', () => {
   it('calls callback immediately on first invocation', () => {

@@ -1,6 +1,6 @@
 import { describe, expect, it, beforeEach } from 'vitest';
-import { setTableFieldValues } from '../../../../src/lib/utils/tables/setFieldValues';
-import { getLFFormMock, type LFFormTestMock } from '../../../mocks/lfForm.mock';
+import { setTableFieldValues } from '../../../src/lib/utils/tables/setFieldValues';
+import { getLFFormMock, type LFFormTestMock } from '../../mocks/lfForm.mock';
 
 type SetTableFieldValuesLFFormMock = Pick<
   LFFormTestMock,

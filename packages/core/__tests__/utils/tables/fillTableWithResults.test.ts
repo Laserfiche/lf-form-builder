@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { fillTableWithGenericResults } from '../../../../src/lib/utils/tables/fillTableWithResults';
-import { getLFFormMock, type LFFormTestMock } from '../../../mocks/lfForm.mock';
+import { fillTableWithGenericResults } from '../../../src/lib/utils/tables/fillTableWithResults';
+import { getLFFormMock, type LFFormTestMock } from '../../mocks/lfForm.mock';
 import type { LFFormChangeFieldSettingsType, LFFormSetFieldValueType } from '@lfz/lf-form-types';
 
 type FillTableLFFormMock = Pick<

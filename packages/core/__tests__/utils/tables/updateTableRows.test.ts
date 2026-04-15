@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { updateTableRows } from '../../../../src/lib/utils/tables/updateTableRows';
-import { getLFFormMock, type LFFormTestMock } from '../../../mocks/lfForm.mock';
+import { updateTableRows } from '../../../src/lib/utils/tables/updateTableRows';
+import { getLFFormMock, type LFFormTestMock } from '../../mocks/lfForm.mock';
 
 type UpdateTableRowsLFFormMock = Pick<
   LFFormTestMock,

@@ -2,9 +2,9 @@ import { describe, expect, it } from 'vitest';
 import {
   resolveDefaultRepositoryAPIOptions,
   resolveEntryIdField,
-} from '../../../src/lib/api/repositoryApiHelpers';
-import { getLFFormMock, type LFFormTestMock } from '../../mocks/lfForm.mock';
-import { createRepositoryClientMock } from '../../mocks/repositoryClient.mock';
+} from '../../src/lib/api/repositoryApiHelpers';
+import { getLFFormMock, type LFFormTestMock } from '../mocks/lfForm.mock';
+import { createRepositoryClientMock } from '../mocks/repositoryClient.mock';
 
 type RepositoryApiHelpersLFFormMock = Pick<
   LFFormTestMock,

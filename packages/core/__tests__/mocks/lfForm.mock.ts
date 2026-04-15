@@ -187,4 +187,4 @@ export const getLFFormMockControls = (lfForm: unknown): LFFormMockControls => {
 };
 
 export const getLFFormMock = <T extends object = LFFormTestMock>(): T =>
-  globalThis.LFForm as unknown as T;
+  (globalThis as { LFForm?: LFFormMock }).LFForm as unknown as T;
