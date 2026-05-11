@@ -44,6 +44,7 @@ npm install
 copy .env.example .env.local
 npm run build:core        # Build the core library
 npm run build:examples    # Build example forms
+npm run build:dev:css     # Dev build + compile emitted .less to .css for static serving
 npm run dev               # Watch + serve examples
 ```
 
@@ -77,12 +78,16 @@ If you prefer to run the steps manually:
 # build once (dev mode)
 npm run build:dev --workspace=packages/examples
 
+# build once (dev mode) and emit matching .css files into dist
+npm run build:dev:css
+
 # serve the built dist on port 3000
 npm --workspace=packages/examples run serve
 ```
 
 Notes:
 - `npm run dev` launches the Vite dev server which may use an ephemeral port (not 3000). Use `watch-serve` when you need the files to be available at the same URL/port as production.
+- `npm run build:dev:css` is the easiest one-shot build when you want the static index page to list both `Empower2026.js` and `Empower2026.css`.
 - If `Empower2026.js` looks truncated, stop the server, run the `build:dev` step to completion, then start `serve` so the static server serves the complete bundle.
 
 This is useful during development so you don't need to run `npm run build:core` manually after each change.
@@ -150,6 +155,15 @@ Real-world form implementations demonstrating the library in action:
 - **GoogleMaps** — Address autocomplete and validation
 - **Stripe** — Embedded Stripe checkout via PostMessage
 - **TranslateForm** — Form localization/translation
+
+#### Empower2026 Setup
+
+Before using the Empower2026 example in your own Forms account, import the bundled Laserfiche assets from [packages/examples/src/Forms/Empower2026/Laserfiche Process](c:/empower/code/lfz-form-builder/packages/examples/src/Forms/Empower2026/Laserfiche%20Process):
+
+- Import the process definition: [packages/examples/src/Forms/Empower2026/Laserfiche Process/AdvancedScripting_RG.xml](c:/empower/code/lfz-form-builder/packages/examples/src/Forms/Empower2026/Laserfiche%20Process/AdvancedScripting_RG.xml)
+- Import the web request rules: [packages/examples/src/Forms/Empower2026/Laserfiche Process/RGWebRequestToStripePayment.bri](c:/empower/code/lfz-form-builder/packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToStripePayment.bri) and [packages/examples/src/Forms/Empower2026/Laserfiche Process/RGWebRequestToStripeVerification.bri](c:/empower/code/lfz-form-builder/packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToStripeVerification.bri)
+
+Those imports are required for the example's process actions and Stripe-related web requests to work in your environment.
 
 ## Prerequisites
 
