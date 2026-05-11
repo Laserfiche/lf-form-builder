@@ -61,7 +61,7 @@
 @light-bg-form: white;
 
 // Dark Mode
-& when (@dark-mode = true) {
+:root when (@dark-mode = true) {
   @dark-bg-readonly: rgba(255, 255, 255, 0.05);
   @dark-border-readonly: 1px solid #444;
   @dark-border-primary: #444;

@@ -100,7 +100,8 @@ TypeScript project builds (`tsc -b`) are still used for type-checking workflows,
 Import base styles in your `.lfless` files:
 
 ```less
-@import '@lfz/lf-form-builder/css/form-theme.lfless';
+Add the less file in the first line of the css section like this:
+@import url('http://localhost:3000/Empower2026.less');
 ```
 
 ## Quick start

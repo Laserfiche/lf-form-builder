@@ -70,15 +70,15 @@
 // #endregion
 
 // #region Global Setup
-& when (@dark-mode =false) {
+:root when (@dark-mode = false) {
   color-scheme: only light;
 }
 
-& when (@dark-mode =true) {
+:root when (@dark-mode = true) {
   color-scheme: light dark;
 }
 
-& * {
+:root * {
   font-family: @font-family !important;
   font-size: @base-font-size;
 }
@@ -87,7 +87,7 @@
 
 // #region Print Styles
 // override disabled checkbox/radio colors for better visibility in printouts
-& when (@use-darker-radios =true) {
+:root when (@use-darker-radios = true) {
   @media print {
     input[type="radio"] {
       /* Remove native browser styling */
@@ -124,7 +124,7 @@
   }
 }
 
-& when (@use-darker-checkboxes =true) {
+:root when (@use-darker-checkboxes = true) {
   @media print {
     input[type="checkbox"] {
       /* Remove native browser styling */
@@ -160,7 +160,7 @@
 }
 
 // #region Dark Mode
-& when (@dark-mode =true) {
+:root when (@dark-mode = true) {
   @media (prefers-color-scheme: dark) {
     & {
       background-color: darken(#212529, 5%) !important;
@@ -358,6 +358,8 @@ fl-page>.line>.Section {
   }
 }
 
+.banana{color:orange}
+
 .fl-component .cf-field .auto-fill-btn-container>button,
 .lf-secondary-button {
   color: @secondary-button-font-color;
@@ -377,6 +379,19 @@ fl-page>.line>.Section {
 
   &:active {
     background-color: @secondary-button-active;
+  }
+
+  /* Disabled appearance */
+  &[disabled],
+  &:disabled {
+    opacity: 0.55;
+    pointer-events: none;
+    cursor: not-allowed;
+    text-decoration: none;
+    /* Use CSS custom properties with fallbacks so Less doesn't need to evaluate colors */
+    color: var(--secondary-button-disabled-font, @secondary-button-font-color);
+    background-color: var(--secondary-button-disabled-bg, @secondary-button-bg);
+    border-color: var(--secondary-button-disabled-border, #cfcfcf);
   }
 }
 

@@ -16,6 +16,7 @@ certs
 dist-ssr
 *.local
 .env*
+!.env.example
 passwords.txt
 git-filter-repo
 

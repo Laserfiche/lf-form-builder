@@ -71,6 +71,7 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
+    "@googlemaps/addressvalidation": "^3.2.1",
     "@lfz/lf-form-types": "^0.1.0",
     "@laserfiche/lf-repository-api-client-v2": "^1.0.9"
   }

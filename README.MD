@@ -41,10 +41,52 @@ See [template/README.md](template/README.md) for full documentation.
 git clone https://github.com/Laserfiche/lfz-form-builder.git
 cd lf-form-builder
 npm install
+copy .env.example .env.local
 npm run build:core        # Build the core library
 npm run build:examples    # Build example forms
 npm run dev               # Watch + serve examples
 ```
+
+Use `.env.example` as the committed template for local configuration. Keep actual keys and per-machine overrides in the untracked `.env.local`.
+
+### Watch Mode
+
+For live rebuilds when editing the library or examples, use the repository watch script. It rebuilds `core`, `examples`, and re-compiles emitted `.less` files automatically on save:
+
+```bash
+npm install       # first-time only
+npm run watch     # rebuilds on file changes
+```
+
+## Dev: watch + serve (stable dist on :3000)
+
+During development you may want the convenience of automatic rebuilds plus a static server that serves the built `dist` directory on the stable port `3000` (the same location as production). Use the root helper script that performs an initial dev build, then starts the repository watchers and the static server:
+
+```bash
+# from the repository root
+npm run watch-serve
+```
+
+What it does:
+- runs a `build:dev` for `packages/examples` first (unminified bundle + sourcemaps),
+- then starts the repo-wide watchers (rebuilds on change) and a static `serve` process that serves `packages/examples/dist` on `http://localhost:3000`.
+
+If you prefer to run the steps manually:
+
+```bash
+# build once (dev mode)
+npm run build:dev --workspace=packages/examples
+
+# serve the built dist on port 3000
+npm --workspace=packages/examples run serve
+```
+
+Notes:
+- `npm run dev` launches the Vite dev server which may use an ephemeral port (not 3000). Use `watch-serve` when you need the files to be available at the same URL/port as production.
+- If `Empower2026.js` looks truncated, stop the server, run the `build:dev` step to completion, then start `serve` so the static server serves the complete bundle.
+
+This is useful during development so you don't need to run `npm run build:core` manually after each change.
+
 
 ### LFForm Documentation
 

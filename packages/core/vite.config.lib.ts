@@ -92,6 +92,78 @@ export default defineConfig({
   plugins: [
     externalizeStyleImports(),
     copyStyleAssets(),
+    // Copy HTML plugin files (e.g. stripe.html) into dist so iframe hosts can be served from core package
+    {
+      name: 'copy-html-assets',
+      closeBundle: {
+        sequential: true,
+        async handler() {
+          const patterns = ['**/*.html'];
+          for (const pattern of patterns) {
+            const files = globSync(pattern, { cwd: srcDir });
+            for (const file of files) {
+              const src = path.join(srcDir, file);
+              const dest = path.join(distDir, file);
+              await mkdir(path.dirname(dest), { recursive: true });
+              await copyFile(src, dest);
+            }
+          }
+        },
+      },
+    },
+    // Build a standalone Stripe runtime bundle so Stripe.js no longer
+    // imports lib/utils/postMessageHelper.js as a separate deploy file.
+    {
+      name: 'bundle-stripe-runtime',
+      closeBundle: {
+        sequential: true,
+        async handler() {
+          const { build } = await import('vite');
+          await build({
+            configFile: false,
+            root: __dirname,
+            logLevel: 'error',
+            resolve: {
+              alias: {
+                '@': srcDir,
+                '@lib': path.resolve(srcDir, 'lib'),
+                '@components': path.resolve(srcDir, 'components'),
+                '@css': path.resolve(srcDir, 'css'),
+              },
+            },
+            build: {
+              emptyOutDir: false,
+              minify: false,
+              lib: {
+                entry: path.resolve(srcDir, 'plugins/Stripe/index.ts'),
+                formats: ['es'],
+                fileName: () => 'Stripe',
+              },
+              target: 'esnext',
+              sourcemap: true,
+              rollupOptions: {
+                external: [
+                  /^@lfz\//,
+                  /^@laserfiche\//,
+                  /^vite$/,
+                  /^node:/,
+                  /^less$/,
+                  /^path$/,
+                  /^fs$/,
+                ],
+                output: {
+                  dir: distDir,
+                  format: 'es',
+                  entryFileNames: 'Stripe.js',
+                  inlineDynamicImports: true,
+                  preserveModules: false,
+                },
+              },
+            },
+          });
+        },
+      },
+    },
     dts({
       rollupTypes: false,
       tsconfigPath: path.resolve(__dirname, 'tsconfig.lib.json'),
