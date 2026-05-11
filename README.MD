@@ -119,12 +119,12 @@ import { bundleLfless, disableSharedChunking } from '@lfz/lf-form-builder/plugin
 - **Field rules** — `LFFormFieldRules` (chainable show/hide/CSS class actions)
 - **Safe field helpers** — `showFieldSafe`, `hideFieldSafe`, `setFieldValueSafe`
 - **Templates** — `lfjsx` (reactive field content templates)
-- **Async and HTML helpers** — `waitWithTimeout`, `setCustomHtml`
+- **Async and general utilities** — `waitWithTimeout`, `throttle`, `setCustomHtml`
 - **Messaging utilities** — `PostMessageHelper` and related message types
-- **Table utilities** — `fillTableWithGenericResults`, `setTableFieldValues`, `generateCSV`, `updateTableRows`
-- **API helpers** — `getRepositories`, `searchAsync`, `mapEntryToForm`, `patchEntryMetadata`
-- **Components** — `LFFormModal`, `fullFieldHtml`, `fieldFormatter`, `registerStarHandler`, `makeLoadingBar`, `registerFirstTimeLoad`
-- **Google Maps** — autocomplete and address validation helpers
+- **Table utilities** — `fillTableWithGenericResults`, `setTableFieldValues`, `generateCSV`, `makeCSVDownloadButton`, `makeDownloadTriggerButton`, `updateTableRows`
+- **API helpers** — `getRepositories`, `resolveEntryIdField`, `resolveDefaultRepositoryAPIOptions`, `searchAsync`, `fillTableWithSearchResults`, `defaultSearchOptions`, `mapEntryToForm`, `isFieldIdEqualField`, `patchEntryMetadata`, `AdobeSignApi`
+- **Components** — `LFFormModal`, `generateFullFieldHtml`, `fullFieldHtml`, `fieldFormatter`, `registerStarHandler`, `registerAllStarComponents`, `handleVoteChange`, `onVoteChange`, `makeLoadingBar`, `registerFirstTimeLoad`
+- **Google Maps** — `initGoogleMapsAutocomplete`, `destroyGoogleMapsAutocomplete`, `buildLFAddress`, `initAddressValidation`, `destroyAddressValidation`, `sendValidationFeedback`, `validateAddress`, `validateFeedback`
 - **Repository** — `DocView`, `IframeView`
 - **Vite plugins** — `bundleLfless`, `disableSharedChunking`, `generateDirectoryHtml`
 - **CSS** — LESS variables, mixins, and theme files via `@lfz/lf-form-builder/css/*`
@@ -151,10 +151,8 @@ A minimal starter project configured with Vite, `@lfz/lf-form-builder`, and `@lf
 
 Real-world form implementations demonstrating the library in action:
 - **Empower2025** — Multi-feature form: modals, star ratings, table HTML injection
-- **Empower2026** — Google Maps autocomplete, Stripe checkout, cross-iframe messaging
-- **GoogleMaps** — Address autocomplete and validation
-- **Stripe** — Embedded Stripe checkout via PostMessage
-- **TranslateForm** — Form localization/translation
+- **Empower2026** — lookup-driven loading and CSV export, Google Maps autocomplete with address validation, modal-based Stripe checkout, cross-iframe messaging
+- **TranslateForm** — static form localization with optional translation draft generation
 
 #### Empower2026 Setup
 
@@ -193,4 +191,4 @@ Then run:
 npm run release
 ```
 
-This script bumps `packages/types` and `packages/core`, creates a release commit, and tags the version.
+This script bumps the published package versions, aligns internal dependency ranges used by the examples and template, creates a release commit, and tags the version.
