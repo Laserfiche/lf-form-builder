@@ -10,6 +10,7 @@ interface ImportMetaEnv {
   readonly VITE_STRIPE_FRAME_ORIGIN?: string;
   readonly VITE_STRIPE_FRAME_URL?: string;
   readonly VITE_GOOGLE_API_KEY: string;
+  readonly VITE_TRANSLATION_ENDPOINT?: string;
   readonly VITE_DISABLE_PAGE1?: string;
   readonly VITE_DISABLE_PAGE2?: string;
   readonly VITE_DISABLE_PAGE3?: string;

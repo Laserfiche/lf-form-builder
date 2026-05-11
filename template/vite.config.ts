@@ -21,11 +21,7 @@ for (const [key, value] of formJSList) {
 }
 
 const serverOptions: ServerOptions = {
-  cors: {
-    origin: 'https://sandbox-forms.a.clouddev.laserfiche.com',
-    methods: ['GET', 'POST', 'OPTIONS'],
-    preflightContinue: false,
-  },
+  cors: true,
   headers: {
     'Access-Control-Allow-Private-Network': 'true',
   },

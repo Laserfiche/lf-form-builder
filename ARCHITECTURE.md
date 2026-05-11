@@ -5,10 +5,12 @@ This document describes the structure and design of the lfz-form-builder monorep
 ## Monorepo Structure
 
 ```
+docs/              - VitePress guides and generated API docs
 packages/
 ├── core/          - Main library (@lfz/lf-form-builder)
 ├── types/         - Shared types (@lfz/lf-form-types)
 ├── examples/      - Example forms (non-published)
+scripts/           - Release and workspace helper scripts
 template/          - Starter template for consumers
 ```
 
@@ -29,6 +31,10 @@ template/          - Starter template for consumers
   - `LFFormFieldWhen` for conditional logic (any/all/always)
 
 - **`utils/`** - Utility functions
+  - `async.ts` - Promise timeout helpers
+  - `fieldHtml.ts` - Best-effort Custom HTML field updates
+  - `fieldVisibility.ts` - Safe wrappers for show/hide/set value operations
+  - `postMessageHelper.ts` - Typed iframe and cross-window messaging helper
   - `tables/` - Table field operations (fillTable, setFieldValues, updateRows, CSV)
   - `throttle.ts` - Throttling utility
   - `lfjsx.ts` - JSX-like field value string builder
@@ -40,22 +46,43 @@ template/          - Starter template for consumers
 **`src/components/`** contains reusable UI components:
 - **Modal** - LFFormModal component for modal dialogs
 - **Field components** - fieldFormatter, fullFieldHtml, starRating
-- **generateDirectoryHtml** - Directory listing views
 - **Repository views** - DocView, IframeView for document display
+- **Loading and first-load helpers** - loading bar and lookup masking utilities
+- **Google Maps helpers** - autocomplete and address validation components
+
+### Plugin Architecture
+
+**`src/plugins/`** contains build-time helpers and deployable runtime assets:
+- **`bundleLfless`** - resolves `.lfless` imports into a single emitted Less bundle
+- **`disableSharedChunking`** - forces predictable single-file outputs for form deployments
+- **`generateDirectoryHtml`** - generates the static dist index page used by local serving
+- **`Stripe/`** - Stripe iframe runtime entry and static `stripe.html` host asset
 
 ### CSS/LESS Pipeline
 
-**`src/css/`** and **`src/components/*.lfless`** files use a custom Vite plugin chain:
+**Core package** style assets are preserved for consumers, and **examples** compile emitted Less into deployable CSS when needed.
+
+**Core library pipeline**:
 
 1. **bundleLfless plugin** - Resolves `@import` statements in `.lfless` files using package.json `exports` map
    - Allows `@import '@lfz/lf-form-builder/css/variables';` in `.lfless` files
    - Resolves to actual source location: `src/css/variables.lfless`
    
-2. **copyStyleAssets plugin** - Copies `.lfless` and `.css` files to `dist/` alongside JS
+2. **externalizeStyleImports plugin** - Preserves `.lfless` and `.css` imports in library output
+  - Keeps style imports visible to consuming builds instead of inlining empty modules
+
+3. **copyStyleAssets plugin** - Copies `.lfless` and `.css` files to `dist/` alongside JS
    - Creates import-friendly bundle structure
 
-3. **Export mapping** - `./css/*` export map points to `src/css/*` (not built dist)
-   - Allows consumers to import styles: `import '@lfz/lf-form-builder/css/form-theme.lfless';`
+4. **copy-html-assets plugin** - Copies static HTML assets like `stripe.html` into `dist/`
+
+5. **bundle-stripe-runtime plugin** - Builds a standalone `dist/Stripe.js` runtime for iframe checkout
+
+**Examples package pipeline**:
+
+1. Vite emits `Empower2026.less` alongside `Empower2026.js`
+2. `packages/examples/scripts/compile-less-to-css.js` compiles emitted `.less` files into `.css`
+3. The same script refreshes the generated `dist/index.html` so local static serving lists the CSS artifacts
 
 ### Vite Build Configuration
 
@@ -70,7 +97,11 @@ template/          - Starter template for consumers
 
 - **Multiple entry points** - Via `rollupOptions.input`
   - Main entry: `src/index.ts`
-  - Plugin exports: `src/plugins/bundleLfless.ts`, etc.
+  - Plugin exports: `src/plugins/index.ts`, `bundleLfless.ts`, `disableSharedChunking.ts`, `generateDirectoryHtml.ts`
+
+- **Standalone Stripe runtime build**
+  - Additional close-bundle build emits `dist/Stripe.js` from `src/plugins/Stripe/index.ts`
+  - Used by examples and consumers that host Stripe checkout in an iframe
 
 - **No minification** - `minify: false` preserves readability for library consumers
 
@@ -92,9 +123,12 @@ See [packages/core/src/index.ts](packages/core/src/index.ts) for complete export
 
 - **Field utilities** - `findField`, `findFieldByIdParam`, `findFieldOrNull`
 - **Field rules** - `LFFormFieldRules` chainable builder
+- **Safe field helpers** - `showFieldSafe`, `hideFieldSafe`, `setFieldValueSafe`
+- **Async and HTML helpers** - `waitWithTimeout`, `setCustomHtml`
+- **Messaging utilities** - `PostMessageHelper` and related message typing exports
 - **Table utilities** - `fillTableWithGenericResults`, `setTableFieldValues`, `updateTableRows`
 - **Search/API** - `searchAsync`, `resolveEntryIdField`, `resolveDefaultRepositoryAPIOptions`
-- **Components** - `LFFormModal`, `fullFieldHtml`, `fieldFormatter`, `starRating`, modal utilities
+- **Components** - `LFFormModal`, `fullFieldHtml`, `fieldFormatter`, `starRating`, lookup loading, Google Maps helpers
 - **Vite plugins** - `bundleLfless`, `disableSharedChunking`, `generateDirectoryHtml`
 
 ## Testing Strategy
@@ -105,7 +139,9 @@ See [packages/core/src/index.ts](packages/core/src/index.ts) for complete export
 - Coverage tracked via v8 provider; thresholds in vitest config
 
 **Test Organization**:
-- `__tests__/lib/` mirrors `src/lib/` structure
+- `__tests__/api/` covers repository and API helper behavior
+- `__tests__/utils/` covers table utilities, throttling, and `lfjsx`
+- Root-level tests cover broad entry points such as field rules and field lookup behavior
 - `__tests__/mocks/` contains reusable mocks (LFForm, repositoryClient)
 
 **Mock Patterns**:
@@ -115,13 +151,18 @@ See [packages/core/src/index.ts](packages/core/src/index.ts) for complete export
 
 ## Build Workflow
 
-1. **Type checking** - `npm run typecheck` (tsc -b for composite project)
-2. **Linting** - `npm run lint` (eslint across all workspaces)
-3. **Testing** - `npm test` (vitest with coverage thresholds)
-4. **Full build** - `npm run build` (tsc -b + Vite)
-   - `build:types` builds @lfz/lf-form-types
-   - `build:core` builds @lfz/lf-form-builder main bundle
-   - `build:examples` builds example forms
+1. **Type checking** - `npm run typecheck` (root `tsc -b`)
+2. **Linting** - `npm run lint` (eslint across the workspace)
+3. **Testing** - `npm test` (core package typecheck + Vitest)
+4. **Package builds**
+  - `npm run build:types` builds `@lfz/lf-form-types`
+  - `npm run build:core` builds `@lfz/lf-form-builder`
+  - `npm run build:examples` builds the example forms after core
+5. **Static dev build with CSS output**
+  - `npm run build:dev:css` runs the examples development build and compiles emitted `.less` files to `.css`
+6. **Watch and serve workflows**
+  - `npm run watch` rebuilds core, examples, and CSS on file changes
+  - `npm run watch-serve` serves the examples output on a stable local port for manual form testing
 
 ## Release Process
 

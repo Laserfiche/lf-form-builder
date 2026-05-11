@@ -19,6 +19,7 @@ lf-form-builder/
 │   ├── types/            # Published npm package (@lfz/lf-form-types)
 │   │   └── src/          # LFForm type definitions and helpers
 │   └── examples/         # Real-world example forms (not published)
+├── scripts/              # Release and workspace helper scripts
 ├── template/             # Starter template — clone this to start a new project
 ```
 
@@ -45,10 +46,12 @@ copy .env.example .env.local
 npm run build:core        # Build the core library
 npm run build:examples    # Build example forms
 npm run build:dev:css     # Dev build + compile emitted .less to .css for static serving
-npm run dev               # Watch + serve examples
+npm run dev               # Watch examples and serve built dist locally
 ```
 
 Use `.env.example` as the committed template for local configuration. Keep actual keys and per-machine overrides in the untracked `.env.local`.
+
+If you use the translation examples, set `VITE_TRANSLATION_ENDPOINT` to a server-side route that performs translation. Do not expose provider API keys in browser code.
 
 ### Watch Mode
 
@@ -59,25 +62,17 @@ npm install       # first-time only
 npm run watch     # rebuilds on file changes
 ```
 
-## Dev: watch + serve (stable dist on :3000)
+## Local Development Modes
 
-During development you may want the convenience of automatic rebuilds plus a static server that serves the built `dist` directory on the stable port `3000` (the same location as production). Use the root helper script that performs an initial dev build, then starts the repository watchers and the static server:
+Use the workflow that matches what you are testing:
 
-```bash
-# from the repository root
-npm run watch-serve
-```
+- `npm run dev` — runs the examples workspace `watch` + `serve` scripts. This watches the example build output and serves `packages/examples/dist` on `http://localhost:3000` when that port is available.
+- `npm run build:dev:css` — one-shot development build that emits both `Empower2026.js` and `Empower2026.css` into `packages/examples/dist`.
+- `npm run watch-serve` — runs the core watcher and a Vite development server on `http://localhost:3000` with `--strictPort`. Use this when you want Vite-hosted development output on a fixed port.
 
-What it does:
-- runs a `build:dev` for `packages/examples` first (unminified bundle + sourcemaps),
-- then starts the repo-wide watchers (rebuilds on change) and a static `serve` process that serves `packages/examples/dist` on `http://localhost:3000`.
-
-If you prefer to run the steps manually:
+If you want the built `dist` directory served manually from the examples workspace:
 
 ```bash
-# build once (dev mode)
-npm run build:dev --workspace=packages/examples
-
 # build once (dev mode) and emit matching .css files into dist
 npm run build:dev:css
 
@@ -86,9 +81,10 @@ npm --workspace=packages/examples run serve
 ```
 
 Notes:
-- `npm run dev` launches the Vite dev server which may use an ephemeral port (not 3000). Use `watch-serve` when you need the files to be available at the same URL/port as production.
+- `npm run dev` uses the examples package's static `serve` command. If port `3000` is already in use, `serve` will choose another port.
 - `npm run build:dev:css` is the easiest one-shot build when you want the static index page to list both `Empower2026.js` and `Empower2026.css`.
-- If `Empower2026.js` looks truncated, stop the server, run the `build:dev` step to completion, then start `serve` so the static server serves the complete bundle.
+- `npm run watch-serve` uses Vite on `--strictPort`, so it will fail instead of switching ports if `3000` is already occupied.
+- If `Empower2026.js` looks truncated, stop the server, run the `build:dev` or `build:dev:css` step to completion, then restart serving.
 
 This is useful during development so you don't need to run `npm run build:core` manually after each change.
 
@@ -121,10 +117,14 @@ import { bundleLfless, disableSharedChunking } from '@lfz/lf-form-builder/plugin
 **Included modules:**
 - **Field utilities** — `findField`, `findFieldByIdParam`, `findFieldOrNull`
 - **Field rules** — `LFFormFieldRules` (chainable show/hide/CSS class actions)
+- **Safe field helpers** — `showFieldSafe`, `hideFieldSafe`, `setFieldValueSafe`
 - **Templates** — `lfjsx` (reactive field content templates)
+- **Async and HTML helpers** — `waitWithTimeout`, `setCustomHtml`
+- **Messaging utilities** — `PostMessageHelper` and related message types
 - **Table utilities** — `fillTableWithGenericResults`, `setTableFieldValues`, `generateCSV`, `updateTableRows`
 - **API helpers** — `getRepositories`, `searchAsync`, `mapEntryToForm`, `patchEntryMetadata`
-- **Components** — `LFFormModal`, `fullFieldHtml`, `fieldFormatter`, `registerStarHandler`, `makeLoadingBar`
+- **Components** — `LFFormModal`, `fullFieldHtml`, `fieldFormatter`, `registerStarHandler`, `makeLoadingBar`, `registerFirstTimeLoad`
+- **Google Maps** — autocomplete and address validation helpers
 - **Repository** — `DocView`, `IframeView`
 - **Vite plugins** — `bundleLfless`, `disableSharedChunking`, `generateDirectoryHtml`
 - **CSS** — LESS variables, mixins, and theme files via `@lfz/lf-form-builder/css/*`
@@ -158,12 +158,18 @@ Real-world form implementations demonstrating the library in action:
 
 #### Empower2026 Setup
 
-Before using the Empower2026 example in your own Forms account, import the bundled Laserfiche assets from [packages/examples/src/Forms/Empower2026/Laserfiche Process](c:/empower/code/lfz-form-builder/packages/examples/src/Forms/Empower2026/Laserfiche%20Process):
+Before using the Empower2026 example in your own Forms account, import the bundled Laserfiche assets from [packages/examples/src/Forms/Empower2026/Laserfiche Process](packages/examples/src/Forms/Empower2026/Laserfiche%20Process):
 
-- Import the process definition: [packages/examples/src/Forms/Empower2026/Laserfiche Process/AdvancedScripting_RG.xml](c:/empower/code/lfz-form-builder/packages/examples/src/Forms/Empower2026/Laserfiche%20Process/AdvancedScripting_RG.xml)
-- Import the web request rules: [packages/examples/src/Forms/Empower2026/Laserfiche Process/RGWebRequestToStripePayment.bri](c:/empower/code/lfz-form-builder/packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToStripePayment.bri) and [packages/examples/src/Forms/Empower2026/Laserfiche Process/RGWebRequestToStripeVerification.bri](c:/empower/code/lfz-form-builder/packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToStripeVerification.bri)
+- Import the process definition: [packages/examples/src/Forms/Empower2026/Laserfiche Process/AdvancedScripting_RG.xml](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/AdvancedScripting_RG.xml)
+- Import the web request rules: [packages/examples/src/Forms/Empower2026/Laserfiche Process/RGWebRequestToStripePayment.bri](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToStripePayment.bri) and [packages/examples/src/Forms/Empower2026/Laserfiche Process/RGWebRequestToStripeVerification.bri](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToStripeVerification.bri)
 
 Those imports are required for the example's process actions and Stripe-related web requests to work in your environment.
+
+The bundled process assets are configured for local development and expect the example scripts to be served from `http://localhost:3000`. That is appropriate for getting the demo running quickly on a developer machine.
+
+For the payment gateway specifically, do not copy only `Empower2026.js`. The checkout flow also depends on the companion Stripe runtime assets that are emitted alongside it, including `stripe.html` and `Stripe.js`. In local development those files are served from the same `packages/examples/dist` folder, and in production they should be hosted together at the same HTTPS location.
+
+For production, do not leave the process pointed at `localhost`. Host the built JavaScript, CSS, and related assets on a secure HTTPS site that your Forms environment can reach, then update the imported process and form configuration to reference that hosted location.
 
 ## Prerequisites
 

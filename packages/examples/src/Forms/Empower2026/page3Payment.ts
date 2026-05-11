@@ -167,7 +167,7 @@ export const page3Load = DISABLE_PAGE3
     }
 
     try {
-      console.log('[page3Payment] sendStartCheckout: sending START_CHECKOUT', { clientSecret, raw });
+      console.log('[page3Payment] sendStartCheckout: sending START_CHECKOUT');
       messager.send({
         type: 'START_CHECKOUT',
         payload: {
