@@ -8,7 +8,11 @@ import {
   setCustomHtml,
   type StripeMessages,
 } from '@lfz/lf-form-builder';
-import { LFFormId, TextField } from '@lfz/lf-form-types';
+import {
+  LFFormId,
+  TextField,
+  type LFFormEventSubscribeOptions,
+} from '@lfz/lf-form-types';
 
 // Interface and Type Declarations
 export interface Emp2026Window extends Window {
@@ -65,6 +69,26 @@ export const page3FormFields = {
 } as const;
 
 const DISABLE_PAGE3 = import.meta.env.VITE_DISABLE_PAGE3 === 'true';
+
+const hasStringProperty = <TKey extends string>(
+  value: unknown,
+  key: TKey,
+): value is Record<TKey, string> =>
+  typeof value === 'object' && value !== null && typeof (value as Record<TKey, unknown>)[key] === 'string';
+
+const getStripeResult = (payload: unknown) =>
+  hasStringProperty(payload, 'result') ? payload.result : JSON.stringify(payload ?? {});
+
+const getStripeErrorMessage = (payload: unknown) =>
+  hasStringProperty(payload, 'message') ? payload.message : JSON.stringify(payload ?? {});
+
+const withHandlerName = (
+  field: LFFormId,
+  handlerName: string,
+): LFFormEventSubscribeOptions<'fieldChange'> => ({
+  ...field,
+  handlerName,
+});
 
 export const page3Load = DISABLE_PAGE3
   ? async () => {
@@ -228,10 +252,7 @@ export const page3Load = DISABLE_PAGE3
 
         console.log('[page3Payment] COMPLETE_CHECKOUT received:', payload);
         try {
-          const resultValue =
-            payload && typeof (payload as any).result === 'string'
-              ? ((payload as any).result as string)
-              : JSON.stringify(payload ?? {});
+          const resultValue = getStripeResult(payload);
 
           // If the Stripe response is a client secret (starts with cs_),
           // normalize it by stripping the trailing _secret... suffix so the
@@ -266,7 +287,7 @@ export const page3Load = DISABLE_PAGE3
         cleanupSubscriptions();
 
         try {
-          const msg = payload && (payload as any).message ? (payload as any).message : JSON.stringify(payload ?? {});
+          const msg = getStripeErrorMessage(payload);
           await setCheckoutResultHtml(`<div style="color:red"><strong>Stripe Return error:</strong> ${msg}</div>`);
           await setFieldValueSafe(formFields.isFinished, 'fail');
           if (!checkoutModalInstance) {
@@ -302,7 +323,6 @@ export const page3Load = DISABLE_PAGE3
     }
   };
   window.triggerCheckout = triggerCheckout;
-  const checkoutButtonHtml = /*html*/ `<button type="button" onclick="triggerCheckout()" class="lf-secondary-button">Checkout</button>`;
 
   const renderCheckoutButton = (enabled = true) => {
     const html = /*html*/ `<button type="button" onclick="triggerCheckout()" class="lf-secondary-button" ${enabled ? '' : 'disabled'}>Checkout</button>`;
@@ -367,7 +387,7 @@ export const page3Load = DISABLE_PAGE3
           // ignore
         }
       },
-      { ...formFields.MusicSubscription, handlerName: 'onMusicSubscriptionChange' } as any,
+      withHandlerName(formFields.MusicSubscription, 'onMusicSubscriptionChange'),
     );
   }
 
@@ -407,7 +427,7 @@ export const page3Load = DISABLE_PAGE3
           // ignore
         }
       },
-      { ...formFields.sessionId, handlerName: 'onSessionIdAfterMusicChange' } as any,
+      withHandlerName(formFields.sessionId, 'onSessionIdAfterMusicChange'),
     );
   }
 

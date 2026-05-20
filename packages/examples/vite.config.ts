@@ -62,7 +62,9 @@ export default defineConfig(({ mode }) => {
       // Only enable mkcert when explicitly requested via env ENABLE_MKCERT=true
       // to avoid attempting to install root certificates automatically.
       ...(process.env.ENABLE_MKCERT === 'true' ? [mkcert()] : []),
-      basicSsl(),
+      // Keep the default dev server on plain HTTP so watch-serve matches the
+      // documented http://localhost:3000 workflow. Enable HTTPS explicitly.
+      ...(process.env.ENABLE_BASIC_SSL === 'true' ? [basicSsl()] : []),
       disableSharedChunking(input),
       generateDirectoryHtml(),
       // Stripe runtime source lives in core; examples deploys copies so

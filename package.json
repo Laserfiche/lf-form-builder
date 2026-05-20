@@ -24,7 +24,7 @@
     "watch:examples": "npm --workspace=packages/examples run watch",
     "watch:less": "chokidar \"packages/examples/dist/*.less\" -c \"npm run build:css\" --initial",
     "watch": "concurrently \"npm run watch:core\" \"npm run watch:examples\" \"npm run watch:less\"",
-    "watch-serve": "concurrently \"npm run watch:core\" \"npm --workspace=packages/examples exec -- vite --mode development --host --port 3000 --strictPort\"",
+    "watch-serve": "concurrently \"npm run watch:core\" \"npm --workspace=packages/examples run serve\"",
     "build": "tsc -b",
     "dev": "npm run dev --workspace=packages/examples",
     "typecheck": "tsc -b",
