@@ -2,7 +2,7 @@ import type {
   LFFormId,
   LFFormIdParam,
   LFFormPromiseResponse,
-} from '@lfz/lf-form-types';
+} from '@lf/lf-form-types';
 
 const FieldRules = {
   show: (field: LFFormIdParam) => {

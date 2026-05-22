@@ -1,17 +1,17 @@
 {
-  "name": "@lfz/lf-form-types",
+  "name": "@lf/lf-form-types",
   "version": "0.1.0",
   "description": "TypeScript type definitions for the Laserfiche Forms LFForm runtime API.",
   "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nicknaddaf/lf-form-builder.git",
+    "url": "https://github.com/Laserfiche/lf-form-builder.git",
     "directory": "packages/types"
   },
-  "homepage": "https://github.com/nicknaddaf/lf-form-builder#readme",
+  "homepage": "https://github.com/Laserfiche/lf-form-builder#readme",
   "bugs": {
-    "url": "https://github.com/nicknaddaf/lf-form-builder/issues"
+    "url": "https://github.com/Laserfiche/lf-form-builder/issues"
   },
   "keywords": [
     "laserfiche",

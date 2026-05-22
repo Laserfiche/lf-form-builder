@@ -1,7 +1,7 @@
 import { describe, expect, it, beforeEach } from 'vitest';
 import { LFFormFieldRules } from '../src/lib/fieldRules';
 import { getLFFormMock, type LFFormTestMock } from './mocks/lfForm.mock';
-import type { LFFormIdParam } from '@lfz/lf-form-types';
+import type { LFFormIdParam } from '@lf/lf-form-types';
 
 type FieldRulesLFFormMock = Pick<
   LFFormTestMock,

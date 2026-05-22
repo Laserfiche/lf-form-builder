@@ -1,5 +1,5 @@
 import { findField } from '@lib/findFieldByLFFormId';
-import type { LFFormId, CustomHtmlField, SectionField } from '@lfz/lf-form-types';
+import type { LFFormId, CustomHtmlField, SectionField } from '@lf/lf-form-types';
 import './modal.lfless';
 
 export * from './modal.types';

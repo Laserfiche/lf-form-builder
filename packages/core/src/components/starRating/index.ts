@@ -1,4 +1,4 @@
-import { LFFormId } from '@lfz/lf-form-types';
+import { LFFormId } from '@lf/lf-form-types';
 import { findField } from '../../lib/findFieldByLFFormId';
 import './starRating.lfless';
 

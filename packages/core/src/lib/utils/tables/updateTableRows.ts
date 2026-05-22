@@ -1,4 +1,4 @@
-import { LFFormId, LFFormField } from '@lfz/lf-form-types';
+import { LFFormId, LFFormField } from '@lf/lf-form-types';
 
 /**
  * Updates the number of rows in a table field dynamically by row count

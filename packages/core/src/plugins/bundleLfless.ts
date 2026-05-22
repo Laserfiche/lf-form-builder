@@ -289,7 +289,7 @@ async function resolveImports(
 
     // Determine candidate base paths:
     // - Relative/absolute imports resolve from the importing file's directory
-    // - Bare specifiers (e.g. '@lfz/lf-form-builder/css/...') resolve from node_modules,
+    // - Bare specifiers (e.g. '@lf/lf-form-builder/css/...') resolve from node_modules,
     //   with support for package.json "exports" maps
     const isRelative =
       importPath.startsWith('.') || path.isAbsolute(importPath);
@@ -418,7 +418,7 @@ function findOwningEntries(
 }
 
 /**
- * Resolve a bare specifier like '@lfz/lf-form-builder/css/form-theme.lfless'
+ * Resolve a bare specifier like '@lf/lf-form-builder/css/form-theme.lfless'
  * through the target package's "exports" map in package.json.
  * Returns an absolute file path, or null if resolution fails.
  */

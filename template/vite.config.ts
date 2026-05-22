@@ -6,7 +6,7 @@ import {
   bundleLfless,
   disableSharedChunking,
   generateDirectoryHtml,
-} from '@lfz/lf-form-builder/plugins';
+} from '@lf/lf-form-builder/plugins';
 
 const formsJS = config.forms.js;
 

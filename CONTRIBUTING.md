@@ -1,6 +1,6 @@
 # Contributing
 
-This guide explains how to develop, test, and contribute to lfz-form-builder.
+This guide explains how to develop, test, and contribute to lf-form-builder.
 
 ## Getting Started
 
@@ -13,7 +13,7 @@ This guide explains how to develop, test, and contribute to lfz-form-builder.
 
 ```bash
 # Clone the repository
-git clone https://github.com/nicknaddaf/lf-form-builder.git
+git clone https://github.com/Laserfiche/lf-form-builder.git
 cd lf-form-builder
 
 # Install dependencies (installs all workspaces)
@@ -207,7 +207,7 @@ template/                   # Starter template
 1. Add to `packages/core/package.json` exports map
 2. Create corresponding source file(s)
 3. Update [ARCHITECTURE.md](ARCHITECTURE.md)
-4. Test via template: `import X from '@lfz/lf-form-builder/path'`
+4. Test via template: `import X from '@lf/lf-form-builder/path'`
 
 ## Troubleshooting
 

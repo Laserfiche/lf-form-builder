@@ -1,10 +1,10 @@
-[Documentation](../../../index.md) / [@lfz/lf-form-builder](../index.md) / [](../README.md) / LFFormModalOptions
+[Documentation](../../../index.md) / [@lf/lf-form-builder](../index.md) / [](../README.md) / LFFormModalOptions
 
 # Type Alias: LFFormModalOptions
 
 > **LFFormModalOptions** = `object`
 
-Defined in: [packages/core/src/components/modal/modal.types.ts:46](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L46)
+Defined in: [packages/core/src/components/modal/modal.types.ts:46](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L46)
 
 ## Properties
 
@@ -12,7 +12,7 @@ Defined in: [packages/core/src/components/modal/modal.types.ts:46](https://githu
 
 > `optional` **allowBackdropDismiss?**: `boolean`
 
-Defined in: [packages/core/src/components/modal/modal.types.ts:51](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L51)
+Defined in: [packages/core/src/components/modal/modal.types.ts:51](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L51)
 
 ***
 
@@ -20,7 +20,7 @@ Defined in: [packages/core/src/components/modal/modal.types.ts:51](https://githu
 
 > `optional` **autoHideOnClose?**: `boolean`
 
-Defined in: [packages/core/src/components/modal/modal.types.ts:49](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L49)
+Defined in: [packages/core/src/components/modal/modal.types.ts:49](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L49)
 
 ***
 
@@ -28,7 +28,7 @@ Defined in: [packages/core/src/components/modal/modal.types.ts:49](https://githu
 
 > `optional` **modalType?**: [`LFFormModalTypesEnum`](LFFormModalTypesEnum.md)
 
-Defined in: [packages/core/src/components/modal/modal.types.ts:48](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L48)
+Defined in: [packages/core/src/components/modal/modal.types.ts:48](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L48)
 
 ***
 
@@ -36,7 +36,7 @@ Defined in: [packages/core/src/components/modal/modal.types.ts:48](https://githu
 
 > `optional` **showBackdrop?**: `boolean`
 
-Defined in: [packages/core/src/components/modal/modal.types.ts:50](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L50)
+Defined in: [packages/core/src/components/modal/modal.types.ts:50](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L50)
 
 ***
 
@@ -44,4 +44,4 @@ Defined in: [packages/core/src/components/modal/modal.types.ts:50](https://githu
 
 > `optional` **size?**: [`LFFormModalSizeEnum`](LFFormModalSizeEnum.md)
 
-Defined in: [packages/core/src/components/modal/modal.types.ts:47](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L47)
+Defined in: [packages/core/src/components/modal/modal.types.ts:47](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L47)

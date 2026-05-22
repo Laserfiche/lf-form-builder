@@ -1,5 +1,5 @@
 import type { FormFieldsType } from '.';
-import { CheckboxField } from '@lfz/lf-form-types';
+import { CheckboxField } from '@lf/lf-form-types';
 
 interface CustomWindow extends Window {
   LFC: {

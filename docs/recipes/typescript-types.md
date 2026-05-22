@@ -1,13 +1,13 @@
 ---
 title: Use TypeScript Types for Safer Helpers
-description: Leverage @lfz/lf-form-types for type-safe utility functions.
+description: Leverage @lf/lf-form-types for type-safe utility functions.
 category: typescript
 ---
 
 # Use TypeScript Types for Safer Helpers
 
 ```ts
-import type { LFForm, LFFormId, LFFormChangeFormSettings } from '@lfz/lf-form-types';
+import type { LFForm, LFFormId, LFFormChangeFormSettings } from '@lf/lf-form-types';
 
 declare const LFForm: LFForm;
 

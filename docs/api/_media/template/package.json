@@ -23,7 +23,7 @@
     "vite-plugin-mkcert": "^1.17.10"
   },
   "dependencies": {
-    "@lfz/lf-form-builder": "^0.1.0",
-    "@lfz/lf-form-types": "^0.1.0"
+    "@lf/lf-form-builder": "^0.1.0",
+    "@lf/lf-form-types": "^0.1.0"
   }
 }

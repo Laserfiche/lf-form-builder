@@ -1,4 +1,4 @@
-import type { LFFormId, TextField } from '@lfz/lf-form-types';
+import type { LFFormId, TextField } from '@lf/lf-form-types';
 
 /**
  * setCustomHtml

@@ -2,7 +2,7 @@ import {
   LFFormField,
   LFFormFieldValueType,
   LFFormId,
-} from '@lfz/lf-form-types';
+} from '@lf/lf-form-types';
 import { findFieldByIdParam } from '../../findFieldByLFFormId';
 import { updateTableRows } from './updateTableRows';
 

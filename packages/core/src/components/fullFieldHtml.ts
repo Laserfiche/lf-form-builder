@@ -1,4 +1,4 @@
-import { LFFormField, LFFormId } from '@lfz/lf-form-types';
+import { LFFormField, LFFormId } from '@lf/lf-form-types';
 
 export type FullFieldHtmlOptions = {
   styles?: string;

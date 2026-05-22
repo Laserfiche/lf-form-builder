@@ -1,10 +1,10 @@
-[Documentation](../../../../index.md) / [@lfz/lf-form-types](../../index.md) / [index](../index.md) / LFForm
+[Documentation](../../../../index.md) / [@lf/lf-form-types](../../index.md) / [index](../index.md) / LFForm
 
 # Type Alias: LFForm\<FieldType\>
 
 > **LFForm**\<`FieldType`\> = [`LFFormProperties`](LFFormProperties.md) & [`LFFormGetterApi`](LFFormGetterApi.md)\<`FieldType`\> & [`LFFormMethodApi`](LFFormMethodApi.md)\<`FieldType`\> & [`LFFormEventApi`](LFFormEventApi.md)
 
-Defined in: [LFForm/index.ts:54](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/index.ts#L54)
+Defined in: [LFForm/index.ts:54](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/index.ts#L54)
 
 The full LFForm runtime API — the global interface for interacting with
 Laserfiche form fields, settings, and events in JavaScript.

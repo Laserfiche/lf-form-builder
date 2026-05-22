@@ -1,5 +1,5 @@
-import { LFFormButtonStyle, LFFormModal, LFFormModalSize, throttle } from '@lfz/lf-form-builder';
-import { LFFormId, NumberField, TextField } from '@lfz/lf-form-types';
+import { LFFormButtonStyle, LFFormModal, LFFormModalSize, throttle } from '@lf/lf-form-builder';
+import { LFFormId, NumberField, TextField } from '@lf/lf-form-types';
 import { FormFieldsType } from '.';
 
 interface CustomWindow extends Window {

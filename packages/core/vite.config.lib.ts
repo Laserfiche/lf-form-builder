@@ -67,7 +67,7 @@ export default defineConfig({
     sourcemap: true,
     rollupOptions: {
       external: [
-        /^@lfz\//,
+        /^@lf\//,
         /^@laserfiche\//,
         /^vite$/,
         /^node:/,
@@ -143,7 +143,7 @@ export default defineConfig({
               sourcemap: true,
               rollupOptions: {
                 external: [
-                  /^@lfz\//,
+                  /^@lf\//,
                   /^@laserfiche\//,
                   /^vite$/,
                   /^node:/,

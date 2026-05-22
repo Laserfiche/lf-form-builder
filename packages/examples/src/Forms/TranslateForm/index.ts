@@ -1,4 +1,4 @@
-import { LFFormField, LFFormFormPart, RadioField } from '@lfz/lf-form-types';
+import { LFFormField, LFFormFormPart, RadioField } from '@lf/lf-form-types';
 
 interface CustomWindow extends Window {
   getFormFieldSettings: typeof getFormFieldSettings;

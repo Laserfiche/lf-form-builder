@@ -1,12 +1,12 @@
 {
-  "name": "@lfz/form-builder",
+  "name": "@lf/form-builder",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Laserfiche/lfz-form-builder.git"
+    "url": "https://github.com/Laserfiche/lf-form-builder.git"
   },
   "engines": {
     "node": ">=20"

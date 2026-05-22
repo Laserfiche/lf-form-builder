@@ -10,7 +10,7 @@ layout that matches `src/Forms/SampleForm/index.ts`.
 Use this sequence in each form entry file (`src/Forms/<FormName>/index.ts`):
 
 1. Imports and type setup.
-	Example: `import { LFFormId, TextField } from '@lfz/lf-form-types';`
+	Example: `import { LFFormId, TextField } from '@lf/lf-form-types';`
 2. Form field mapping object.
 	Example: `const formFields = { email: { fieldId: 4 } } as const;`
 3. Business logic helper functions.
@@ -32,17 +32,17 @@ Keep examples simple, production-safe, and easy to extend.
 
 Use scoped package names:
 
-- `@lfz/lf-form-builder`
-- `@lfz/lf-form-builder/plugins`
-- `@lfz/lf-form-builder/css/*`
-- `@lfz/lf-form-types`
+- `@lf/lf-form-builder`
+- `@lf/lf-form-builder/plugins`
+- `@lf/lf-form-builder/css/*`
+- `@lf/lf-form-types`
 
 Do not use unscoped `lf-form-builder`.
 
 ## LFForm runtime and typing guidance
 
 - `LFForm` is a runtime global provided by Laserfiche Forms.
-- Type it from `@lfz/lf-form-types`; do not redefine core LFForm method signatures in starter code.
+- Type it from `@lf/lf-form-types`; do not redefine core LFForm method signatures in starter code.
 - Prefer typed field access patterns (`LFFormId` / `LFFormIdParam`) for helper utilities.
 - Prefer typed field reads/writes (`TextField`, etc.) in business logic helpers.
 - Keep side effects inside explicit handlers and initialization steps.
@@ -50,8 +50,8 @@ Do not use unscoped `lf-form-builder`.
 Example:
 
 ```ts
-import type { LFForm, LFFormIdParam } from '@lfz/lf-form-types';
-import { findFieldOrNull } from '@lfz/lf-form-builder';
+import type { LFForm, LFFormIdParam } from '@lf/lf-form-types';
+import { findFieldOrNull } from '@lf/lf-form-builder';
 
 const nameField: LFFormIdParam = { fieldId: 1 };
 const field = findFieldOrNull(nameField);
@@ -66,7 +66,7 @@ void field;
 Prefer this starter shape for generated examples:
 
 ```ts
-import { LFFormId, TextField } from '@lfz/lf-form-types';
+import { LFFormId, TextField } from '@lf/lf-form-types';
 
 const formFields = {
 	exampleField: { fieldId: 1 },
@@ -100,7 +100,7 @@ Global declarations in `src/global.d.ts` should expose:
 
 ## Dependency policy
 
-Use semver ranges for stable releases of `@lfz/lf-form-builder` and `@lfz/lf-form-types` in this starter.
+Use semver ranges for stable releases of `@lf/lf-form-builder` and `@lf/lf-form-types` in this starter.
 
 ## Expected commands
 

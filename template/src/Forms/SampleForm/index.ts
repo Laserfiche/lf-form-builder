@@ -3,7 +3,7 @@
  * Demonstrates how to set up a form with the LFForm API. This is a basic template to get you started, and you can expand upon it with your specific form fields and business logic.
  */
 
-import { LFFormId, TextField } from '@lfz/lf-form-types';
+import { LFFormId, TextField } from '@lf/lf-form-types';
 
 // Define the fields your form uses
 const formFields = {

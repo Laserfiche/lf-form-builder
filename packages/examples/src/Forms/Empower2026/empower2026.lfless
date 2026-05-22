@@ -1,4 +1,4 @@
-@import '@lfz/lf-form-builder/css/form-theme.lfless';
+@import '@lf/lf-form-builder/css/form-theme.lfless';
 
 
 .renderer-preview-only({

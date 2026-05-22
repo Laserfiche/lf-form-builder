@@ -29,7 +29,7 @@ const categoryRank = new Map(
 
 function buildApiSidebar(items: SidebarItem[]): SidebarItem[] {
   const sidebar = JSON.parse(JSON.stringify(items)) as SidebarItem[];
-  const lfFormTypesPkg = sidebar.find((item) => item.text === '@lfz/lf-form-types');
+  const lfFormTypesPkg = sidebar.find((item) => item.text === '@lf/lf-form-types');
   const lfFormTypesIndex = lfFormTypesPkg?.items?.find(
     (item) => item.text === 'index',
   );
@@ -63,7 +63,7 @@ const apiSidebarItems = buildApiSidebar(typedocSidebar as SidebarItem[]);
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: 'LFZ Forms',
+  title: 'LF Form Builder',
   description: 'Laserfiche Forms builder toolkit — guides, recipes, and API reference',
   srcDir: 'docs',
   base: process.env.NODE_ENV === 'production' ? '/lf-form-toolkit/' : '/',
@@ -73,7 +73,7 @@ export default defineConfig({
     /_media\/template$/,
     /_media\/LICENSE$/,
     /\.\/(show-hide-fields|block-submission-validation|add-table-rows|table-entry-document-links|dynamic-labels|localize-labels|cancel-lookup|reset-fields|typescript-types)$/,
-    /\.\/@lfz\/(form-builder-examples|lf-form-builder|lf-form-types)\/index$/,
+    /\.\/@lf\/(form-builder-examples|lf-form-builder|lf-form-types)\/index$/,
   ],
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }]

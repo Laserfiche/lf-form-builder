@@ -7,12 +7,12 @@ import {
   waitWithTimeout,
   setCustomHtml,
   type StripeMessages,
-} from '@lfz/lf-form-builder';
+} from '@lf/lf-form-builder';
 import {
   LFFormId,
   TextField,
   type LFFormEventSubscribeOptions,
-} from '@lfz/lf-form-types';
+} from '@lf/lf-form-types';
 
 // Interface and Type Declarations
 export interface Emp2026Window extends Window {

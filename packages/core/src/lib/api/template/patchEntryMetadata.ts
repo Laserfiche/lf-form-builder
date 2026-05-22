@@ -5,7 +5,7 @@ import {
   LFFormField,
   LFFormFieldValueType,
   RadioField,
-} from '@lfz/lf-form-types';
+} from '@lf/lf-form-types';
 import {
   FieldCollectionResponse,
   IFieldToUpdate,

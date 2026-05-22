@@ -1,10 +1,10 @@
-[Documentation](../../../../index.md) / [@lfz/lf-form-types](../../index.md) / [index](../index.md) / LFFormMethodApi
+[Documentation](../../../../index.md) / [@lf/lf-form-types](../../index.md) / [index](../index.md) / LFFormMethodApi
 
 # Type Alias: LFFormMethodApi\<FieldType\>
 
 > **LFFormMethodApi**\<`FieldType`\> = `object`
 
-Defined in: [LFForm/methods.ts:110](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L110)
+Defined in: [LFForm/methods.ts:110](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L110)
 
 Mutating APIs for setting values, changing settings, toggling visibility, and more.
 
@@ -25,7 +25,7 @@ Await these calls to ensure changes are applied before continuing.
 
 > **setFieldValues**: [`LFFormSetFieldValues`](LFFormSetFieldValues.md)
 
-Defined in: [LFForm/methods.ts:113](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L113)
+Defined in: [LFForm/methods.ts:113](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L113)
 
 Sets field values for one or more matching fields.
 
@@ -35,7 +35,7 @@ Sets field values for one or more matching fields.
 
 > **changeFieldSettings**: \<`FieldSettingType`\>(`id`, `changes`) => `Promise`\<[`LFFormPromiseResponse`](LFFormPromiseResponse.md)\>
 
-Defined in: [LFForm/methods.ts:128](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L128)
+Defined in: [LFForm/methods.ts:128](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L128)
 
 Changes settings on target fields. Template-aware for table/collection fields.
 
@@ -76,7 +76,7 @@ await LFForm.changeFieldSettings({ fieldId: 10 }, {
 
 > **changeFieldOptions**: (`id`, `changes`, `mode?`) => `Promise`\<[`LFFormPromiseResponse`](LFFormPromiseResponse.md)\>
 
-Defined in: [LFForm/methods.ts:142](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L142)
+Defined in: [LFForm/methods.ts:142](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L142)
 
 Adds, removes, or replaces options on dropdown, radio, or checkbox fields.
 
@@ -110,7 +110,7 @@ Array of option objects with `label`, `value`, and optional `selected`.
 
 > **changeFormSettings**: (`changes`) => `Promise`\<[`LFFormPromiseResponse`](LFFormPromiseResponse.md)\>
 
-Defined in: [LFForm/methods.ts:160](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L160)
+Defined in: [LFForm/methods.ts:160](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L160)
 
 Changes form-level settings (title, description, browser title, pagination).
 
@@ -140,7 +140,7 @@ await LFForm.changeFormSettings({
 
 > **disableFields**: (`id`, ...`ids`) => `Promise`\<[`LFFormPromiseResponse`](LFFormPromiseResponse.md)\>
 
-Defined in: [LFForm/methods.ts:172](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L172)
+Defined in: [LFForm/methods.ts:172](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L172)
 
 Disables target fields. Template-aware for table/collection fields.
 
@@ -170,7 +170,7 @@ await LFForm.disableFields({ fieldId: 70 });
 
 > **enableFields**: (`id`, ...`ids`) => `Promise`\<[`LFFormPromiseResponse`](LFFormPromiseResponse.md)\>
 
-Defined in: [LFForm/methods.ts:185](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L185)
+Defined in: [LFForm/methods.ts:185](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L185)
 
 Enables target fields. Template-aware for table/collection fields.
 
@@ -200,7 +200,7 @@ await LFForm.enableFields({ fieldId: 70 });
 
 > **showFields**: (`id`, ...`ids`) => `Promise`\<[`LFFormPromiseResponse`](LFFormPromiseResponse.md)\>
 
-Defined in: [LFForm/methods.ts:198](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L198)
+Defined in: [LFForm/methods.ts:198](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L198)
 
 Shows target fields. Template-aware for table/collection fields.
 
@@ -230,7 +230,7 @@ await LFForm.showFields({ fieldId: 70 });
 
 > **hideFields**: (`id`, ...`ids`) => `Promise`\<[`LFFormPromiseResponse`](LFFormPromiseResponse.md)\>
 
-Defined in: [LFForm/methods.ts:211](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L211)
+Defined in: [LFForm/methods.ts:211](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L211)
 
 Hides target fields. Template-aware for table/collection fields.
 
@@ -260,7 +260,7 @@ await LFForm.hideFields([{ fieldId: 3, index: 1 }, { fieldId: 3, index: 3 }]);
 
 > **addRow**: (`id`, `count`) => `Promise`\<[`LFFormPromiseResponse`](LFFormPromiseResponse.md)\>
 
-Defined in: [LFForm/methods.ts:227](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L227)
+Defined in: [LFForm/methods.ts:227](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L227)
 
 Adds rows to a table field.
 
@@ -294,7 +294,7 @@ await LFForm.addRow({ fieldId: 30 }, 3);
 
 > **addSet**: (`id`, `count`) => `Promise`\<[`LFFormPromiseResponse`](LFFormPromiseResponse.md)\>
 
-Defined in: [LFForm/methods.ts:243](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L243)
+Defined in: [LFForm/methods.ts:243](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L243)
 
 Adds sets to a collection field.
 
@@ -328,7 +328,7 @@ await LFForm.addSet({ fieldId: 90 }, 2);
 
 > **deleteRow**: (`id`, ...`index`) => `Promise`\<[`LFFormPromiseResponse`](LFFormPromiseResponse.md)\>
 
-Defined in: [LFForm/methods.ts:259](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L259)
+Defined in: [LFForm/methods.ts:259](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L259)
 
 Deletes specific rows from a table field by index.
 
@@ -362,7 +362,7 @@ await LFForm.deleteRow({ fieldId: 30 }, 0);
 
 > **deleteSet**: (`id`, ...`index`) => `Promise`\<[`LFFormPromiseResponse`](LFFormPromiseResponse.md)\>
 
-Defined in: [LFForm/methods.ts:275](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L275)
+Defined in: [LFForm/methods.ts:275](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L275)
 
 Deletes specific sets from a collection field by index.
 
@@ -396,7 +396,7 @@ await LFForm.deleteSet({ fieldId: 90 }, 0, 1);
 
 > **addCSSClasses**: (`id`, `classes`) => `Promise`\<[`LFFormPromiseResponse`](LFFormPromiseResponse.md)\>
 
-Defined in: [LFForm/methods.ts:288](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L288)
+Defined in: [LFForm/methods.ts:288](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L288)
 
 Adds CSS classes to target fields. Existing classes are not duplicated.
 
@@ -426,7 +426,7 @@ await LFForm.addCSSClasses({ fieldId: 100 }, 'highlight urgent');
 
 > **removeCSSClasses**: (`id`, `classes`) => `Promise`\<[`LFFormPromiseResponse`](LFFormPromiseResponse.md)\>
 
-Defined in: [LFForm/methods.ts:301](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L301)
+Defined in: [LFForm/methods.ts:301](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L301)
 
 Removes CSS classes from target fields. Removing a non-existent class is a no-op.
 
@@ -456,7 +456,7 @@ await LFForm.removeCSSClasses({ fieldId: 100 }, ['urgent']);
 
 > **getLaserficheAPIClient**: \<`T`\>(`client`) => `Promise`\<`T`\>
 
-Defined in: [LFForm/methods.ts:307](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L307)
+Defined in: [LFForm/methods.ts:307](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L307)
 
 Returns a Laserfiche API client instance by name.
 
@@ -482,7 +482,7 @@ Returns a Laserfiche API client instance by name.
 
 > **changeActionButton**: (`buttonName`, `actionButtonInfo`) => `Promise`\<[`LFFormPromiseResponse`](LFFormPromiseResponse.md)\>
 
-Defined in: [LFForm/methods.ts:320](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L320)
+Defined in: [LFForm/methods.ts:320](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L320)
 
 Changes the label for a single action button.
 
@@ -518,7 +518,7 @@ await LFForm.changeActionButton('Submit', { label: 'Send Request' });
 
 > **changeActionButtons**: (`actionButtonsToChange`) => `Promise`\<[`LFFormPromiseResponse`](LFFormPromiseResponse.md)\>
 
-Defined in: [LFForm/methods.ts:337](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L337)
+Defined in: [LFForm/methods.ts:337](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L337)
 
 Changes labels for multiple action buttons at once.
 
@@ -548,7 +548,7 @@ await LFForm.changeActionButtons([
 
 > **validateFields**: (`id`, `validationOptions`) => `Promise`\<[`LFFormPromiseResponse`](LFFormPromiseResponse.md)\>
 
-Defined in: [LFForm/methods.ts:352](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L352)
+Defined in: [LFForm/methods.ts:352](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/methods.ts#L352)
 
 Adds or removes validation settings on target fields.
 

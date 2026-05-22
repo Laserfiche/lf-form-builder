@@ -1,4 +1,4 @@
-import { LFFormChangeFieldSettingsType, LFFormId, LFFormPromiseResponse, LFFormSetFieldValueType } from '@lfz/lf-form-types';
+import { LFFormChangeFieldSettingsType, LFFormId, LFFormPromiseResponse, LFFormSetFieldValueType } from '@lf/lf-form-types';
 import { updateTableRows } from './updateTableRows';
 
 type ChangeValueAndSettings = {

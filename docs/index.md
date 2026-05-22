@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: LFZ Forms
+  name: LF Form Builder
   text: Laserfiche Forms Builder Toolkit
   tagline: TypeScript utilities, Vite plugins, and reusable components for Laserfiche Forms customizations.
   actions:
@@ -26,7 +26,7 @@ features:
     details: Apply proven patterns for visibility, validation, table operations, localization, and other common tasks.
     link: /recipes/
   - title: Typed Reference
-    details: Browse the generated API docs for @lfz/lf-form-builder and @lfz/lf-form-types when you need exact signatures.
+    details: Browse the generated API docs for @lf/lf-form-builder and @lf/lf-form-types when you need exact signatures.
     link: /api/
 ---
 

@@ -1,4 +1,4 @@
-import { LFFormField, LFFormFieldValueType } from '@lfz/lf-form-types';
+import { LFFormField, LFFormFieldValueType } from '@lf/lf-form-types';
 
 interface FormatterWindow extends Window {
   handleBadgeClose: (fieldId: number) => void;

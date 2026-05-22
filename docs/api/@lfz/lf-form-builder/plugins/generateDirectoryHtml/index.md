@@ -1,4 +1,4 @@
-[Documentation](../../../../index.md) / [@lfz/lf-form-builder](../../index.md) / plugins/generateDirectoryHtml
+[Documentation](../../../../index.md) / [@lf/lf-form-builder](../../index.md) / plugins/generateDirectoryHtml
 
 # plugins/generateDirectoryHtml
 

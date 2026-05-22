@@ -1,4 +1,4 @@
-import type { LFForm, LFFormId } from '@lfz/lf-form-types';
+import type { LFForm, LFFormId } from '@lf/lf-form-types';
 
 type LFCSVDownloadState = {
   csvDownloadHtmlField: LFFormId;

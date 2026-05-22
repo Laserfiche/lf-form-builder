@@ -1,8 +1,8 @@
-[Documentation](../../../index.md) / [@lfz/lf-form-builder](../index.md) / [](../README.md) / DocView
+[Documentation](../../../index.md) / [@lf/lf-form-builder](../index.md) / [](../README.md) / DocView
 
 # Class: DocView
 
-Defined in: [packages/core/src/components/repository/docView.ts:25](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/repository/docView.ts#L25)
+Defined in: [packages/core/src/components/repository/docView.ts:25](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/repository/docView.ts#L25)
 
 ## Extends
 
@@ -14,7 +14,7 @@ Defined in: [packages/core/src/components/repository/docView.ts:25](https://gith
 
 > **new DocView**(`docViewOptions`): `DocView`
 
-Defined in: [packages/core/src/components/repository/docView.ts:45](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/repository/docView.ts#L45)
+Defined in: [packages/core/src/components/repository/docView.ts:45](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/repository/docView.ts#L45)
 
 The DocView class constructs an object that is used to render a DocView iframe in a Custom HTML field.
 You must call the render method to render the DocView iframe.
@@ -60,7 +60,7 @@ await docView.render();
 
 > `optional` **key?**: `string`
 
-Defined in: [packages/core/src/components/repository/iframe.ts:25](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/repository/iframe.ts#L25)
+Defined in: [packages/core/src/components/repository/iframe.ts:25](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/repository/iframe.ts#L25)
 
 #### Inherited from
 
@@ -72,7 +72,7 @@ Defined in: [packages/core/src/components/repository/iframe.ts:25](https://githu
 
 > **changeOptions**(`options`): `void`
 
-Defined in: [packages/core/src/components/repository/iframe.ts:102](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/repository/iframe.ts#L102)
+Defined in: [packages/core/src/components/repository/iframe.ts:102](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/repository/iframe.ts#L102)
 
 #### Parameters
 
@@ -94,7 +94,7 @@ Defined in: [packages/core/src/components/repository/iframe.ts:102](https://gith
 
 > **destroy**(): `Promise`\<`void`\>
 
-Defined in: [packages/core/src/components/repository/iframe.ts:109](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/repository/iframe.ts#L109)
+Defined in: [packages/core/src/components/repository/iframe.ts:109](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/repository/iframe.ts#L109)
 
 #### Returns
 
@@ -110,7 +110,7 @@ Defined in: [packages/core/src/components/repository/iframe.ts:109](https://gith
 
 > **generateHTML**(`frameUrl`, `onloadString?`): `string`
 
-Defined in: [packages/core/src/components/repository/iframe.ts:89](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/repository/iframe.ts#L89)
+Defined in: [packages/core/src/components/repository/iframe.ts:89](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/repository/iframe.ts#L89)
 
 #### Parameters
 
@@ -136,7 +136,7 @@ Defined in: [packages/core/src/components/repository/iframe.ts:89](https://githu
 
 > **render**(): `Promise`\<`void`\>
 
-Defined in: [packages/core/src/components/repository/docView.ts:49](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/repository/docView.ts#L49)
+Defined in: [packages/core/src/components/repository/docView.ts:49](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/repository/docView.ts#L49)
 
 The render method is used to render the DocView iframe in the Custom HTML field.
 

@@ -1,10 +1,10 @@
-[Documentation](../../../index.md) / [@lfz/lf-form-builder](../index.md) / [](../README.md) / searchAsync
+[Documentation](../../../index.md) / [@lf/lf-form-builder](../index.md) / [](../README.md) / searchAsync
 
 # Function: searchAsync()
 
 > **searchAsync**(`apiClient`, `repositoryId`, `searchCommand`, `searchOptions?`): `Promise`\<`EntryCollectionResponse` \| `null`\>
 
-Defined in: [packages/core/src/lib/api/search/search.ts:76](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/lib/api/search/search.ts#L76)
+Defined in: [packages/core/src/lib/api/search/search.ts:76](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/lib/api/search/search.ts#L76)
 
 ## Parameters
 

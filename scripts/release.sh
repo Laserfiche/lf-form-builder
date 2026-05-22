@@ -114,15 +114,15 @@ if (changed) {
 INTERNAL_RANGE="^${NEW_VERSION}"
 
 # core depends on types
-set_package_dep_version "packages/core/package.json" "@lfz/lf-form-types" "$INTERNAL_RANGE"
+set_package_dep_version "packages/core/package.json" "@lf/lf-form-types" "$INTERNAL_RANGE"
 
 # examples consume both published packages
-set_package_dep_version "packages/examples/package.json" "@lfz/lf-form-builder" "$INTERNAL_RANGE"
-set_package_dep_version "packages/examples/package.json" "@lfz/lf-form-types" "$INTERNAL_RANGE"
+set_package_dep_version "packages/examples/package.json" "@lf/lf-form-builder" "$INTERNAL_RANGE"
+set_package_dep_version "packages/examples/package.json" "@lf/lf-form-types" "$INTERNAL_RANGE"
 
 # template should point at current released ranges
-set_package_dep_version "template/package.json" "@lfz/lf-form-builder" "$INTERNAL_RANGE"
-set_package_dep_version "template/package.json" "@lfz/lf-form-types" "$INTERNAL_RANGE"
+set_package_dep_version "template/package.json" "@lf/lf-form-builder" "$INTERNAL_RANGE"
+set_package_dep_version "template/package.json" "@lf/lf-form-types" "$INTERNAL_RANGE"
 
 # Commit and tag
 git add \

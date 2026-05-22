@@ -14,9 +14,9 @@ This is a monorepo with npm workspaces:
 lf-form-builder/
 ├── docs/                 # VitePress guides, recipes, and generated API docs
 ├── packages/
-│   ├── core/             # Published npm package (@lfz/lf-form-builder)
+│   ├── core/             # Published npm package (@lf/lf-form-builder)
 │   │   └── src/          # Library source: components, utilities, API helpers, plugins
-│   ├── types/            # Published npm package (@lfz/lf-form-types)
+│   ├── types/            # Published npm package (@lf/lf-form-types)
 │   │   └── src/          # LFForm type definitions and helpers
 │   └── examples/         # Real-world example forms (not published)
 ├── scripts/              # Release and workspace helper scripts
@@ -28,7 +28,7 @@ lf-form-builder/
 Copy the starter template and start building:
 
 ```bash
-npx degit laserfiche/lfz-form-builder/template my-forms-project
+npx degit laserfiche/lf-form-builder/template my-forms-project
 cd my-forms-project
 npm install
 npm run dev
@@ -39,7 +39,7 @@ See [template/README.md](template/README.md) for full documentation.
 ### Development (Contributing to the Library)
 
 ```bash
-git clone https://github.com/Laserfiche/lfz-form-builder.git
+git clone https://github.com/Laserfiche/lf-form-builder.git
 cd lf-form-builder
 npm install
 copy .env.example .env.local
@@ -96,22 +96,22 @@ This is useful during development so you don't need to run `npm run build:core` 
 - [Template & Toolchain Setup](docs/guide/template-setup.md) — Build with Vite and the npm packages
 - [Custom HTML & Sandbox](docs/guide/custom-html.md) — Custom HTML, third-party libraries, and iframes
 - [Recipes](docs/recipes/) — Copy-paste patterns for common form tasks
-- [API Reference](docs/api/) — Generated TypeDoc for `@lfz/lf-form-builder` and `@lfz/lf-form-types`
+- [API Reference](docs/api/) — Generated TypeDoc for `@lf/lf-form-builder` and `@lf/lf-form-types`
 
 ## Packages
 
-### `packages/core` — `@lfz/lf-form-builder`
+### `packages/core` — `@lf/lf-form-builder`
 
 The core library published to npm. Import utilities in your form code:
 
 ```typescript
-import { findField, LFFormModal, fullFieldHtml } from '@lfz/lf-form-builder';
+import { findField, LFFormModal, fullFieldHtml } from '@lf/lf-form-builder';
 ```
 
 Import Vite plugins in your build config:
 
 ```typescript
-import { bundleLfless, disableSharedChunking } from '@lfz/lf-form-builder/plugins';
+import { bundleLfless, disableSharedChunking } from '@lf/lf-form-builder/plugins';
 ```
 
 **Included modules:**
@@ -127,25 +127,25 @@ import { bundleLfless, disableSharedChunking } from '@lfz/lf-form-builder/plugin
 - **Google Maps** — `initGoogleMapsAutocomplete`, `destroyGoogleMapsAutocomplete`, `buildLFAddress`, `initAddressValidation`, `destroyAddressValidation`, `sendValidationFeedback`, `validateAddress`, `validateFeedback`
 - **Repository** — `DocView`, `IframeView`
 - **Vite plugins** — `bundleLfless`, `disableSharedChunking`, `generateDirectoryHtml`
-- **CSS** — LESS variables, mixins, and theme files via `@lfz/lf-form-builder/css/*`
+- **CSS** — LESS variables, mixins, and theme files via `@lf/lf-form-builder/css/*`
 
 See [packages/core/README.md](packages/core/README.md) for package-level usage and plugin details.
 
-### `packages/types` — `@lfz/lf-form-types`
+### `packages/types` — `@lf/lf-form-types`
 
 TypeScript definitions for the `LFForm` runtime API, including focused subpath exports for the main LFForm API and auxiliary helper types.
 
 ```typescript
-import type { LFForm, LFFormEventApi, LFFormGetterApi, LFFormMethodApi } from '@lfz/lf-form-types/lfform';
-import type { LFFormSupportedEvents } from '@lfz/lf-form-types/events';
-import { isLfFormId } from '@lfz/lf-form-types/utils';
+import type { LFForm, LFFormEventApi, LFFormGetterApi, LFFormMethodApi } from '@lf/lf-form-types/lfform';
+import type { LFFormSupportedEvents } from '@lf/lf-form-types/events';
+import { isLfFormId } from '@lf/lf-form-types/utils';
 ```
 
 See [packages/types/README.md](packages/types/README.md) and [docs/guide/lfform-api-navigation.md](docs/guide/lfform-api-navigation.md) for the LFForm-first docs structure.
 
 ### `template/`
 
-A minimal starter project configured with Vite, `@lfz/lf-form-builder`, and `@lfz/lf-form-types`. Copy this directory to start a new forms project.
+A minimal starter project configured with Vite, `@lf/lf-form-builder`, and `@lf/lf-form-types`. Copy this directory to start a new forms project.
 
 ### `packages/examples/`
 

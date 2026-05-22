@@ -1,10 +1,10 @@
-[Documentation](../../../../index.md) / [@lfz/lf-form-types](../../index.md) / [index](../index.md) / ComponentTypes
+[Documentation](../../../../index.md) / [@lf/lf-form-types](../../index.md) / [index](../index.md) / ComponentTypes
 
 # Type Alias: ComponentTypes
 
 > **ComponentTypes** = `object`
 
-Defined in: [types/LFFormField.ts:22](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L22)
+Defined in: [types/LFFormField.ts:22](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L22)
 
 Maps component type names to their corresponding field type definitions.
 Used internally for type-safe field resolution.
@@ -19,7 +19,7 @@ Key names match the `componentType` string on each field (e.g. `'SingleLine'`, `
 
 > **SingleLine**: [`TextField`](TextField.md)
 
-Defined in: [types/LFFormField.ts:23](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L23)
+Defined in: [types/LFFormField.ts:23](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L23)
 
 ***
 
@@ -27,7 +27,7 @@ Defined in: [types/LFFormField.ts:23](https://github.com/Laserfiche/lfz-form-bui
 
 > **Email**: [`TextField`](TextField.md)
 
-Defined in: [types/LFFormField.ts:24](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L24)
+Defined in: [types/LFFormField.ts:24](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L24)
 
 ***
 
@@ -35,7 +35,7 @@ Defined in: [types/LFFormField.ts:24](https://github.com/Laserfiche/lfz-form-bui
 
 > **RichText**: [`TextField`](TextField.md)
 
-Defined in: [types/LFFormField.ts:25](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L25)
+Defined in: [types/LFFormField.ts:25](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L25)
 
 ***
 
@@ -43,7 +43,7 @@ Defined in: [types/LFFormField.ts:25](https://github.com/Laserfiche/lfz-form-bui
 
 > **MultiLine**: [`TextField`](TextField.md)
 
-Defined in: [types/LFFormField.ts:26](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L26)
+Defined in: [types/LFFormField.ts:26](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L26)
 
 ***
 
@@ -51,7 +51,7 @@ Defined in: [types/LFFormField.ts:26](https://github.com/Laserfiche/lfz-form-bui
 
 > **Number**: [`NumberField`](NumberField.md)
 
-Defined in: [types/LFFormField.ts:27](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L27)
+Defined in: [types/LFFormField.ts:27](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L27)
 
 ***
 
@@ -59,7 +59,7 @@ Defined in: [types/LFFormField.ts:27](https://github.com/Laserfiche/lfz-form-bui
 
 > **Currency**: [`NumberField`](NumberField.md)
 
-Defined in: [types/LFFormField.ts:28](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L28)
+Defined in: [types/LFFormField.ts:28](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L28)
 
 ***
 
@@ -67,7 +67,7 @@ Defined in: [types/LFFormField.ts:28](https://github.com/Laserfiche/lfz-form-bui
 
 > **DateTime**: [`DateField`](DateField.md)
 
-Defined in: [types/LFFormField.ts:29](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L29)
+Defined in: [types/LFFormField.ts:29](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L29)
 
 ***
 
@@ -75,7 +75,7 @@ Defined in: [types/LFFormField.ts:29](https://github.com/Laserfiche/lfz-form-bui
 
 > **Geolocation**: [`GeolocationField`](GeolocationField.md)
 
-Defined in: [types/LFFormField.ts:30](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L30)
+Defined in: [types/LFFormField.ts:30](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L30)
 
 ***
 
@@ -83,7 +83,7 @@ Defined in: [types/LFFormField.ts:30](https://github.com/Laserfiche/lfz-form-bui
 
 > **Address**: [`AddressField`](AddressField.md)
 
-Defined in: [types/LFFormField.ts:31](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L31)
+Defined in: [types/LFFormField.ts:31](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L31)
 
 ***
 
@@ -91,7 +91,7 @@ Defined in: [types/LFFormField.ts:31](https://github.com/Laserfiche/lfz-form-bui
 
 > **Checkbox**: [`CheckboxField`](CheckboxField.md)
 
-Defined in: [types/LFFormField.ts:32](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L32)
+Defined in: [types/LFFormField.ts:32](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L32)
 
 ***
 
@@ -99,7 +99,7 @@ Defined in: [types/LFFormField.ts:32](https://github.com/Laserfiche/lfz-form-bui
 
 > **Radio**: [`RadioField`](RadioField.md)
 
-Defined in: [types/LFFormField.ts:33](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L33)
+Defined in: [types/LFFormField.ts:33](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L33)
 
 ***
 
@@ -107,7 +107,7 @@ Defined in: [types/LFFormField.ts:33](https://github.com/Laserfiche/lfz-form-bui
 
 > **Dropdown**: [`DropdownField`](DropdownField.md)
 
-Defined in: [types/LFFormField.ts:34](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L34)
+Defined in: [types/LFFormField.ts:34](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L34)
 
 ***
 
@@ -115,7 +115,7 @@ Defined in: [types/LFFormField.ts:34](https://github.com/Laserfiche/lfz-form-bui
 
 > **Table**: [`TableField`](TableField.md)
 
-Defined in: [types/LFFormField.ts:35](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L35)
+Defined in: [types/LFFormField.ts:35](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L35)
 
 ***
 
@@ -123,7 +123,7 @@ Defined in: [types/LFFormField.ts:35](https://github.com/Laserfiche/lfz-form-bui
 
 > **Collection**: [`CollectionField`](CollectionField.md)
 
-Defined in: [types/LFFormField.ts:36](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L36)
+Defined in: [types/LFFormField.ts:36](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L36)
 
 ***
 
@@ -131,7 +131,7 @@ Defined in: [types/LFFormField.ts:36](https://github.com/Laserfiche/lfz-form-bui
 
 > **Signature**: [`SignatureField`](SignatureField.md)
 
-Defined in: [types/LFFormField.ts:37](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L37)
+Defined in: [types/LFFormField.ts:37](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L37)
 
 ***
 
@@ -139,7 +139,7 @@ Defined in: [types/LFFormField.ts:37](https://github.com/Laserfiche/lfz-form-bui
 
 > **FileUpload**: [`FileUploadField`](FileUploadField.md)
 
-Defined in: [types/LFFormField.ts:38](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L38)
+Defined in: [types/LFFormField.ts:38](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L38)
 
 ***
 
@@ -147,7 +147,7 @@ Defined in: [types/LFFormField.ts:38](https://github.com/Laserfiche/lfz-form-bui
 
 > **CustomHTML**: [`CustomHtmlField`](CustomHtmlField.md)
 
-Defined in: [types/LFFormField.ts:39](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L39)
+Defined in: [types/LFFormField.ts:39](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L39)
 
 ***
 
@@ -155,7 +155,7 @@ Defined in: [types/LFFormField.ts:39](https://github.com/Laserfiche/lfz-form-bui
 
 > **Section**: [`SectionField`](SectionField.md)
 
-Defined in: [types/LFFormField.ts:40](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L40)
+Defined in: [types/LFFormField.ts:40](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L40)
 
 ***
 
@@ -163,7 +163,7 @@ Defined in: [types/LFFormField.ts:40](https://github.com/Laserfiche/lfz-form-bui
 
 > **Form**: [`LFFormFormPart`](LFFormFormPart.md)
 
-Defined in: [types/LFFormField.ts:41](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L41)
+Defined in: [types/LFFormField.ts:41](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L41)
 
 ***
 
@@ -171,4 +171,4 @@ Defined in: [types/LFFormField.ts:41](https://github.com/Laserfiche/lfz-form-bui
 
 > **Page**: [`LFFormPagePart`](LFFormPagePart.md)
 
-Defined in: [types/LFFormField.ts:42](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L42)
+Defined in: [types/LFFormField.ts:42](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L42)

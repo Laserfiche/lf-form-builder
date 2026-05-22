@@ -1,5 +1,5 @@
 {
-  "name": "@lfz/form-builder-examples",
+  "name": "@lf/form-builder-examples",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@googlemaps/addressvalidation": "^3.2.1",
-    "@lfz/lf-form-builder": "^0.1.0",
-    "@lfz/lf-form-types": "^0.1.0"
+    "@lf/lf-form-builder": "^0.1.0",
+    "@lf/lf-form-types": "^0.1.0"
   }
 }

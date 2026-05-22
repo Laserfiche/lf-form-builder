@@ -1,5 +1,5 @@
 import { findFieldByIdParam } from '@lib/findFieldByLFFormId';
-import { LFFormField, LFFormId } from '@lfz/lf-form-types';
+import { LFFormField, LFFormId } from '@lf/lf-form-types';
 
 /**
  * DocViewWindow is a global interface that is used to communicate with the DocView iframe.
