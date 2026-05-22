@@ -7,8 +7,6 @@ export class AdobeSignApi{
     if (!apiUrl || !authCode) {
       this.initNew();
     }
-    const authTokenUrl = `${apiUrl}/oauth/token`;
-    
   }
   private initNew() {
     const baseUrl = 'https://secure.echosign.com/public/oauth';

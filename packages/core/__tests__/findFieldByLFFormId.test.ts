@@ -84,7 +84,7 @@ describe('findFieldByIdParam', () => {
   it('returns empty array when fieldId is null', () => {
     getLFFormMock<FindFieldLFFormMock>();
 
-    const result = findFieldByIdParam(null as any);
+    const result = findFieldByIdParam(null as unknown as Parameters<typeof findFieldByIdParam>[0]);
 
     expect(result).toEqual([]);
   });
@@ -92,7 +92,7 @@ describe('findFieldByIdParam', () => {
   it('returns empty array when fieldId is undefined', () => {
     getLFFormMock<FindFieldLFFormMock>();
 
-    const result = findFieldByIdParam(undefined as any);
+    const result = findFieldByIdParam(undefined as unknown as Parameters<typeof findFieldByIdParam>[0]);
 
     expect(result).toEqual([]);
   });

@@ -85,7 +85,7 @@ export const makeCSVDownloadButton = (
   // Store prepared download metadata in a global map and call it via a small onclick.
   // The anchor click performs a native browser download (no sandbox JS-initiated click),
   // then we restore the trigger button.
-  const globalWindow = window as any;
+  const globalWindow = window;
   if (!globalWindow.__lfCsvDownloadState) {
     globalWindow.__lfCsvDownloadState = {};
   }

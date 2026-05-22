@@ -4,10 +4,6 @@ import { page1Load } from './page1LoadLookup';
 import { page2Load, page2FormFields } from './page2MapsAutoComplete';
 import { page3Load, page3FormFields } from './page3Payment';
 
-const lookupRules = {
-  createCheckoutSession: 2,
-};
-
 const resolveStripeFrame = (): { stripeFrameUrl: string; stripeFrameOrigin: string } => {
   const urlOverride = import.meta.env.VITE_STRIPE_FRAME_URL?.trim();
   const originOverride = import.meta.env.VITE_STRIPE_FRAME_ORIGIN?.trim();

@@ -1,5 +1,11 @@
 import { LFFormField, LFFormId } from '@lfz/lf-form-types';
 
+type FieldWithOptionalErrorState = LFFormField & {
+  errorMessage?: string;
+  isInvalid?: boolean;
+  validationMessage?: string;
+};
+
 /**
  * Returns true if any matching field appears to be invalid according to
  * its runtime `validation` / `settings` values.
@@ -13,11 +19,12 @@ export const hasFieldError = (field: LFFormId): boolean => {
     if (!fields || fields.length === 0) return false;
 
     for (const f of fields) {
+      const fieldState = f as FieldWithOptionalErrorState;
       // Field object may expose explicit validation state or settings flags
       if (f?.validation && Object.keys(f.validation).length > 0) return true;
-      if (f?.settings && (f.settings as any).required === true && !f.data) return true;
+      if (f.settings?.required === true && !f.data) return true;
       // Some runtimes may expose lastChange or other indicators of invalid state
-      if ((f as any).isInvalid === true) return true;
+      if (fieldState.isInvalid === true) return true;
     }
 
     return false;
@@ -32,7 +39,8 @@ export const getFieldErrorMessage = (field: LFFormId): string | null => {
     if (!fields || fields.length === 0) return null;
     // Look for a validation message on the field object if present
     for (const f of fields) {
-      const v = (f as any).validationMessage || (f as any).errorMessage;
+      const fieldState = f as FieldWithOptionalErrorState;
+      const v = fieldState.validationMessage || fieldState.errorMessage;
       if (v && typeof v === 'string' && v.trim()) return v.trim();
     }
     return null;

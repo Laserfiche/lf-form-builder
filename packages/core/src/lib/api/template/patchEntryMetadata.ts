@@ -121,7 +121,7 @@ export const patchEntryMetadata = async (patchEntryMetadataOptions: PatchEntryMe
     }
   }
   // TODO: remove any when ts client supports it
-  const request: any = {
+  const request: { fields: IFieldToUpdate[] } = {
     fields: Object.values(metadataMap),
   };
 

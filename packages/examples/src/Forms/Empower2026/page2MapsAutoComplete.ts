@@ -88,7 +88,7 @@ const handleValidationVerdict = async (
 const DISABLE_PAGE2 = import.meta.env.VITE_DISABLE_PAGE2 === 'true';
 
 export const page2Load = DISABLE_PAGE2
-  ? async (_opts?: { formFields?: GoogleMaps; apiKey?: string }) => {
+  ? async () => {
       console.log('[Empower2026] page2Load disabled via VITE_DISABLE_PAGE2');
     }
   : async ({
