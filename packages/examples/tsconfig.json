@@ -13,8 +13,6 @@
     "emitDeclarationOnly": true,
     "declaration": true,
     "allowJs": true,
-    "baseUrl": ".",
-    "ignoreDeprecations": "6.0",
     "paths": {
       "@lfz/lf-form-builder": ["../core/src/index.ts"],
       "@lfz/lf-form-builder/plugins": ["../core/src/plugins/index.ts"],

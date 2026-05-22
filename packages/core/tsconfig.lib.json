@@ -7,8 +7,6 @@
     "composite": true,
     "declaration": true,
     "allowJs": true,
-    "baseUrl": ".",
-    "ignoreDeprecations": "6.0",
     "paths": {
       "@/*": ["./src/*"],
       "@lib/*": ["./src/lib/*"],
