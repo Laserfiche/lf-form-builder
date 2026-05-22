@@ -11,7 +11,8 @@
       "@/*": ["./src/*"],
       "@lib/*": ["./src/lib/*"],
       "@components/*": ["./src/components/*"],
-      "@css/*": ["./src/css/*"]
+      "@css/*": ["./src/css/*"],
+      "@lfz/lf-form-types": ["../types/lib/index.d.ts"]
     },
     "moduleResolution": "bundler",
     "resolveJsonModule": true,

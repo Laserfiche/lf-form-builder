@@ -27,4 +27,27 @@
     width: 100%;
     height: 70vh;
   }
+
+  .cf-field {
+    border: 0 !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .stripe-checkout-frame {
+    border: 0;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+  }
+
+  .stripe-checkout-iframe,
+  #stripe-checkout-iframe {
+    display: block;
+    border: 0 !important;
+    outline: 0;
+    background: transparent;
+    box-shadow: none;
+  }
 });

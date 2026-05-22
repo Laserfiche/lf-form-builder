@@ -8,6 +8,7 @@
     "watch": "tsc -p tsconfig.build.json && vite build --mode development --watch",
     "build": "tsc -p tsconfig.build.json && vite build --mode production",
     "build:dev": "tsc -p tsconfig.build.json && vite build --mode development",
+    "build:dev:css": "npm run build:dev && node ./scripts/compile-less-to-css.js",
     "make-cert": "mkdir -p certs && openssl req -x509 -newkey rsa:4096 -keyout certs/localhost-key.pem -out certs/localhost-cert.pem -days 365 -nodes -subj '/CN=localhost' -addext \"subjectAltName = DNS:localhost\"",
     "trust-cert": "openssl pkcs12 -export -out certs/localhost.pfx -inkey certs/localhost-key.pem -in certs/localhost-cert.pem",
     "dev": "run-p watch serve",
@@ -23,7 +24,8 @@
     "serve": "^14.2.6",
     "typescript": "^5.5.3",
     "vite": "^8.0.2",
-    "vite-plugin-mkcert": "^1.17.10"
+    "vite-plugin-mkcert": "^1.17.10",
+    "less": "^4.4.0"
   },
   "dependencies": {
     "@googlemaps/addressvalidation": "^3.2.1",

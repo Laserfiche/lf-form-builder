@@ -2,9 +2,7 @@
   "forms": {
     "rootDir": "src/Forms",
     "js": {
-      "Empower2026": "Empower2026/index.ts",
-      "Stripe": "Stripe/index.ts",
-      "TranslateForm": "TranslateForm/index.ts"
+      "Empower2026": "Empower2026/index.ts"
     }
   }
 }

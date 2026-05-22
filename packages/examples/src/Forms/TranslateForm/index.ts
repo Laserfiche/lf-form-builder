@@ -192,10 +192,9 @@ const defaultFormLang = 'en';
  * @preserve
  */
 const supportTranslationOnFormLoad = false;
-// Google Cloud API key. This is used to translate text.
-// REMOVE THIS IN PRODUCTION. This is only used to generate the translations.
-
-const GOOGLE_TRANSLATE_API_KEY = `${import.meta.env.VITE_GOOGLE_API_KEY}`; /** YOUR API KEY HERE */
+// Server-side translation endpoint used to generate draft translations
+// without exposing provider credentials in the browser.
+const TRANSLATION_ENDPOINT = import.meta.env.VITE_TRANSLATION_ENDPOINT?.trim() ?? '';
 
 // If it is being used, this is the field id of the custom html helper
 const translateCustomHtmlFieldId = 1;
@@ -233,9 +232,9 @@ if (Object.keys(translations).length === 0) {
         {
           content: `<div class="btn-container">
           <button ${
-            GOOGLE_TRANSLATE_API_KEY === '' ? 'disabled' : ''
-          } class="btn btn-default" onclick="getFieldTranslations()" title="Generate translations with Google">
-            Google Translate
+            TRANSLATION_ENDPOINT === '' ? 'disabled' : ''
+          } class="btn btn-default" onclick="getFieldTranslations()" title="Generate translations using the configured server endpoint">
+            Generate Translation Draft
           </button>
           <button class="btn btn-default" onclick="getFieldTranslations(true)" title="Generate an empty translation JSON">
             Custom Translation
@@ -464,7 +463,7 @@ async function setFormSettings(
 const getFormFieldSettings = (): FieldTranslations => {
   const formFieldSettings: FieldTranslations = {};
 
-  LFForm.findFields((f) => {
+  LFForm.findFields((f: LFFormField) => {
     const { settings } = f;
     const fieldSettings: TranslationSettings = {};
 
@@ -551,21 +550,25 @@ function splitForTranslate(text: string, limit = 5000) {
 }
 
 /**
- * Asynchronously translates text to the target language using Google Translate API and returns a Promise.
+ * Asynchronously translates text to the target language using a server-side translation endpoint and returns a Promise.
  * If translation fails, the original text is returned as a fallback.
  * @param {string} text - The text to translate.
  * @param {string} targetLang - The target language code (e.g., 'en', 'es').
  * @param {number} splitTextCharacterLimit - Character limit for splitting text (default is 5000).
  * @returns {Promise<string>} A Promise that resolves to the translated text, or the original text if translation fails.
- * @description Translate text to target language. This should be removed from your code when a static translation is saved to the translations variable.
+ * @description Translate text to target language through a backend endpoint. This should be removed from your code when a static translation is saved to the translations variable.
  */
 async function getTranslation(
   text: string,
   targetLang: string,
   splitTextCharacterLimit: number = 5000,
 ): Promise<string> {
+  if (TRANSLATION_ENDPOINT === '') {
+    throw new Error(
+      'Translation endpoint is not configured. Set VITE_TRANSLATION_ENDPOINT to a server-side translation proxy.',
+    );
+  }
   const sourceLang = defaultFormLang;
-  const url = `https://translation.googleapis.com/language/translate/v2?key=${GOOGLE_TRANSLATE_API_KEY}`;
   const charLimit =
     splitTextCharacterLimit > 5000 || splitTextCharacterLimit <= 0
       ? 5000
@@ -577,7 +580,7 @@ async function getTranslation(
       textToTranslate.map((chunk) => {
         const translateChunk = async (retryCount = 0): Promise<string> => {
           try {
-            const response = await fetch(url, {
+            const response = await fetch(TRANSLATION_ENDPOINT, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -591,13 +594,12 @@ async function getTranslation(
             const data = await response.json();
             if (
               !data ||
-              !data.data ||
-              !data.data.translations ||
-              !data.data.translations[0]
+              (typeof data.translatedText !== 'string' &&
+                (!data.data || !data.data.translations || !data.data.translations[0]))
             ) {
               throw new Error('Translation API did not return expected data');
             }
-            return data.data.translations[0].translatedText;
+            return data.translatedText ?? data.data.translations[0].translatedText;
           } catch (error) {
             if (retryCount >= 3) {
               console.error(`Failed to translate chunk after 3 retries:`, error);
@@ -753,6 +755,12 @@ const getFieldTranslationForLanguage = async (
 const getFieldTranslations = async (
   generateEmptyTranslations = false,
 ): Promise<LanguageSettings> => {
+  if (!generateEmptyTranslations && TRANSLATION_ENDPOINT === '') {
+    console.error(
+      'Translation endpoint is not configured. Set VITE_TRANSLATION_ENDPOINT to a server-side translation proxy.',
+    );
+    return {};
+  }
   const supportedLanguages =
     LFForm.findFieldsByFieldId<RadioField>(translateLangFieldId)[0].options;
 

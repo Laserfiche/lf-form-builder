@@ -1,4 +1,4 @@
-import type { LFForm, LFFormId } from '@lfz/lf-form-types';
+import type { LFFormId } from '@lfz/lf-form-types';
 
 type FieldValueProp =
   | 'value'
@@ -92,8 +92,20 @@ class LFElement {
       }, { fieldId, handlerName });
     });
   }
-unsubscribe() {
-  
+  unsubscribe() {
+    // Unregister any field change handlers that were registered for this element
+    this.watchFields.forEach((fieldRef) => {
+      const handlerName = this.handlerName(fieldRef as LFFormId);
+      try {
+        LFForm.unsubscribe('fieldChange', { ...(fieldRef as LFFormId), handlerName });
+      } catch (e) {
+        // best-effort cleanup; ignore if unsubscribe fails
+      }
+    });
+
+    // Clear local watch state
+    this.watchFields = [];
+    this.watchFieldsSetOnFirstRun = false;
   }
 }
 

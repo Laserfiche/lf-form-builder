@@ -2,7 +2,7 @@
  * to allow for readability and provide a better understanding of the flow of each individual functionality.
  * You do not need to write your code this way, especially if you are not using a JS bundler like I do.
  */
-import { registerFirstTimeLoad } from './firstTimeLoad';
+import { generateFullFieldHtml, makeLoadingBar, throttle } from '@lfz/lf-form-builder';
 import { registerHtmlPerRow } from './htmlPerRow';
 import { registerSelectAll } from './selectAll';
 import { registerSubmitModal } from './submitModal';
@@ -23,6 +23,40 @@ const formFields = {
 } as const;
 
 export type FormFieldsType = typeof formFields;
+
+const registerFirstTimeLoad = (fields: FormFieldsType) => {
+  const loadingBarHandlerName = `loadingBar_handler_${fields.productCurrency.fieldId}`;
+
+  const setLoadingMask = async (disable = false) => {
+    if (disable) {
+      LFForm.unsubscribe('fieldChange', {
+        ...fields.productCurrency,
+        handlerName: loadingBarHandlerName,
+      });
+    }
+
+    const loader = disable
+      ? ''
+      : generateFullFieldHtml(
+          makeLoadingBar(100, {
+            text: 'Loading your form',
+            styles: 'align-self: self-start; padding: 200px 100px',
+          }),
+          {},
+        );
+
+    await LFForm.changeFormSettings({ description: loader });
+  };
+
+  LFForm.onFieldChange(
+    throttle(() => {
+      void setLoadingMask(true);
+    }),
+    { ...fields.productCurrency, handlerName: loadingBarHandlerName },
+  );
+
+  void setLoadingMask();
+};
 
 registerSubmitModal(formFields);
 registerHtmlPerRow(formFields);

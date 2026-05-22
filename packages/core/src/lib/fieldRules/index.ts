@@ -1,5 +1,4 @@
 import type {
-  LFForm,
   LFFormId,
   LFFormIdParam,
   LFFormPromiseResponse,

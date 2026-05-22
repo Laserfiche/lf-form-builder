@@ -6,7 +6,20 @@ export { LFFormFieldRules } from './lib/fieldRules/index';
 
 // Utils
 export { lfjsx } from './lib/utils/lfjsx';
+export { showFieldSafe, hideFieldSafe, setFieldValueSafe } from './lib/utils/fieldVisibility';
+export {
+  PostMessageHelper,
+  type MessageMap,
+  type MessageType,
+  type PostMessageData,
+  type PostMessageEnvelope,
+  type MessageValidator,
+  type PostMessageHandler,
+  type PostMessageHelperOptions,
+} from './lib/utils/postMessageHelper';
 export { throttle } from './lib/utils/throttle';
+export { waitWithTimeout } from './lib/utils/async';
+export { setCustomHtml } from './lib/utils/fieldHtml';
 
 // Table utilities
 export { fillTableWithGenericResults } from './lib/utils/tables/fillTableWithResults';
@@ -41,6 +54,35 @@ export { fieldFormatter } from './components/fieldFormatter';
 export type { SupportedFieldTypes } from './components/fieldFormatter';
 export { generateFullFieldHtml, fullFieldHtml, type FullFieldHtmlOptions } from './components/fullFieldHtml';
 export { makeLoadingBar, type LoadingBarOptions } from './components/makeLoadingBar';
+export { registerFirstTimeLoad } from './components/lookupLoading';
+export type {
+  LookupLoadTimeout,
+  LookupLoadingOptions,
+  RegisterFirstTimeLoadParams,
+} from './components/lookupLoading';
+export {
+  initGoogleMapsAutocomplete,
+  destroyGoogleMapsAutocomplete,
+  buildLFAddress,
+} from './components/googleMaps/autocomplete';
+export {
+  initAddressValidation,
+  destroyAddressValidation,
+  sendValidationFeedback,
+  validateAddress,
+  validateFeedback,
+} from './components/googleMaps/addressValidation';
+export type {
+  InitGoogleMapsAutocompleteOptions,
+  GoogleMapsAutocompleteRequestOptions,
+  GoogleMapsAutocompleteCallbacks,
+  PredictionResult,
+  PlaceDetailsNewResponse,
+  InitAddressValidationOptions,
+  VerdictDecision,
+  VerdictInfo,
+  ValidationConclusion,
+} from './components/googleMaps/types';
 
 // Components — Star Rating
 export {
@@ -73,3 +115,5 @@ export { DocView } from './components/repository/docView';
 export type { DocViewOptions } from './components/repository/docView';
 export { IframeView } from './components/repository/iframe';
 export type { IframeOptions, IframeWindow } from './components/repository/iframe';
+// Stripe plugin types
+export type { StripeMessages } from './plugins/Stripe/index';

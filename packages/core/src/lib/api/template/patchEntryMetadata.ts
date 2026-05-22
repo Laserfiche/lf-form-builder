@@ -47,9 +47,9 @@ function getFieldValueAsString(
       const checkboxVal = value as LFFormFieldValueType<CheckboxField>;
       return checkboxVal.otherChoiceValue
         ? [checkboxVal.otherChoiceValue]
-            .concat(checkboxVal.value?.map((v) => v.toString()) ?? [])
+            .concat(checkboxVal.value?.map((v: string | number) => v.toString()) ?? [])
             .join(', ')
-        : checkboxVal.value?.map((v) => v.toString()).join(', ');
+        : checkboxVal.value?.map((v: string | number) => v.toString()).join(', ');
     }
     if (field.componentType === 'Radio') {
       const singleValue = value as LFFormFieldValueType<RadioField>;
@@ -120,10 +120,9 @@ export const patchEntryMetadata = async (patchEntryMetadataOptions: PatchEntryMe
       metadataField.values = [newValue];
     }
   }
-  // TODO: remove any when ts client supports it
-  const request: any = {
+  const request = {
     fields: Object.values(metadataMap),
-  };
+  } as Parameters<typeof apiClient.entriesClient.setFields>[0]['request'];
 
   const patchResponse = apiClient.entriesClient.setFields({
     repositoryId,

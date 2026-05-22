@@ -18,6 +18,13 @@
     "build:types": "npm run build --workspace=packages/types",
     "build:core": "npm run build --workspace=packages/core",
     "build:examples": "npm run build:core -- -- --logLevel silent && npm run build --workspace=packages/examples",
+    "build:dev:css": "npm run build:dev:css --workspace=packages/examples",
+    "build:css": "npx lessc packages/examples/dist/Empower2026.less packages/examples/dist/Empower2026.css",
+    "watch:core": "chokidar \"packages/core/src/**/*\" -c \"npm run build:core && npm run build:dev --workspace=packages/examples\" --initial",
+    "watch:examples": "npm --workspace=packages/examples run watch",
+    "watch:less": "chokidar \"packages/examples/dist/*.less\" -c \"npm run build:css\" --initial",
+    "watch": "concurrently \"npm run watch:core\" \"npm run watch:examples\" \"npm run watch:less\"",
+    "watch-serve": "concurrently \"npm run watch:core\" \"npm --workspace=packages/examples run serve\"",
     "build": "tsc -b",
     "dev": "npm run dev --workspace=packages/examples",
     "typecheck": "tsc -b",
@@ -41,6 +48,8 @@
     "typedoc-plugin-markdown": "^4.11.0",
     "typedoc-vitepress-theme": "^1.1.2",
     "typescript-eslint": "^7.16.1",
-    "vitepress": "^1.6.4"
+    "vitepress": "^1.6.4",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^8.0.1"
   }
 }
