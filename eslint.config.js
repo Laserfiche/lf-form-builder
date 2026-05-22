@@ -5,13 +5,20 @@ import globals from 'globals';
 
 export default tseslint.config(
   {
-    ignores: ['{dist,public}/**/*'],
+    ignores: [
+      '**/dist/**/*',
+      '**/lib/**/*',
+      '**/node_modules/**/*',
+      '**/*.tsbuildinfo',
+      '**/*.d.ts',
+      '**/public/**/*',
+    ],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   eslintConfigPrettier,
   {
-    files: ['**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
+    files: ['**/*.{ts,mts,cts,tsx}'],
     languageOptions: {
       parserOptions: {
         project: true,
@@ -28,7 +35,7 @@ export default tseslint.config(
   },
   {
     name: 'js-only-rules',
-    files: ['**/*.js'],
+    files: ['**/*.{js,mjs,cjs,jsx}'],
     rules: {
       '@typescript-eslint/triple-slash-reference': 'off',
       'no-undef': 'off', // caught by typescript

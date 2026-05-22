@@ -1,4 +1,4 @@
-import type { LFForm, LFFormId } from '@lfz/lf-form-types';
+import type { LFFormId } from '@lfz/lf-form-types';
 
 type FieldValueProp =
   | 'value'

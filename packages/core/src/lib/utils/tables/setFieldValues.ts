@@ -1,5 +1,4 @@
 import {
-  type LFForm,
   LFFormField,
   LFFormFieldValueType,
   LFFormId,
@@ -24,7 +23,7 @@ export const setTableFieldValues = async (
   options: SetFieldValueOptions
 ) => {
   const { replaceMode = 'replace', valueOrder = 'row' } = options;
-  const tableField = findFieldByIdParam(tableFieldId)[0];
+  const tableField = findFieldByIdParam<LFFormField>(tableFieldId)[0];
 
   // handle row counts for the table
   if (replaceMode === 'replace') {

@@ -21,19 +21,20 @@ export const registerSelectAll = (formFields: FormFieldsType) => {
   let isSelectAllChecked = false; // Changed to boolean
   const isSelectAllCheckedHandlerName = 'handleSelectAll';
   const registerIsSelectAllChecked = () => {
+    const handleSelectAllChange: Parameters<typeof LFForm.onFieldChange>[0] = async (ev) => {
+      const field = ev.options[0];
+      const isCurrentChecked =
+        LFForm.getFieldValues<CheckboxField>(field).value.includes('Select');
+      if (isCurrentChecked !== isSelectAllChecked) {
+        isSelectAllChecked = isCurrentChecked;
+      }
+      await LFForm.changeFieldSettings(formFields.selectRowCol, {
+        label: `<input type="checkbox" onchange="LFC.handleSelectAll()" ${isSelectAllChecked ? 'checked' : ''
+          } />`,
+      });
+    };
     LFForm.onFieldChange(
-      async (ev) => {
-        const field = ev.options[0];
-        const isCurrentChecked =
-          LFForm.getFieldValues<CheckboxField>(field).value.includes('Select');
-        if (isCurrentChecked !== isSelectAllChecked) {
-          isSelectAllChecked = isCurrentChecked;
-        }
-        await LFForm.changeFieldSettings(formFields.selectRowCol, {
-          label: `<input type="checkbox" onchange="LFC.handleSelectAll()" ${isSelectAllChecked ? 'checked' : ''
-            } />`,
-        });
-      },
+      handleSelectAllChange,
       { ...formFields.selectRowCol, handlerName: isSelectAllCheckedHandlerName },
     );
   };

@@ -102,7 +102,7 @@ export const registerHtmlPerRow = (formFields: FormFieldsType) => {
   // This will recreate the row html markup and modals on blur of the field
   // Throttle is not needed here as these are user made changes
   LFForm.onFieldBlur(
-    async (ev) => {
+    async (ev: Parameters<typeof LFForm.onFieldBlur>[0] extends (event: infer T) => unknown ? T : never) => {
       await handleTableHtmlChange(ev.options);
     },
     { ...formFields.productName, handlerName: 'handleTableHtmlChange' },

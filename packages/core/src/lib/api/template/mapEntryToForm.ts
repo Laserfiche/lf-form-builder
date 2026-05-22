@@ -139,7 +139,7 @@ export const mapEntryToForm = async ({
   const { makeFieldsDisabled = false, matchFieldBy = 'label' } = options;
   const mappedFields: Promise<LFFormField | null>[] = [];
   if (typeof matchFieldBy === 'string') {
-    LFForm.findFields((formField) => {
+    LFForm.findFields((formField: LFFormField) => {
       const parentField = formField.settings.parentId;
       if (options.parent?.componentId && parentField !== options.parent.componentId) return false;
       const metadataField = metadataFieldMap[formField.settings[matchFieldBy]];

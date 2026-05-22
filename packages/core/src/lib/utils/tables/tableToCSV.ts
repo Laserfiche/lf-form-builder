@@ -86,23 +86,21 @@ export const makeCSVDownloadButton = (
   // The anchor click performs a native browser download (no sandbox JS-initiated click),
   // then we restore the trigger button.
   const globalWindow = window;
-  if (!globalWindow.__lfCsvDownloadState) {
-    globalWindow.__lfCsvDownloadState = {};
-  }
+  const downloadState = (globalWindow.__lfCsvDownloadState ??= {});
   if (!globalWindow.__lfAfterCsvDownload) {
     globalWindow.__lfAfterCsvDownload = (key: string) => {
-      const state = globalWindow.__lfCsvDownloadState?.[key];
+      const state = downloadState[key];
       if (!state) return true;
       LFForm.changeFieldSettings(state.csvDownloadHtmlField, {
         content: state.restoreHtmlEnabled,
       }).catch(() => undefined);
-      delete globalWindow.__lfCsvDownloadState[key];
+      delete downloadState[key];
       return true;
     };
   }
 
   const stateKey = `csv_${Date.now()}_${Math.random().toString(36).slice(2)}`;
-  globalWindow.__lfCsvDownloadState[stateKey] = {
+  downloadState[stateKey] = {
     csvDownloadHtmlField,
     restoreHtmlEnabled,
   };

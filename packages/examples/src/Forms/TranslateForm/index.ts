@@ -463,7 +463,7 @@ async function setFormSettings(
 const getFormFieldSettings = (): FieldTranslations => {
   const formFieldSettings: FieldTranslations = {};
 
-  LFForm.findFields((f) => {
+  LFForm.findFields((f: LFFormField) => {
     const { settings } = f;
     const fieldSettings: TranslationSettings = {};
 
