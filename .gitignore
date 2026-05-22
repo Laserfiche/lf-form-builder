@@ -10,8 +10,9 @@ lerna-debug.log*
 .vitepress/dist
 .vitepress/cache
 node_modules
-dist
-lib
+**/dist/
+packages/examples/lib/
+packages/types/lib/
 certs
 dist-ssr
 *.local
@@ -19,6 +20,7 @@ dist-ssr
 !.env.example
 passwords.txt
 git-filter-repo
+*.tsbuildinfo
 
 # Editor directories and files
 .vscode/*
