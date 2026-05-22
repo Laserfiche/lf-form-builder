@@ -1,6 +1,6 @@
 import type { RepositoryApiClient } from '@laserfiche/lf-repository-api-client-v2';
 import { findFieldByIdParam, findFieldOrNull } from '@/lib/findFieldByLFFormId';
-import type { LFFormId, LFFormField, TextField } from '@lfz/lf-form-types';
+import type { LFFormId, LFFormField, TextField } from '@lf/lf-form-types';
 import { getRepositories } from './repository';
 /**
  * Required helper function for all api operations. Do not modify.

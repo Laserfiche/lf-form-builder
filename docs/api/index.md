@@ -2,6 +2,6 @@
 
 ## Packages
 
-- [@lfz/form-builder-examples](@lfz/form-builder-examples/index.md)
-- [@lfz/lf-form-builder](@lfz/lf-form-builder/index.md)
-- [@lfz/lf-form-types](@lfz/lf-form-types/index.md)
+- [@lf/form-builder-examples](@lf/form-builder-examples/index.md)
+- [@lf/lf-form-builder](@lf/lf-form-builder/index.md)
+- [@lf/lf-form-types](@lf/lf-form-types/index.md)

@@ -1,4 +1,4 @@
-[Documentation](../../../../index.md) / [@lfz/lf-form-builder](../../index.md) / plugins/index
+[Documentation](../../../../index.md) / [@lf/lf-form-builder](../../index.md) / plugins/index
 
 # plugins/index
 

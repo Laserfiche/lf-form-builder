@@ -1,10 +1,10 @@
-[Documentation](../../../../index.md) / [@lfz/lf-form-types](../../index.md) / [index](../index.md) / FileUploadField
+[Documentation](../../../../index.md) / [@lf/lf-form-types](../../index.md) / [index](../index.md) / FileUploadField
 
 # Type Alias: FileUploadField
 
 > **FileUploadField** = `BaseField` & `object`
 
-Defined in: [types/LFFormField.ts:300](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L300)
+Defined in: [types/LFFormField.ts:300](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/types/LFFormField.ts#L300)
 
 FileUpload field. Not supported for direct get/set of values.
 

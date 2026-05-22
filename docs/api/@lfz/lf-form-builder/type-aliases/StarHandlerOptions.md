@@ -1,10 +1,10 @@
-[Documentation](../../../index.md) / [@lfz/lf-form-builder](../index.md) / [](../README.md) / StarHandlerOptions
+[Documentation](../../../index.md) / [@lf/lf-form-builder](../index.md) / [](../README.md) / StarHandlerOptions
 
 # Type Alias: StarHandlerOptions
 
 > **StarHandlerOptions** = `object`
 
-Defined in: [packages/core/src/components/starRating.ts:68](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/starRating.ts#L68)
+Defined in: [packages/core/src/components/starRating.ts:68](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/starRating.ts#L68)
 
 ## Properties
 
@@ -12,7 +12,7 @@ Defined in: [packages/core/src/components/starRating.ts:68](https://github.com/L
 
 > `optional` **maxStars?**: `number`
 
-Defined in: [packages/core/src/components/starRating.ts:70](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/starRating.ts#L70)
+Defined in: [packages/core/src/components/starRating.ts:70](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/starRating.ts#L70)
 
 ***
 
@@ -20,7 +20,7 @@ Defined in: [packages/core/src/components/starRating.ts:70](https://github.com/L
 
 > `optional` **rowNumberFieldId?**: `number`
 
-Defined in: [packages/core/src/components/starRating.ts:71](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/starRating.ts#L71)
+Defined in: [packages/core/src/components/starRating.ts:71](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/starRating.ts#L71)
 
 ***
 
@@ -28,4 +28,4 @@ Defined in: [packages/core/src/components/starRating.ts:71](https://github.com/L
 
 > `optional` **starColor?**: `string`
 
-Defined in: [packages/core/src/components/starRating.ts:69](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/starRating.ts#L69)
+Defined in: [packages/core/src/components/starRating.ts:69](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/starRating.ts#L69)

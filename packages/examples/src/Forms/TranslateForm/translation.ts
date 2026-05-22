@@ -2,7 +2,7 @@ import {
   LFFormField,
   LFFormFormPart,
   type LFFormChangeFormSettings,
-} from '@lfz/lf-form-types';
+} from '@lf/lf-form-types';
 
 /*
  * translation

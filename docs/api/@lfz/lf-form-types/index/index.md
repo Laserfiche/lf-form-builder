@@ -1,4 +1,4 @@
-[Documentation](../../../index.md) / [@lfz/lf-form-types](../index.md) / index
+[Documentation](../../../index.md) / [@lf/lf-form-types](../index.md) / index
 
 # index
 

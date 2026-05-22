@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- **Core library** (`@lfz/lf-form-builder`)
+- **Core library** (`@lf/lf-form-builder`)
   - Field utilities: `findField`, `findFieldByIdParam`, `findFieldOrNull` for flexible field lookup
   - Field rules builder: `LFFormFieldRules` class with chainable API for show/hide/CSS actions
   - Conditional rule logic: `when().any()`, `when().all()`, `when().always()` for field dependencies
@@ -40,7 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `disableSharedChunking` - Prevent Rollup vendor chunk splitting
   - `generateDirectoryHtml` - Generate directory listing HTML
   
-- **Types package** (`@lfz/lf-form-types`)
+- **Types package** (`@lf/lf-form-types`)
   - Shared TypeScript definitions for LFForm, LFFormField, FormSettings, FieldSettings
   - Type guards: `isLfFormId`
 
@@ -87,7 +87,7 @@ N/A (initial release)
 
 ### Upgrading from 0.0.x
 
-This is the first stable release of lfz-form-builder. Start with version 0.1.0 or later.
+This is the first stable release of lf-form-builder. Start with version 0.1.0 or later.
 
 ---
 

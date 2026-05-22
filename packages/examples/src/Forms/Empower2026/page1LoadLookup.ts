@@ -6,7 +6,7 @@ import {
   makeDownloadTriggerButton,
   makeLoadingBar,
   registerFirstTimeLoad,
-} from '@lfz/lf-form-builder';
+} from '@lf/lf-form-builder';
 
 // Interface and Type Declarations
 // #region Types

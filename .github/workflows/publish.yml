@@ -52,7 +52,7 @@ jobs:
             exit 1
           fi
 
-      - name: Publish @lfz/lf-form-types
+      - name: Publish @lf/lf-form-types
         run: |
           TAG="${GITHUB_REF#refs/tags/}"
           DIST_TAG="latest"
@@ -63,7 +63,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish @lfz/lf-form-builder
+      - name: Publish @lf/lf-form-builder
         run: |
           TAG="${GITHUB_REF#refs/tags/}"
           DIST_TAG="latest"

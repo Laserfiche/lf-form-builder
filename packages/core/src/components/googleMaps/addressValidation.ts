@@ -1,4 +1,4 @@
-import type { AddressFieldValue, LFFormId } from '@lfz/lf-form-types';
+import type { AddressFieldValue, LFFormId } from '@lf/lf-form-types';
 import type {
   InitAddressValidationOptions,
   LFCNamespace,

@@ -1,10 +1,10 @@
-[Documentation](../../../index.md) / [@lfz/lf-form-builder](../index.md) / [](../README.md) / makeCSVDownloadButton
+[Documentation](../../../index.md) / [@lf/lf-form-builder](../index.md) / [](../README.md) / makeCSVDownloadButton
 
 # Function: makeCSVDownloadButton()
 
 > **makeCSVDownloadButton**(`csvDownloadHtmlField`, `buttonOptions?`): `Promise`\<[`LFFormPromiseResponse`](../../lf-form-types/index/type-aliases/LFFormPromiseResponse.md)\>
 
-Defined in: [packages/core/src/lib/utils/tables/tableToCSV.ts:56](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/lib/utils/tables/tableToCSV.ts#L56)
+Defined in: [packages/core/src/lib/utils/tables/tableToCSV.ts:56](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/lib/utils/tables/tableToCSV.ts#L56)
 
 ## Parameters
 

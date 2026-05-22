@@ -34,4 +34,4 @@ Practical patterns you can copy and adapt for Laserfiche Forms.
 
 ## TypeScript
 
-- [Use TypeScript Types for Safer Helpers](./typescript-types.md) — Leverage `@lfz/lf-form-types` for type-safe utility functions
+- [Use TypeScript Types for Safer Helpers](./typescript-types.md) — Leverage `@lf/lf-form-types` for type-safe utility functions

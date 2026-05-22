@@ -1,10 +1,10 @@
-[Documentation](../../../../index.md) / [@lfz/lf-form-types](../../index.md) / [index](../index.md) / LFFormEventApi
+[Documentation](../../../../index.md) / [@lf/lf-form-types](../../index.md) / [index](../index.md) / LFFormEventApi
 
 # Type Alias: LFFormEventApi
 
 > **LFFormEventApi** = `object`
 
-Defined in: [LFForm/events.ts:203](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L203)
+Defined in: [LFForm/events.ts:203](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L203)
 
 Event APIs for subscribing to and handling form, field, and lookup events.
 
@@ -52,7 +52,7 @@ LFForm.onLookupDone(() => {
 
 > **subscribe**: \<`EventName`\>(`eventName`, `handler`, `options`) => `void`
 
-Defined in: [LFForm/events.ts:211](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L211)
+Defined in: [LFForm/events.ts:211](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L211)
 
 Subscribes a handler to an LFForm event.
 
@@ -92,7 +92,7 @@ Identification/options including target field and `handlerName`.
 
 > **unsubscribe**: \<`EventName`\>(`eventName`, `options`) => `void`
 
-Defined in: [LFForm/events.ts:223](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L223)
+Defined in: [LFForm/events.ts:223](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L223)
 
 Unsubscribes a handler from an LFForm event.
 
@@ -126,7 +126,7 @@ Must match the options used during subscription.
 
 > **onFieldChange**: (`handler`, `options`) => `void`
 
-Defined in: [LFForm/events.ts:236](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L236)
+Defined in: [LFForm/events.ts:236](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L236)
 
 Registers a field change handler. Fires after the field value is updated.
 
@@ -156,7 +156,7 @@ lookup-populated fields or recalculating adjacent field output.
 
 > **onFieldBlur**: (`handler`, `options`) => `void`
 
-Defined in: [LFForm/events.ts:247](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L247)
+Defined in: [LFForm/events.ts:247](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L247)
 
 Registers a field blur handler. Fires when focus leaves the field.
 
@@ -184,7 +184,7 @@ Useful for lighter validation or formatting after a user leaves a field.
 
 > **onFormSubmission**: (`handler`, `options?`) => `void`
 
-Defined in: [LFForm/events.ts:260](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L260)
+Defined in: [LFForm/events.ts:260](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L260)
 
 Registers a form submission handler.
 
@@ -214,7 +214,7 @@ Registers a form submission handler.
 
 > **onLookupTrigger**: (`handler`, `options`) => `void`
 
-Defined in: [LFForm/events.ts:273](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L273)
+Defined in: [LFForm/events.ts:273](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L273)
 
 Registers a handler that runs **before** a lookup request is sent.
 
@@ -244,7 +244,7 @@ Registers a handler that runs **before** a lookup request is sent.
 
 > **onLookupDone**: (`handler`, `options`) => `void`
 
-Defined in: [LFForm/events.ts:286](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L286)
+Defined in: [LFForm/events.ts:286](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L286)
 
 Registers a handler that runs **after** a lookup request completes.
 

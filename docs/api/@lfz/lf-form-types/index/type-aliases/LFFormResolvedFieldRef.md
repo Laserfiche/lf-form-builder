@@ -1,10 +1,10 @@
-[Documentation](../../../../index.md) / [@lfz/lf-form-types](../../index.md) / [index](../index.md) / LFFormResolvedFieldRef
+[Documentation](../../../../index.md) / [@lf/lf-form-types](../../index.md) / [index](../index.md) / LFFormResolvedFieldRef
 
 # Type Alias: LFFormResolvedFieldRef\<T\>
 
 > **LFFormResolvedFieldRef**\<`T`\> = `object`
 
-Defined in: [LFForm/getters.ts:62](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L62)
+Defined in: [LFForm/getters.ts:62](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L62)
 
 ## Type Parameters
 
@@ -18,7 +18,7 @@ Defined in: [LFForm/getters.ts:62](https://github.com/Laserfiche/lfz-form-builde
 
 > **fieldId**: `T`\[`"fieldId"`\]
 
-Defined in: [LFForm/getters.ts:63](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L63)
+Defined in: [LFForm/getters.ts:63](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L63)
 
 ***
 
@@ -26,7 +26,7 @@ Defined in: [LFForm/getters.ts:63](https://github.com/Laserfiche/lfz-form-builde
 
 > **index**: `T`\[`"index"`\]
 
-Defined in: [LFForm/getters.ts:64](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L64)
+Defined in: [LFForm/getters.ts:64](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L64)
 
 ***
 
@@ -34,7 +34,7 @@ Defined in: [LFForm/getters.ts:64](https://github.com/Laserfiche/lfz-form-builde
 
 > **variableId**: `T`\[`"variableId"`\]
 
-Defined in: [LFForm/getters.ts:65](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L65)
+Defined in: [LFForm/getters.ts:65](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L65)
 
 ***
 
@@ -42,7 +42,7 @@ Defined in: [LFForm/getters.ts:65](https://github.com/Laserfiche/lfz-form-builde
 
 > **variableName**: `T`\[`"variableName"`\]
 
-Defined in: [LFForm/getters.ts:66](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L66)
+Defined in: [LFForm/getters.ts:66](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L66)
 
 ***
 
@@ -50,7 +50,7 @@ Defined in: [LFForm/getters.ts:66](https://github.com/Laserfiche/lfz-form-builde
 
 > **trackId**: `T`\[`"trackId"`\]
 
-Defined in: [LFForm/getters.ts:67](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L67)
+Defined in: [LFForm/getters.ts:67](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L67)
 
 ***
 
@@ -58,7 +58,7 @@ Defined in: [LFForm/getters.ts:67](https://github.com/Laserfiche/lfz-form-builde
 
 > **componentType**: `T`\[`"componentType"`\] *extends* keyof [`ComponentTypes`](ComponentTypes.md) ? `T`\[`"componentType"`\] : keyof [`ComponentTypes`](ComponentTypes.md)
 
-Defined in: [LFForm/getters.ts:68](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L68)
+Defined in: [LFForm/getters.ts:68](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L68)
 
 ***
 
@@ -66,7 +66,7 @@ Defined in: [LFForm/getters.ts:68](https://github.com/Laserfiche/lfz-form-builde
 
 > **isDisabled**: `T`\[`"settings"`\] *extends* `object` ? `true` : `T`\[`"disabled"`\] *extends* `true` ? `true` : `false`
 
-Defined in: [LFForm/getters.ts:71](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L71)
+Defined in: [LFForm/getters.ts:71](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L71)
 
 ***
 
@@ -74,4 +74,4 @@ Defined in: [LFForm/getters.ts:71](https://github.com/Laserfiche/lfz-form-builde
 
 > **isMultiple**: `T`\[`"settings"`\] *extends* \{ `isInCollection`: `true`; \} \| \{ `isInTable`: `true`; \} ? `true` : `false`
 
-Defined in: [LFForm/getters.ts:76](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L76)
+Defined in: [LFForm/getters.ts:76](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L76)

@@ -1,10 +1,10 @@
-[Documentation](../../../index.md) / [@lfz/lf-form-builder](../index.md) / [](../README.md) / LFFormButton
+[Documentation](../../../index.md) / [@lf/lf-form-builder](../index.md) / [](../README.md) / LFFormButton
 
 # Type Alias: LFFormButton
 
 > **LFFormButton** = `object`
 
-Defined in: [packages/core/src/components/modal/modal.types.ts:20](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L20)
+Defined in: [packages/core/src/components/modal/modal.types.ts:20](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L20)
 
 ## Properties
 
@@ -12,7 +12,7 @@ Defined in: [packages/core/src/components/modal/modal.types.ts:20](https://githu
 
 > **key**: `"close"` \| `"ok"` \| `string`
 
-Defined in: [packages/core/src/components/modal/modal.types.ts:22](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L22)
+Defined in: [packages/core/src/components/modal/modal.types.ts:22](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L22)
 
 ***
 
@@ -20,7 +20,7 @@ Defined in: [packages/core/src/components/modal/modal.types.ts:22](https://githu
 
 > **label**: `string`
 
-Defined in: [packages/core/src/components/modal/modal.types.ts:21](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L21)
+Defined in: [packages/core/src/components/modal/modal.types.ts:21](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L21)
 
 ***
 
@@ -28,7 +28,7 @@ Defined in: [packages/core/src/components/modal/modal.types.ts:21](https://githu
 
 > `optional` **onClick?**: () => `void`
 
-Defined in: [packages/core/src/components/modal/modal.types.ts:24](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L24)
+Defined in: [packages/core/src/components/modal/modal.types.ts:24](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L24)
 
 #### Returns
 
@@ -40,4 +40,4 @@ Defined in: [packages/core/src/components/modal/modal.types.ts:24](https://githu
 
 > **style**: [`LFFormButtonStyleEnum`](LFFormButtonStyleEnum.md)
 
-Defined in: [packages/core/src/components/modal/modal.types.ts:23](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L23)
+Defined in: [packages/core/src/components/modal/modal.types.ts:23](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/core/src/components/modal/modal.types.ts#L23)

@@ -12,7 +12,7 @@
       "@lib/*": ["./src/lib/*"],
       "@components/*": ["./src/components/*"],
       "@css/*": ["./src/css/*"],
-      "@lfz/lf-form-types": ["../types/lib/index.d.ts"]
+      "@lf/lf-form-types": ["../types/lib/index.d.ts"]
     },
     "moduleResolution": "bundler",
     "resolveJsonModule": true,

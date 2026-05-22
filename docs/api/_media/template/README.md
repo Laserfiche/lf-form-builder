@@ -9,7 +9,7 @@
 
 1. **Clone or copy this template:**
    ```bash
-  npx degit laserfiche/lfz-form-builder/template my-forms-project
+  npx degit laserfiche/lf-form-builder/template my-forms-project
    cd my-forms-project
    ```
 
@@ -54,10 +54,10 @@
 
 ## Using Library Utilities
 
-Import helpers from `@lfz/lf-form-builder`:
+Import helpers from `@lf/lf-form-builder`:
 
 ```typescript
-import { findField, LFFormModal, fullFieldHtml } from '@lfz/lf-form-builder';
+import { findField, LFFormModal, fullFieldHtml } from '@lf/lf-form-builder';
 ```
 
 Available modules:
@@ -71,11 +71,11 @@ Available modules:
 
 ## Using LFForm and LFForm Types
 
-`LFForm` is provided at runtime by Laserfiche Forms. In TypeScript, use `@lfz/lf-form-types` for compile-time safety.
+`LFForm` is provided at runtime by Laserfiche Forms. In TypeScript, use `@lf/lf-form-types` for compile-time safety.
 
 ```typescript
-import type { LFForm, LFFormIdParam } from '@lfz/lf-form-types';
-import { findFieldOrNull } from '@lfz/lf-form-builder';
+import type { LFForm, LFFormIdParam } from '@lf/lf-form-types';
+import { findFieldOrNull } from '@lf/lf-form-builder';
 
 const lfForm: LFForm = window.LFForm;
 
@@ -96,10 +96,10 @@ Template global typing is declared in `src/global.d.ts` so `window.LFForm` and `
 For larger codebases, you can mirror the docs structure with focused subpath imports:
 
 ```typescript
-import type { LFForm, LFFormEventApi, LFFormGetterApi, LFFormMethodApi } from '@lfz/lf-form-types/lfform';
-import type { LFFormSupportedEvents } from '@lfz/lf-form-types/events';
-import type { LFFormGetFieldValues } from '@lfz/lf-form-types/getters';
-import type { LFFormSetFieldValues } from '@lfz/lf-form-types/methods';
+import type { LFForm, LFFormEventApi, LFFormGetterApi, LFFormMethodApi } from '@lf/lf-form-types/lfform';
+import type { LFFormSupportedEvents } from '@lf/lf-form-types/events';
+import type { LFFormGetFieldValues } from '@lf/lf-form-types/getters';
+import type { LFFormSetFieldValues } from '@lf/lf-form-types/methods';
 ```
 
 See `../docs/guide/lfform-api-navigation.md` for the matching docs layout.
@@ -117,7 +117,7 @@ If a dependency has a CDN URL, add it to the Forms external JS pane and list it 
 Use the `lfjsx` helper to create reactive custom HTML:
 
 ```typescript
-import { lfjsx } from '@lfz/lf-form-builder';
+import { lfjsx } from '@lf/lf-form-builder';
 
 const watchField = { fieldId: 4 };
 const customField = lfjsx({ fieldId: 3 }, 'textAbove')/*html*/`
@@ -133,7 +133,7 @@ const customField = lfjsx({ fieldId: 3 }, 'textAbove')/*html*/`
 Import `.lfless` files from the package for base styles:
 
 ```less
-@import '@lfz/lf-form-builder/css/form-theme.lfless';
+@import '@lf/lf-form-builder/css/form-theme.lfless';
 ```
 
 Create your own `.lfless` files alongside your form code — they will be bundled automatically by the `bundleLfless` Vite plugin.
@@ -142,7 +142,7 @@ Create your own `.lfless` files alongside your form code — they will be bundle
 
 This starter uses semver ranges for stable package releases:
 
-- `@lfz/lf-form-builder`
-- `@lfz/lf-form-types`
+- `@lf/lf-form-builder`
+- `@lf/lf-form-types`
 
 When creating new projects from this template, keep these as ranges to receive compatible updates.

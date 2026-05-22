@@ -1,4 +1,4 @@
-import type { LFFormId } from '@lfz/lf-form-types';
+import type { LFFormId } from '@lf/lf-form-types';
 import { generateFullFieldHtml } from './fullFieldHtml';
 import type { FullFieldHtmlOptions } from './fullFieldHtml';
 import { makeLoadingBar } from './makeLoadingBar';

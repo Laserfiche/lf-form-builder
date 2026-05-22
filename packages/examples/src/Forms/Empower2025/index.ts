@@ -2,7 +2,7 @@
  * to allow for readability and provide a better understanding of the flow of each individual functionality.
  * You do not need to write your code this way, especially if you are not using a JS bundler like I do.
  */
-import { generateFullFieldHtml, makeLoadingBar, throttle } from '@lfz/lf-form-builder';
+import { generateFullFieldHtml, makeLoadingBar, throttle } from '@lf/lf-form-builder';
 import { registerHtmlPerRow } from './htmlPerRow';
 import { registerSelectAll } from './selectAll';
 import { registerSubmitModal } from './submitModal';

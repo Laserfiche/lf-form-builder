@@ -1,11 +1,11 @@
-import { AddressFieldValue, LFFormId } from '@lfz/lf-form-types';
+import { AddressFieldValue, LFFormId } from '@lf/lf-form-types';
 import {
   initAddressValidation,
   initGoogleMapsAutocomplete,
   LFFormModal,
   type VerdictDecision,
   type VerdictInfo,
-} from '@lfz/lf-form-builder';
+} from '@lf/lf-form-builder';
 
 export type GoogleMaps = {
   addressSearch: LFFormId;

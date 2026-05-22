@@ -1,11 +1,11 @@
-# @lfz/lf-form-builder
+# @lf/lf-form-builder
 
 Utilities, components, and Vite plugins for building custom Laserfiche Forms.
 
 ## Installation
 
 ```bash
-npm install @lfz/lf-form-builder
+npm install @lf/lf-form-builder
 ```
 
 For a working starter setup, see [../../template/README.md](../../template/README.md).
@@ -44,7 +44,7 @@ For end-user guides and recipes, see [../../docs/guide/template-setup.md](../../
 ### Vite plugins
 
 ```js
-import { bundleLfless, disableSharedChunking, generateDirectoryHtml } from '@lfz/lf-form-builder/plugins';
+import { bundleLfless, disableSharedChunking, generateDirectoryHtml } from '@lf/lf-form-builder/plugins';
 ```
 
 - **`bundleLfless`** — Compile `.lfless` (LESS variant) stylesheets per form entry
@@ -60,7 +60,7 @@ The `bundleLfless` plugin enables LESS stylesheets (`.lfless` files) to use `@im
 ```js
 // vite.config.ts
 import { defineConfig } from 'vite';
-import { bundleLfless } from '@lfz/lf-form-builder/plugins';
+import { bundleLfless } from '@lf/lf-form-builder/plugins';
 
 export default defineConfig({
   plugins: [bundleLfless()],
@@ -71,8 +71,8 @@ export default defineConfig({
 
 ```less
 // src/css/components.lfless
-@import '@lfz/lf-form-builder/css/variables.lfless';
-@import '@lfz/lf-form-builder/css/form-theme.lfless';
+@import '@lf/lf-form-builder/css/variables.lfless';
+@import '@lf/lf-form-builder/css/form-theme.lfless';
 
 .my-field {
   background: @primary-color;
@@ -87,7 +87,7 @@ The plugin resolves these imports by looking up the package.json `exports` map, 
 
 ## Why This Package Builds With Vite
 
-`@lfz/lf-form-builder` uses Vite for library packaging because the build needs behavior beyond plain `tsc` transpilation:
+`@lf/lf-form-builder` uses Vite for library packaging because the build needs behavior beyond plain `tsc` transpilation:
 
 - Multi-entry ESM output with preserved module structure for package subpath exports (for example, `./plugins/*`)
 - Build-time plugin hooks that preserve style imports and copy `.lfless` / `.css` assets into `dist`
@@ -100,7 +100,7 @@ TypeScript project builds (`tsc -b`) are still used for type-checking workflows,
 Import base styles in your `.lfless` files:
 
 ```less
-@import '@lfz/lf-form-builder/css/form-theme.lfless';
+@import '@lf/lf-form-builder/css/form-theme.lfless';
 ```
 
 ## Quick start

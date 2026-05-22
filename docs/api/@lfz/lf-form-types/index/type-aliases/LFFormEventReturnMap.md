@@ -1,10 +1,10 @@
-[Documentation](../../../../index.md) / [@lfz/lf-form-types](../../index.md) / [index](../index.md) / LFFormEventReturnMap
+[Documentation](../../../../index.md) / [@lf/lf-form-types](../../index.md) / [index](../index.md) / LFFormEventReturnMap
 
 # Type Alias: LFFormEventReturnMap
 
 > **LFFormEventReturnMap** = `object`
 
-Defined in: [LFForm/events.ts:124](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L124)
+Defined in: [LFForm/events.ts:124](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L124)
 
 ## Properties
 
@@ -12,7 +12,7 @@ Defined in: [LFForm/events.ts:124](https://github.com/Laserfiche/lfz-form-builde
 
 > **formSubmission**: \{ `error`: `string`; \} \| `void`
 
-Defined in: [LFForm/events.ts:125](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L125)
+Defined in: [LFForm/events.ts:125](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L125)
 
 ***
 
@@ -20,7 +20,7 @@ Defined in: [LFForm/events.ts:125](https://github.com/Laserfiche/lfz-form-builde
 
 > **fieldChange**: `void`
 
-Defined in: [LFForm/events.ts:126](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L126)
+Defined in: [LFForm/events.ts:126](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L126)
 
 ***
 
@@ -28,7 +28,7 @@ Defined in: [LFForm/events.ts:126](https://github.com/Laserfiche/lfz-form-builde
 
 > **fieldBlur**: `void`
 
-Defined in: [LFForm/events.ts:127](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L127)
+Defined in: [LFForm/events.ts:127](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L127)
 
 ***
 
@@ -36,7 +36,7 @@ Defined in: [LFForm/events.ts:127](https://github.com/Laserfiche/lfz-form-builde
 
 > **lookupTrigger**: \{ `cancelLookup`: `boolean`; \} \| `void`
 
-Defined in: [LFForm/events.ts:128](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L128)
+Defined in: [LFForm/events.ts:128](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L128)
 
 ***
 
@@ -44,7 +44,7 @@ Defined in: [LFForm/events.ts:128](https://github.com/Laserfiche/lfz-form-builde
 
 > **lookupDone**: `void`
 
-Defined in: [LFForm/events.ts:129](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L129)
+Defined in: [LFForm/events.ts:129](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L129)
 
 ***
 
@@ -52,7 +52,7 @@ Defined in: [LFForm/events.ts:129](https://github.com/Laserfiche/lfz-form-builde
 
 > **change**: `void`
 
-Defined in: [LFForm/events.ts:130](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L130)
+Defined in: [LFForm/events.ts:130](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L130)
 
 ***
 
@@ -60,4 +60,4 @@ Defined in: [LFForm/events.ts:130](https://github.com/Laserfiche/lfz-form-builde
 
 > **blur**: `void`
 
-Defined in: [LFForm/events.ts:131](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L131)
+Defined in: [LFForm/events.ts:131](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/events.ts#L131)

@@ -1,3 +1,3 @@
-[Documentation](../../index.md) / @lfz/form-builder-examples
+[Documentation](../../index.md) / @lf/form-builder-examples
 
-# @lfz/form-builder-examples
+# @lf/form-builder-examples

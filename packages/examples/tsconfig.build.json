@@ -2,10 +2,10 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "@lfz/lf-form-builder": ["../core/dist/index.d.ts"],
-      "@lfz/lf-form-builder/plugins": ["../core/dist/plugins/index.d.ts"],
-      "@lfz/lf-form-builder/plugins/*": ["../core/dist/plugins/*.d.ts"],
-      "@lfz/lf-form-types": ["../types/lib/index.d.ts"]
+      "@lf/lf-form-builder": ["../core/dist/index.d.ts"],
+      "@lf/lf-form-builder/plugins": ["../core/dist/plugins/index.d.ts"],
+      "@lf/lf-form-builder/plugins/*": ["../core/dist/plugins/*.d.ts"],
+      "@lf/lf-form-types": ["../types/lib/index.d.ts"]
     }
   }
 }

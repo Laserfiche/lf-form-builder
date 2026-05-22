@@ -1,10 +1,10 @@
-[Documentation](../../../../index.md) / [@lfz/lf-form-types](../../index.md) / [index](../index.md) / LFFormGetterApi
+[Documentation](../../../../index.md) / [@lf/lf-form-types](../../index.md) / [index](../index.md) / LFFormGetterApi
 
 # Type Alias: LFFormGetterApi\<FieldType\>
 
 > **LFFormGetterApi**\<`FieldType`\> = `object`
 
-Defined in: [LFForm/getters.ts:152](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L152)
+Defined in: [LFForm/getters.ts:152](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L152)
 
 Getter APIs for reading field values and querying fields.
 
@@ -28,7 +28,7 @@ const classMatches = LFForm.findFieldsByClassName('blue');
 
 > **getFieldValues**: [`LFFormGetFieldValues`](LFFormGetFieldValues.md)
 
-Defined in: [LFForm/getters.ts:154](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L154)
+Defined in: [LFForm/getters.ts:154](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L154)
 
 Gets field values for one or more matching fields.
 
@@ -38,7 +38,7 @@ Gets field values for one or more matching fields.
 
 > **findFields**: [`LFFormFindFieldsBy`](LFFormFindFieldsBy.md)\<(`field`) => `boolean`, `FieldType`\>
 
-Defined in: [LFForm/getters.ts:156](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L156)
+Defined in: [LFForm/getters.ts:156](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L156)
 
 Finds fields matching an arbitrary predicate function.
 
@@ -48,7 +48,7 @@ Finds fields matching an arbitrary predicate function.
 
 > **findFieldsByClassName**: [`LFFormFindFieldsBy`](LFFormFindFieldsBy.md)\<`string`, `FieldType`\>
 
-Defined in: [LFForm/getters.ts:158](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L158)
+Defined in: [LFForm/getters.ts:158](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L158)
 
 Finds fields by CSS class name.
 
@@ -58,7 +58,7 @@ Finds fields by CSS class name.
 
 > **findFieldsByFieldId**: [`LFFormFindFieldsBy`](LFFormFindFieldsBy.md)\<`number`, `FieldType`\>
 
-Defined in: [LFForm/getters.ts:160](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L160)
+Defined in: [LFForm/getters.ts:160](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L160)
 
 Finds fields by numeric `fieldId`.
 
@@ -68,7 +68,7 @@ Finds fields by numeric `fieldId`.
 
 > **findFieldsByVariableId**: [`LFFormFindFieldsBy`](LFFormFindFieldsBy.md)\<`string`, `FieldType`\>
 
-Defined in: [LFForm/getters.ts:162](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L162)
+Defined in: [LFForm/getters.ts:162](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L162)
 
 Finds fields by `variableId` (GUID string).
 
@@ -78,6 +78,6 @@ Finds fields by `variableId` (GUID string).
 
 > **findFieldsByVariableName**: [`LFFormFindFieldsBy`](LFFormFindFieldsBy.md)\<`string`, `FieldType`\>
 
-Defined in: [LFForm/getters.ts:164](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L164)
+Defined in: [LFForm/getters.ts:164](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/getters.ts#L164)
 
 Finds fields by `variableName` string.

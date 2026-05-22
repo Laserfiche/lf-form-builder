@@ -1,4 +1,4 @@
-import { LFFormField, LFFormId, LFFormIdParam } from '@lfz/lf-form-types';
+import { LFFormField, LFFormId, LFFormIdParam } from '@lf/lf-form-types';
 /**
  * Finds a field by id and returns an array of fields. Array is empty if not found.
  * @param {LFFormId} field 

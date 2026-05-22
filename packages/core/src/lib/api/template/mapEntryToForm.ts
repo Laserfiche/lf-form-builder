@@ -1,4 +1,4 @@
-import { SectionField, type LFFormField, type LFFormId } from '@lfz/lf-form-types';
+import { SectionField, type LFFormField, type LFFormId } from '@lf/lf-form-types';
 
 import { findFieldOrNull } from '@/lib/findFieldByLFFormId';
 import {

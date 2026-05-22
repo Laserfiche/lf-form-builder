@@ -1,10 +1,10 @@
-[Documentation](../../../../index.md) / [@lfz/lf-form-types](../../index.md) / [index](../index.md) / LFFormProperties
+[Documentation](../../../../index.md) / [@lf/lf-form-types](../../index.md) / [index](../index.md) / LFFormProperties
 
 # Type Alias: LFFormProperties
 
 > **LFFormProperties** = `object`
 
-Defined in: [LFForm/properties.ts:16](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L16)
+Defined in: [LFForm/properties.ts:16](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L16)
 
 Runtime context and metadata properties available on the LFForm object.
 
@@ -21,7 +21,7 @@ Branch behavior by step, stage, or language as needed.
 
 > **step**: [`LFFormStepState`](LFFormStepState.md)
 
-Defined in: [LFForm/properties.ts:18](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L18)
+Defined in: [LFForm/properties.ts:18](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L18)
 
 Current workflow step, or `null` if no step is active.
 
@@ -31,7 +31,7 @@ Current workflow step, or `null` if no step is active.
 
 > **stage**: [`LFFormStepState`](LFFormStepState.md)
 
-Defined in: [LFForm/properties.ts:20](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L20)
+Defined in: [LFForm/properties.ts:20](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L20)
 
 Current workflow stage, or `null` if no stage is active.
 
@@ -41,7 +41,7 @@ Current workflow stage, or `null` if no stage is active.
 
 > **language**: `string` \| `null`
 
-Defined in: [LFForm/properties.ts:22](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L22)
+Defined in: [LFForm/properties.ts:22](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L22)
 
 Current form language (e.g. `"en"`), or `null` if unset.
 
@@ -51,7 +51,7 @@ Current form language (e.g. `"en"`), or `null` if unset.
 
 > **locale**: `string` \| `null`
 
-Defined in: [LFForm/properties.ts:24](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L24)
+Defined in: [LFForm/properties.ts:24](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L24)
 
 Current form locale (e.g. `"en-US"`), or `null` if unset.
 
@@ -61,7 +61,7 @@ Current form locale (e.g. `"en-US"`), or `null` if unset.
 
 > **isCloud**: `boolean`
 
-Defined in: [LFForm/properties.ts:26](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L26)
+Defined in: [LFForm/properties.ts:26](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L26)
 
 `true` when the form is running in Laserfiche Cloud.
 
@@ -71,7 +71,7 @@ Defined in: [LFForm/properties.ts:26](https://github.com/Laserfiche/lfz-form-bui
 
 > **isPreview**: `boolean`
 
-Defined in: [LFForm/properties.ts:28](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L28)
+Defined in: [LFForm/properties.ts:28](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L28)
 
 `true` when the form is in preview mode.
 
@@ -81,7 +81,7 @@ Defined in: [LFForm/properties.ts:28](https://github.com/Laserfiche/lfz-form-bui
 
 > **isReadonly**: `boolean`
 
-Defined in: [LFForm/properties.ts:30](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L30)
+Defined in: [LFForm/properties.ts:30](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L30)
 
 `true` when the form is read-only. Mutations should be gated on this flag.
 
@@ -91,7 +91,7 @@ Defined in: [LFForm/properties.ts:30](https://github.com/Laserfiche/lfz-form-bui
 
 > **isDisabled**: `boolean`
 
-Defined in: [LFForm/properties.ts:32](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L32)
+Defined in: [LFForm/properties.ts:32](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L32)
 
 `true` when the form is disabled. Mutations should be gated on this flag.
 
@@ -101,7 +101,7 @@ Defined in: [LFForm/properties.ts:32](https://github.com/Laserfiche/lfz-form-bui
 
 > **isPrint**: `boolean`
 
-Defined in: [LFForm/properties.ts:34](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L34)
+Defined in: [LFForm/properties.ts:34](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L34)
 
 `true` when the form is in print mode. Mutations should be gated on this flag.
 
@@ -111,7 +111,7 @@ Defined in: [LFForm/properties.ts:34](https://github.com/Laserfiche/lfz-form-bui
 
 > **isAnonymousUser**: `boolean`
 
-Defined in: [LFForm/properties.ts:36](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L36)
+Defined in: [LFForm/properties.ts:36](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L36)
 
 `true` when the current user is anonymous (public submission).
 
@@ -121,7 +121,7 @@ Defined in: [LFForm/properties.ts:36](https://github.com/Laserfiche/lfz-form-bui
 
 > **isDraft**: `boolean`
 
-Defined in: [LFForm/properties.ts:38](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L38)
+Defined in: [LFForm/properties.ts:38](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L38)
 
 `true` when the form is a saved draft.
 
@@ -131,6 +131,6 @@ Defined in: [LFForm/properties.ts:38](https://github.com/Laserfiche/lfz-form-bui
 
 > **pageURL**: `string`
 
-Defined in: [LFForm/properties.ts:40](https://github.com/Laserfiche/lfz-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L40)
+Defined in: [LFForm/properties.ts:40](https://github.com/Laserfiche/lf-form-builder/blob/930ac99256d1304cbde6b15cdc0da8e44a4a7262/packages/types/src/LFForm/properties.ts#L40)
 
 Full URL of the current form page.

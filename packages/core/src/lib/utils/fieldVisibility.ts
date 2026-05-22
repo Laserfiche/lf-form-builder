@@ -1,4 +1,4 @@
-import type { LFFormId, LFFormSetFieldValues } from '@lfz/lf-form-types';
+import type { LFFormId, LFFormSetFieldValues } from '@lf/lf-form-types';
 
 const setFieldValuesUnsafe = LFForm.setFieldValues as unknown as (
   field: LFFormId,

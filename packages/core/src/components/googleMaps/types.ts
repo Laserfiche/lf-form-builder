@@ -1,5 +1,5 @@
 import type { protos } from '@googlemaps/addressvalidation';
-import type { AddressFieldValue, LFFormId } from '@lfz/lf-form-types';
+import type { AddressFieldValue, LFFormId } from '@lf/lf-form-types';
 
 export type InitGoogleMapsAutocompleteOptions = {
   apiKey: string;

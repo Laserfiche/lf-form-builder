@@ -1,5 +1,5 @@
 import { findFieldByIdParam } from '@/lib/findFieldByLFFormId';
-import { LFFormId, TextField } from '@lfz/lf-form-types';
+import { LFFormId, TextField } from '@lf/lf-form-types';
 
 const sanitizeForCSV = (value: string) => {
   if (value === null || value === undefined) {

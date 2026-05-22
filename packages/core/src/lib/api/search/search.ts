@@ -8,7 +8,7 @@ import type {
   EntryCollectionResponse,
   IEntry,
 } from '@laserfiche/lf-repository-api-client-v2';
-import type { LFFormId, LFFormPromiseResponse } from '@lfz/lf-form-types';
+import type { LFFormId, LFFormPromiseResponse } from '@lf/lf-form-types';
 import { fillTableWithGenericResults } from '@/lib/utils/tables/fillTableWithResults';
 
 export type SearchOptions = {

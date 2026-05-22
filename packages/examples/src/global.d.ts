@@ -1,4 +1,4 @@
-import type { LFForm } from '@lfz/lf-form-types';
+import type { LFForm } from '@lf/lf-form-types';
 
 declare global {
   interface Window {

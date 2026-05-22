@@ -4,8 +4,8 @@ This repository is a monorepo for Laserfiche Forms tooling.
 
 ## Monorepo structure
 
-- `packages/core` publishes `@lfz/lf-form-builder`
-- `packages/types` publishes `@lfz/lf-form-types`
+- `packages/core` publishes `@lf/lf-form-builder`
+- `packages/types` publishes `@lf/lf-form-types`
 - `packages/examples` contains internal example forms (not published)
 - `template` is starter boilerplate for consumers
 
@@ -13,10 +13,10 @@ This repository is a monorepo for Laserfiche Forms tooling.
 
 Use the scoped package names in all code and documentation examples.
 
-- `@lfz/lf-form-builder`
-- `@lfz/lf-form-builder/plugins`
-- `@lfz/lf-form-builder/css/*`
-- `@lfz/lf-form-types`
+- `@lf/lf-form-builder`
+- `@lf/lf-form-builder/plugins`
+- `@lf/lf-form-builder/css/*`
+- `@lf/lf-form-types`
 
 Do not use unscoped `lf-form-builder` in this repo.
 

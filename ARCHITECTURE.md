@@ -1,14 +1,14 @@
 # Architecture
 
-This document describes the structure and design of the lfz-form-builder monorepo.
+This document describes the structure and design of the lf-form-builder monorepo.
 
 ## Monorepo Structure
 
 ```
 docs/              - VitePress guides and generated API docs
 packages/
-├── core/          - Main library (@lfz/lf-form-builder)
-├── types/         - Shared types (@lfz/lf-form-types)
+├── core/          - Main library (@lf/lf-form-builder)
+├── types/         - Shared types (@lf/lf-form-types)
 ├── examples/      - Example forms (non-published)
 scripts/           - Release and workspace helper scripts
 template/          - Starter template for consumers
@@ -65,7 +65,7 @@ template/          - Starter template for consumers
 **Core library pipeline**:
 
 1. **bundleLfless plugin** - Resolves `@import` statements in `.lfless` files using package.json `exports` map
-   - Allows `@import '@lfz/lf-form-builder/css/variables';` in `.lfless` files
+   - Allows `@import '@lf/lf-form-builder/css/variables';` in `.lfless` files
    - Resolves to actual source location: `src/css/variables.lfless`
    
 2. **externalizeStyleImports plugin** - Preserves `.lfless` and `.css` imports in library output
@@ -155,8 +155,8 @@ See [packages/core/src/index.ts](packages/core/src/index.ts) for complete export
 2. **Linting** - `npm run lint` (eslint across the workspace)
 3. **Testing** - `npm test` (core package typecheck + Vitest)
 4. **Package builds**
-  - `npm run build:types` builds `@lfz/lf-form-types`
-  - `npm run build:core` builds `@lfz/lf-form-builder`
+  - `npm run build:types` builds `@lf/lf-form-types`
+  - `npm run build:core` builds `@lf/lf-form-builder`
   - `npm run build:examples` builds the example forms after core
 5. **Static dev build with CSS output**
   - `npm run build:dev:css` runs the examples development build and compiles emitted `.less` files to `.css`

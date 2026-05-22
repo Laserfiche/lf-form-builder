@@ -14,10 +14,10 @@
     "declaration": true,
     "allowJs": true,
     "paths": {
-      "@lfz/lf-form-builder": ["../core/src/index.ts"],
-      "@lfz/lf-form-builder/plugins": ["../core/src/plugins/index.ts"],
-      "@lfz/lf-form-builder/plugins/*": ["../core/src/plugins/*"],
-      "@lfz/lf-form-types": ["../types/lib/index.d.ts"]
+      "@lf/lf-form-builder": ["../core/src/index.ts"],
+      "@lf/lf-form-builder/plugins": ["../core/src/plugins/index.ts"],
+      "@lf/lf-form-builder/plugins/*": ["../core/src/plugins/*"],
+      "@lf/lf-form-types": ["../types/lib/index.d.ts"]
     },
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,

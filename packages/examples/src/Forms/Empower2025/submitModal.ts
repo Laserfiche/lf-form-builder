@@ -2,9 +2,9 @@ import {
   LFFormButtonStyle,
   LFFormModal,
   LFFormModalSize,
-} from '@lfz/lf-form-builder';
+} from '@lf/lf-form-builder';
 import type { FormFieldsType } from '.';
-import { LFFormSubmissionEventParam, TextField } from '@lfz/lf-form-types';
+import { LFFormSubmissionEventParam, TextField } from '@lf/lf-form-types';
 
 /* Register function just provided to initialize the code in this file
  * You can basically ignore this function and just read/use its contents

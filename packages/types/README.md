@@ -1,17 +1,17 @@
-# @lfz/lf-form-types
+# @lf/lf-form-types
 
 TypeScript type definitions for the Laserfiche Forms `LFForm` runtime API.
 
 ## Installation
 
 ```bash
-npm install @lfz/lf-form-types
+npm install @lf/lf-form-types
 ```
 
 ## Usage
 
 ```typescript
-import type { LFForm, LFFormField, LFFormId, LFFormIdParam } from '@lfz/lf-form-types';
+import type { LFForm, LFFormField, LFFormId, LFFormIdParam } from '@lf/lf-form-types';
 ```
 
 ### LFForm-first imports
@@ -19,12 +19,12 @@ import type { LFForm, LFFormField, LFFormId, LFFormIdParam } from '@lfz/lf-form-
 Use focused subpaths when you want the API surface to match LFForm behavior domains.
 
 ```typescript
-import type { LFForm, LFFormGetterApi, LFFormMethodApi, LFFormEventApi } from '@lfz/lf-form-types/lfform';
-import type { LFFormSupportedEvents, LFFormEventPayloadMap } from '@lfz/lf-form-types/events';
-import type { LFFormGetFieldValues, LFFormIdParam } from '@lfz/lf-form-types/getters';
-import type { LFFormSetFieldValues, LFFormPromiseResponse } from '@lfz/lf-form-types/methods';
-import type { LFFormField, BaseFieldSettings } from '@lfz/lf-form-types/fields';
-import { isLfFormId } from '@lfz/lf-form-types/utils';
+import type { LFForm, LFFormGetterApi, LFFormMethodApi, LFFormEventApi } from '@lf/lf-form-types/lfform';
+import type { LFFormSupportedEvents, LFFormEventPayloadMap } from '@lf/lf-form-types/events';
+import type { LFFormGetFieldValues, LFFormIdParam } from '@lf/lf-form-types/getters';
+import type { LFFormSetFieldValues, LFFormPromiseResponse } from '@lf/lf-form-types/methods';
+import type { LFFormField, BaseFieldSettings } from '@lf/lf-form-types/fields';
+import { isLfFormId } from '@lf/lf-form-types/utils';
 ```
 
 ### Main API vs auxiliary types
