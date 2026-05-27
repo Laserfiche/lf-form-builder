@@ -52,6 +52,8 @@ export const generateDirectoryHtmlWithOptions = (
       const buildDirRegex = /{{BUILD_DIRECTORY}}/g;
       const buildOutput = renderBuildOutput(Object.keys(bundle).sort((left, right) => left.localeCompare(right)));
       const newHtml = indexHtml.replace(buildDirRegex, buildOutput);
+      // Ensure the output directory exists before attempting to write the file
+      await fs.mkdir(outDir, { recursive: true });
       await fs.writeFile(`${outDir}/index.html`, newHtml);
     },
   };
