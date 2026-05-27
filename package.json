@@ -27,7 +27,7 @@
     "watch-serve": "concurrently \"npm run watch:core\" \"npm --workspace=packages/examples run serve\"",
     "build": "tsc -b",
     "dev": "npm run dev --workspace=packages/examples",
-    "typecheck": "npm run typecheck --workspace=packages/core && tsc -p packages/examples/tsconfig.json --noEmit",
+    "typecheck": "npm run typecheck --workspace=packages/core && tsc -p packages/examples/tsconfig.typecheck.json",
     "lint": "eslint .",
     "test": "npm run build:types && npm run typecheck --workspace=packages/core && npm test --workspace=packages/core",
     "test:coverage": "npm run test:coverage --workspace=packages/core",
