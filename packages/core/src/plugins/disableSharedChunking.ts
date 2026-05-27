@@ -61,8 +61,9 @@ export function disableSharedChunking(inputs: Record<string, string>): Plugin {
         // Track that this resolved module belongs to the same entry
         moduleToEntry[resolved.id] = id;
         
-        // Keep extension at the end to make vite happy
-        const uniqueId = `${name}?unique=${id}${dotExtension}`;
+        // Keep the real file extension before the query so Windows file loading
+        // does not treat `?unique=...` as part of the filename.
+        const uniqueId = `${name}${dotExtension}?unique=${id}`;
         return uniqueId;
       }
       return null;

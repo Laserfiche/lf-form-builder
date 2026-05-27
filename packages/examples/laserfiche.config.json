@@ -2,6 +2,7 @@
   "forms": {
     "rootDir": "src/Forms",
     "js": {
+      "Empower2025": "Empower2025/index.ts",
       "Empower2026": "Empower2026/index.ts"
     }
   }

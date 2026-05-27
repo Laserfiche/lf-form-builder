@@ -2,6 +2,7 @@ import { defineConfig, ServerOptions } from 'vite';
 import basicSsl from '@vitejs/plugin-basic-ssl';
 import mkcert from 'vite-plugin-mkcert';
 import config from './laserfiche.config.json';
+import { compileLessToCss } from './scripts/compile-less-to-css.js';
 // Import plugins from the core package build. Resolve the path to the
 // core `dist/plugins` directory and require it at runtime so TypeScript
 // doesn't try to include the external built JS under the examples
@@ -15,12 +16,17 @@ import { copyFile, mkdir, stat } from 'node:fs/promises';
 import path from 'node:path';
 
 const formsJS = config.forms.js;
+const requestedFormEntry = process.env.FORM_ENTRY?.trim();
 
 const input: Record<string, string> = {};
 
-const formJSList = Object.entries(formsJS);
+const formJSList = Object.entries(formsJS).filter(([name]) => (
+  !requestedFormEntry || name === requestedFormEntry
+));
 if (formJSList.length === 0) {
-  throw new Error('No forms found in config');
+  throw new Error(requestedFormEntry
+    ? `Form entry "${requestedFormEntry}" was not found in laserfiche.config.json`
+    : 'No forms found in config');
 }
 for (const [key, value] of formJSList) {
   input[key] = `${config.forms.rootDir}/${value}`;
@@ -45,14 +51,22 @@ export default defineConfig(({ mode }) => {
       minify: mode === 'development' ? false : true,
       sourcemap: mode === 'development' ? true : false,
       target: 'esnext',
-      copyPublicDir: true,
+      copyPublicDir: false,
+      watch: mode === 'development'
+        ? {
+            exclude: [
+              'dist/**',
+              '../core/dist/**',
+            ],
+          }
+        : undefined,
       rolldownOptions: {
         treeshake: mode === 'development' ? false : true,
         external: ['@laserfiche/lf-repository-api-client-v2'],
         input,
         output: {
           dir: 'dist',
-          format: 'es',
+          format: requestedFormEntry ? 'iife' : 'es',
           entryFileNames: '[name].js',
           assetFileNames: '[name].[ext]',
         },
@@ -66,7 +80,9 @@ export default defineConfig(({ mode }) => {
       // documented http://localhost:3000 workflow. Enable HTTPS explicitly.
       ...(process.env.ENABLE_BASIC_SSL === 'true' ? [basicSsl()] : []),
       disableSharedChunking(input),
-      generateDirectoryHtml(),
+      generateDirectoryHtml({
+        templatePath: path.resolve(__dirname, 'public', 'index.html'),
+      }),
       // Stripe runtime source lives in core; examples deploys copies so
       // Empower2026.js can load stripe.html/Stripe.js from the same dist path.
       {
@@ -108,6 +124,15 @@ export default defineConfig(({ mode }) => {
               // best-effort copy; log error but don't fail build
               console.warn('copy-core-stripe-assets: failed to copy stripe assets from core dist', e);
             }
+          },
+        },
+      },
+      {
+        name: 'compile-less-to-css',
+        closeBundle: {
+          sequential: true,
+          async handler() {
+            await compileLessToCss(path.resolve(__dirname, 'dist'));
           },
         },
       },

@@ -9,8 +9,7 @@ const INDEX_MARKER_END = '<!-- BUILD_DIRECTORY_END -->';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-async function main() {
-  const distDir = path.resolve(__dirname, '..', 'dist');
+export async function compileLessToCss(distDir = path.resolve(__dirname, '..', 'dist')) {
   try {
     const files = await fs.readdir(distDir);
     const lessFiles = files.filter((f) => f.endsWith('.less'));
@@ -46,6 +45,10 @@ async function main() {
   }
 }
 
+async function main() {
+  await compileLessToCss();
+}
+
 async function refreshDirectoryIndex(distDir) {
   const indexPath = path.join(distDir, 'index.html');
   const indexHtml = await fs.readFile(indexPath, 'utf8').catch(() => '');
@@ -71,4 +74,6 @@ async function refreshDirectoryIndex(distDir) {
   await fs.writeFile(indexPath, updatedHtml, 'utf8');
 }
 
-main();
+if (process.argv[1] === __filename) {
+  void main();
+}

@@ -38,6 +38,7 @@
   ],
   "include": [
     "src",
+    "scripts",
     "vite.config.ts",
     "laserfiche.config.json"
   ]
