@@ -51,6 +51,8 @@ npm run dev               # Watch examples and serve built dist locally
 
 Use `.env.example` as the committed template for local configuration. Keep actual keys and per-machine overrides in the untracked `.env.local`.
 
+After changing `.env.local`, rebuild the examples bundle or restart `npm run dev`. The `VITE_*` values are embedded into the generated JavaScript at build time, so updating the env file alone does not change an already-built `packages/examples/dist/*.js` output.
+
 If you use the translation examples, set `VITE_TRANSLATION_ENDPOINT` to a server-side route that performs translation. Do not expose provider API keys in browser code.
 
 ### Watch Mode
@@ -84,6 +86,7 @@ Notes:
 - `npm run dev` uses the examples package's static `serve` command. If port `3000` is already in use, `serve` will choose another port.
 - `npm run build:dev:css` is the easiest one-shot build when you want the static index page to list both `Empower2026.js` and `Empower2026.css`.
 - `npm run watch-serve` uses Vite on `--strictPort`, so it will fail instead of switching ports if `3000` is already occupied.
+- If you update `.env.local`, run a fresh build or restart `npm run dev` so the new `VITE_*` values are embedded into the built JavaScript.
 - If `Empower2026.js` looks truncated, stop the server, run the `build:dev` or `build:dev:css` step to completion, then restart serving.
 
 This is useful during development so you don't need to run `npm run build:core` manually after each change.

@@ -4,8 +4,7 @@
     "paths": {
       "@lf/lf-form-builder": ["../core/dist/index.d.ts"],
       "@lf/lf-form-builder/plugins": ["../core/dist/plugins/index.d.ts"],
-      "@lf/lf-form-builder/plugins/*": ["../core/dist/plugins/*.d.ts"],
-      "@lf/lf-form-types": ["../types/lib/index.d.ts"]
+      "@lf/lf-form-builder/plugins/*": ["../core/dist/plugins/*.d.ts"]
     }
   }
 }

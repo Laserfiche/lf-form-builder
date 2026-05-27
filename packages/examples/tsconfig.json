@@ -16,9 +16,9 @@
     "paths": {
       "@lf/lf-form-builder": ["../core/src/index.ts"],
       "@lf/lf-form-builder/plugins": ["../core/src/plugins/index.ts"],
-      "@lf/lf-form-builder/plugins/*": ["../core/src/plugins/*"],
-      "@lf/lf-form-types": ["../types/lib/index.d.ts"]
+      "@lf/lf-form-builder/plugins/*": ["../core/src/plugins/*"]
     },
+    "customConditions": ["source"],
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
@@ -38,6 +38,7 @@
   ],
   "include": [
     "src",
+    "scripts",
     "vite.config.ts",
     "laserfiche.config.json"
   ]

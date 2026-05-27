@@ -26,30 +26,37 @@
   "sideEffects": false,
   "exports": {
     ".": {
+      "source": "./src/index.ts",
       "import": "./lib/index.js",
       "types": "./lib/index.d.ts"
     },
     "./lfform": {
+      "source": "./src/lfform.ts",
       "import": "./lib/lfform.js",
       "types": "./lib/lfform.d.ts"
     },
     "./events": {
+      "source": "./src/events.ts",
       "import": "./lib/events.js",
       "types": "./lib/events.d.ts"
     },
     "./getters": {
+      "source": "./src/getters.ts",
       "import": "./lib/getters.js",
       "types": "./lib/getters.d.ts"
     },
     "./methods": {
+      "source": "./src/methods.ts",
       "import": "./lib/methods.js",
       "types": "./lib/methods.d.ts"
     },
     "./fields": {
+      "source": "./src/fields.ts",
       "import": "./lib/fields.js",
       "types": "./lib/fields.d.ts"
     },
     "./utils": {
+      "source": "./src/utils.ts",
       "import": "./lib/utils.js",
       "types": "./lib/utils.d.ts"
     }

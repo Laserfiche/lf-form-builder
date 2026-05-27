@@ -1,5 +1,6 @@
 import { Plugin } from 'vite';
 import fs from 'node:fs/promises';
+import path from 'node:path';
 
 const INDEX_MARKER_START = '<!-- BUILD_DIRECTORY_START -->';
 const INDEX_MARKER_END = '<!-- BUILD_DIRECTORY_END -->';
@@ -13,12 +14,25 @@ const renderBuildOutput = (files: string[]) => `<div style="padding: 8px;">Build
       </div>`;
 
 export const generateDirectoryHtml = (): Plugin => {
+  return generateDirectoryHtmlWithOptions();
+};
+
+type GenerateDirectoryHtmlOptions = {
+  templatePath?: string;
+};
+
+export const generateDirectoryHtmlWithOptions = (
+  pluginOptions: GenerateDirectoryHtmlOptions = {},
+): Plugin => {
   return {
     name: 'generate-directory-html',
     apply: 'build',
     async generateBundle(options, bundle) {
       const outDir = options.dir ?? options.file ?? 'dist';
-      const indexHtml = await fs.readFile(`${outDir}/index.html`, 'utf8').catch(
+      const templatePath = pluginOptions.templatePath
+        ? path.resolve(pluginOptions.templatePath)
+        : `${outDir}/index.html`;
+      const indexHtml = await fs.readFile(templatePath, 'utf8').catch(
         () => `<!DOCTYPE html>
 <html lang="en">
   <head>

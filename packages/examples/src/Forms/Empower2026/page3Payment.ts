@@ -69,6 +69,9 @@ export const page3FormFields = {
 } as const;
 
 const DISABLE_PAGE3 = import.meta.env.VITE_DISABLE_PAGE3 === 'true';
+const stripePublishableKey = import.meta.env.VITE_STRIPE_PUBLIC_KEY?.trim();
+const hasValidStripePublishableKey = !!stripePublishableKey && stripePublishableKey.startsWith('pk_');
+const stripePublishableKeyErrorHtml = '<div style="color:red"><strong>Stripe configuration error:</strong> Set VITE_STRIPE_PUBLIC_KEY in .env.local to a valid Stripe publishable key that starts with pk_.</div>';
 
 const hasStringProperty = <TKey extends string>(
   value: unknown,
@@ -216,6 +219,12 @@ export const page3Load = DISABLE_PAGE3
    */
   const triggerCheckout = async () => {
     console.log('[page3Payment] triggerCheckout called');
+    if (!hasValidStripePublishableKey) {
+      await setCheckoutResultHtml(stripePublishableKeyErrorHtml);
+      await setFieldValueSafe(formFields.isFinished, 'fail');
+      return;
+    }
+
     let unsubscribeComplete: (() => void) | undefined;
     let unsubscribeError: (() => void) | undefined;
 
@@ -245,7 +254,7 @@ export const page3Load = DISABLE_PAGE3
       // Register listeners before any send() calls so messages cannot race past us.
       let terminalMessageHandled = false;
 
-      unsubscribeComplete = messager.subscribe('COMPLETE_CHECKOUT', async (payload) => {
+      unsubscribeComplete = messager.subscribe('COMPLETE_CHECKOUT', async (payload: StripeMessages['COMPLETE_CHECKOUT']) => {
         if (terminalMessageHandled) return;
         terminalMessageHandled = true;
         cleanupSubscriptions();
@@ -281,7 +290,7 @@ export const page3Load = DISABLE_PAGE3
         }
       });
 
-      unsubscribeError = messager.subscribe('ERROR', async (payload) => {
+      unsubscribeError = messager.subscribe('ERROR', async (payload: StripeMessages['ERROR']) => {
         if (terminalMessageHandled) return;
         terminalMessageHandled = true;
         cleanupSubscriptions();
@@ -311,7 +320,7 @@ export const page3Load = DISABLE_PAGE3
         type: 'INITIALIZE',
         payload: {
           action: 'initialize',
-          pk: import.meta.env.VITE_STRIPE_PUBLIC_KEY ?? undefined,
+          pk: stripePublishableKey ?? undefined,
         },
       });
     } catch (error) {
@@ -324,8 +333,8 @@ export const page3Load = DISABLE_PAGE3
   };
   window.triggerCheckout = triggerCheckout;
 
-  const renderCheckoutButton = (enabled = true) => {
-    const html = /*html*/ `<button type="button" onclick="triggerCheckout()" class="lf-secondary-button" ${enabled ? '' : 'disabled'}>Checkout</button>`;
+  const renderCheckoutButton = (enabled = true, helperText = '') => {
+    const html = /*html*/ `<button type="button" onclick="triggerCheckout()" class="lf-secondary-button" ${enabled ? '' : 'disabled'}>Checkout</button>${helperText ? `<div style="margin-top:0.5rem;color:#b42318;font-size:0.875rem;">${helperText}</div>` : ''}`;
     return setCustomHtml(formFields.triggerCheckoutButton, html);
   };
 
@@ -340,6 +349,15 @@ export const page3Load = DISABLE_PAGE3
   // Sync function: enable checkout only when Cost > 0 (numeric). Falls back
   // to disabling when cost is missing or non-numeric. Also hide/show iframe based on enabled state.
   const syncCheckoutButtonState = async () => {
+    if (!hasValidStripePublishableKey) {
+      await renderCheckoutButton(
+        false,
+        'Stripe checkout is unavailable until VITE_STRIPE_PUBLIC_KEY is set to a valid pk_ key in .env.local.',
+      );
+      await closeCheckoutUi();
+      return;
+    }
+
     if (formFields.Cost) {
       try {
         const raw = LFForm.getFieldValues<TextField>(formFields.Cost as LFFormId) as unknown;
@@ -440,9 +458,9 @@ export const page3Load = DISABLE_PAGE3
   const injectStripeFrame = (sessionId?: string) => {
     const separator = stripeFrameSrc.includes('?') ? '&' : '?';
     const parentOrigin = window.location.origin;
-    const params = `channelId=${encodeURIComponent(stripeChannelId)}&pk=${encodeURIComponent(import.meta.env.VITE_STRIPE_PUBLIC_KEY ?? '')}&parentOrigin=${encodeURIComponent(parentOrigin)}` + (sessionId ? `&sessionId=${encodeURIComponent(sessionId)}` : '');
+    const params = `channelId=${encodeURIComponent(stripeChannelId)}&pk=${encodeURIComponent(stripePublishableKey ?? '')}&parentOrigin=${encodeURIComponent(parentOrigin)}` + (sessionId ? `&sessionId=${encodeURIComponent(sessionId)}` : '');
     const framedSrc = `${stripeFrameSrc}${separator}${params}`;
-    const iframeHtml = `<iframe id="stripe-checkout-iframe" class="stripe-checkout-iframe" src="${framedSrc}" width="100%" height="750" frameborder="0" scrolling="no" allow="payment *"></iframe>`;
+    const iframeHtml = `<iframe id="stripe-checkout-iframe" class="stripe-checkout-iframe" src="${framedSrc}" width="100%" height="750" frameborder="0" scrolling="no" allow="payment *" style="display:block;border:0;outline:0;box-shadow:none;background:transparent;"></iframe>`;
 
     // If a modal field is provided, render the iframe inside an LFFormModal.
     if (formFields.checkoutModal) {

@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable",
+      "WebWorker"
+    ],
+    "skipLibCheck": true,
+    "allowJs": true,
+    "paths": {
+      "@lf/lf-form-builder": ["../core/src/index.ts"],
+      "@lf/lf-form-builder/plugins": ["../core/src/plugins/index.ts"],
+      "@lf/lf-form-builder/plugins/*": ["../core/src/plugins/*"],
+      "@/*": ["../core/src/*"],
+      "@lib/*": ["../core/src/lib/*"],
+      "@components/*": ["../core/src/components/*"]
+    },
+    "customConditions": ["source"],
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noEmit": true
+  },
+  "include": [
+    "src",
+    "vite.config.ts",
+    "../core/src/global.d.ts"
+  ]
+}

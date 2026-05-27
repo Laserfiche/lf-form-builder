@@ -22,6 +22,7 @@ jobs:
           cache: npm
 
       - run: npm ci
+      - run: npm run build --workspace=@lf/lf-form-types
       - run: npm run lint
       - run: npm run typecheck
       - run: npm run test
