@@ -87,6 +87,47 @@ export default defineConfig(({ mode }) => {
       // Empower2026.js can load stripe.html/Stripe.js from the same dist path.
       {
         name: 'copy-core-stripe-assets',
+        configureServer: async () => {
+          // Copy assets on dev server start so Stripe.js and its map are available
+          try {
+            const coreRoot = path.resolve(__dirname, '..', 'core');
+            const coreStripeHtmlCandidates = [
+              path.resolve(coreRoot, 'dist', 'plugins', 'Stripe', 'stripe.html'),
+              path.resolve(coreRoot, 'src', 'plugins', 'Stripe', 'stripe.html'),
+            ];
+            const coreStripeJs = path.resolve(coreRoot, 'dist', 'Stripe.js');
+            const destHtml = path.resolve(__dirname, 'dist', 'stripe.html');
+            const destJs = path.resolve(__dirname, 'dist', 'Stripe.js');
+            await mkdir(path.dirname(destHtml), { recursive: true });
+            let coreStripeHtml: string | undefined;
+            for (const candidate of coreStripeHtmlCandidates) {
+              if (await asyncPathExists(candidate)) {
+                coreStripeHtml = candidate;
+                break;
+              }
+            }
+            if (coreStripeHtml) {
+              await copyFile(coreStripeHtml, destHtml);
+            } else {
+              console.warn('copy-core-stripe-assets: stripe.html is not available yet');
+            }
+
+            if (await asyncPathExists(coreStripeJs)) {
+              await copyFile(coreStripeJs, destJs);
+              // Also copy source map if present so dev tools can load it
+              const coreStripeMap = `${coreStripeJs}.map`;
+              const destMap = `${destJs}.map`;
+              if (await asyncPathExists(coreStripeMap)) {
+                await copyFile(coreStripeMap, destMap);
+              }
+            } else {
+              console.warn('copy-core-stripe-assets: Stripe.js is not available yet');
+            }
+          } catch (e) {
+            // best-effort copy; log error but don't fail dev server
+            console.warn('copy-core-stripe-assets: failed to copy stripe assets from core dist', e);
+          }
+        },
         closeBundle: {
           sequential: true,
           async handler() {
@@ -115,6 +156,12 @@ export default defineConfig(({ mode }) => {
 
               if (await asyncPathExists(coreStripeJs)) {
                 await copyFile(coreStripeJs, destJs);
+                // Also copy source map if present so dev tools can load it
+                const coreStripeMap = `${coreStripeJs}.map`;
+                const destMap = `${destJs}.map`;
+                if (await asyncPathExists(coreStripeMap)) {
+                  await copyFile(coreStripeMap, destMap);
+                }
               } else {
                 console.warn('copy-core-stripe-assets: Stripe.js is not available yet');
               }
