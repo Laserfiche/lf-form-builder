@@ -1,10 +1,5 @@
 import type { LFFormId, LFFormSetFieldValues } from '@lf/lf-form-types';
 
-const setFieldValuesUnsafe = LFForm.setFieldValues as unknown as (
-  field: LFFormId,
-  value: unknown,
-) => ReturnType<LFFormSetFieldValues>;
-
 /**
  * Best-effort field visibility helper that does not throw when the runtime
  * does not support the visibility API.
@@ -39,6 +34,12 @@ export const setFieldValueSafe = async (
   value: unknown,
 ) => {
   if (!field) return false;
+  // Resolved lazily so this module is safe to import outside the LFForm runtime
+  // (e.g. the Stripe iframe sandbox where LFForm is not defined at module load time).
+  const setFieldValuesUnsafe = LFForm.setFieldValues as unknown as (
+    field: LFFormId,
+    value: unknown,
+  ) => ReturnType<LFFormSetFieldValues>;
   try {
     await setFieldValuesUnsafe(field, value);
     return true;
