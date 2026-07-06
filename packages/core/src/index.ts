@@ -115,5 +115,8 @@ export { DocView } from './components/repository/docView';
 export type { DocViewOptions } from './components/repository/docView';
 export { IframeView } from './components/repository/iframe';
 export type { IframeOptions, IframeWindow } from './components/repository/iframe';
-// Stripe plugin types
+// Payment plugins
 export type { StripeMessages } from './plugins/Stripe/index';
+export { initStripeIframe } from './plugins/Stripe/index';
+export { initBraintreeIframe } from './plugins/Braintree/index';
+export { initAuthorizeNetIframe } from './plugins/AuthorizeNet/index';

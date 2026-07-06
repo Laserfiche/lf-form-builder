@@ -1,137 +1,116 @@
 import { PostMessageHelper } from '../../lib/utils/postMessageHelper';
 
+/**
+ * Messages exchanged between the Stripe embedded-checkout iframe
+ * and the LF Form sandbox that hosts it.
+ */
+export type StripeMessages = {
+  INITIALIZE: { action: 'initialize'; pk?: string; clientToken?: string; amount?: string; apiLoginId?: string; clientKey?: string };
+  START_CHECKOUT: { key: string; sessionId?: string };
+  COMPLETE_CHECKOUT: { result: string };
+  ERROR: { message: string };
+};
+
 interface EmbeddedCheckout {
   mount: (selector: string) => void;
 }
-
 interface StripeInstance {
   initEmbeddedCheckout: (options: {
     fetchClientSecret: () => Promise<string>;
     onComplete?: () => void | Promise<void>;
   }) => Promise<EmbeddedCheckout>;
 }
-// Library loaded externally in the standalone HTML page /plugins/Stripe/stripe.html
 declare const Stripe: (publishableKey: string) => StripeInstance;
 
-// Determine publishable key from iframe query param `pk` or build-time env.
-const searchParams = new URLSearchParams(window.location.search);
-const envPublishableKey = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
-// Note: we do not initialize Stripe at module load so consumers can supply `pk` at runtime via the iframe URL.
-
-const sandboxOrigin = (() => {
-  const parentOriginParam = searchParams.get('parentOrigin');
-  if (parentOriginParam) {
-    try {
-      return new URL(parentOriginParam).origin;
-    } catch {
-      // ignore and continue to other strategies
-    }
-  }
-
-  try {
-    if (document.referrer) {
-      return new URL(document.referrer).origin;
-    }
-  } catch {
-    // fallback below
-  }
-  return '*';
-})();
-const stripeChannelId = searchParams.get('channelId') ?? 'empower2026-checkout';
-let currentSessionId: string | null = null;
+const loadScript = (src: string): Promise<void> =>
+  new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
+    document.head.appendChild(script);
+  });
 
 /**
- * Messages that can be sent between the Stripe embedded checkout iframe
- * and the LFForm sandbox
+ * Initialise the Stripe embedded-checkout handler inside a sandbox iframe.
+ *
+ * Call this when `window.__lfSandboxMode === 'stripe-sandbox'`.
+ * `params` should be `window.__lfSandboxParams` (set by sandbox.html before
+ * the script is evaluated) and must contain at minimum `channelId` and `pk`.
+ * Pass `scriptSrc` to lazy-load the Stripe JS SDK from a specific URL (e.g.
+ * `https://js.stripe.com/clover/stripe.js`).
  */
-export type StripeMessages = {
-  INITIALIZE: { action: 'initialize'; pk?: string };
-  START_CHECKOUT: { key: string; sessionId?: string };
-  COMPLETE_CHECKOUT: { result: string };
-  ERROR: { message: string };
-};
+export const initStripeIframe = (params: URLSearchParams): void => {
+  const stripeChannelId = params.get('channelId') ?? 'empower2026-checkout';
+  let currentSessionId: string | null = null;
 
-const sandboxHandler = new PostMessageHelper<StripeMessages>(
-  sandboxOrigin,
-  {
+  // Diagnostic: log where this iframe lives to verify peer-discovery targeting.
+  const selfHref = (() => { try { return window.location.href; } catch { return '(cross-origin)'; } })();
+  const parentHref = (() => { try { return window.parent.location.href; } catch { return '(cross-origin)'; } })();
+  // eslint-disable-next-line no-console
+  console.log('[Stripe] iframe mode — self:', selfHref, '| parent:', parentHref);
+
+  const sandboxHandler = new PostMessageHelper<StripeMessages>(window.location.origin, {
     channelId: stripeChannelId,
-    // Host shells can emit unrelated messages; keep these silent.
+    // Host shells emit unrelated messages; suppress noise.
     onInvalidMessage: () => {},
     peerDiscovery: true,
-  }
-);
+    // Default getSiblingFrames() finds the outer LF sandbox (a sibling child of
+    // the same parent page) — the correct peer for PostMessageHelper discovery.
+  });
 
-const sandboxPeerReady = sandboxHandler.whenPeerDiscovered();
-
-/**
- * Shared promise for fetching the client secret
- * Allows us to initialize the client while the client secret
- * is loading from the form lookup rule
- */
-const { resolve, promise: clientSecret } = Promise.withResolvers<string>();
-
-/**
- * Initialize the Stripe embedded checkout when the 'INITIALIZE' message is received
- * 'INITIALIZE' message is sent when the user clicks the checkout button
- */
-const unsubscribeInitialize = sandboxHandler.subscribe('INITIALIZE', async (payload) => {
-  try {
-    // Allow the iframe caller to provide the publishable key via ?pk=...; fall back to build env key.
-    const runtimePk = payload?.pk ?? searchParams.get('pk');
-    const stripePublishableKey = runtimePk ?? envPublishableKey;
-    if (!stripePublishableKey || !stripePublishableKey.startsWith('pk_')) {
-      await sandboxPeerReady;
-      sandboxHandler.send({
-        type: 'ERROR',
-        payload: { message: '[Stripe] Invalid publishable key. Provide `pk` query param or set VITE_STRIPE_PUBLIC_KEY at build time.' },
-      });
-      return;
-    }
-
-    const stripe = Stripe(stripePublishableKey);
-
-    const checkout = await stripe.initEmbeddedCheckout({
-      fetchClientSecret: () => clientSecret,
-      onComplete: async () => {
-        await sandboxPeerReady;
-        sandboxHandler.send({ type: 'COMPLETE_CHECKOUT', payload: { result: currentSessionId ?? 'complete' } });
-      },
-    });
-
-    const mountTo = document.getElementById('checkout');
-    mountTo?.replaceChildren();
-    // Mount Checkout
-    checkout.mount('#checkout');
-    unsubscribeInitialize();
-  } catch (err) {
-    // Don't let errors bubble as uncaught exceptions; notify parent and log.
-    try {
-      await sandboxPeerReady;
-      sandboxHandler.send({
-        type: 'ERROR',
-        payload: { message: (err instanceof Error) ? err.message : String(err) },
-      });
-    } catch {
-      // ignore
-    }
-    // Keep console for debugging
+  sandboxHandler.whenPeerDiscovered().then(
     // eslint-disable-next-line no-console
-    console.error('[Stripe iframe] initialize error', err);
-  }
-});
+    () => console.log('[Stripe] peer discovered'),
+    () => {},
+  );
 
-/**
- * Handle the 'START_CHECKOUT' message from the LFForm sandbox
- * This message is sent when the checkout session lookup rule completes and returns a session key
- */
-const unsubscribeInitCheckout = sandboxHandler.subscribe(
-  'START_CHECKOUT',
-  async (payload) => {
+  const { resolve, promise: clientSecret } = Promise.withResolvers<string>();
+
+  const unsubscribeInitialize = sandboxHandler.subscribe('INITIALIZE', async (payload) => {
+    try {
+      const stripePublishableKey = payload?.pk ?? params.get('pk') ?? undefined;
+      if (!stripePublishableKey || !stripePublishableKey.startsWith('pk_')) {
+        await sandboxHandler.whenPeerDiscovered();
+        sandboxHandler.send({
+          type: 'ERROR',
+          payload: { message: '[Stripe] Invalid publishable key. Provide pk param or set VITE_STRIPE_PUBLIC_KEY.' },
+        });
+        return;
+      }
+
+      const scriptSrc = params.get('scriptSrc');
+      if (scriptSrc) await loadScript(scriptSrc);
+
+      const checkout = await Stripe(stripePublishableKey).initEmbeddedCheckout({
+        fetchClientSecret: () => clientSecret,
+        onComplete: async () => {
+          await sandboxHandler.whenPeerDiscovered();
+          sandboxHandler.send({
+            type: 'COMPLETE_CHECKOUT',
+            payload: { result: currentSessionId ?? 'complete' },
+          });
+        },
+      });
+
+      document.getElementById('checkout')?.replaceChildren();
+      checkout.mount('#checkout');
+      unsubscribeInitialize();
+    } catch (err) {
+      try {
+        await sandboxHandler.whenPeerDiscovered();
+        sandboxHandler.send({
+          type: 'ERROR',
+          payload: { message: err instanceof Error ? err.message : String(err) },
+        });
+      } catch { /* ignore */ }
+      // eslint-disable-next-line no-console
+      console.error('[Stripe iframe] initialize error', err);
+    }
+  });
+
+  sandboxHandler.subscribe('START_CHECKOUT', (payload) => {
     currentSessionId = payload.sessionId ?? null;
     resolve(payload.key);
-
-    unsubscribeInitCheckout();
-  },
-);
-
-export default {};
+  });
+};
