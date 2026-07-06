@@ -52,6 +52,12 @@ declare const window: Emp2026Window;
  *   checkoutModal    — Modal field; if present the iframe opens inside a modal
  *   MusicSubscription — When changed, resets checkout so a new session is required
  *   Cost             — Numeric field; Checkout button is disabled when Cost ≤ 0
+ *   VerifiedPayment        — Text field; payment status written after server-side verification
+ *   VerifiedPaymentAmount  — Number/Currency field; verified amount from the Stripe session
+ *   VerifiedCurrencyType   — Text field; currency code from the Stripe session (e.g. 'usd')
+ *   VerifiedCustomer       — Text field; Stripe customer ID
+ *   VerifiedCustomerName   — Text field; customer name from the Stripe session
+ *   VerifiedCustomerEmail  — Text field; customer email from the Stripe session
  */
 export type PaymentFormFields = {
   checkoutFrame: LFFormId;

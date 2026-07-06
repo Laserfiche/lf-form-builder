@@ -55,6 +55,9 @@ declare const window: AuthorizeNetWindow;
  *   Cost             — Numeric field; Checkout button is disabled when Cost ≤ 0
  *   transactionId    — Written by the charge lookup rule after the charge completes
  *   finalstatus      — Written by the verification lookup rule; shown as success/failure
+ *   finalamount             — Written by the verification lookup rule; final charged amount
+ *   finalcurrencyIsoCode    — Written by the verification lookup rule; currency ISO code
+ *   finalmerchantAccountId  — Written by the verification lookup rule; merchant account ID
  */
 export type AuthorizeNetPaymentFormFields = {
   checkoutFrame: LFFormId;

@@ -99,6 +99,7 @@ This is useful during development so you don't need to run `npm run build:core` 
 - [Template & Toolchain Setup](docs/guide/template-setup.md) — Build with Vite and the npm packages
 - [Custom HTML & Sandbox](docs/guide/custom-html.md) — Custom HTML, third-party libraries, and iframes
 - [Recipes](docs/recipes/) — Copy-paste patterns for common form tasks
+- [Payment Gateways](docs/recipes/payment-gateways.md) — Setting up Stripe, Braintree, or Authorize.net checkout on a form
 - [API Reference](docs/api/) — Generated TypeDoc for `@lf/lf-form-builder` and `@lf/lf-form-types`
 
 ## Packages
@@ -154,21 +155,35 @@ A minimal starter project configured with Vite, `@lf/lf-form-builder`, and `@lf/
 
 Real-world form implementations demonstrating the library in action:
 - **Empower2025** — Multi-feature form: modals, star ratings, table HTML injection
-- **Empower2026** — lookup-driven loading and CSV export, Google Maps autocomplete with address validation, modal-based Stripe checkout, cross-iframe messaging
+- **Empower2026** — lookup-driven loading and CSV export, Google Maps autocomplete with address validation, modal-based checkout via Stripe, Braintree, or Authorize.net, cross-iframe messaging
 - **TranslateForm** — static form localization with optional translation draft generation
 
 #### Empower2026 Setup
 
+Empower2026 ships three interchangeable payment-gateway pages, each independently toggleable via a `VITE_DISABLE_PAGE*` flag in `.env.local`:
+
+| Page | File | Gateway | Feature flag |
+| --- | --- | --- | --- |
+| Page 3 | [page3Payment.ts](packages/examples/src/Forms/Empower2026/page3Payment.ts) | Stripe (embedded checkout) | `VITE_DISABLE_PAGE3` |
+| Page 4 | [page4BraintreePayment.ts](packages/examples/src/Forms/Empower2026/page4BraintreePayment.ts) | Braintree (Drop-in UI) | `VITE_DISABLE_PAGE4` |
+| Page 5 | [page5AuthorizeNetPayment.ts](packages/examples/src/Forms/Empower2026/page5AuthorizeNetPayment.ts) | Authorize.net (Accept.js) | `VITE_DISABLE_PAGE5` |
+
+See [docs/recipes/payment-gateways.md](docs/recipes/payment-gateways.md) for the full setup and field-mapping guide for all three gateways.
+
 Before using the Empower2026 example in your own Forms account, import the bundled Laserfiche assets from [packages/examples/src/Forms/Empower2026/Laserfiche Process](packages/examples/src/Forms/Empower2026/Laserfiche%20Process):
 
-- Import the process definition: [packages/examples/src/Forms/Empower2026/Laserfiche Process/AdvancedScripting_RG.xml](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/AdvancedScripting_RG.xml)
-- Import the web request rules: [packages/examples/src/Forms/Empower2026/Laserfiche Process/RGWebRequestToStripePayment.bri](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToStripePayment.bri) and [packages/examples/src/Forms/Empower2026/Laserfiche Process/RGWebRequestToStripeVerification.bri](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToStripeVerification.bri)
+- Import the process definition: [AdvancedScripting_RG.xml](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/AdvancedScripting_RG.xml)
+- For Stripe (page 3), import the web request rules: [RGWebRequestToStripeCharge.bri](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToStripeCharge.bri) and [RGWebRequestToStripeVerification.bri](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToStripeVerification.bri)
+- For Braintree (page 4), import: [RGWebRequestToBraintreePaymentIInit.bri](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToBraintreePaymentIInit.bri) (creates the client_token) and [RGWebRequestToBraintreeCharge.bri](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToBraintreeCharge.bri) (charges the nonce)
+- For Authorize.net (page 5), import: [RGWebRequestToAuthNetCharge.bri](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToAuthNetCharge.bri) and [RGWebRequestToAuthNetVerification.bri](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToAuthNetVerification.bri)
 
-Those imports are required for the example's process actions and Stripe-related web requests to work in your environment.
+You only need to import the web request rules for the gateway(s) you intend to use; disable the others via their `VITE_DISABLE_PAGE*` flag.
+
+Those imports are required for the example's process actions and gateway-related web requests to work in your environment.
 
 The bundled process assets are configured for local development and expect the example scripts to be served from `http://localhost:3000`. That is appropriate for getting the demo running quickly on a developer machine.
 
-For the payment gateway specifically, do not copy only `Empower2026.js`. The checkout flow also depends on the companion Stripe runtime assets that are emitted alongside it, including `stripe.html` and `Stripe.js`. In local development those files are served from the same `packages/examples/dist` folder, and in production they should be hosted together at the same HTTPS location.
+For the payment gateways specifically, do not copy only `Empower2026.js`. Each checkout flow injects an iframe pointed back at the currently-loaded page (with the built script re-delivered into that iframe over `postMessage`), so `Empower2026.js` must be reachable at the same URL the form iframe loads — there is no separate `stripe.html`/`Stripe.js` asset to copy alongside it. In local development that URL is served from `packages/examples/dist`, and in production it should be hosted on the same HTTPS location referenced by the form.
 
 For production, do not leave the process pointed at `localhost`. Host the built JavaScript, CSS, and related assets on a secure HTTPS site that your Forms environment can reach, then update the imported process and form configuration to reference that hosted location.
 

@@ -55,6 +55,11 @@ declare const window: BraintreeWindow;
  *   checkoutModal    — Modal field; if present the iframe opens inside a modal
  *   ProductSelection — When changed, resets checkout so a new session is required
  *   Cost             — Numeric field; Checkout button is disabled when Cost ≤ 0
+ *   transactionId           — Text field; charge lookup rule writes the transaction ID here
+ *   finalstatus             — Text field; verification lookup rule writes the final status here
+ *   finalamount             — Text field; verification lookup rule writes the final amount here
+ *   finalcurrencyIsoCode    — Text field; verification lookup rule writes the currency ISO code here
+ *   finalmerchantAccountId  — Text field; verification lookup rule writes the merchant account ID here
  */
 export type BraintreePaymentFormFields = {
   checkoutFrame: LFFormId;
@@ -84,7 +89,7 @@ export const page4BraintreeFormFields: BraintreePaymentFormFields = {
   checkoutSessionResult:  { fieldId: 44 } as const, // CustomHTML  — displays success/error messages
   triggerCheckoutButton:  { fieldId: 45 } as const, // CustomHTML  — renders the Checkout button
   sessionId:              { fieldId: 46 } as const, // Single-line text — lookup rule writes client_token here
-  paymentNonce:           { fieldId: 47 } as const, // Single-line text — nonce written here;
+  paymentNonce:           { fieldId: 47 } as const, // Single-line text — nonce written here after tokenization; send to your server to charge the card
   checkoutModal:          { fieldId: 49 } as const, // Modal        — optional; Drop-in opens inside the modal
   ProductSelection:       { fieldId: 50 } as const, // Radio/Dropdown — changing this resets checkout
   Cost:                   { fieldId: 58 } as const, // Single-line text  — Checkout button disabled when ≤ 0

@@ -35,3 +35,7 @@ Practical patterns you can copy and adapt for Laserfiche Forms.
 ## TypeScript
 
 - [Use TypeScript Types for Safer Helpers](./typescript-types.md) — Leverage `@lf/lf-form-types` for type-safe utility functions
+
+## Payments
+
+- [Payment Gateways (Stripe, Braintree, Authorize.net)](./payment-gateways.md) — Wire up embedded checkout using the Empower2026 example pages

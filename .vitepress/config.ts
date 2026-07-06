@@ -70,9 +70,12 @@ export default defineConfig({
   ignoreDeadLinks: [
     /\.\.\/README$/,
     /\.\/README$/,
+    /\.\.\/\.\.\/README\.MD$/,
+    /\.\.\/\.\.\/\.env\.example$/,
+    /\.\.\/\.\.\/packages\/examples\/src\/Forms\/Empower2026\/Laserfiche%20Process$/,
     /_media\/template$/,
     /_media\/LICENSE$/,
-    /\.\/(show-hide-fields|block-submission-validation|add-table-rows|table-entry-document-links|dynamic-labels|localize-labels|cancel-lookup|reset-fields|typescript-types)$/,
+    /\.\/(show-hide-fields|block-submission-validation|add-table-rows|table-entry-document-links|dynamic-labels|localize-labels|cancel-lookup|reset-fields|typescript-types|payment-gateways)$/,
     /\.\/@lf\/(form-builder-examples|lf-form-builder|lf-form-types)\/index$/,
   ],
   head: [
@@ -151,6 +154,13 @@ export default defineConfig({
               collapsed: false,
               items: [
                 { text: 'Type-Safe Helpers', link: '/recipes/typescript-types' },
+              ],
+            },
+            {
+              text: 'Payments',
+              collapsed: false,
+              items: [
+                { text: 'Payment Gateways', link: '/recipes/payment-gateways' },
               ],
             },
           ],
