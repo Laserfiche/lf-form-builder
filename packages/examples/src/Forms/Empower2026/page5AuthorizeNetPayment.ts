@@ -173,7 +173,7 @@ export const page5AuthorizeNetLoad = DISABLE_PAGE5
   // Created once and reused if a modal field is configured.
   let checkoutModalInstance: LFFormModal | null = null;
   // Both env vars are static — latched at startup, same as page3's static Stripe key.
-  let credentialDetected = hasValidAuthorizeNetKey;
+  const credentialDetected = hasValidAuthorizeNetKey;
 
   // ── UI helpers ─────────────────────────────────────────────────────────────
 
@@ -249,7 +249,7 @@ export const page5AuthorizeNetLoad = DISABLE_PAGE5
    * form. Communication happens via PostMessageHelper (INITIALIZE → card form
    * shown; COMPLETE_CHECKOUT ← tokenized opaqueData returned).
    */
-  const injectAuthorizeNetFrame = (amount: string) => {
+  const injectAuthorizeNetFrame = () => {
     const frameParams = new URLSearchParams({
       rootId:    'checkout',
       mode:      'authorizenet-sandbox',
@@ -378,7 +378,7 @@ export const page5AuthorizeNetLoad = DISABLE_PAGE5
         ? new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(costNum)
         : '';
 
-      await injectAuthorizeNetFrame(amount);
+      await injectAuthorizeNetFrame();
 
       console.log('[page5AuthorizeNetPayment] waiting for authorizenet iframe peer discovery');
       try {
