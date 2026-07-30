@@ -189,7 +189,7 @@ For production, do not leave the process pointed at `localhost`. Host the built 
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/en/download/prebuilt-installer) (v20+)
+- [Node.js](https://nodejs.org/en/download/prebuilt-installer) (v22+)
 - [VS Code](https://code.visualstudio.com/download) (recommended)
 - [Git](https://git-scm.com/downloads)
 

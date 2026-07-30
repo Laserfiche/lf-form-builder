@@ -1,7 +1,7 @@
 import { defineConfig, ServerOptions } from 'vite';
 import basicSsl from '@vitejs/plugin-basic-ssl';
 import mkcert from 'vite-plugin-mkcert';
-import config from './laserfiche.config.json';
+import config from './laserfiche.config.json' with { type: 'json' };
 import { compileLessToCss } from './scripts/compile-less-to-css.js';
 // Import plugins from the core package build. Resolve the path to the
 // core `dist/plugins` directory and require it at runtime so TypeScript
@@ -9,7 +9,7 @@ import { compileLessToCss } from './scripts/compile-less-to-css.js';
 // project's `rootDir` during type-checking.
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-const corePluginsPath = path.resolve(__dirname, '..', 'core', 'dist', 'plugins');
+const corePluginsPath = path.resolve(import.meta.dirname,'..', 'core', 'dist', 'plugins');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { bundleLfless, disableSharedChunking, generateDirectoryHtml } = require(corePluginsPath);
 import path from 'node:path';
@@ -43,7 +43,7 @@ export default defineConfig(({ mode }) => {
   return {
     // Use the monorepo root env file so examples and root scripts share one
     // local configuration source. Allow an override for ad hoc testing.
-    envDir: process.env.VITE_ENV_DIR?.trim() || path.resolve(__dirname, '..', '..'),
+    envDir: process.env.VITE_ENV_DIR?.trim() || path.resolve(import.meta.dirname,'..', '..'),
     server: serverOptions,
     appType: 'custom',
     build: {
@@ -80,14 +80,14 @@ export default defineConfig(({ mode }) => {
       ...(process.env.ENABLE_BASIC_SSL === 'true' ? [basicSsl()] : []),
       disableSharedChunking(input),
       generateDirectoryHtml({
-        templatePath: path.resolve(__dirname, 'public', 'index.html'),
+        templatePath: path.resolve(import.meta.dirname,'public', 'index.html'),
       }),
       {
         name: 'compile-less-to-css',
         closeBundle: {
           sequential: true,
           async handler() {
-            await compileLessToCss(path.resolve(__dirname, 'dist'));
+            await compileLessToCss(path.resolve(import.meta.dirname,'dist'));
           },
         },
       },
