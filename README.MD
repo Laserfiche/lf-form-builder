@@ -31,7 +31,7 @@ Copy the starter template and start building:
 npx degit laserfiche/lf-form-builder/template my-forms-project
 cd my-forms-project
 
-# update package.json
+# To use locally built (see: Development section below) dependencies, update the new project package.json
 #   "dependencies": {
 #    "@lf/lf-form-builder": "file:../packages/core",
 #    "@lf/lf-form-types": "file:../packages/types"
