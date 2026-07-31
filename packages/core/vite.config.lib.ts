@@ -4,8 +4,8 @@ import path from 'node:path';
 import { copyFile, mkdir } from 'node:fs/promises';
 import { globSync } from 'node:fs';
 
-const srcDir = path.resolve(__dirname, 'src');
-const distDir = path.resolve(__dirname, 'dist');
+const srcDir = path.resolve(import.meta.dirname, 'src');
+const distDir = path.resolve(import.meta.dirname, 'dist');
 
 /**
  * Mark .lfless and .css imports as external so the import statements are
@@ -94,7 +94,7 @@ export default defineConfig({
     copyStyleAssets(),
     dts({
       rollupTypes: false,
-      tsconfigPath: path.resolve(__dirname, 'tsconfig.lib.json'),
+      tsconfigPath: path.resolve(import.meta.dirname, 'tsconfig.lib.json'),
       outDir: distDir,
     }),
   ],

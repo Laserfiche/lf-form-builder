@@ -30,6 +30,13 @@ Copy the starter template and start building:
 ```bash
 npx degit laserfiche/lf-form-builder/template my-forms-project
 cd my-forms-project
+
+# To use locally built (see: Development section below) dependencies, update the new project package.json
+#   "dependencies": {
+#    "@lf/lf-form-builder": "file:../packages/core",
+#    "@lf/lf-form-types": "file:../packages/types"
+#  }
+
 npm install
 npm run dev
 ```
@@ -189,7 +196,7 @@ For production, do not leave the process pointed at `localhost`. Host the built 
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/en/download/prebuilt-installer) (v20+)
+- [Node.js](https://nodejs.org/en/download/prebuilt-installer) (v22+)
 - [VS Code](https://code.visualstudio.com/download) (recommended)
 - [Git](https://git-scm.com/downloads)
 

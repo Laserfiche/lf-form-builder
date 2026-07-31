@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "build:types": "npm run build --workspace=packages/types",
-    "build:core": "npm run build --workspace=packages/core",
+    "build:core": "npm run build:types && npm run build --workspace=packages/core",
     "build:examples": "npm run build:core -- -- --logLevel silent && npm run build --workspace=packages/examples",
     "build:dev:css": "npm run build:dev:css --workspace=packages/examples",
     "build:css": "npx lessc packages/examples/dist/Empower2026.less packages/examples/dist/Empower2026.css",
