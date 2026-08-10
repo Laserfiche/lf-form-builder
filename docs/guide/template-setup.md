@@ -1,27 +1,77 @@
 ---
 title: Template & Toolchain Setup
-description: Getting started with the lf-form-builder starter template, Vite, and the npm packages.
+description: Getting started with the lf-form-builder starter template, Vite, and the local workspace packages.
 ---
 
 # Template & Toolchain Setup
 
 This guide walks you through creating a new Laserfiche Forms project using the starter template, building form scripts with Vite, and using the `@lf/lf-form-builder` library.
 
+::: warning `@lf/lf-form-builder` is not on npm
+`@lf/lf-form-builder` and `@lf/lf-form-types` are **not published to any npm registry**. They are built
+from source in the `lf-form-builder` repository and consumed through npm workspaces. `npm install @lf/lf-form-builder`
+will not work — you build the library locally and let npm link it. Everything below assumes you are
+working inside a clone of the repository.
+:::
+
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/en/download/prebuilt-installer) (v18+)
+- [Node.js](https://nodejs.org/en/download/prebuilt-installer) (v22+)
 - [Git](https://git-scm.com/downloads)
 - [VS Code](https://code.visualstudio.com/download) (recommended)
 
 ## Create a New Project
 
-Copy the starter template and install dependencies:
+Clone the repository and install once at the root. This builds the workspace links that let the
+template resolve `@lf/lf-form-builder` and `@lf/lf-form-types` from `packages/` on disk:
 
 ```bash
-npx degit laserfiche/lf-form-builder/template my-forms-project
-cd my-forms-project
+git clone https://github.com/Laserfiche/lf-form-builder.git
+cd lf-form-builder
 npm install
+npm run build:core
 ```
+
+Copy the template to your own project folder **inside the repository**, then register it as a
+workspace so npm links the library into it:
+
+```bash
+cp -r template my-forms-project
+```
+
+```jsonc
+// package.json (repo root)
+"workspaces": ["packages/*", "template", "my-forms-project"]
+```
+
+```bash
+npm install                              # links @lf/* into my-forms-project
+npm run build --workspace=my-forms-project
+npm run dev --workspace=my-forms-project
+```
+
+To try the template as-is without copying it, `npm run dev:template` from the repo root does the
+build-core-then-serve step in one command.
+
+::: tip Keeping a project outside the repository
+Since the packages are never published, a project stored elsewhere cannot resolve them by name. Build
+and pack them, then depend on the tarballs:
+
+```bash
+npm run build:core
+npm pack --workspace=packages/types --workspace=packages/core --pack-destination /path/to/parent
+```
+
+```jsonc
+// my-forms-project/package.json
+"dependencies": {
+  "@lf/lf-form-builder": "file:../lf-lf-form-builder-0.1.0.tgz",
+  "@lf/lf-form-types": "file:../lf-lf-form-types-0.1.0.tgz"
+}
+```
+
+Re-pack and re-install after each library change, or keep the project in the workspace to avoid the step.
+:::
 
 ## Project Structure
 
@@ -32,7 +82,7 @@ my-forms-project/
 ├── dist/                # Built output
 ├── laserfiche.config.json
 ├── vite.config.ts
-└── package.json
+└── package.json         # @lf/* dependencies declared as "*"
 ```
 
 ## Add a New Form

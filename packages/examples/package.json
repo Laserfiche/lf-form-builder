@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@googlemaps/addressvalidation": "^3.2.1",
-    "@lf/lf-form-builder": "^0.1.0",
-    "@lf/lf-form-types": "^0.1.0"
+    "@lf/lf-form-builder": "*",
+    "@lf/lf-form-types": "*"
   }
 }

@@ -2,21 +2,38 @@
 
 ## Prerequisites
 
-- Node.js 20+
+- Node.js 22+
 - Git
+
+> [!IMPORTANT]
+> This template depends on `@lf/lf-form-builder` and `@lf/lf-form-types`, which are **not published to
+> an npm registry**. They are built from source in this repository and linked via npm workspaces, so
+> this template must live inside the repository (as a registered workspace) for `npm install` to
+> resolve them. See "Using this template outside the repository" below if you need a standalone copy.
 
 ## Getting Started
 
-1. **Clone or copy this template:**
+1. **Clone the repository and install from the root:**
    ```bash
-  npx degit laserfiche/lf-form-builder/template my-forms-project
-   cd my-forms-project
+   git clone https://github.com/Laserfiche/lf-form-builder.git
+   cd lf-form-builder
+   npm install
+   npm run build:core
    ```
 
-2. **Install dependencies:**
+2. **Copy this template into your own project folder and register it as a workspace:**
    ```bash
-   npm install
+   cp -r template my-forms-project
    ```
+   ```jsonc
+   // package.json (repo root)
+   "workspaces": ["packages/*", "template", "my-forms-project"]
+   ```
+   ```bash
+   npm install   # links @lf/lf-form-builder and @lf/lf-form-types into my-forms-project
+   ```
+
+   To run this template as-is instead, use `npm run dev:template` from the repo root.
 
 3. **Add a new form:**
    - Create a new folder in `src/Forms/` with your form name
@@ -106,11 +123,40 @@ See `../docs/guide/lfform-api-navigation.md` for the matching docs layout.
 
 ## Adding npm Dependencies
 
+Because this project is an npm workspace, install third-party packages from the repository root and
+target this workspace by name so the dependency is recorded in the right `package.json`:
+
 ```bash
-npm install <package-name>
+npm install <package-name> --workspace=my-forms-project
 ```
 
 If a dependency has a CDN URL, add it to the Forms external JS pane and list it in the `external` array in `vite.config.ts` to exclude it from the bundle.
+
+## Using this template outside the repository
+
+`@lf/lf-form-builder` and `@lf/lf-form-types` are not on any registry, so a copy of this template kept
+elsewhere on disk cannot resolve them by name. Build and pack them, then depend on the tarballs:
+
+```bash
+# in the lf-form-builder checkout
+npm run build:core
+npm pack --workspace=packages/types --workspace=packages/core --pack-destination /path/to/parent
+```
+
+```jsonc
+// my-forms-project/package.json
+"dependencies": {
+  "@lf/lf-form-builder": "file:../lf-lf-form-builder-0.1.0.tgz",
+  "@lf/lf-form-types": "file:../lf-lf-form-types-0.1.0.tgz"
+}
+```
+
+```bash
+cd my-forms-project && npm install
+```
+
+You must re-pack and re-install after every library change, which is why keeping the project as a
+workspace inside the repository is the recommended path.
 
 ## Working with Custom HTML Fields
 

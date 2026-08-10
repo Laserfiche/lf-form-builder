@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- **`@lf/lf-form-builder` and `@lf/lf-form-types` are no longer treated as published npm packages.**
+  They are built from source and consumed through npm workspaces. Dependents declare them as `"*"`,
+  which npm resolves to the local copy in `packages/` instead of contacting a registry.
+- `template/` is now an npm workspace (added to the root `workspaces` array), so a single
+  `npm install` at the repo root links the library into it. Its dependencies changed from `^0.1.0`
+  to `"*"`.
+- `packages/core` depends on `@lf/lf-form-types` as `"*"` rather than `^0.1.0`.
+- Added root scripts `build:template` and `dev:template`.
+- Documentation now describes building and referencing the packages locally, including an
+  `npm pack` tarball path for projects kept outside this repository.
+
+### Removed
+
+- `.github/workflows/publish.yml` — published both packages to registry.npmjs.org on release.
+- `scripts/release.sh` and the root `release` script — bumped versions and rewrote the template and
+  examples dependencies back to registry semver ranges.
+
+### Notes
+
+- `version` fields in `packages/core` and `packages/types` are now informational only; nothing
+  resolves them by range.
+
 ## [0.1.0] - 2026-01-01
 
 ### Added

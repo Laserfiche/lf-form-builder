@@ -12,7 +12,8 @@
     "node": ">=20"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "template"
   ],
   "scripts": {
     "build:types": "npm run build --workspace=packages/types",
@@ -31,7 +32,8 @@
     "lint": "eslint .",
     "test": "npm run build:types && npm run typecheck --workspace=packages/core && npm test --workspace=packages/core",
     "test:coverage": "npm run test:coverage --workspace=packages/core",
-    "release": "scripts/release.sh",
+    "build:template": "npm run build:core && npm run build --workspace=template",
+    "dev:template": "npm run build:core && npm run dev --workspace=template",
     "docs:generate": "typedoc",
     "docs:dev": "vitepress dev",
     "docs:build": "npm run docs:generate && vitepress build",
