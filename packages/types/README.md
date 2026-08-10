@@ -4,9 +4,19 @@ TypeScript type definitions for the Laserfiche Forms `LFForm` runtime API.
 
 ## Installation
 
+This package is **not published to an npm registry** — `npm install @lf/lf-form-types` will fail. It is
+built from source in this repository and consumed through npm workspaces.
+
+From the repository root:
+
 ```bash
-npm install @lf/lf-form-types
+npm install           # links @lf/lf-form-types into every workspace
+npm run build:types   # build lib/ that dependents import
 ```
+
+Workspaces depend on it as `"@lf/lf-form-types": "*"`, which npm satisfies with this local copy. To
+consume it from a project outside this checkout, `npm pack` it and depend on the tarball — see the
+Quick Start section of [../../README.MD](../../README.MD).
 
 ## Usage
 

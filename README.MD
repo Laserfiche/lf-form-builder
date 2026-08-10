@@ -14,32 +14,65 @@ This is a monorepo with npm workspaces:
 lf-form-builder/
 ├── docs/                 # VitePress guides, recipes, and generated API docs
 ├── packages/
-│   ├── core/             # Published npm package (@lf/lf-form-builder)
+│   ├── core/             # Local workspace package (@lf/lf-form-builder)
 │   │   └── src/          # Library source: components, utilities, API helpers, plugins
-│   ├── types/            # Published npm package (@lf/lf-form-types)
+│   ├── types/            # Local workspace package (@lf/lf-form-types)
 │   │   └── src/          # LFForm type definitions and helpers
-│   └── examples/         # Real-world example forms (not published)
-├── scripts/              # Release and workspace helper scripts
-├── template/             # Starter template — clone this to start a new project
+│   └── examples/         # Real-world example forms
+├── template/             # Starter template workspace — copy this to start a new project
 ```
+
+`@lf/lf-form-builder` and `@lf/lf-form-types` are **not published to any npm registry**. They are
+built from source in this repository and consumed through npm workspaces, so every dependent —
+`packages/examples` and `template` — resolves them from `packages/` on disk. Their `package.json`
+entries use `"*"`, which npm satisfies with the local workspace copy rather than a registry lookup.
 
 ### Quick Start (New Project)
 
-Copy the starter template and start building:
+The template is a workspace in this repository, so a single install at the repo root wires it to the
+locally built library:
 
 ```bash
-npx degit laserfiche/lf-form-builder/template my-forms-project
-cd my-forms-project
+git clone https://github.com/Laserfiche/lf-form-builder.git
+cd lf-form-builder
 
-# To use locally built (see: Development section below) dependencies, update the new project package.json
-#   "dependencies": {
-#    "@lf/lf-form-builder": "file:../packages/core",
-#    "@lf/lf-form-types": "file:../packages/types"
-#  }
-
-npm install
-npm run dev
+npm install            # links @lf/lf-form-builder and @lf/lf-form-types from packages/
+npm run build:core     # build the library the template imports
+npm run dev:template   # build + serve the template on http://localhost:3000
 ```
+
+To start your own project, copy `template/` to a new folder **inside this repository** and add it to
+the `workspaces` array in the root `package.json`, then re-run `npm install`:
+
+```bash
+cp -r template my-forms-project
+```
+
+```jsonc
+// package.json
+"workspaces": ["packages/*", "template", "my-forms-project"]
+```
+
+::: tip Working outside this repository
+Because the library is never published, a project kept outside this checkout cannot resolve
+`@lf/lf-form-builder` by name. If you need a standalone copy, build and pack the two packages first,
+then depend on the tarballs:
+
+```bash
+npm run build:core
+npm pack --workspace=packages/types --workspace=packages/core --pack-destination ../
+```
+
+```jsonc
+// my-forms-project/package.json
+"dependencies": {
+  "@lf/lf-form-builder": "file:../lf-lf-form-builder-0.1.0.tgz",
+  "@lf/lf-form-types": "file:../lf-lf-form-types-0.1.0.tgz"
+}
+```
+
+Re-pack and re-install after each library change.
+:::
 
 See [template/README.md](template/README.md) for full documentation.
 
@@ -103,7 +136,7 @@ This is useful during development so you don't need to run `npm run build:core` 
 
 - [Quick Start](docs/guide/quick-start.md) — Writing form scripts with the LFForm API
 - [LFForm API Navigation](docs/guide/lfform-api-navigation.md) — Browse the main LFForm API pages in a linear order, then drill into auxiliary types
-- [Template & Toolchain Setup](docs/guide/template-setup.md) — Build with Vite and the npm packages
+- [Template & Toolchain Setup](docs/guide/template-setup.md) — Build with Vite and the local workspace packages
 - [Custom HTML & Sandbox](docs/guide/custom-html.md) — Custom HTML, third-party libraries, and iframes
 - [Recipes](docs/recipes/) — Copy-paste patterns for common form tasks
 - [Payment Gateways](docs/recipes/payment-gateways.md) — Setting up Stripe, Braintree, or Authorize.net checkout on a form
@@ -200,20 +233,21 @@ For production, do not leave the process pointed at `localhost`. Host the built 
 - [VS Code](https://code.visualstudio.com/download) (recommended)
 - [Git](https://git-scm.com/downloads)
 
-## Release Checklist
+## Validating the Workspace
 
-Before preparing a release, validate the workspace builds:
+There is no publish step — the packages are consumed locally. To confirm the whole workspace is
+healthy after a change:
 
 ```bash
 npm run build:types
 npm run build:core
 npm run build:examples
+npm run build:template
+
+npm run lint
+npm run typecheck
+npm test
 ```
 
-Then run:
-
-```bash
-npm run release
-```
-
-This script bumps the published package versions, aligns internal dependency ranges used by the examples and template, creates a release commit, and tags the version.
+Versions in `packages/core/package.json` and `packages/types/package.json` are informational only.
+Nothing resolves them by range, so bumping them is optional and requires no dependent updates.

@@ -9,10 +9,13 @@ docs/              - VitePress guides and generated API docs
 packages/
 ├── core/          - Main library (@lf/lf-form-builder)
 ├── types/         - Shared types (@lf/lf-form-types)
-├── examples/      - Example forms (non-published)
-scripts/           - Release and workspace helper scripts
-template/          - Starter template for consumers
+├── examples/      - Example forms
+template/          - Starter template workspace for consumers
 ```
+
+All four are npm workspaces declared in the root `package.json`. `@lf/lf-form-builder` and
+`@lf/lf-form-types` are built from source here and never fetched from a registry — dependents declare
+them as `"*"` and npm links them from `packages/`.
 
 ## Core Module Architecture
 
@@ -158,19 +161,25 @@ See [packages/core/src/index.ts](packages/core/src/index.ts) for complete export
   - `npm run build:types` builds `@lf/lf-form-types`
   - `npm run build:core` builds `@lf/lf-form-builder`
   - `npm run build:examples` builds the example forms after core
+  - `npm run build:template` builds the starter template after core
 5. **Static dev build with CSS output**
   - `npm run build:dev:css` runs the examples development build and compiles emitted `.less` files to `.css`
 6. **Watch and serve workflows**
   - `npm run watch` rebuilds core, examples, and CSS on file changes
   - `npm run watch-serve` serves the examples output on a stable local port for manual form testing
 
-## Release Process
+## Distribution
 
-**Automated via `scripts/release.sh`**:
-1. Interactive semver bump prompt (major/minor/patch)
-2. Version alignment across `packages/types` and `packages/core`
-3. Dependency sync: updates version refs in `examples/` and `template/`
-4. Git commit + signed tag creation
-5. Manual push to GitHub (triggers CI publish workflow)
+There is no release or publish process. `@lf/lf-form-builder` and `@lf/lf-form-types` are consumed
+directly from source through npm workspaces:
+
+- Dependents (`packages/examples`, `template`) declare them as `"*"`, which npm resolves to the local
+  workspace copy in `packages/` instead of contacting a registry.
+- `npm install` at the repo root creates the `node_modules/@lf/*` links; nothing else is required.
+- The `version` fields in `packages/core` and `packages/types` are informational. No dependent
+  resolves them by range, so a bump needs no downstream edits.
+
+Consumers who need a copy outside this checkout build and `npm pack` the two packages and depend on
+the resulting tarballs — see the Quick Start section in [README.MD](README.MD).
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed local development steps.

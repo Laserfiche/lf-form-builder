@@ -121,22 +121,21 @@ npm run build:examples
 - **Test first**: All commits must pass `npm test && npm run typecheck && npm run lint`
 - **Keep commits atomic**: One logical change per commit
 
-## Release Process
+## Distribution
 
-**Versions**:
-- Bump version in both `packages/types/` and `packages/core/package.json`
-- Update version refs in `packages/examples/` and `template/`
-- Update CHANGELOG.md with changes
+`@lf/lf-form-builder` and `@lf/lf-form-types` are **not published to an npm registry**. They are built
+from source and linked through npm workspaces, so there is no release script and no publish workflow.
 
-**Automated release script**:
-```bash
-# From repo root
-./scripts/release.sh
+**What this means when you change the library**:
+- Dependents (`packages/examples`, `template`) declare `"@lf/lf-form-builder": "*"`, so they always
+  pick up your local `packages/core` — no version bump or dependency edit is needed.
+- Rebuild what consumers import after changing core: `npm run build:core` (or `npm run watch`).
+- The `version` fields in `packages/core` and `packages/types` are informational. Bump them only to
+  mark a meaningful change, and record it in CHANGELOG.md. Nothing resolves them by range.
 
-# Prompts for semver bump (major/minor/patch)
-# Aligns versions, creates commit + signed tag
-# Push to GitHub to trigger CI publish workflow
-```
+**If you add a new workspace** (for example, copying `template/` to start a project), add its folder to
+the `workspaces` array in the root `package.json` and re-run `npm install` so the `@lf/*` links are
+created for it.
 
 ## Project Structure Reference
 
@@ -160,13 +159,13 @@ packages/types/             # Shared types
 ├── src/types/              # TypeScript definitions
 └── lib/                    # Built output
 
-template/                   # Starter template
+template/                   # Starter template (npm workspace)
 ├── src/Forms/              # Example form structure
-└── package.json            # Consumer-facing example
+└── package.json            # Consumer-facing example, @lf/* deps as "*"
 
 .github/workflows/          # CI/CD
 ├── ci.yml                  # Lint/test/typecheck on PRs
-└── publish.yml             # Auto-publish on release
+└── deploy.yml              # Docs site deployment
 ```
 
 ## Key Files to Know
@@ -175,7 +174,6 @@ template/                   # Starter template
 - **[packages/core/README.md](packages/core/README.md)** — API documentation
 - **[packages/core/src/index.ts](packages/core/src/index.ts)** — Public API surface
 - **[.github/copilot-instructions.md](.github/copilot-instructions.md)** — Monorepo conventions
-- **[scripts/release.sh](scripts/release.sh)** — Release automation
 
 ## Common Tasks
 

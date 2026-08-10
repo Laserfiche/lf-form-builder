@@ -4,9 +4,19 @@ Utilities, components, and Vite plugins for building custom Laserfiche Forms.
 
 ## Installation
 
+This package is **not published to an npm registry** — `npm install @lf/lf-form-builder` will fail. It
+is built from source in this repository and consumed through npm workspaces.
+
+From the repository root:
+
 ```bash
-npm install @lf/lf-form-builder
+npm install          # links @lf/lf-form-builder into every workspace
+npm run build:core   # build dist/ that dependents import
 ```
+
+Workspaces depend on it as `"@lf/lf-form-builder": "*"`, which npm satisfies with this local copy. To
+consume it from a project outside this checkout, `npm pack` it and depend on the tarball — see the
+Quick Start section of [../../README.MD](../../README.MD).
 
 For a working starter setup, see [../../template/README.md](../../template/README.md).
 For end-user guides and recipes, see [../../docs/guide/template-setup.md](../../docs/guide/template-setup.md) and [../../docs/recipes/index.md](../../docs/recipes/index.md).
@@ -93,7 +103,7 @@ The plugin resolves these imports by looking up the package.json `exports` map, 
 - Build-time plugin hooks that preserve style imports and copy `.lfless` / `.css` assets into `dist`
 - Declaration generation integrated with the final Vite output layout via `vite-plugin-dts`
 
-TypeScript project builds (`tsc -b`) are still used for type-checking workflows, but they do not replace the packaging and asset pipeline used for publishing this package.
+TypeScript project builds (`tsc -b`) are still used for type-checking workflows, but they do not replace the packaging and asset pipeline that produces the `dist/` output dependents import.
 
 ### CSS
 

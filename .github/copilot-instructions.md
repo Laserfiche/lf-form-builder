@@ -4,10 +4,15 @@ This repository is a monorepo for Laserfiche Forms tooling.
 
 ## Monorepo structure
 
-- `packages/core` publishes `@lf/lf-form-builder`
-- `packages/types` publishes `@lf/lf-form-types`
-- `packages/examples` contains internal example forms (not published)
+- `packages/core` builds `@lf/lf-form-builder`
+- `packages/types` builds `@lf/lf-form-types`
+- `packages/examples` contains internal example forms
 - `template` is starter boilerplate for consumers
+
+All four are npm workspaces listed in the root `package.json`. Neither `@lf/lf-form-builder` nor
+`@lf/lf-form-types` is published to an npm registry — dependents declare them as `"*"` and npm links
+them from `packages/`. Never suggest `npm install @lf/lf-form-*`, a registry URL, or a semver range
+for these two packages.
 
 ## Canonical package imports
 
@@ -20,15 +25,18 @@ Use the scoped package names in all code and documentation examples.
 
 Do not use unscoped `lf-form-builder` in this repo.
 
-## Release and versioning notes
+## Versioning notes
 
 - Keep docs aligned with the real export surface from `packages/core/src/index.ts`.
 - Keep template docs aligned with starter behavior and scripts in `template/package.json`.
-- For template dependency examples, prefer semver ranges to current stable releases.
-- Validate release prep changes with:
+- For internal `@lf/lf-form-*` dependency examples, always use `"*"` (the workspace link). Semver
+  ranges would send npm to a registry where these packages do not exist.
+- There is no release or publish process; `version` fields are informational only.
+- Validate workspace changes with:
   - `npm run build:types`
   - `npm run build:core`
   - `npm run build:examples`
+  - `npm run build:template`
 
 ## Template sync rule
 
