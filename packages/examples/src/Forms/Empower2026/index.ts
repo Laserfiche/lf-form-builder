@@ -45,30 +45,54 @@ if (scriptMode === 'stripe-sandbox') {
       return hostedCodePromise;
     };
 
-    // Both ids are echoed back in the response, and sandbox.html compares them
-    // by equality rather than validating them. Constrain the shape here so a
-    // crafted request cannot round-trip anything but a plain identifier.
-    const safeId = /^[A-Za-z0-9_-]{1,64}$/;
+    /** Guards against echoing back an unbounded value; not a format check. */
+    const isUsableId = (value: unknown): value is string =>
+      typeof value === 'string' && value.length <= 64;
 
     window.addEventListener('message', (e: MessageEvent) => {
-      // Only same-origin frames may ask for the bundle source. Any frame on the
-      // page can post here, and the reply carries this form's own code.
-      if (e.origin !== window.location.origin) return;
+      // Shape first, then origin. Any frame on the page can post here, so
+      // checking the origin first would mean warning about every unrelated
+      // cross-origin message rather than only about script requests.
       if (typeof e.data !== 'object' || e.data === null) return;
       const data = e.data as Record<string, unknown>;
       if (data.type !== '__lfEmbedScriptRequest') return;
-      if (typeof data.channelId !== 'string' || !safeId.test(data.channelId)) return;
-      if (typeof data.rootId !== 'string' || !safeId.test(data.rootId)) return;
+
+      // Past this point the message is asking for this bundle's source, so a
+      // rejection is worth reporting: unlogged, a misconfigured integration
+      // surfaces only as a 15 second peer-discovery timeout at checkout.
+      //
+      // Same-origin is the control. A frame that clears it can already run code
+      // in this document, so the ids below get a length bound only — sandbox.html
+      // compares them by equality and never puts them in markup or a URL.
+      if (e.origin !== window.location.origin) {
+        console.warn(
+          '[Empower2026] Ignored a payment script request from a foreign origin:',
+          e.origin, '— expected', window.location.origin,
+        );
+        return;
+      }
+      const { channelId, rootId } = data;
+      if (!isUsableId(channelId) || !isUsableId(rootId)) {
+        console.warn(
+          '[Empower2026] Ignored a payment script request whose channelId/rootId was not a string of 64 characters or fewer:',
+          channelId, rootId,
+        );
+        return;
+      }
+
       const src = e.source;
       if (!src || typeof (src as Window).postMessage !== 'function') return;
       getCode().then((code) => {
-        if (!code) return;
+        if (!code) {
+          console.warn('[Empower2026] Payment script requested, but this bundle\'s own source could not be read.');
+          return;
+        }
         try {
           // Restrict delivery to the requesting frame's origin. Paired with
           // sandbox.html's own origin and channel checks on the response, this
           // closes the cross-origin injection window in both directions.
           (src as Window).postMessage(
-            { type: '__lfEmbedScriptResponse', rootId: data.rootId, channelId: data.channelId, code },
+            { type: '__lfEmbedScriptResponse', rootId, channelId, code },
             e.origin,
           );
         } catch { /* cross-origin or closed — ignore */ }
