@@ -27,8 +27,21 @@ export const AUTHORIZENET_ACCEPT_JS_URL = 'https://js.authorize.net/v1/Accept.js
 const DISABLE_PAGE5 = import.meta.env.VITE_DISABLE_PAGE5 === 'true';
 
 // Set VITE_AUTHORIZENET_API_LOGIN_ID and VITE_AUTHORIZENET_CLIENT_KEY in .env.local.
+// Both are public browser-side values; the merchant transaction key is not used here
+// and must never be embedded in the bundle.
 const authorizeNetApiLoginId = import.meta.env.VITE_AUTHORIZENET_API_LOGIN_ID?.trim();
 const authorizeNetClientKey  = import.meta.env.VITE_AUTHORIZENET_CLIENT_KEY?.trim();
+
+/**
+ * Selects the Authorize.net endpoint the iframe tokenizes against:
+ * `true` → apitest.authorize.net, `false` → api.authorize.net.
+ *
+ * Defaults to sandbox when unset, so a missing or misspelled variable can never
+ * silently send test credentials at the live endpoint. Going to production
+ * requires setting this to `false` *and* repointing the charge/verification
+ * lookup rules — see the "Going to production" section of the payment recipe.
+ */
+const authorizeNetUseSandbox = import.meta.env.VITE_AUTHORIZENET_SANDBOX?.trim() !== 'false';
 
 const hasValidAuthorizeNetKey = !!authorizeNetApiLoginId && !!authorizeNetClientKey;
 
@@ -131,9 +144,10 @@ const escapeHtml = (s: string): string =>
  *
  * How it works:
  *   1. Set VITE_AUTHORIZENET_API_LOGIN_ID and VITE_AUTHORIZENET_CLIENT_KEY in .env.local.
- *   2. The user clicks Checkout → an iframe running sandbox.html?mode=authorizenet-sandbox
+ *   2. The user clicks Checkout → an iframe running sandbox.html#mode=authorizenet-sandbox
  *      opens inside the modal (or checkoutFrame as fallback).
- *   3. The iframe runs initAuthorizeNetIframe, loads Accept.js, and renders the card form.
+ *   3. The iframe runs initAuthorizeNetIframe, which renders the card form and
+ *      tokenizes via a direct fetch() to Authorize.net (no Accept.js script).
  *   4. PostMessageHelper routes COMPLETE_CHECKOUT (or ERROR) back to this script.
  *   5. On success, JSON { dataDescriptor, dataValue } is written to paymentNonce and
  *      isFinished is set to 'charge' to trigger your charge lookup rule.
@@ -258,7 +272,7 @@ export const page5AuthorizeNetLoad = DISABLE_PAGE5
       ck:        authorizeNetClientKey  ?? '',
       // sandbox=true → inner iframe calls apitest.authorize.net (sandbox endpoint)
       // sandbox=false → inner iframe calls api.authorize.net (production endpoint)
-      sandbox:   'true',
+      sandbox:   authorizeNetUseSandbox ? 'true' : 'false',
     });
     const sandboxHtmlUrl = `${window.location.origin}${window.location.pathname}`;
     const framedSrc = `${sandboxHtmlUrl}#${frameParams}`;

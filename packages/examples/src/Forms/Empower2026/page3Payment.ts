@@ -16,8 +16,14 @@ import {
 
 // ─── Configuration ────────────────────────────────────────────────────────────
 
-/** URL for the Stripe embedded checkout SDK. */
-export const STRIPE_CDN_URL = 'https://js.stripe.com/clover/stripe.js';
+/**
+ * URL for the Stripe embedded checkout SDK, re-exported from the core plugin.
+ *
+ * The sandbox iframe loads the SDK from this constant directly — it is never
+ * passed through the iframe's hash fragment, because a hash-sourced script URL
+ * is attacker-controllable and would run arbitrary code in the payment page.
+ */
+export { STRIPE_SDK_URL as STRIPE_CDN_URL } from '@lf/lf-form-builder';
 
 const DISABLE_PAGE3 = import.meta.env.VITE_DISABLE_PAGE3 === 'true';
 
@@ -286,7 +292,9 @@ export const page3Load = DISABLE_PAGE3
       mode: 'stripe-sandbox',
       channelId: stripeChannelId,
       pk: stripePublishableKey ?? '',
-      scriptSrc: STRIPE_CDN_URL,
+      // No scriptSrc: the SDK URL is fixed inside initStripeIframe. Anything
+      // in this fragment is attacker-controllable in a crafted link and must
+      // never reach a <script src>.
     });
     const sandboxHtmlUrl = `${window.location.origin}${window.location.pathname}`;
     const framedSrc = `${sandboxHtmlUrl}#${frameParams}`;

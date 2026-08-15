@@ -114,6 +114,44 @@ npm run build --workspace=packages/core
 npm run build:examples
 ```
 
+## Secrets and Exported Process Assets
+
+This is a public repository. Nothing in it may contain a live credential.
+
+**Exported Laserfiche Process assets (`.bri`) need review before every commit.** A `.bri` is a JSON
+export of a configured business rule, and the export includes whatever the author typed into the
+request payload template plus the linked web service's `ConnectionInfo.Username`. Authorize.net in
+particular authenticates in the request body (`merchantAuthentication.name` / `.transactionKey`), so
+a working rule carries a live API login and transaction key into the file with no visible indication.
+
+Before committing a `.bri`, open it and confirm:
+
+- `BusinessRules[].RuleList[].Template.Payload` contains no `name`, `transactionKey`, `clientKey`, or
+  `signatureKey` literal — use a `REPLACE_ME_*` placeholder instead
+- `LinkedObjects.WebService[].ConnectionInfo.Username` is empty or a placeholder
+- No `DefaultHeaders` entry marked `IsSecure` carries a real value
+
+Merchant secrets belong in the web service connection credential store, which is not part of the
+export. Publishable/client keys (Stripe `pk_`, the Authorize.net client key, the Braintree
+tokenization key) are public by design and are fine in the bundle — see
+[docs/recipes/payment-gateways.md](docs/recipes/payment-gateways.md#which-keys-go-where).
+
+**Automated check**:
+
+```bash
+npm run check:secrets            # scan all tracked files
+```
+
+Install the pre-commit hook so this runs on staged files automatically:
+
+```bash
+cp scripts/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+```
+
+CI runs the same check on every push and pull request. If it fires, **rotate the exposed credential
+first** — removing it from the working tree does not remove it from the history that has already
+been pushed.
+
 ## Commit Standards
 
 - **Write clear commit messages**: `feat: add field validation` or `fix: handle null fields`

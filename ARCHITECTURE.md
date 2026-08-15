@@ -59,7 +59,10 @@ them as `"*"` and npm links them from `packages/`.
 - **`bundleLfless`** - resolves `.lfless` imports into a single emitted Less bundle
 - **`disableSharedChunking`** - forces predictable single-file outputs for form deployments
 - **`generateDirectoryHtml`** - generates the static dist index page used by local serving
-- **`Stripe/`** - Stripe iframe runtime entry and static `stripe.html` host asset
+- **`Stripe/`, `Braintree/`, `AuthorizeNet/`** - payment iframe runtime entries. Each loads its
+  gateway SDK from a fixed module constant through `lib/utils/loadGatewayScript`, which enforces an
+  origin allowlist. These entries run inside the Forms renderer's own `sandbox.html` — see
+  [docs/recipes/payment-gateways.md](docs/recipes/payment-gateways.md#the-sandbox-bootstrap)
 
 ### CSS/LESS Pipeline
 
@@ -76,10 +79,6 @@ them as `"*"` and npm links them from `packages/`.
 
 3. **copyStyleAssets plugin** - Copies `.lfless` and `.css` files to `dist/` alongside JS
    - Creates import-friendly bundle structure
-
-4. **copy-html-assets plugin** - Copies static HTML assets like `stripe.html` into `dist/`
-
-5. **bundle-stripe-runtime plugin** - Builds a standalone `dist/Stripe.js` runtime for iframe checkout
 
 **Examples package pipeline**:
 
@@ -101,10 +100,6 @@ them as `"*"` and npm links them from `packages/`.
 - **Multiple entry points** - Via `rollupOptions.input`
   - Main entry: `src/index.ts`
   - Plugin exports: `src/plugins/index.ts`, `bundleLfless.ts`, `disableSharedChunking.ts`, `generateDirectoryHtml.ts`
-
-- **Standalone Stripe runtime build**
-  - Additional close-bundle build emits `dist/Stripe.js` from `src/plugins/Stripe/index.ts`
-  - Used by examples and consumers that host Stripe checkout in an iframe
 
 - **No minification** - `minify: false` preserves readability for library consumers
 

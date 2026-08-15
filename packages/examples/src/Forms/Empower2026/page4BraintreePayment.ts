@@ -16,8 +16,14 @@ import {
 
 // ─── Configuration ────────────────────────────────────────────────────────────
 
-/** Braintree Drop-in UI SDK. */
-export const BRAINTREE_DROPIN_URL = 'https://js.braintreegateway.com/web/dropin/1.43.0/js/dropin.min.js';
+/**
+ * Braintree Drop-in UI SDK, re-exported from the core plugin.
+ *
+ * The sandbox iframe loads the SDK from this constant directly — it is never
+ * passed through the iframe's hash fragment, because a hash-sourced script URL
+ * is attacker-controllable and would run arbitrary code in the payment page.
+ */
+export { BRAINTREE_DROPIN_SDK_URL as BRAINTREE_DROPIN_URL } from '@lf/lf-form-builder';
 
 const DISABLE_PAGE4 = import.meta.env.VITE_DISABLE_PAGE4 === 'true';
 
@@ -277,7 +283,6 @@ export const page4BraintreeLoad = DISABLE_PAGE4
    *
    *   tk  = static tokenization key (VITE_BRAINTREE_TOKENIZATION_KEY), used as
    *         fallback authorization if no client_token is passed in INITIALIZE
-   *   scriptSrc = Braintree Drop-in CDN URL, loaded lazily by the iframe
    */
   const injectBraintreeFrame = () => {
     const frameParams = new URLSearchParams({
@@ -285,7 +290,9 @@ export const page4BraintreeLoad = DISABLE_PAGE4
       mode: 'braintree-sandbox',
       channelId: paymentChannelId,
       tk: braintreeTokenizationKey ?? '',
-      scriptSrc: BRAINTREE_DROPIN_URL,
+      // No scriptSrc: the Drop-in SDK URL is fixed inside initBraintreeIframe.
+      // Anything in this fragment is attacker-controllable in a crafted link
+      // and must never reach a <script src>.
     });
     const sandboxHtmlUrl = `${window.location.origin}${window.location.pathname}`;
     const framedSrc = `${sandboxHtmlUrl}#${frameParams}`;

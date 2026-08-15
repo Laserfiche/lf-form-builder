@@ -1,4 +1,5 @@
 import { PostMessageHelper } from '../../lib/utils/postMessageHelper';
+import { loadGatewayScript } from '../../lib/utils/loadGatewayScript';
 
 /**
  * Messages exchanged between the Stripe embedded-checkout iframe
@@ -22,14 +23,15 @@ interface StripeInstance {
 }
 declare const Stripe: (publishableKey: string) => StripeInstance;
 
-const loadScript = (src: string): Promise<void> =>
-  new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = src;
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
-    document.head.appendChild(script);
-  });
+/**
+ * The only URL this plugin will load the Stripe SDK from.
+ *
+ * Deliberately a module constant, not a parameter: `params` comes from the URL
+ * hash fragment, which an attacker controls in a crafted link. A caller-supplied
+ * script URL would execute arbitrary JavaScript in the same document tree as the
+ * gateway's card-capture iframe.
+ */
+export const STRIPE_SDK_URL = 'https://js.stripe.com/clover/stripe.js';
 
 /**
  * Initialise the Stripe embedded-checkout handler inside a sandbox iframe.
@@ -37,8 +39,8 @@ const loadScript = (src: string): Promise<void> =>
  * Call this when `window.__lfSandboxMode === 'stripe-sandbox'`.
  * `params` should be `window.__lfSandboxParams` (set by sandbox.html before
  * the script is evaluated) and must contain at minimum `channelId` and `pk`.
- * Pass `scriptSrc` to lazy-load the Stripe JS SDK from a specific URL (e.g.
- * `https://js.stripe.com/clover/stripe.js`).
+ * The Stripe JS SDK is loaded from {@link STRIPE_SDK_URL}; the URL is not
+ * configurable.
  */
 export const initStripeIframe = (params: URLSearchParams): void => {
   const stripeChannelId = params.get('channelId') ?? 'empower2026-checkout';
@@ -79,8 +81,7 @@ export const initStripeIframe = (params: URLSearchParams): void => {
         return;
       }
 
-      const scriptSrc = params.get('scriptSrc');
-      if (scriptSrc) await loadScript(scriptSrc);
+      await loadGatewayScript(STRIPE_SDK_URL);
 
       const checkout = await Stripe(stripePublishableKey).initEmbeddedCheckout({
         fetchClientSecret: () => clientSecret,

@@ -21,6 +21,8 @@ interface ImportMetaEnv {
   readonly VITE_DISABLE_PAGE5?: string;
   readonly VITE_AUTHORIZENET_API_LOGIN_ID?: string;
   readonly VITE_AUTHORIZENET_CLIENT_KEY?: string;
+  /** 'false' selects the production endpoint; anything else stays on sandbox. */
+  readonly VITE_AUTHORIZENET_SANDBOX?: string;
 }
 
 // TypeScript declaration merging augments the global ImportMeta interface

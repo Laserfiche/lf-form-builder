@@ -45,18 +45,28 @@ if (scriptMode === 'stripe-sandbox') {
       return hostedCodePromise;
     };
 
+    // Both ids are echoed back in the response, and sandbox.html compares them
+    // by equality rather than validating them. Constrain the shape here so a
+    // crafted request cannot round-trip anything but a plain identifier.
+    const safeId = /^[A-Za-z0-9_-]{1,64}$/;
+
     window.addEventListener('message', (e: MessageEvent) => {
+      // Only same-origin frames may ask for the bundle source. Any frame on the
+      // page can post here, and the reply carries this form's own code.
+      if (e.origin !== window.location.origin) return;
       if (typeof e.data !== 'object' || e.data === null) return;
       const data = e.data as Record<string, unknown>;
       if (data.type !== '__lfEmbedScriptRequest') return;
+      if (typeof data.channelId !== 'string' || !safeId.test(data.channelId)) return;
+      if (typeof data.rootId !== 'string' || !safeId.test(data.rootId)) return;
       const src = e.source;
       if (!src || typeof (src as Window).postMessage !== 'function') return;
       getCode().then((code) => {
         if (!code) return;
         try {
-          // Restrict delivery to the requesting frame's origin — if sandbox.html
-          // also validates e.origin on its end, this closes the cross-origin
-          // injection window entirely.
+          // Restrict delivery to the requesting frame's origin. Paired with
+          // sandbox.html's own origin and channel checks on the response, this
+          // closes the cross-origin injection window in both directions.
           (src as Window).postMessage(
             { type: '__lfEmbedScriptResponse', rootId: data.rootId, channelId: data.channelId, code },
             e.origin,

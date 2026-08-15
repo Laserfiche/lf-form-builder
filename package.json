@@ -30,6 +30,7 @@
     "dev": "npm run dev --workspace=packages/examples",
     "typecheck": "npm run typecheck --workspace=packages/core && tsc -p packages/examples/tsconfig.typecheck.json",
     "lint": "eslint .",
+    "check:secrets": "node scripts/check-committed-secrets.mjs",
     "test": "npm run build:types && npm run typecheck --workspace=packages/core && npm test --workspace=packages/core",
     "test:coverage": "npm run test:coverage --workspace=packages/core",
     "build:template": "npm run build:core && npm run build --workspace=template",

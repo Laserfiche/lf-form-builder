@@ -7,7 +7,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Security
+
+- **Payment plugins no longer load scripts from a caller-supplied URL.** `initStripeIframe` and
+  `initBraintreeIframe` read `scriptSrc` from `params` — the iframe's URL hash fragment, which is
+  fully attacker-controllable in a crafted link — and passed it to a `<script src>`. A crafted link
+  could run arbitrary JavaScript in the origin hosting the payment page, in the same document tree as
+  the gateway's card-capture iframe. Gateway SDK URLs are now fixed module constants
+  (`STRIPE_SDK_URL`, `BRAINTREE_DROPIN_SDK_URL`) loaded through the new `loadGatewayScript`, which
+  rejects any URL outside `ALLOWED_GATEWAY_SDK_ORIGINS`. The `scriptSrc` parameter is ignored.
+  **Anyone consuming these plugins should update.**
+- **Removed committed Authorize.net and Braintree sandbox credentials** from the bundled `.bri`
+  process assets, replaced with `REPLACE_ME_*` placeholders. The exposed sandbox credentials must be
+  treated as compromised and rotated — they remain in the published git history.
+- Added `npm run check:secrets` (`scripts/check-committed-secrets.mjs`), wired into CI and available
+  as a pre-commit hook, which fails on credentials in `.bri` payload templates and connection
+  usernames plus well-known secret-key shapes anywhere in the tree.
+- Hardened the `__lfEmbedScriptRequest` relay in the Empower2026 example to reject cross-origin
+  requesters and malformed channel/root identifiers.
+- Added `SECURITY.md` with a private disclosure address.
+
+### Added
+
+- A PCI DSS section in `docs/recipes/payment-gateways.md`: SAQ selection, the "never add card fields
+  to your form" rule, a publishable-vs-secret key table, the open SAQ A eligibility decision, and a
+  "Going to production" checklist.
+- Documented the sandbox bootstrap: that `sandbox.html` is the Forms renderer's own template rather
+  than a repository asset, and the rules any code on that path must hold to.
+
 ### Changed
+
+- `page5AuthorizeNetPayment.ts` now reads `VITE_AUTHORIZENET_SANDBOX` instead of hardcoding
+  `sandbox: 'true'`. It defaults to the sandbox endpoint when unset, so a typo cannot point test
+  credentials at the live endpoint.
+- Renamed `RGWebRequestToStripeCharge.bri` to `RGWebRequestToStripeCreateSession.bri`. The rule
+  creates a Checkout Session and returns a `client_secret`; it does not charge a card.
+- Documented that page 5 (Authorize.net) renders its own card fields and does not carry the same PCI
+  scope as the Stripe and Braintree samples.
 
 - **`@lf/lf-form-builder` and `@lf/lf-form-types` are no longer treated as published npm packages.**
   They are built from source and consumed through npm workspaces. Dependents declare them as `"*"`,

@@ -23,6 +23,11 @@ jobs:
 
       - run: npm ci
       - run: npm run build --workspace=@lf/lf-form-types
+
+      # Exported .bri process assets embed whatever credentials the author
+      # configured. Catch them before they reach a public branch.
+      - run: npm run check:secrets
+
       - run: npm run lint
       - run: npm run typecheck
       - run: npm run test

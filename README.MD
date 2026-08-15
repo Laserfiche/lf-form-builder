@@ -206,14 +206,22 @@ Empower2026 ships three interchangeable payment-gateway pages, each independentl
 | --- | --- | --- | --- |
 | Page 3 | [page3Payment.ts](packages/examples/src/Forms/Empower2026/page3Payment.ts) | Stripe (embedded checkout) | `VITE_DISABLE_PAGE3` |
 | Page 4 | [page4BraintreePayment.ts](packages/examples/src/Forms/Empower2026/page4BraintreePayment.ts) | Braintree (Drop-in UI) | `VITE_DISABLE_PAGE4` |
-| Page 5 | [page5AuthorizeNetPayment.ts](packages/examples/src/Forms/Empower2026/page5AuthorizeNetPayment.ts) | Authorize.net (Accept.js) | `VITE_DISABLE_PAGE5` |
+| Page 5 | [page5AuthorizeNetPayment.ts](packages/examples/src/Forms/Empower2026/page5AuthorizeNetPayment.ts) | Authorize.net (direct tokenization) | `VITE_DISABLE_PAGE5` |
+
+> [!WARNING]
+> **Accepting card payments puts you in scope for PCI DSS.** These are unsupported reference samples,
+> not a certified payment application, and the three do not carry the same PCI scope as each other —
+> page 5 renders card fields in markup this repository controls, pages 3 and 4 do not. Read
+> [PCI DSS scope and your SAQ](docs/recipes/payment-gateways.md#pci-dss-scope-and-your-saq) before
+> adapting any of them. Never add card number, expiry, or CVV fields to a form design. Your acquirer
+> and QSA determine which SAQ applies to you.
 
 See [docs/recipes/payment-gateways.md](docs/recipes/payment-gateways.md) for the full setup and field-mapping guide for all three gateways.
 
 Before using the Empower2026 example in your own Forms account, import the bundled Laserfiche assets from [packages/examples/src/Forms/Empower2026/Laserfiche Process](packages/examples/src/Forms/Empower2026/Laserfiche%20Process):
 
 - Import the process definition: [AdvancedScripting_RG.xml](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/AdvancedScripting_RG.xml)
-- For Stripe (page 3), import the web request rules: [RGWebRequestToStripeCharge.bri](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToStripeCharge.bri) and [RGWebRequestToStripeVerification.bri](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToStripeVerification.bri)
+- For Stripe (page 3), import the web request rules: [RGWebRequestToStripeCreateSession.bri](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToStripeCreateSession.bri) (creates the Checkout Session and returns its `client_secret` — it does not charge the card) and [RGWebRequestToStripeVerification.bri](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToStripeVerification.bri)
 - For Braintree (page 4), import: [RGWebRequestToBraintreePaymentIInit.bri](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToBraintreePaymentIInit.bri) (creates the client_token) and [RGWebRequestToBraintreeCharge.bri](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToBraintreeCharge.bri) (charges the nonce)
 - For Authorize.net (page 5), import: [RGWebRequestToAuthNetCharge.bri](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToAuthNetCharge.bri) and [RGWebRequestToAuthNetVerification.bri](packages/examples/src/Forms/Empower2026/Laserfiche%20Process/RGWebRequestToAuthNetVerification.bri)
 
@@ -224,6 +232,8 @@ Those imports are required for the example's process actions and gateway-related
 The bundled process assets are configured for local development and expect the example scripts to be served from `http://localhost:3000`. That is appropriate for getting the demo running quickly on a developer machine.
 
 For the payment gateways specifically, do not copy only `Empower2026.js`. Each checkout flow injects an iframe pointed back at the currently-loaded page (with the built script re-delivered into that iframe over `postMessage`), so `Empower2026.js` must be reachable at the same URL the form iframe loads — there is no separate `stripe.html`/`Stripe.js` asset to copy alongside it. In local development that URL is served from `packages/examples/dist`, and in production it should be hosted on the same HTTPS location referenced by the form.
+
+The page the payment iframe actually loads is the Forms renderer's own `sandbox.html` — form scripts already execute inside it, so `window.location.pathname` resolves to it. It is **not** an asset you host. See [The sandbox bootstrap](docs/recipes/payment-gateways.md#the-sandbox-bootstrap).
 
 For production, do not leave the process pointed at `localhost`. Host the built JavaScript, CSS, and related assets on a secure HTTPS site that your Forms environment can reach, then update the imported process and form configuration to reference that hosted location.
 
