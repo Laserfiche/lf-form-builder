@@ -378,8 +378,11 @@ export const page5AuthorizeNetLoad = DISABLE_PAGE5
           typeof (payload as Record<string, unknown>).message === 'string'
             ? (payload as { message: string }).message
             : JSON.stringify(payload ?? {});
+        // Escaped: this text arrives over postMessage and the gateway's own
+        // response text can reach it, so it is not safe to treat as markup.
+        // Matches how page3 and page4 render their ERROR payloads.
         await setCheckoutResultHtml(
-          `<div style="color:red"><strong>Authorize.net error:</strong> ${message}</div>`,
+          `<div style="color:red"><strong>Authorize.net error:</strong> ${escapeHtml(message)}</div>`,
         );
         await setFieldValueSafe(formFields.isFinished, 'fail');
       });
