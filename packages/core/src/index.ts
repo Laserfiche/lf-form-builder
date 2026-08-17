@@ -117,6 +117,11 @@ export { IframeView } from './components/repository/iframe';
 export type { IframeOptions, IframeWindow } from './components/repository/iframe';
 // Payment plugins
 export type { StripeMessages } from './plugins/Stripe/index';
-export { initStripeIframe } from './plugins/Stripe/index';
-export { initBraintreeIframe } from './plugins/Braintree/index';
+export { initStripeIframe, STRIPE_SDK_URL } from './plugins/Stripe/index';
+export { initBraintreeIframe, BRAINTREE_DROPIN_SDK_URL } from './plugins/Braintree/index';
 export { initAuthorizeNetIframe } from './plugins/AuthorizeNet/index';
+export {
+  ALLOWED_GATEWAY_SDK_ORIGINS,
+  isAllowedGatewayScriptUrl,
+  loadGatewayScript,
+} from './lib/utils/loadGatewayScript';

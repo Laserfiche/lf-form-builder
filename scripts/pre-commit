@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# Blocks a commit that would publish a gateway credential.
+#
+# Install:
+#   cp scripts/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+#
+# Or point git at the whole directory:
+#   git config core.hooksPath scripts
+
+staged=$(git diff --cached --name-only --diff-filter=ACM)
+[ -z "$staged" ] && exit 0
+
+# shellcheck disable=SC2086
+node scripts/check-committed-secrets.mjs $staged || {
+  echo
+  echo "Commit blocked. Re-run with --no-verify only if you are certain the match is a false positive."
+  exit 1
+}

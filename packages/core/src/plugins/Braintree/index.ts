@@ -1,4 +1,5 @@
 import { PostMessageHelper } from '../../lib/utils/postMessageHelper';
+import { loadGatewayScript } from '../../lib/utils/loadGatewayScript';
 import type { StripeMessages } from '../Stripe/index';
 
 interface BraintreeDropin {
@@ -17,21 +18,24 @@ declare const braintree: {
   };
 };
 
-const loadScript = (src: string): Promise<void> =>
-  new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = src;
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
-    document.head.appendChild(script);
-  });
+/**
+ * The only URL this plugin will load the Braintree Drop-in SDK from.
+ *
+ * Deliberately a module constant, not a parameter: `params` comes from the URL
+ * hash fragment, which an attacker controls in a crafted link. A caller-supplied
+ * script URL would execute arbitrary JavaScript in the same document tree as the
+ * gateway's card-capture iframe.
+ */
+export const BRAINTREE_DROPIN_SDK_URL =
+  'https://js.braintreegateway.com/web/dropin/1.43.0/js/dropin.min.js';
 
 /**
  * Initialise the Braintree Drop-in handler inside a sandbox iframe.
  *
  * Call this when `window.__lfSandboxMode === 'braintree-sandbox'`.
  * `params` should be `window.__lfSandboxParams` (set by sandbox.html) and must
- * contain `channelId`. Pass `scriptSrc` to lazy-load the Braintree Drop-in SDK.
+ * contain `channelId`. The Drop-in SDK is loaded from
+ * {@link BRAINTREE_DROPIN_SDK_URL}; the URL is not configurable.
  *
  * Flow:
  *   1. Parent sends INITIALIZE with `clientToken` (or `pk` field is unused)
@@ -44,7 +48,6 @@ export const initBraintreeIframe = (params: URLSearchParams): void => {
   const channelId = params.get('channelId') ?? 'empower2026-checkout';
   // tk = static tokenization key (fallback when no per-session clientToken is provided)
   const staticTokenizationKey = params.get('tk') ?? '';
-  const scriptSrc = params.get('scriptSrc') ?? '';
 
   console.log('[Braintree] iframe mode — channelId:', channelId);
 
@@ -74,7 +77,7 @@ export const initBraintreeIframe = (params: URLSearchParams): void => {
     }
 
     try {
-      if (scriptSrc) await loadScript(scriptSrc);
+      await loadGatewayScript(BRAINTREE_DROPIN_SDK_URL);
 
       const container = document.getElementById('checkout');
       if (!container) throw new Error('[Braintree] Mount point #checkout not found');
